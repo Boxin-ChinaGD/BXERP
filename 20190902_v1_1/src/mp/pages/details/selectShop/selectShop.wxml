@@ -1,0 +1,31 @@
+<view>
+  <view class="head" style="background: {{ vipCardBackground }}" >
+    <image src="../../../images/selectShop.svg" class="background"></image>
+    <text>选择商家</text>
+  </view>
+  <view class="shop-item">
+    <text class="info">常用门店</text>
+    <view class="shop-detail">
+      <text>{{ companyInfo.brandName }}</text>
+      <text class="state">营业中</text>
+      <view class="phoneNumber">📲 : 15854320895</view>
+      <view class="address">💒： {{companyAddressList[0].address}}</view>
+    </view>
+    <text class="info">附近门店</text>
+    <view class="shop-detail" bindtap="switchShop" data-id='{{index}}' wx:for="{{shopList}}" wx:key="key" wx:if = "{{shopList}}">
+      <view>
+        <text>{{item.brandName}}</text>
+        <text class="state">营业中</text>
+        <view class="phoneNumber">📲 : 15854320895</view>
+        <view class="address">💒： {{companyAddressList[0].address}}</view>
+      </view>
+      <!-- <text>这里是门店的名称</text> -->
+    </view>
+    <view class="shop-detail" wx:if = '{{isOnlyOne == true}}' bindtap="isOnlyOne">
+      <text>{{ companyInfo.brandName }}</text>
+      <text class="state">营业中</text>
+      <view class="phoneNumber">📲 : 15854320895</view>
+      <view class="address">💒： {{companyAddressList[0].address}}</view>
+    </view>
+  </view>
+</view>

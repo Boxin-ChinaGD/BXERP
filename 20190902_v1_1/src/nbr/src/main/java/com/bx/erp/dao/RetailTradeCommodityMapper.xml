@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.RetailTradeCommodityMapper">
+	<resultMap id="RetailTradeCommodityMap" type="com.bx.erp.model.RetailTradeCommodity">
+		<result property="ID" column="F_ID" />
+		<result property="tradeID" column="F_TradeID" />
+		<result property="commodityID" column="F_CommodityID" />
+		<result property="commodityName" column="F_CommodityName" />
+		<result property="barcodeID" column="F_BarcodeID" />
+		<result property="NO" column="F_NO" />
+		<result property="priceOriginal" column="F_PriceOriginal" />
+		<result property="NOCanReturn" column="F_NOCanReturn" />
+		<result property="priceReturn" column="F_PriceReturn" />
+		<result property="priceSpecialOffer" column="F_PriceSpecialOffer" />
+		<result property="priceVIPOriginal" column="F_PriceVIPOriginal" />
+	</resultMap>
+
+	
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="RetailTradeCommodityMap">
+		{call SP_RetailTradeCommodity_UploadTrade_CreateCommodity(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{tradeID, mode=IN},
+		#{commodityID, mode=IN},
+		#{barcodeID, mode=IN},
+		#{NO, mode=IN},
+		#{priceOriginal, mode=IN},
+		#{NOCanReturn, mode=IN},
+		#{operatorStaffID, mode=IN}, <!-- staffID -->
+		#{priceReturn, mode=IN},
+		#{priceSpecialOffer, mode=IN},
+		#{priceVIPOriginal, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="RetailTradeCommodityMap">
+		{call SP_RetailTradeCommodity_RetrieveNTradeCommodity(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{tradeID, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkBarcodeID" statementType="CALLABLE" useCache="false" resultMap="RetailTradeCommodityMap">
+		{CALL SPD_RetailTradeCommodity_CheckBarcodeID(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkCommodity" statementType="CALLABLE" useCache="false" resultMap="RetailTradeCommodityMap">
+		{CALL SPD_RetailTradeCommodity_CheckCommodity(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+</mapper>

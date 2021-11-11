@@ -1,0 +1,121 @@
+/* pages/details/coupon/details/details.wxss */
+page{
+  background:rgba(248,248,248,1);
+}
+
+button::after{
+  border: none;
+}
+
+.page-body{
+  width: 100%;
+}
+
+.couponDetails{
+  margin: 70rpx 8rpx 0 8rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+
+.couponDetails .head{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .couponDetails .head image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: -50rpx;
+  margin-bottom: 18rpx;
+} */
+
+.couponDetails .head .title{
+  width: 590rpx;
+  font-size: 34rpx;
+  text-align: center;
+}
+
+.couponDetails .head .amount{
+  font-size: 28rpx;
+  color: #FA5151;
+  font-weight: bold;
+}
+
+.couponDetails .head .amount text{
+  font-size: 80rpx;
+}
+
+.couponDetails .head .usingThreshold{
+  font-size: 28rpx;
+  color: #888;
+}
+
+.couponDetails .middle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 430rpx;
+  margin: 40rpx 20rpx;
+  border-top: 1rpx dashed #E5E5E5;
+  border-bottom: 1rpx dashed #E5E5E5;
+}
+
+.couponDetails .middle .couponCodeArea{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #888;
+  font-size: 26rpx;
+}
+
+.couponDetails .middle .couponCodeArea .couponCode{
+  letter-spacing:8rpx;
+  word-spacing: 8rpx;
+}
+.couponDetails .middle .couponCodeArea text{
+  padding: 20rpx 0;
+}
+
+.couponDetails .middle .couponCodeArea canvas{
+  width: 616rpx;
+  height: 156rpx;
+}
+
+.couponDetails .middle button{
+  width: 496rpx;
+  height: 80rpx;
+  font-size: 34rpx;
+  color: #fff;
+  line-height: 80rpx;
+  background-color: #07C160;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.couponDetails .foot{
+  font-size: 26rpx;
+  padding: 0 20rpx 30rpx 20rpx;
+}
+
+.couponDetails .foot view{
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.couponDetails .foot view text:first-child{
+  width: 110rpx;
+  color: #888;
+  flex-grow: 0;
+}
+
+.couponDetails .foot view text:last-child{
+  width: 280rpx;
+  color: #000;
+  margin-left: 16rpx;
+  flex-grow: 1;
+}
+
+.couponDetails .foot view:last-child text:last-child{
+  word-wrap: break-word;
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:task="http://www.springframework.org/schema/task"
+	   xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<!--spring 和 spring data jpa的配置-->
+	<!-- 1.创建entityManagerFactory对象交给spring容器管理-->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!--配置的扫描的包（实体类所在的包） -->
+		<property name="packagesToScan" value="wpos.model" />
+		<!-- jpa的实现厂家 -->
+		<property name="persistenceProvider">
+			<bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
+		</property>
+
+		<!--jpa的供应商适配器 -->
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<!--数据库方言：支持的特有语法 -->
+				<property name="databasePlatform" value="wpos.utils.SQLiteDialect" />
+				<!--是否显示sql -->
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+
+		<!--jpa的方言 ：高级的特性 -->
+		<property name="jpaDialect" >
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</property>
+
+	</bean>
+
+	<!--2.创建数据库连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value=""/>
+		<property name="password" value=""/>
+		<property name="jdbcUrl" value="jdbc:sqlite:D:\\BXERP\\trunk\\src\\sample\\wpos_sqlite\\src\\main\\resources\\sqlite.db"/>
+		<property name="driverClass" value="org.sqlite.JDBC"/>
+	</bean>
+
+	<!--3.整合spring dataJpa-->
+	<jpa:repositories base-package="wpos.dao" transaction-manager-ref="transactionManager"
+					  entity-manager-factory-ref="entityManagerFactory"/>
+
+	<!--4.配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+
+	<!-- 4.txAdvice-->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="insert*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<!--    &lt;!&ndash; 5.aop&ndash;&gt;-->
+	<!--    <aop:config>-->
+	<!--        <aop:pointcut id="pointcut" expression="execution(* cn.hcc.service.*.*(..))" />-->
+	<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />-->
+	<!--    </aop:config>-->
+
+
+	<!--5.声明式事务 -->
+
+	<!-- 6. 配置包扫描-->
+	<context:component-scan base-package="wpos.event" ></context:component-scan>
+	<context:component-scan base-package="wpos.bo" ></context:component-scan>
+	<context:component-scan base-package="wpos.presenter" ></context:component-scan>
+	<context:component-scan base-package="wpos.application" ></context:component-scan>
+	<context:component-scan base-package="wpos.allController" ></context:component-scan>
+	<context:component-scan base-package="wpos.utils" ></context:component-scan>
+	<context:component-scan base-package="wpos.http.sync" ></context:component-scan>
+<!--	<context:component-scan base-package="wpos.*"/>-->
+</beans>

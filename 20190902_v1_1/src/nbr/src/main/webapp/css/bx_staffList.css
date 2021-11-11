@@ -1,0 +1,274 @@
+/* ���� */
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+       url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+       url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+       url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+       url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+body{
+	font-family: "SourceHanSansCN-Regular";
+	border-top: 6px solid #ECEFF1;
+	border-right: 6px solid #ECEFF1;
+}
+#staffMain{
+	margin: 0 20px;
+	min-width: 1450px;
+	overflow: hidden;
+}
+/*�������ǩ*/
+.requiredField{
+ color: red;
+ margin-right: 3px;
+}
+/* ��ʾ��ȷ����ť��ʽ */
+.layui-layer-dialog a.layui-layer-btn0{
+ background-color: #2196F3; 
+ border-color:#2196F3;
+}
+/* ��ߵı�ǩ */
+
+.staff_middleArea{
+	float: left;
+	overflow: hidden;
+}
+#staffMain .middleArea_left{
+	width: 250px;
+	margin: 11px 16px;
+}
+.middleArea_left .topArea h3{
+	display: inline-block;
+    font-size: 14px;
+}
+.middleArea_left .topArea span{
+	border: 1px solid #eee;
+	padding: 0px 12px;
+}
+.middleArea_left .layui-nav{
+	position: relative;
+    color: #fff;
+    font-size: 0;
+    box-sizing: border-box;
+}
+#staffMain .middleArea_left .layui-nav{
+	background-color: #fff;
+}
+.layui-nav .layui-nav-item a{
+	color: black;
+}
+.middleArea_left .layui-nav-tree .layui-this>a{
+	background-color: #2196F3!important;
+	color: #ffffff;
+}
+.layui-nav-tree .layui-nav-bar{
+	background-color: transparent;
+}
+.layui-nav .layui-nav-more{
+	border-color: #c2c2c2 transparent transparent;
+}
+.layui-nav-itemed>a .layui-nav-more {
+    margin-top: -9px;
+    border-style: dashed dashed solid;
+    border-color: transparent transparent #c2c2c2;
+}
+.layui-nav-itemed>a{
+	background-color: #fff!important;
+	color: black!important;
+}
+.staff_middleArea .middleArea_left .topArea span{
+	float: right;
+    cursor: pointer;
+}
+.topArea{
+	padding-left: 10px;
+	margin-bottom: 15px;
+}
+.staff_middleArea .middleArea_left .layui-nav .layui-nav-item a{
+	position: relative;
+    line-height: 45px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.staff_middleArea .middleArea_left .layui-nav .layui-nav-item a:hover{
+	background-color: #E3F2FD;
+	color: #000;
+}
+.middleArea_left .layui-nav .layui-nav-item .layui-nav-child .layui-this{
+	background-color: #fff!important;
+}
+.middleArea_left .layui-nav .layui-nav-item .layui-nav-child{
+	background-color: #fff!important;	
+}
+
+.middleArea_left .layui-nav .layui-nav-itemed > a:hover{
+	background-color: #E3F2FD!important;
+	color: #000;	
+}
+	
+/* �в���Ա������ */
+.middleArea_right .layui-form .layui-table-box .layui-table-header .layui-table thead tr{
+	background-color: #2196F3;	
+}
+.middleArea_right .layui-form .layui-table-box .layui-table-header .layui-table thead tr span{
+	color: white;
+}
+#staffMain .middleArea_right{
+	padding: 0px;
+	float: left;
+	margin-right: 20px;
+}
+.middleArea_right #shousuo .layui-input{
+	height: 30px;
+	width: 200px;
+ 	display: inline-block;
+ 	text-overflow: ellipsis;
+}
+.middleArea_right #shousuo .staffSearch{
+	cursor: pointer;
+}
+#staffList + div{
+	border: none;
+    margin: 16px 0 15px;
+}
+.middleArea_right #staffList + div .layui-table-body tbody tr:hover{
+	background-color: #E3F2FD;
+}
+.middleArea_right #staffList + div .layui-table-body tbody .trChoosed{
+	background-color:  #E3F2FD;
+}
+.middleArea_right .layui-table-page #layui-table-page1 .layui-box .layui-laypage-limits{
+	display: none;
+}
+.layui-border-box .layui-laypage .layui-laypage-limits{
+	display: none;
+}
+#staffList + div .layui-laypage .layui-laypage-curr .layui-laypage-em{
+    background-color: #2196F3;
+}
+.middleArea_right .layui-form .layui-table-page #layui-table-page3 .layui-box .layui-laypage-limits{
+	display: none;
+}
+
+
+/* �ұ� */
+#staffDetail .fixedButtonArea{
+	overflow: hidden;
+}
+.fixedButtonArea button{
+    float: left;
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+    margin: 0px 10px;
+}
+.fixedButtonArea button:hover{
+	background-color: #2196F3;
+    color: #fff;
+}
+.fixedButtonArea .btnChoosed {
+    background-color: #2196F3;
+    color: #fff;
+}
+.middleArea_right{
+	margin: 5px 1px;	
+}
+.disabledButton{
+	background: #fff!important;
+	color: #000!important;
+}
+/* ���� */
+#staffDetail{
+	float: left;
+	width: 438px;
+}
+#staffDetail .staffInfo h3{
+	font-size: 14px;
+	padding: 6px 19px;
+}
+.fixedButtonArea button {
+    float: left;
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+    margin: 0px 10px;
+}
+.fixedButtonArea button:hover{
+	background-color: #2196F3;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+#staffDetail .fixedButtonArea{
+	 overflow: hidden;
+}
+#staffDetail .fixedButtonArea .layui-btn-disabled{
+	color: #888888;
+	border: none;
+}
+#staffDetail .staffInfo .staffAppend{
+	display: none;
+}
+#staffDetail .staffInfo .layui-inline .layui-input-inline .layui-input{
+	border: 1px solid transparent;
+    height: 20px;
+    width: 98px;
+    padding-left: 15px;
+    margin-left: 5px;
+}
+#staffDetail .staffInfo .layui-inline .layui-input-block .layui-input:hover{
+	 border: 1px solid #2196F3!important;
+}
+#staffDetail .staffInfo .layui-input-inline .layui-input:hover{
+    border: 1px solid #2196F3!important;
+}
+#staffDetail .staffInfo .layui-input-inline .layui-input:focus{
+    border: 1px solid #2196F3!important;
+}
+#staffDetail .staffInfo .layui-input-inline .layui-unselect{
+	width: 100px;
+}
+#staffDetail .staffInfo .layui-form-item{
+	margin-bottom: 0;
+	width: 680px;
+	height: 25px;
+}
+#staffDetail .staffInfo .layui-form-label{
+    width: 120px;
+    padding: 0;
+    color: #888888;
+}
+.layui-form-item .layui-input-inline{
+	float: left;
+	width: 70px;
+	margin-right: 10px;
+}
+#staffDetail{
+	margin-top: 50px;
+}
+.layui-form-select dl dd.layui-this{
+	background-color: #2196F3!important;	
+}
+.layui-form-select dl{
+	top: 24px;
+	left: 4px;
+}
+body .layui-laydate .layui-this{
+	background-color: #2196F3!important;
+}
+/* �������� */
+.layerResetPassword .layui-button .layui-btn{
+	background-color: #2196F3!important;
+	margin: 10px 49px;
+}
+.layerResetPassword .layui-form-item{
+	display: none;
+}
+.layerResetPassword .submit_button .layui-btn{
+	background-color: #2196F3!important;
+	margin: 10px 78px;
+	
+}
+   
+
+
+
+

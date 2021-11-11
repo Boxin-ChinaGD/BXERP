@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.commodity.RefCommodityHubMapper">
+	<resultMap type="com.bx.erp.model.commodity.RefCommodityHub" id="refCommodityHubMap">
+		<id column="F_ID" property="ID" />
+		<result column="F_Name" property="name" />
+		<result column="F_Barcode" property="barcode" />
+		<result column="F_ShortName" property="shortName" />
+		<result column="F_Specification" property="specification" />
+		<result column="F_PackageUnitName" property="packageUnitName" />
+		<result column="F_PurchasingUnit" property="purchasingUnit" />
+		<result column="F_BrandName" property="brandName" />
+		<result column="F_CategoryName" property="categoryName" />
+		<result column="F_MnemonicCode" property="mnemonicCode" />
+		<result column="F_PricingType" property="pricingType" />
+		<result column="F_PricePurchase" property="pricePurchase" />
+		<result column="F_LatestPricePurchase" property="latestPricePurchase" />
+		<result column="F_PriceRetail" property="priceRetail" />
+		<result column="F_PriceVIP" property="priceVIP" />
+		<result column="F_PriceWholesale" property="priceWholesale" />
+		<result column="F_ShelfLife" property="shelfLife" />
+		<result column="F_ReturnDays" property="returnDays" />
+		<result column="F_Type" property="type" />
+	</resultMap>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="refCommodityHubMap">
+		{CALL SP_RefCommodityHub_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{barcode, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkName" statementType="CALLABLE" useCache="false" resultMap="refCommodityHubMap">
+		{CALL SPD_RefCommodityHub_CheckName(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkBarcode" statementType="CALLABLE" useCache="false" resultMap="refCommodityHubMap">
+		{CALL SPD_RefCommodityHub_CheckBarcode(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkPriceRetail" statementType="CALLABLE" useCache="false" resultMap="refCommodityHubMap">
+		{CALL SPD_RefCommodityHub_CheckPriceRetail(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkShelfLife" statementType="CALLABLE" useCache="false" resultMap="refCommodityHubMap">
+		{CALL SPD_RefCommodityHub_CheckShelfLife(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkSpecification" statementType="CALLABLE" useCache="false" resultMap="refCommodityHubMap">
+		{CALL SPD_RefCommodityHub_CheckSpecification(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkType" statementType="CALLABLE" useCache="false" resultMap="refCommodityHubMap">
+		{CALL SPD_RefCommodityHub_CheckType(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+</mapper>

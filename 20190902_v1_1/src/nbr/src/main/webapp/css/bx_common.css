@@ -1,0 +1,221 @@
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+       url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+       url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+       url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+       url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+body{
+	font-family: "SourceHanSansCN-Regular";
+}
+.layui-nav-tree .layui-nav-child dd.layui-this, 
+.layui-nav-tree .layui-nav-child dd.layui-this a, 
+.layui-nav-tree .layui-this, 
+.layui-nav-tree .layui-this>a, 
+.layui-nav-tree .layui-this>a:hover {
+	background: unset;
+}
+#BX_side{
+	top: 0;
+	width: 236px;
+	min-height: 500px;
+	background-color: #263238;
+	overflow: hidden;
+}
+#BX_side .iconArea{
+	margin-top: 27px;
+	float: left;
+	width: 84px;
+	height: 100%;
+	box-shadow: 2px 0px 5px #333333;
+}
+#BX_side .iconArea .companyLogo {
+	padding-top: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+#BX_side .iconArea .companyLogo img{
+	width: 100%;
+	height: 100%;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	border: 1px solid #fff;
+	margin-left:10px;
+	margin-bottom:17px;
+}
+#BX_side .iconArea ol{
+	width: 100%;
+	margin-top: 5px;
+}
+#BX_side .iconArea ol>li{
+	width: 84	px;
+	margin: 15px auto;
+	text-align: center;
+	position: relative;
+}
+#BX_side .iconArea ol>li>i{
+	font-size: 32px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.iconArea{
+	color:#fff;
+}
+#BX_side .iconArea ol>li>span{
+	cursor: pointer;
+	display: none;
+	line-height: 20px;
+	position: absolute;
+	top: 50%;
+	left: 40px;
+	z-index: 99;
+	margin-top: -10px;
+	background-color: rgb(66, 82, 110);
+	color: #fff;
+	width: max-content;
+	border-radius: 5px;
+}
+#BX_side .iconArea ol>li:hover>span{
+	display: block;
+}
+#BX_side .iconArea button{
+	position: fixed;
+	left: 10px;
+	bottom: 50px;
+	border: none;
+}
+#BX_side .catalog{
+	padding-top: 20px;
+	margin-top: 40px;
+	float: left;
+	width: 152px;
+}
+#BX_side .catalog div:not(.BX_title){
+	display: none;
+}
+#BX_side .catalog .BX_title{
+	height: 60px;
+	color: #ffffff;
+	border-bottom: 1px solid #eee;
+}
+#BX_side .catalog .BX_title h1{
+	font-size: 48px;
+	text-indent: 20px;
+	font-weight: bolder;
+	letter-spacing: 2px;
+	text-shadow: 5px 2px 6px #333333;
+	margin-top: 20px;
+}
+#BX_side .catalog .BX_title span{
+	display: block;
+	font-size: 23px;
+	letter-spacing: 5px;
+	max-width: 150px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+#BX_side .catalog ul{
+	width: 152px;
+	background-color: #263238;
+}
+#BX_side .catalog ul>li>a:hover{
+	background-color:#455A64;
+}
+#BX_side .catalog ul>li dd{
+	background-color: #263238;
+	text-align: center;
+}
+#BX_side .catalog ul>li .layui-this>a{
+	
+	background-color:#455A64;
+}
+#BX_side .layui-nav-tree .layui-nav-bar{
+	background-color: transparent;
+}
+#BX_side .layui-nav-tree .layui-this>a{
+	background-color: #263238;
+
+}
+#BX_side .shrinkNavDiv{
+	width: 30px;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 200px;
+	z-index: 1000;
+}
+#BX_side .spreadNav, #BX_side .shrinkNavDiv .shrinkNav{
+	display: none;
+	width: 20px;
+	height:20px;
+	color: #263238;
+	text-align: center;
+	line-height: 30px;
+	background-color: #fff;
+	border-radius: 50%;
+	position: fixed;
+	left: 188px;
+	top: 90px;
+	z-index: 1001;
+	border: 1px solid #999;
+	cursor: pointer;
+}
+#BX_side .spreadNav{
+	left: 48px;
+}
+#BX_side .spreadNav i{
+	position:absolute;
+	margin-left:-7px;
+	margin-top:-5px;
+	font-size: 15px;
+	cursor: pointer;
+}
+#BX_side .shrinkNavDiv .shrinkNav i{
+	margin-top:-5px;
+	font-size: 15px;
+	cursor: pointer;
+}
+#BX_side .shrinkNavDiv:hover .shrinkNav, #BX_side .shrinkNavDiv:hover .shrinkNav i.layui-icon-shrink-right{
+	display: block;
+}
+#BX_side .spreadNav:hover, #BX_side .shrinkNav:hover{
+	color: #fff;
+	background-color: deepskyblue;
+}
+#BX_body{
+	top: 60px;
+	left: 244px;
+	bottom: 0;
+}
+#BX_body .layui-tab-title{
+	position: fixed;
+	top: 0;
+	left: 244px;
+	width: 100%;
+	z-index: 999;
+	background-color: #fff;
+}
+#BX_body .layui-tab-title .layui-tab-bar{
+	position: fixed;
+}
+#BX_body .layui-tab-title li:first-child .layui-tab-close{
+	display: none;
+}
+#BX_body .layui-tab-title .layui-this{
+	color: #000;
+	font-size: 16px;
+}
+#BX_body .layui-tab-title .layui-this:after{
+	border-bottom: 2px solid #263238;
+}
+#BX_body .layui-tab-item iframe{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}

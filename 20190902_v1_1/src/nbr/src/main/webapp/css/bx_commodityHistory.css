@@ -1,0 +1,168 @@
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+       url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+       url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+       url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+       url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+body{
+	font-family: "SourceHanSansCN-Regular";
+}
+
+#commodityHistoryMain{
+	margin: 0 20px;
+	min-width: 1160px;
+}
+/* �ϱ� */
+.commodityHistoryTop{
+	margin-left: -8px;
+	border: 6px solid #ECEFF1;
+	text-align: center;
+	width: 100%;
+	height: 48px;
+}
+.commodityHistoryTop label{
+	margin-top: 6px;
+}
+.commodityHistoryTop label span{
+	border: 1px solid #eee;
+	padding: 3px;
+}
+.commodityHistoryTop li{
+	height: 26px;
+	cursor: pointer;
+	line-height: 26px;
+	word-break: keep-all;
+}
+.commodityHistoryTop .layui-form-label{
+	width: auto;
+}
+.commodityHistoryTop #operatorList, #shopList{
+	display: none;
+	position: absolute;
+	top: 44px;
+    left: 82px;
+	padding: 8px 8px;
+	border: 1px solid #cccccc;
+	max-height: 300px;
+	overflow: auto;
+	background-color: #ffffff;
+    z-index: 10086;
+}
+.commodityHistoryTop #updateDateList{
+	display: none;
+	position: absolute;
+	top: 88px;
+    left: 250px;
+	padding: 8px 8px;
+	border: 1px solid #cccccc;
+	max-height: 300px;
+	overflow: auto;
+	background-color: #ffffff;
+    z-index: 10086;
+}
+
+.commodityHistoryTop #shopList{
+	display: none;
+	position: absolute;
+	top: 44px;
+    left: 338px;
+	padding: 8px 8px;
+	border: 1px solid #cccccc;
+	max-height: 300px;
+	overflow: auto;
+	background-color: #ffffff;
+    z-index: 10086;
+}
+/* �±� */
+.commodityHistoryBottom{
+	margin-left: 15px;
+}
+/* �±���� */
+.commodityHistoryBottomLeft .layui-input.commodityHistorySearch{
+	position: absolute;
+	display: inline-block;
+	width: 200px;
+	height: 30px;
+	margin-top: -45px;
+	margin-left: 430px;
+	text-overflow: ellipsis;
+}
+.commodityHistoryBottomLeft i.commodityHistorySearch{
+	position: absolute;
+	margin-top: -38px;
+	margin-left: 640px;
+	cursor: pointer;
+}
+.commodityHistoryBottomLeft .layui-form{
+	border: none;
+}
+.commodityHistoryBottomLeft table th,td{
+	border: 0px!important;
+}
+.commodityHistoryBottomLeft .commodityHistoryList .layui-table thead tr{
+	background-color: #2196F3;
+	color: #fff;
+}
+.commodityHistoryBottomLeft .layui-table-header{
+	background-color: #fff;
+	border-color: #fff;
+}
+.commodityHistoryBottomLeft div.layui-table-header table thead tr th div span.layui-table-sort{
+	display: none;
+}
+.commodityHistoryBottomLeft .commodityHistoryList .layui-table tbody tr td{
+	cursor: pointer;
+}
+.commodityHistoryBottomLeft .commodityHistoryList .layui-table tbody tr:hover, .layui-table-click{
+	background-color: #E3F2FD!important;
+}
+.commodityHistoryBottomLeft .layui-laypage .layui-laypage-curr .layui-laypage-em {
+	background-color: #2196F3;
+}
+.commodityHistoryBottomLeft .layui-table-page .layui-laypage input:focus{
+	border-color: #E3F2FD!important;
+}
+.commodityHistoryBottomLeft .layui-laypage-limits{
+	display: none;
+}
+#packageUnits th, #packageUnits tbody td{
+	text-align: center;
+	height: 25px;
+}
+#packageUnits h5{
+	margin: 5px 0px;
+}
+/* �±��ұ� */
+.commodityHistoryBottomRight .layui-inline{
+/* 	width: 200px; */
+/* 	margin-right: 0px; */
+}
+.commodityHistoryBottomRight .layui-form-item{
+	margin-bottom: 0px;
+}
+.commodityHistoryBottomRight .layui-form-label{
+	width: 85px;
+	color: rgb(136, 136, 136);
+	padding: 5px 15px;
+}
+.commodityHistoryBottomRight .layui-input-inline{
+	width: 100px;
+}
+.commodityHistoryBottomRight .layui-form input{
+	width: 130px;
+	border: 0px;
+}
+.commodityHistoryBottomRight .layui-input-block {
+	margin-left: 84px;
+	width: 300px;
+}
+.commodityHistoryBottomRight .layui-input{
+	height: 30px;
+	padding: 5px 15px;
+}
+.multiPackageThead {
+	background-color: #2196F3 !important;
+	color: #fff;
+}

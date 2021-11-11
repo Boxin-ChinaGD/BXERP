@@ -1,0 +1,44 @@
+<!--pages/details/coupon/coupon.wxml-->
+<view class="container">
+  <view class="page-body">
+    <view class="head" style="background: {{ vipCardBackground }}">
+      <image src="../../../images/coupon.svg" class="background"></image>
+      <text>领券中心</text>
+    </view>
+    <view class="coupon-tab">
+      <view class="title">
+        <view class="{{-1 == currentIndex ? 'title-selected' : ''}}" bindtap="tabClick" data-click="-1">全部</view>
+        <view class="{{1 == currentIndex ? 'title-selected' : ''}}" bindtap="tabClick" data-click="1">折扣券</view>
+        <view class="{{0 == currentIndex ? 'title-selected' : ''}}" bindtap="tabClick" data-click="0">现金券</view>
+      </view>
+      <view class="none" hidden='{{showThis}}'>
+        <text>暂无优惠券</text>
+      </view>
+      <view class="main">
+        <block wx:for="{{couponList}}" wx:key="*this">
+          <view class="couponInfo">
+            <view class="couponInfo-amount" bindtap="couponDetails" data-info="{{item}}">
+              <view wx:if="{{item.type == 0}}">￥
+                <text>{{item.reduceAmount}}</text>
+              </view>
+              <view wx:elif="{{item.type == 1}}">
+                <text>{{item.discount * 10}}</text>折</view>
+              <text wx:if="{{item.leastAmount == 0}}">无门槛券</text>
+              <text wx:elif="{{item.leastAmount > 0}}">满{{item.leastAmount}}可用</text>
+            </view>
+            <view class="couponInfo-introduction" bindtap="couponDetails" data-info="{{item}}">
+              <text>{{item.title}}</text>
+              <text>{{item.beginDateTime}}</text>
+              <text>至</text>
+              <text>{{item.endDateTime}}</text>
+            </view>
+          </view>
+          <view class="collectCoupon">
+            <button bindtap="getCoupon" data-info="{{item}}">立即领券 ></button>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="foot" style="background: {{ vipCardBackground }}" bindtap="toBonusShop">到积分商城兑换更多优惠券</view>
+</view>

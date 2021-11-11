@@ -1,0 +1,82 @@
+@font-face {
+    font-family: "SourceHanSansCN-Regular";
+    src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+         url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+         url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+         url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+         url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #1E9FFF;
+    width: 100%;
+    height: calc(100vh);
+}
+#bindMain{
+    width: 90%;
+    height: 480px;
+    background: #fff;
+    margin: 0 3.5%;
+    margin-top: 30%;
+    border-radius: 2rem;
+    float: left;
+    padding: 1rem;
+}
+#canvas{
+    width: 100px;
+    height: calc(100vh);
+}
+#canvasbg{
+    width: 100px;
+    height: calc(100vh); 
+}
+#bindMain h2{
+	display: block;
+    margin: 0 auto;
+    font-size:2.4rem;
+    margin-left: 40%; 
+    font-weight: bold;
+    height: 100px;
+    line-height: 100px;
+}
+.layui-form-item{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.layui-form-label{
+    font-size: 2.2rem;
+    width: 30%;
+    line-height: 75px;
+    height: 80px;
+}
+.layui-form-item input{
+    width: 60%;
+    height: 80px;
+    font-size: 1.65rem;
+}
+.layui-form button{
+    width: 20%;
+    height: 60px;
+    font-size: 1.6rem;
+    margin: 0 auto;
+    display: block;
+    margin-top: 50px;
+}
+.requiredField{
+    color: red;
+}
+.MsgStyle{
+    color: #fff;
+    text-align: center;
+    font-size: 2rem; 
+    width: 100%;
+    line-height: 60px;
+}
+.layui-layer.layui-layer-dialog{
+    background: rgba(0, 0, 0, 0.5);
+    width: 50%;
+}

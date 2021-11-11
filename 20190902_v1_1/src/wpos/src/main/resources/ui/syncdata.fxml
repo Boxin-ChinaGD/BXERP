@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <FlowPane alignment="CENTER_RIGHT" columnHalignment="RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F0F0F0;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField alignment="CENTER_RIGHT" editable="false" focusTraversable="false" style="-fx-background-color: #F0F0F0; -fx-border-color: #F0F0F0; -fx-text-fill:#000000;-fx-font-weight:bold" text="正在同步数据">
+               <font>
+                  <Font name="Vrinda Bold" size="30.0" />
+               </font>
+            </TextField>
+         </children>
+      </FlowPane>
+   </top>
+   <center>
+      <ImageView fx:id="syncIcon" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../image/sync_data.png" />
+         </image>
+      </ImageView>
+   </center>
+</BorderPane>

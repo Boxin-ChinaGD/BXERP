@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.PosMapper">
+	<resultMap id="posMap" type="com.bx.erp.model.Pos">
+		<id property="ID" column="F_ID" />
+		<result property="pos_SN" column="F_POS_SN" />
+		<result property="shopID" column="F_ShopID" />
+		<result property="pwdEncrypted" column="F_pwdEncrypted" />
+		<result property="salt" column="F_Salt" />
+		<result property="passwordInPOS" column="F_PasswordInPOS" />
+		<result property="status" column="F_Status" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="updateDatetime" column="F_UpdateDatetime" />
+	</resultMap>
+	
+	<resultMap type="com.bx.erp.model.Company" id="companyMap1">
+		<id column="F_ID" property="ID" />
+		<result column="F_SN" property="SN" />
+		<result column="F_BusinessLicenseSN" property="businessLicenseSN" />
+		<result column="F_BusinessLicensePicture" property="businessLicensePicture" />
+		<result column="F_BossPhone" property="bossPhone" />
+		<result column="F_BossPassword" property="bossPassword" />
+		<result column="F_BossWechat" property="bossWechat" />
+		<result column="F_DBName" property="dbName" />
+		<result column="F_Key" property="key" />
+		<result column="F_Status" property="status" />
+		<result column="F_Name" property="name" />
+		<result column="F_BossName" property="bossName" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+		<result column="F_UpdateDatetime" property="updateDatetime" />
+		<result column="F_ExpireDatetime" property="expireDatetime" />
+		<result column="F_DBUserName" property="dbUserName" />
+		<result column="F_DBUserPassword" property="dbUserPassword" />
+		<result column="F_AuthorizerAppid" property="authorizerAppid" />
+		<result column="F_AuthorizerRefreshToken" property="authorizerRefreshToken" />
+		<result column="F_FuncInfo" property="funcInfo" />
+	</resultMap>
+
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="posMap">
+		{CALL SP_POS_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT}, 
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{pos_SN, mode=IN}, 
+		#{shopID, mode=IN}, 
+		#{salt, mode=IN},
+		#{status, mode=IN},
+		#{returnSalt, mode=IN},
+		#{passwordInPOS, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="posMap">
+		{CALL SP_POS_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT}, 
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{pos_SN, mode=IN}, 
+		#{shopID, mode=IN}, 
+		#{status, mode=IN},
+		#{returnSalt, mode=IN},
+		#{iPageIndex, mode=IN}, 
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	
+	<select id="retrieve1" statementType="CALLABLE" useCache="false" resultMap="posMap">
+		{CALL SP_POS_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{returnSalt, mode=IN},
+		#{resetPasswordInPos, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieve1BySN"  statementType="CALLABLE" useCache="false" resultMap="posMap, companyMap1">
+		{CALL SP_POS_Retrieve1BySN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{pos_SN, mode=IN},
+		#{returnSalt, mode=IN}
+		)}
+	</select>
+	
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="posMap">
+		{CALL SP_POS_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT}, 
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{shopID, mode=IN},
+		#{returnSalt, mode=IN}
+		)}
+	</select>
+	
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="posMap">
+		{CALL SP_POS_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+	
+	<select id="reset" statementType="CALLABLE" useCache="false" resultMap="posMap">
+		{CALL SP_POS_Reset(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{returnSalt, mode=IN}
+		)}
+	</select>
+	
+	<select id="recycleApp" statementType="CALLABLE" useCache="false" resultMap="posMap">
+		{CALL SP_POS_RecycleApp(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{passwordInPOS, mode=IN},
+		#{salt, mode=IN},
+		#{returnSalt, mode=IN}
+		)}
+	</select>
+	
+	<select id="checkStatus" statementType="CALLABLE" useCache="false" resultMap="posMap">
+		{CALL SPD_Pos_CheckStatus(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+</mapper>

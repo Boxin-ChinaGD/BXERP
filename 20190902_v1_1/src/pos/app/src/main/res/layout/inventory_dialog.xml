@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/layout_rounded_unclick">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/retrieve_inventory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/inventory_query"
+            android:gravity="center"
+            android:text="库存查询"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:drawableTop="@drawable/return_goods"
+            android:gravity="center"
+            android:text="采购退货"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:drawableTop="@drawable/check_inventory"
+            android:gravity="center"
+            android:text="盘点"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/require_goods"
+            android:gravity="center"
+            android:text="要货申请"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/exchange_goods"
+            android:gravity="center"
+            android:text="调货"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/report_loss"
+            android:gravity="center"
+            android:text="报损"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/fast_warehousing"
+            android:gravity="center"
+            android:text="快速入库"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/out_of_the_treasury"
+            android:gravity="center"
+            android:text="快速出库"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/collect_goods"
+            android:gravity="center"
+            android:text="采购收货"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:drawablePadding="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/hang_up"
+            android:gravity="center"
+            android:text="挂账处理"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/deposit"
+            android:gravity="center"
+            android:text="寄存"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/cargo_flow"
+            android:gravity="center"
+            android:text="货流提醒"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+    </LinearLayout>
+</LinearLayout>

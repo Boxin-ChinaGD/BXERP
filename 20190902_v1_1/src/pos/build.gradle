@@ -1,0 +1,80 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0+'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+        classpath group: 'org.tmatesoft.svnkit', name: 'svnkit', version: '1.8.11'
+//获取svn版本号，用于生成apk文件时使用
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
+
+ext {
+//    Android Logging Log4j = "1.0.3"
+
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.3"
+    minSdkVersion = 15
+    targetSdkVersion = 23
+
+    multidexVersion = "1.0.1"
+    supportVersion = "27.1.1"
+
+    versionName = "1.0.0"
+    versionCode = 1
+    env = "SITaa"
+    outputFileName = "bxb_" + env + "_" + versionName + ".apk"
+    packageName = "com.bx.erp." + toLower(env) //上传到商米市场时，不同的测试场需要不同的包名
+
+    daggerVersion = "2.11"
+    retrofitVersion = "2.3.0"
+    okHttpVersion = "3.8.1"
+    gsonVersion = "2.8.1"
+    glideVersion = "3.7.0"
+    glideTransformationsVersion = "2.0.2"
+    butterknifeVersion = "8.7.0"
+    leakcanaryVersion = "1.5.1"
+    eventBusVersion = "3.0.0"
+    chuckVersion = "1.1.0"
+    stethoVersion = "1.5.0"
+    diskLruCacheVersion = "2.0.2"
+    greendaoVersion = "3.2.2"
+    taskVersion = "1.2.5"
+}
+
+def toLower(String env) {
+    return env.toLowerCase()
+}
+
+def getDevVersionName() {
+    return String.format("%s.%s", rootProject.ext.versionName,
+            gitVersionCode())
+}
+
+static int gitVersionCode() {
+    def count = "git rev-list HEAD --count".execute().text.trim()
+    return count.isInteger() ? count.toInteger() : 0
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

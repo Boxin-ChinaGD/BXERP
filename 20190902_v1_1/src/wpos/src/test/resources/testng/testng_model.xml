@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="NbrUnitTest">
+    <test name="model">
+        <classes>
+            <class name="wpos.BaseModelTest" />
+            <class name="wpos.model.BrandTest"/>
+            <class name="wpos.model.BXConfigGeneralTest"/>
+            <class name="wpos.model.CommodityCategoryTest"/>
+            <class name="wpos.model.CommodityTest"/>
+            <class name="wpos.model.CompanyTest"/>
+            <class name="wpos.model.ConfigGeneralTest"/>
+            <class name="wpos.model.PackageUnitTest"/>
+            <class name="wpos.model.PosTest"/>
+            <class name="wpos.model.PromotionScopeTest"/>
+            <class name="wpos.model.PromotionTest"/>
+            <class name="wpos.model.PurchasingOrderCommodityTest"/>
+            <class name="wpos.model.PurchasingOrderTest"/>
+            <class name="wpos.model.RememberLoginStaffTest"/>
+            <class name="wpos.model.RetailTradePromotingFlowTest"/>
+            <class name="wpos.model.RetailTradePromotingTest"/>
+            <class name="wpos.model.ReturnCommoditySheetTest"/>
+            <class name="wpos.model.ShopTest"/>
+            <class name="wpos.model.StaffTest"/>
+            <class name="wpos.model.VipTest"/>
+            <class name="wpos.model.WarehousingCommodityTest"/>
+            <class name="wpos.model.WarehousingTest"/>
+            <class name="wpos.model.RetailTradeAggregationTest"/>
+            <class name="wpos.model.RetailtradeCommodityTest"/>
+            <class name="wpos.model.RetailTradeCouponTest"/>
+            <class name="wpos.model.RetailTradeTest"/>
+            <class name="wpos.model.SmallSheetFrameTest"/>
+            <class name="wpos.model.FieldFormatTest"/>
+        </classes>
+    </test>
+</suite>

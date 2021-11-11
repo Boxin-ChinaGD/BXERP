@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.trade.PromotionMapper">
+	<resultMap type="com.bx.erp.model.trade.Promotion" id="promotionMap">
+		<id column="F_ID" property="ID" />
+		<result column="F_Name" property="name" />
+		<result column="F_Status" property="status" />
+		<result column="F_Type" property="type" />
+		<result column="F_DatetimeStart" property="datetimeStart" />
+		<result column="F_DatetimeEnd" property="datetimeEnd" />
+		<result column="F_ExcecutionThreshold" property="excecutionThreshold" />
+		<result column="F_ExcecutionAmount" property="excecutionAmount" />
+		<result column="F_ExcecutionDiscount" property="excecutionDiscount" />
+		<result column="F_Scope" property="scope" />
+		<result column="F_ShopScope" property="shopScope" />
+		<result column="F_Staff" property="staff" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+		<result column="F_UpdateDatetime" property="updateDatetime" />
+		<result column="F_RetailTradeNO" property="retailTradeNO" />
+		<result column="F_StaffName" property="staffName" />
+		<result column="F_SN" property="sn" />
+	</resultMap>
+	
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SP_Promotion_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{name, mode=IN}, 
+		#{status, mode=IN}, 
+		#{type, mode=IN}, 
+		#{datetimeStart, mode=IN},
+		#{datetimeEnd, mode=IN},
+		#{excecutionThreshold, mode=IN},
+		#{excecutionAmount, mode=IN}, 
+		#{excecutionDiscount, mode=IN},
+		#{scope, mode=IN},
+		#{shopScope, mode=IN},
+		#{staff, mode=IN}
+		)}
+	</select>
+	
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SP_Promotion_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SP_Promotion_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{subStatusOfStatus, mode=IN},
+		#{status, mode=IN},
+		#{queryKeyword, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},		
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}	
+		)}
+	</select>
+	<select id="retrieve1" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SP_Promotion_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SP_Promotion_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{name, mode=IN}, 
+		#{status, mode=IN}, 
+		#{type, mode=IN}, 
+		#{datetimeStart, mode=IN},
+		#{datetimeEnd, mode=IN},
+		#{excecutionThreshold, mode=IN},
+		#{excecutionAmount, mode=IN}, 
+		#{excecutionDiscount, mode=IN},
+		#{scope, mode=IN},
+		#{staff, mode=IN}
+		)}
+	</select>
+	<select id="checkSN" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SPD_Promotion_CheckSN(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkStatus" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SPD_Promotion_CheckStatus(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>	
+	
+	<select id="checkScope" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SPD_Promotion_CheckScope(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+		
+	<select id="checkType" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SPD_Promotion_CheckType(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkDatetime" statementType="CALLABLE" useCache="false" resultMap="promotionMap" >
+		{CALL SPD_Promotion_CheckDatetime(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	
+</mapper>

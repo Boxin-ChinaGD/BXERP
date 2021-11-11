@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.StaffPermissionMapper">
+	<resultMap id="staffPermissionMap" type="com.bx.erp.model.StaffPermission">
+		<id property="ID" column="F_ID" />
+		<result property="staffID" column="StaffID" />
+		<result property="staffName" column="StaffName" />
+		<result property="roleID" column="RoleID" />
+		<result property="roleName" column="RoleName" />
+		<result property="sp" column="F_SP" />
+		<result property="permissionName" column="PermissionName" />
+		<result property="remark" column="F_Remark" />
+	</resultMap>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="staffPermissionMap">
+		{CALL SP_Staff_RetrieveNPermission(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+</mapper>

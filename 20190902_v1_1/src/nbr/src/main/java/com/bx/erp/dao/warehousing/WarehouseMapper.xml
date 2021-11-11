@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.warehousing.WarehouseMapper">
+	<resultMap type="com.bx.erp.model.warehousing.Warehouse" id="WarehouseMap">
+		<result column="F_ID" property="ID" />
+		<result column="F_Name" property="name" />
+		<result column="F_Address" property="address" />
+		<result column="F_Status" property="status" />
+		<result column="F_StaffID" property="staffID" />
+		<result column="F_Phone" property="phone" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+		<result column="F_UpdateDatetime" property="updateDatetime" />
+ 		<result column="fMaxTotalInventory" property="fMaxTotalInventory" />
+		<result column="fTotalInventory" property="fTotalInventory" />
+		<result column="sCommodityName" property="commodityName" /> 
+	</resultMap>
+
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="WarehouseMap">
+		{call SP_Warehouse_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+<!-- 		#{BX_CustomerID, mode=IN}, -->
+		#{name, mode=IN},
+		#{address, mode=IN},
+		#{status, mode=IN},
+		#{staffID, mode=IN},
+		#{phone, mode=IN}
+		)}
+	</select>
+
+<!-- 	<select id="retrieveNByFields" statementType="CALLABLE" useCache="false" resultMap="WarehouseMap"> -->
+<!-- 		{CALL SP_Warehouse_retrieveNByFields( -->
+<!-- 		#{iErrorCode, jdbcType=INTEGER, mode=OUT}, -->
+<!-- 		#{F_BX_CustomerID, mode=IN}, -->
+<!-- 		#{iPageIndex, -->
+<!-- 		mode=IN}, -->
+<!-- 		#{iPageSize, mode=IN}, -->
+<!-- 		#{iTotalRecord, jdbcType=INTEGER, mode=OUT} -->
+<!-- 		)} -->
+<!-- 	</select> -->
+
+	<select id="retrieve1" statementType="CALLABLE" useCache="false" resultMap="WarehouseMap">
+		{call SP_Warehouse_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="WarehouseMap">
+		{call SP_Warehouse_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{name, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="WarehouseMap">
+		{call SP_Warehouse_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+<!-- 		#{BX_CustomerID, mode=IN}, -->
+		#{name, mode=IN},
+		#{address, mode=IN},
+		#{staffID,mode=IN},
+		#{phone, mode=IN}
+		)}
+	</select>
+
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="WarehouseMap">
+		{call SP_Warehouse_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveInventory" statementType="CALLABLE" useCache="false" resultMap="WarehouseMap">
+		{CALL SP_Warehouse_RetrieveInventory(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{shopID,mode=IN}
+	<!--#{fTotalInventory, jdbcType=FLOAT, mode=OUT},
+		#{fMaxTotalInventory,jdbcType=FLOAT, mode=OUT},
+		#{sName,jdbcType=VARCHAR, mode=OUT} -->
+		)}
+	</select>
+	
+	<select id="checkStatus" statementType="CALLABLE" useCache="false" resultMap="WarehouseMap">
+		{CALL SPD_Warehouse_CheckStatus(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+</mapper>

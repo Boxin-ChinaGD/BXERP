@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd
+		">
+
+	<context:annotation-config>
+		<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+			<property name="messageConverters">
+				<list>
+					<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+						<property name="supportedMediaTypes">
+							<list>
+								<value>text/plain;charset=UTF-8</value>
+							</list>
+						</property>
+					</bean>
+				</list>
+			</property>
+		</bean>
+	</context:annotation-config>
+	
+	<context:component-scan base-package="com.bx.erp" />
+	
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+			</bean>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 配置文件 -->
+	<bean id="propertyConfigurer" class="com.bx.erp.util.PropertyPlaceholderConfigurerUtil">
+		<property name="locations"> 
+			<list>
+				<!-- 数据库配置文件 -->
+				<value>classpath:db.properties</value>
+				<!-- WX公众号配置文件 -->
+				<value>classpath:PublicAccount.properties</value>
+				<value>classpath:PublicAccountTemplate.properties</value>
+				<!-- 版本配置文件 -->
+				<value>classpath:env.properties</value>
+				<!-- WX三方平台配置文件 -->
+<!-- 				<value>classpath:3rdParty.properties</value> -->
+				<!-- WX公众号子商户配置文件 -->
+<!-- 				<value>classpath:subMch.properties</value> -->
+				<!-- WX小程序配置文件 -->
+				<value>classpath:miniProgram.properties</value>
+			</list>
+		</property>
+	</bean>	
+	
+	<!-- 配置数据源3 -->
+	<bean id="jdbcDataSource_nbr_bx" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>${driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/nbr_bx?useUnicode=true&amp;serverTimezone=Asia/Shanghai&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL</value>
+		</property>
+		<property name="username">
+			<value>${db.nbx.mysql.username}</value>
+		</property>
+		<property name="password">
+			<value>${db.nbx.mysql.password}</value>
+		</property>
+	</bean>
+
+	<!--动态数据源的配置 -->
+	<bean id="dynamicDataSource" class="com.bx.erp.action.interceptor.DynamicDataSource" primary="true">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry value-ref="jdbcDataSource_nbr_bx" key="jdbcDataSource_nbr_bx" />
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="jdbcDataSource_nbr_bx" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dynamicDataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.bx.erp.dao" />
+	</bean>
+
+	<!-- transaction manager, use JtaTransactionManager for global tx -->
+<!-- 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">使用动态的数据源dynamicDataSource -->
+<!-- 		<property name="dataSource" ref="dynamicDataSource" /> -->
+<!-- 	</bean> -->
+<!-- 	<tx:annotation-driven transaction-manager="transactionManager" /> -->
+
+<!-- 	<tx:advice id="txAdvice" transaction-manager="transactionManager"> -->
+<!-- 		<tx:attributes> -->
+<!-- 			<tx:method name="*" propagation="REQUIRED" rollback-for="java.lang.Exception" /> -->
+<!-- 		</tx:attributes> -->
+<!-- 	</tx:advice> -->
+	
+	<task:executor id="executor" pool-size="5" />
+	<task:scheduler id="scheduler" pool-size="10" />
+	<task:annotation-driven executor="executor" scheduler="scheduler" />
+		
+	<aop:aspectj-autoproxy />
+
+<!-- 	<aop:config> -->
+		<!--pointcut元素定义一个切入点，execution中的第一个星号 用以匹配方法的返回类型， 这里星号表明匹配所有返回类型。 com.abc.dao.*.*(..)表明匹配cn.millery.mybatis.service包下的所有类的所有 方法 -->
+<!-- 		<aop:pointcut id="myPointcut" expression="execution(* com.bx.erp.*.*(..))" /> -->
+		<!--将定义好的事务处理策略应用到上述的切入点 -->
+<!-- 		<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut" /> -->
+<!-- 	</aop:config> -->
+
+	<!-- AOP配置 -->
+	<!-- <aop:config> -->
+	<!-- <aop:pointcut id="myPointcut" expression="execution(public * com.bx.erp.*.*(..))" /> -->
+	<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut" /> -->
+	<!-- </aop:config> -->
+
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
+	<bean id="multipartResolver" class="com.bx.erp.action.interceptor.I2fCommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="maxUploadSize" value="1572864" /> <!-- 上传文件最大为1.5M -->
+		<property name="maxInMemorySize" value="102400" />	<!-- 上传文件低于10kb，保留在内存里，超过此阈值，生成硬盘上的临时文件 -->
+		<!-- <property name="uploadTempDir" value="fileUpload/temp"/> -->
+	</bean>
+	
+</beans>
+

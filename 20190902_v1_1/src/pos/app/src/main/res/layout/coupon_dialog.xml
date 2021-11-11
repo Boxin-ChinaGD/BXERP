@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/coupons_code_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/coupon_code_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="优惠券码："
+            android:textColor="#ABABAB"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/coupons_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/coupon_code_tv"
+            android:text="20021525252662065465465"
+            android:textColor="#454545"
+            android:textSize="17dp"
+            android:fontFamily="thin"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/coupons_name_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/coupons_code_layout">
+
+        <TextView
+            android:id="@+id/coupon_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="票券名称："
+            android:textColor="#ABABAB"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/coupons_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/coupon_code_tv"
+            android:text="票券名称哎哎哎"
+            android:textColor="#454545"
+            android:textSize="17dp"
+            android:fontFamily="thin"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/benefit_info_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/coupons_name_layout"
+        android:layout_alignLeft="@id/coupons_code_layout"
+        android:layout_marginTop="10dp"
+        android:text="优惠信息："
+        android:textColor="#ABABAB"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/benefit_info"
+        android:layout_width="400dp"
+        android:layout_height="350dp"
+        android:layout_below="@id/benefit_info_tv"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:lineSpacingExtra="5dp"
+        android:padding="10dp"
+        android:singleLine="false"
+        android:text="asdasd"
+        android:textSize="17dp"
+        android:textColor="#696969"
+        android:background="@drawable/textview_rounded_background"
+        android:fontFamily="thin"/>
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消(Esc)"
+        android:textColor="#ABABAB"
+        android:background="@drawable/edittext_rounded_background"
+        android:padding="10dp"
+        android:textSize="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/benefit_info"
+        android:layout_alignRight="@id/benefit_info"/>
+    <TextView
+        android:id="@+id/use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/cancel"
+        android:background="@drawable/button_background"
+        android:padding="10dp"
+        android:text="使用(Enter)"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:layout_below="@id/benefit_info"
+        android:layout_marginTop="15dp" />
+</RelativeLayout>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/retrieve_commodity_inventory_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/font_background_selector"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="18dp"
+            android:paddingRight="10dp"
+            android:text="库存查询"
+            android:textColor="#000000"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#EBEBEB" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/edittext_rounded_background"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/condition_input"
+            android:layout_width="400dip"
+            android:layout_height="50dip"
+            android:background="@null"
+            android:digits="@string/rule_text_barcode"
+            android:drawablePadding="8dp"
+            android:focusable="auto"
+            android:hint="输入商品条形码查询库存信息..."
+            android:maxLength="64"
+            android:padding="10dp"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/delete_all"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dip"
+            android:paddingRight="20dip"
+            android:src="@drawable/delete_all"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:src="@drawable/search" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/normal_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="30dip">
+
+            <TextView
+                android:id="@+id/sync_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="同步全部数据"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dip"
+            android:background="#A7A5A5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/background"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="1.5dip"
+                android:layout_height="fill_parent"
+                android:background="#B4B3B3" />
+
+            <TextView
+                android:id="@+id/commodity_barcode"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="15dip"
+                android:paddingTop="15dip"
+                android:text="条形码"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="1.5dip"
+                android:layout_height="fill_parent"
+                android:background="#B4B3B3" />
+
+            <TextView
+                android:id="@+id/commodity_name"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="15dip"
+                android:paddingTop="15dip"
+                android:text="商品名称"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="1.5dip"
+                android:layout_height="fill_parent"
+                android:background="#B4B3B3" />
+
+            <TextView
+                android:id="@+id/commodity_category"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="15dip"
+                android:paddingTop="15dip"
+                android:text="商品类别"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="1.5dip"
+                android:layout_height="fill_parent"
+                android:background="#B4B3B3" />
+
+            <TextView
+                android:id="@+id/commodity_specification"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="15dip"
+                android:paddingTop="15dip"
+                android:text="商品规格"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="1.5dip"
+                android:layout_height="fill_parent"
+                android:background="#B4B3B3" />
+
+            <TextView
+                android:id="@+id/commodity_NO"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="15dip"
+                android:paddingTop="15dip"
+                android:text="库存"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="1.5dip"
+                android:layout_height="fill_parent"
+                android:background="#B4B3B3" />
+
+            <TextView
+                android:id="@+id/commodity_packageUnit"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="15dip"
+                android:paddingTop="15dip"
+                android:text="单位"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="1.5dip"
+                android:layout_height="fill_parent"
+                android:background="#B4B3B3" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#A7A5A5" />
+
+        <com.bx.erp.view.activity.LoadMoreListView
+            android:id="@+id/commodity_infomation_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/table_line"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#B4B3B3"
+            android:dividerHeight="1.0dip"
+            android:fadingEdge="none"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollbarFadeDuration="1000"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/query_fail_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/iv_failtips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/failtips" />
+
+            <TextView
+                android:id="@+id/tv_failtips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_failtips"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@id/iv_failtips"
+                android:text="由于输入的条形码不够完整，无法查询到库存信息..."
+                android:textColor="#4F94CD"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

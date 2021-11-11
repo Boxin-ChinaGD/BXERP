@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="WPOSPresenterTest">
+    <test name="PresenterTest">
+        <classes>
+            <class name="wpos.presenter.BarcodesPresenterTest" />
+            <class name="wpos.presenter.BrandPresenterTest" />
+            <class name="wpos.presenter.BXConfigGeneralPresenterTest" />
+            <class name="wpos.presenter.CommodityPresenterTest" />
+            <class name="wpos.presenter.CompanyPresenterTest" />
+            <class name="wpos.presenter.ConfigGeneralPresenterTest" />
+            <class name="wpos.presenter.CouponPresenterTest" />
+            <class name="wpos.presenter.PackageUnitPresenterTest" />
+            <class name="wpos.presenter.PosPresenterTest" />
+            <class name="wpos.presenter.PromotionPresenterTest" />
+            <class name="wpos.presenter.RememberLoginStaffPresenterTest" />
+            <class name="wpos.presenter.RetailTradeAggregationPresenterTest" />
+            <class name="wpos.presenter.RetailTradeCommodityPresenterTest" />
+            <class name="wpos.presenter.RetailTradeCouponPresenterTest" />
+            <class name="wpos.presenter.RetailTradePresenterTest" />
+            <class name="wpos.presenter.RetailTradePromotingPresenterTest" />
+            <class name="wpos.presenter.SmallSheetFramePresenterTest" />
+            <class name="wpos.presenter.SmallSheetTextPresenterTest" />
+            <class name="wpos.presenter.StaffPresenterTest" />
+            <class name="wpos.presenter.VipPresenterTest" />
+        </classes>
+    </test>
+</suite>

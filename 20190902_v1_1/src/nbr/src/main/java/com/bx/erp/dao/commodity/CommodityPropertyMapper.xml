@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.commodity.CommodityPropertyMapper">
+
+	<resultMap type="com.bx.erp.model.commodity.CommodityProperty" id="commodityPropertyMap">
+		<result column="F_ID" property="ID" />
+		<result column="F_Name1" property="name1" />
+		<result column="F_Name2" property="name2" />
+		<result column="F_Name3" property="name3" />
+		<result column="F_Name4" property="name4" />
+	</resultMap>
+
+	<select id="retrieve1" statementType="CALLABLE" useCache="false" resultMap="commodityPropertyMap">
+		{CALL SP_CommodityProperty_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="commodityPropertyMap">
+		{CALL SP_CommodityProperty_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{name1, mode=IN},
+		#{name2, mode=IN},
+		#{name3, mode=IN},
+		#{name4, mode=IN}
+		)}
+	</select>
+
+</mapper>

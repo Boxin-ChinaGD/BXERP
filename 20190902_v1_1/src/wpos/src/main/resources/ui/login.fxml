@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<!--            fx:controller="wpos.allController.LoginViewController"-->
+    <right>
+        <BorderPane prefHeight="398.0" prefWidth="421.0" BorderPane.alignment="CENTER">
+            <top>
+                <BorderPane prefHeight="121.0" prefWidth="421.0" style="-fx-background-color: #ffffff;">
+                    <right>
+                        <ImageView fx:id="close" fitHeight="32" fitWidth="32" nodeOrientation="INHERIT" onMouseClicked="#closeWindows" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #ffffffff;" BorderPane.alignment="CENTER">
+                            <image>
+                                <Image url="@../image/delete_all.png" />
+                            </image>
+                        </ImageView>
+                    </right>
+               <bottom>
+                  <BorderPane prefHeight="79.0" prefWidth="421.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <Label prefHeight="52.0" prefWidth="341.0" text="欢迎登录博销宝收银前台" textAlignment="CENTER" textFill="#bcb5b5" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                     </center>
+                     <bottom>
+                        <Label text="v1.0.0" textAlignment="CENTER" textFill="#bcb5b5" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </bottom>
+                  </BorderPane>
+               </bottom>
+                </BorderPane>
+
+            </top>
+            <center>
+                <BorderPane prefHeight="363.0" prefWidth="433.0" style="-fx-background-color: #ffffff;">
+                    <center>
+                        <Pane prefHeight="615.0" prefWidth="421.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Pane layoutX="13.0" layoutY="95.0" prefHeight="54.0" prefWidth="396.0" style="-fx-background-color: #ffffff; -fx-border-color: #2196F3; -fx-border-radius: 10;">
+                                   <children>
+                                       <TextField fx:id="username" layoutX="62.0" layoutY="6.0" prefHeight="43.0" prefWidth="324.0" promptText="手机号" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF;">
+                                           <font>
+                                               <Font size="14.0" />
+                                           </font>
+                                       </TextField>
+                                       <ImageView fitHeight="21.0" fitWidth="24.0" layoutX="25.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                                           <image>
+                                               <Image url="@../image/user.png" />
+                                           </image>
+                                       </ImageView>
+                                   </children>
+                                </Pane>
+                                <Pane layoutX="13.0" layoutY="163.0" prefHeight="54.0" prefWidth="396.0" style="-fx-background-color: #ffffff; -fx-border-color: #2196F3; -fx-border-radius: 10;">
+                                   <children>
+                                       <PasswordField fx:id="password" layoutX="58.0" layoutY="6.0" prefHeight="43.0" prefWidth="324.0" promptText="密码" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF;">
+                                           <font>
+                                               <Font size="14.0" />
+                                           </font>
+                                       </PasswordField>
+                                       <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="21.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                           <image>
+                                               <Image url="@../image/lock.png" />
+                                           </image>
+                                       </ImageView>
+                                   </children>
+                                </Pane>
+                                <CheckBox fx:id="cbRememberPassword" layoutX="14.0" layoutY="230.0" mnemonicParsing="false" selected="true" text="记住密码">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </CheckBox>
+                                <TextField alignment="CENTER_RIGHT" editable="false" layoutX="333.0" layoutY="225.0" onMouseClicked="#forgetPassword" prefHeight="28.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;-fx-text-fill:#2196F3;" text="忘记密码">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </TextField>
+                                <Button id="loginButton" fx:id="login" defaultButton="true" layoutX="12.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="48.0" prefWidth="399.0" stylesheets="@../css/login.css" text="登  录" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Miriam" size="18.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </Pane>
+                    </center>
+                </BorderPane>
+            </center>
+            <bottom>
+                <BorderPane prefHeight="113.0" prefWidth="421.0" style="-fx-background-color: #ffffff;">
+                    <left>
+                        <Pane>
+                           <children>
+                               <ImageView fx:id="iv_poslogin_tip" fitHeight="20" fitWidth="20" layoutX="4.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                   <image>
+                                       <Image url="@../image/poslogingreen.png" />
+                                   </image>
+                               </ImageView>
+                               <Label fx:id="lb_posLogin_tip" alignment="BASELINE_LEFT" focusTraversable="false" layoutX="24.0" layoutY="8.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" text="已就绪">
+                                   <font>
+                                       <Font size="14.0" />
+                                   </font>
+                               </Label>
+                           </children>
+                        </Pane>
+                    </left>
+                    <right>
+                        <Pane>
+                           <children>
+                               <Label fx:id="showCompanySN" alignment="BASELINE_RIGHT" focusTraversable="false" layoutY="6.0" style="-fx-background-color:#ffffff;-fx-border-color:#ffffff;" text="公司编号:无">
+                                   <font>
+                                       <Font size="14.0" />
+                                   </font>
+                               </Label>
+                           </children>
+                        </Pane>
+                    </right>
+                </BorderPane>
+            </bottom>
+        </BorderPane>
+    </right>
+    <center>
+        <ImageView fx:id="banner" blendMode="SRC_ATOP" cache="true" fitHeight="800.0" fitWidth="860" nodeOrientation="INHERIT">
+            <image>
+                <Image url="@../image/viewpager1.jpg" />
+            </image>
+        </ImageView>
+
+    </center>
+</BorderPane>

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/report_form"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="收银汇总"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="运营分析"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="商品销售排行"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/set_up_right_textview"
+                    android:text="时段销售报表"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="交易明细"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="会员交易明细"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="商品交易明细"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="价格异动"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="毛利分析"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="现金收支明细"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cashier_setting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="支付方式"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="挂单"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="挂账人设置"
+                    android:textColor="@color/label" />
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="牌号"
+                    android:textColor="@color/label" />
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="智能语音播报"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/font_background_selector"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="30dp"
+                        android:text="小数点位数"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:padding="30dp"
+                        android:text="2"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/font_background_selector"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="30dp"
+                        android:text="商品类型行数"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:padding="30dp"
+                        android:text="1"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/font_background_selector"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="30dp"
+                        android:text="商品排序"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:padding="30dp"
+                        android:text="新建顺序"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="商品类别排序"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="称重商品默认凑整"
+                    android:textColor="@color/label" />
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="商品搜索"
+                    android:textColor="@color/label" />
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="相同商品数量合并"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/font_background_selector"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="30dp"
+                        android:text="会员付款验证方式"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:padding="30dp"
+                        android:text="无验证"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="快捷收银模式"
+                    android:textColor="@color/label" />
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="会员刷卡免密码支付"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/font_background_selector"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="30dp"
+                        android:text="微信、支付宝支付方式"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:padding="30dp"
+                        android:text="条码枪扫码"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/font_background_selector"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="30dp"
+                        android:text="收银金额尾数"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:padding="30dp"
+                        android:text="实款实收"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="打印小票是否使用商品简称"
+                    android:textColor="@color/label" />
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="结算时打印小票"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    android:text="现金收支用途"
+                    android:textColor="@color/label"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/inventory_setting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="同步时自动上传本地单据"
+                    android:textColor="@color/label" />
+
+                <Switch
+                    style="@style/set_up_right_switch"
+                    android:text="采购单据是否验证供应商（打开后验证）"
+                    android:textColor="@color/label" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/printing_peripherals"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/small_ticket"
+                    style="@style/set_up_right_textview"
+                    android:text="前台小票" />
+
+                <TextView
+                    android:id="@+id/printer"
+                    style="@style/set_up_right_textview"
+                    android:text="打印机"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="标签"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="标价签"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="条码秤"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="客显"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="双屏设置"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="串口秤"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="交接班打印数量"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/member"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="会员列表"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="会员交易明细"
+                    android:textColor="@color/label" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="会员设置"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="会员批量充值"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="会员批量充值明细"
+                    android:textColor="@color/label" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/store_information"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="门店管理"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="员工管理"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="修改密码"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="店铺信息"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="享钱绑定"
+                    android:textColor="@color/label" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/data_processing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sync_base_data"
+                    style="@style/set_up_right_textview"
+                    android:text="同步" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="本机备份"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="U盘备份"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="下载交易数据"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="一键删除交易数据"
+                    android:textColor="@color/label"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="关于我们"
+                    android:textColor="@color/label" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/font_background_selector"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="30dp"
+                        android:text="检查更新"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/set_up_to_right"
+                        android:padding="30dp"
+                        android:text="版本V2.1.6"
+                        android:textColor="@color/label"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="建议反馈"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="修改IP"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="帮助文档"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="专业版购买"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="应用商城"
+                    android:textColor="@color/label" />
+
+                <TextView
+                    style="@style/set_up_right_textview"
+                    android:text="赢钱后台"
+                    android:textColor="@color/label" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

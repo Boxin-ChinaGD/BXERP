@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="请输入公司编号"
+        android:textColor="#3B3B3B"
+        android:textSize="@dimen/sp_15" />
+
+    <EditText
+        android:id="@+id/companysn"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/edittext_underline_background"
+        android:digits="@string/rule_number"
+        android:textColor="#000000"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/sp_10"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/input_companysn_submit"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:background="@drawable/button_background"
+        android:gravity="center"
+        android:text=" 提  交 "
+        android:textColor="#ffffff"
+        android:textSize="@dimen/sp_10" />
+</LinearLayout>

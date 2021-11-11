@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.PosSyncCacheDispatcherMapper">
+	<resultMap id="PosSyncCacheDispatcher_Map" type="com.bx.erp.model.PosSyncCacheDispatcher">
+		<result property="ID" column="F_ID" />
+		<result property="syncCacheID" column="F_SyncCacheID" />
+		<result property="pos_ID" column="F_POS_ID" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+	</resultMap>
+
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="PosSyncCacheDispatcher_Map">
+		{CALL SP_POSSyncCacheDispatcher_UpdatePOSStatus(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{syncCacheID, mode=IN},
+		#{pos_ID, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="PosSyncCacheDispatcher_Map">
+		{CALL SP_POSSyncCacheDispatcher_RetriveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+</mapper>

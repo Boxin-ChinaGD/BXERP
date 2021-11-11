@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <!--width:0.5 height:0.65-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="36sp"
+        android:textColor="@color/text_color_smallblack"
+        android:text="准备金"/>
+
+    <EditText
+        android:id="@+id/reserve_et"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@drawable/textview_rounded_background"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:hint=" 输入准备金金额"
+        android:textSize="22sp"
+        android:textColorHint="@color/text_bgcolor_gray"
+        android:paddingLeft="10dp"
+        android:inputType="numberDecimal"/>
+       />
+    <!--键盘-->
+    <com.bx.erp.view.component.KeyBoard
+        android:id="@+id/keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="90dp"
+        app:canseemoney="false"/>
+    
+    <Button
+        android:id="@+id/confirm_reserve"
+        android:layout_width="200dp"
+        android:layout_height="66dp"
+        android:background="@drawable/button_bg_blue2"
+        android:text="确定"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="-78dp"
+        android:textSize="26sp"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/cancel"
+        android:visibility="gone"
+        android:layout_width="200dp"
+        android:layout_height="66dp"
+        android:background="@drawable/button_bg_blue2"
+        android:text="取消"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="-78dp"
+        android:layout_marginBottom="12dp"
+        android:textSize="26sp"
+        android:textColor="#FFFFFF"/>
+    
+</LinearLayout>

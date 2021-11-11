@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--各类别简介-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8">
+                <include layout="@layout/item_commodity1" />
+            </LinearLayout>
+            <!--商品列表-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6.8">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#666666"
+                        android:orientation="vertical">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_commodity"
+                            android:layout_width="match_parent"
+                            android:layout_height="460dp"
+                            android:background="@android:color/white"
+                            android:overScrollMode="ifContentScrolls"
+                            android:scrollbarAlwaysDrawVerticalTrack="true"
+                            android:scrollbars="vertical"
+                            android:scrollbarSize="8dp"
+                            android:scrollbarThumbVertical="@color/text_color_black"
+                            android:scrollbarTrackVertical="@color/text_bgcolor_gray"
+                            android:fadeScrollbars="true"
+                            android:scrollbarFadeDuration="2000"/>
+                    </LinearLayout>
+                </ScrollView>
+
+                <LinearLayout
+                    android:id="@+id/favorites1"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:gravity="center"
+                    android:background="@drawable/favorites_bg"
+                    android:orientation="vertical"
+                    android:layout_gravity="right|bottom"
+                    android:layout_marginBottom="28dp">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/left_arrow"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收藏夹"
+                        android:textColor="@color/blue"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+            <!--下面的-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.4">
+                <include layout="@layout/information_commodity1" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+            android:id="@+id/view"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00ffffff"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="1180dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:gravity="right">
+
+        <RelativeLayout
+            android:id="@+id/favoritesAndvip_page"
+            android:layout_width="630dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginBottom="174dp"
+            android:layout_marginLeft="-2dp"
+            android:visibility="gone">
+            <!--收藏夹页面-->
+            <RelativeLayout
+                android:id="@+id/favorites_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_bg"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:text="收藏夹"
+                    android:textColor="@color/text_color_smallblack"
+                    android:textSize="30sp" />
+
+                <ImageView
+                    android:id="@+id/favorites_close"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/close" />
+                <!--收藏夹列表-->
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@id/textview1"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp" />
+            </RelativeLayout>
+            <!--会员信息页面-->
+            <RelativeLayout
+                android:id="@+id/vip_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_bg"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textview2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:text="会员信息"
+                    android:textColor="@color/text_color_smallblack"
+                    android:textSize="30sp" />
+
+                <ImageView
+                    android:id="@+id/vip_close"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/close" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!--支付页面-->
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/payment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="#00ffffff"
+            android:visibility="gone">
+
+            <include layout="@layout/right_pay" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

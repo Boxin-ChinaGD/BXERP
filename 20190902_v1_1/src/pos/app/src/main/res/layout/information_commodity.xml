@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#BEBEBE" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/commodity_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="商品数量：1件"
+            android:textColor="@color/label"
+            android:textSize="20dp" />
+
+        <View
+            android:id="@+id/space1"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/commodity_quantity" />
+
+        <TextView
+            android:id="@+id/remove_commodity"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:text="移除商品(Delete)"
+            android:textColor="@drawable/label_font_color"
+            android:textSize="20dp" />
+
+        <!--<View-->
+        <!--android:id="@+id/space2"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toLeftOf="@id/remove_commodity" />-->
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="10dp"
+            android:layout_alignBottom="@id/remove_commodity"
+            android:layout_alignTop="@id/remove_commodity"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/remove_commodity"
+            android:background="#BEBEBE" />
+
+        <!--<View-->
+        <!--android:id="@+id/space3"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toLeftOf="@id/view1" />-->
+
+        <TextView
+            android:id="@+id/print_last_retailTrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/view1"
+            android:clickable="true"
+            android:paddingRight="20dp"
+            android:text="打印上一单(F10)"
+            android:textColor="@drawable/label_font_color"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#BEBEBE" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="4">
+
+            <LinearLayout
+                android:id="@+id/scan_barcode_layout"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:id="@+id/scan_barcode_text"
+                    android:layout_width="800dp"
+                    android:layout_height="match_parent"
+                    android:digits="@string/rule_text_barcode"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/textview_rounded_background"
+                    android:hint="扫描条形码（Ctrl+Q）" />
+
+                <ImageView
+                    android:id="@+id/scan_barcode_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/search_new"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/scan_barcode_layout"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/choose_client"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_rounded_background"
+                    android:drawableRight="@drawable/to_right"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text=" 选择客户（Ctrl+F1）" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_rounded_background"
+                    android:clickable="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1.5"
+                        android:drawableLeft="@drawable/person"
+                        android:gravity="center_vertical"
+                        android:text="客户姓名 | " />
+
+                    <TextView
+                        android:id="@+id/show_client_name"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="" />
+
+                    <ImageView
+                        android:id="@+id/client_more_consumption"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="0.5"
+                        android:duplicateParentState="true"
+                        android:src="@drawable/more" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_rounded_background"
+                    android:clickable="false">
+
+                    <TextView
+                        android:id="@+id/discount_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="  整单折扣" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#BEBEBE" />
+
+                    <Spinner
+                        android:id="@+id/discount"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:entries="@array/discount"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="%"
+                        android:textSize="20dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/show_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff0000"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_70"
+                    android:text="上一单"
+                    android:textColor="@color/whiteBackgroundSelected"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总金额：￥"
+                    android:textColor="@color/whiteBackgroundSelected"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/last_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteBackgroundSelected"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:text="找零：￥"
+                    android:textColor="@color/whiteBackgroundSelected"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/last_changemoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteBackgroundSelected"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:text="支付方式："
+                    android:textColor="@color/whiteBackgroundSelected"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/last_paymenttype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/whiteBackgroundSelected"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#BEBEBE" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/balance_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:text="结算"
+                android:textColor="@drawable/balance_font_color"
+                android:textSize="60dp" />
+
+            <TextView
+                android:id="@+id/space_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/balance_tv"
+                android:layout_marginLeft="40dp"
+                android:text="(空格键)"
+                android:textSize="20dp" />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/space_tv"
+                android:layout_alignTop="@id/balance_tv"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/balance_tv"
+                android:background="#BEBEBE" />
+
+            <TextView
+                android:id="@+id/total_money_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:text="总计金额"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/total_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/total_money_tv"
+                android:layout_marginRight="10dp"
+                android:text="2000"
+                android:textColor="@color/blueFontColor"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/total_money"
+                android:layout_toLeftOf="@id/total_money"
+                android:text="￥"
+                android:textColor="@color/blueFontColor"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

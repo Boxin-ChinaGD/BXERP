@@ -1,0 +1,385 @@
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+       url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+       url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+       url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+       url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+body{
+	font-family: "SourceHanSansCN-Regular";
+	border-left: 6px solid #ECEFF1;
+	border-top: 6px solid #ECEFF1;
+	margin-left: 10px;
+}
+
+#vipMain{
+	margin: 0 20px;
+	min-width: 1400px;
+}
+input:focus {
+	outline: none;
+	border-color: #9ecaed;
+	box-shadow: 0 0 10px #9ecaed;
+}
+
+/* 顶部区域 */
+#vipMain .topArea{
+	margin-left: -26px;
+	height: 28px;
+	border: 6px solid #ECEFF1;
+	padding: 10px 0px 0px 32px;
+}
+#vipMain .topArea a{
+	border: 1px solid #eee;
+	padding: 3px;
+}
+#vipMain .topArea .layui-breadcrumb a:hover {
+    color: #2196F3!important;
+}
+#vipMain .topArea .navigationBeChoosed{
+	color: #2196F3!important;
+	border: 1px solid #2196F3;
+	padding: 3px;
+}
+/* 会员卡管理 */
+#vipMain .vipCardManage .tipArea{
+	padding: 0px 10px;
+	margin-top: 20px;	
+}
+#vipMain .vipCardManage .tipArea div{
+	background-color: #E3F2FD;
+	padding: 10px;
+	margin-left: -8px;
+	width: 50%;
+	border: 1px solid #2196F3;
+}
+#vipMain .vipCardManage .tipArea .layui-elem-quote i{
+	color: #2196F3;
+}
+.vipCardManage .vipCardInfo{
+	padding: 12px;
+}
+.vipCardManage .vipCardInfo .leftArea{
+	display: inline-block;
+	width: 320px;
+	vertical-align: top;
+	margin-left:-10px;
+}
+.vipCardManage .vipCardInfo .template{
+	border: 1px solid #e7e7eb;
+	padding: 70px 20px 30px 20px;
+	background-image: url(../images/topbarBlack.png);
+	background-repeat: no-repeat;
+	background-position: center 10px;
+	margin-bottom: 10px;
+}
+.vipCardManage .vipCardInfo .template img{
+	position: relative;
+	z-index: -1000;
+	margin-left: -10px !important;
+	width: 300px;
+	height: 180px;
+}
+.vipCardManage .vipCardInfo .template .cardBody{
+	border-radius: 5px;
+	border: none;
+	z-index: 9999;
+	margin-top: -20px;
+	height: 150px;
+	color: #fff;
+	background: linear-gradient(180deg,rgba(0,176,255,1) 0%,rgba(21,101,192,1) 100%);
+}
+.vipCardManage .vipCardInfo .template .cardBody h4{
+	font-size: 16px;
+	font-weight: bolder;
+	text-shadow: 1px 1px 3px #666;
+	padding: 15px 20px;
+	position: relative;
+	z-index: 1;
+}
+.vipCardManage .vipCardInfo .template .cardBody img{
+	width: 50px;
+	height:50px;
+	margin-left: 15px !important;
+	position: relative;
+	margin-right: 10px;
+	z-index: 1;
+	border-radius: 50%;
+	
+}
+.vipCardManage .vipCardInfo .instructions p{
+	line-height: 26px;
+	word-break: break-all;
+}
+.vipCardManage .vipCardInfo .rightArea{
+	display: inline-block;
+	width: 60%;
+	vertical-align: top;
+	padding-left: 20px;
+	margin-left: 30px;
+	border-left: 1px solid #e7e7eb;
+}
+.vipCardManage .vipCardInfo .layui-form p{
+	color: #9a9a9a;
+	line-height: 26px;
+}
+.vipCardManage .vipCardInfo .layui-form .form_msg{
+	display: none;
+	color: red;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-label{
+	width: 150px;
+	text-align: left;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-label strong{
+	color: red;
+	padding-right: px;
+}
+.companyLogin{
+	margin: 5px;
+
+}
+.clearBonusDay{
+	width: 100px;
+	display: inline;
+}
+.layui-input{
+	height: 28px !important;
+	width: 192px !important;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-input-block{
+	margin-left: 120px;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-input-block .cardColor{
+	border: 3px solid #eee;
+	margin-left: 60px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	width:283px;
+	height:20px;
+	background: linear-gradient(180deg,rgba(0,176,255,1) 0%,rgba(21,101,192,1) 100%);
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item #layui-button{
+	display: block;
+	background-color: #2196F3;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(1) .layui-input{
+	width: 260px;
+	padding-right: 50px;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(3) .layui-input{
+	display: inline-block;
+	width: 200px;
+	margin-right: 10px;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(4) .layui-input-block div{
+	display: inline-block;
+	vertical-align: top;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(5) .layui-input{
+	display: inline-block;
+	width: 110px;
+	margin: 0 10px;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(6) .layui-input{
+	display: inline-block;
+	width: 200px;
+	margin-right: 0 10px;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(6)  .layui-input-block div{
+	display: inline-block;
+	vertical-align: top;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(7) .layui-input{
+	display: inline-block;
+	width: 200px;
+	margin-right: 10px;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-textarea{
+	width: 520px;
+	resize: none;
+}
+.vipCardManage .vipCardInfo .layui-form .wordCount{
+	position: absolute;
+	top: 5px;
+	left: 225px;
+	color: #9a9a9a;
+}
+.theMaxIncreaseBonus{
+	display: inline;
+	width: 140px;
+}
+.vipCardManage .vipCardInfo .layui-form img{
+	display: block;
+	width: 280px;
+	height: 150px;
+	border-radius: 15px;
+	background-color: #1E9FFF;
+	overflow: hidden;
+	border: none;
+}
+.vipCardManage .vipCardInfo .layui-form .layui-btn{
+	width: 100px;
+	background-color: #2196F3;
+	margin-top: 10px;
+}
+.theUpdateVipCardBouns{
+	margin-left: -90%
+}
+.vipCardManage .vipCardInfo .layui-form .layui-form-item:last-child{
+	text-align: center;
+}
+/* 会员管理 */
+#vipMain .vipManage{
+	padding: 30px 32px 20px 32px;
+}
+/* 根据关键字搜索会员区域 */
+#vipMain .vipManage .queryByKeywordArea{
+	position: absolute; 
+	margin-top: -30px;
+	margin-left: -55px;
+	width: 100%;
+}
+#vipMain .vipManage .queryByKeywordArea input{
+	width: 360px;
+	text-overflow: ellipsis;
+	padding-right: 60px;
+	margin-left: 25px;
+	margin-top: 18px;
+	margin-bottom: 20px;
+}
+#vipMain .vipManage .queryByKeywordArea i{
+	font-size: 18px;
+	color: #353535;
+	position: absolute;
+	top: 5px;
+	left: 200px;
+	margin-left: 25px;
+	margin-top: 18px;
+	cursor: pointer;
+}
+/* 根据日期范围搜索会员区域 */
+#vipMain .vipManage .queryByDateTimeArea{
+	position: relative;
+	margin-top: 20px;
+	overflow: hidden;
+}
+#vipMain .vipManage .queryByDateTimeArea label{
+	display: block;
+}
+#vipMain .vipManage .queryByDateTimeArea input{
+	margin: 0px 0px;
+	width: 230px;
+	cursor: pointer;
+}
+#vipMain .vipManage .queryByDateTimeArea>i{
+	font-size: 18px;
+	color: #888;
+	position: absolute;
+	top: 50px;
+	left: 200px;
+	cursor: pointer;
+}
+/* 会员信息区域 */
+#vipMain .vipManage .vipInfoArea .vipTableArea{
+	margin-left: -30px;
+	margin-top: 16px;
+	display: inline-block;
+	width: auto;
+	vertical-align: top;
+	
+}
+#vipMain .vipManage .vipInfoArea .vipTableArea .layui-table-view{
+	margin: 0px;
+}
+#vipMain .vipManage .vipInfoArea .vipTableArea .layui-table tbody a{
+	background-color: #2196F3;
+}
+/* #vipMain .vipManage .vipInfoArea .vipTableArea .layui-table .layui-form-checkbox[lay-skin="primary"]{ */
+/*      top: 50%; */
+/*      transform: translateY(-50%); */
+/* } */
+/* #vipMain .vipManage .vipInfoArea .vipTableArea .layui-table .layui-form-checked[lay-skin=primary] i{ */
+/* 	border-color: #1A4A9F; */
+/*     background-color: #1A4A9F; */
+/* } */
+/* #vipMain .vipManage .vipInfoArea .vipTableArea .layui-table .layui-form-checkbox[lay-skin=primary]:hover i{ */
+/*     border-color: #1A4A9F; */
+/* } */
+#vipTable + div .layui-none{
+	line-height: 200px;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+	background-color: #2196F3;
+}
+.layui-form .layui-table-page .layui-laypage .layui-laypage-limits{
+	display: none;
+}
+#vipMain .vipManage .vipInfoArea .vipTableArea>button{
+	margin-top: 15px;
+	float: right;
+	background-color: #2196F3;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm{
+	display: inline-block;
+	width: 39%;
+	height: 660px;
+	overflow: auto;
+	vertical-align: top;
+}
+
+#vipMain .vipManage .vipInfoArea .vipInfoForm .layui-form-label{
+	width: 185px;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm .layui-input-block{
+	margin-left: 115px;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm .layui-input{
+	display: inline-block;
+	width: 60%;
+	margin-right: 10px;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm .revisePointBonus{
+	background-color: #2196F3;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm .layui-textarea{
+	width: 80%;
+	resize: none;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm .layui-form-item:last-child{
+	text-align: center;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm img{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	margin-left: 170px;
+	border-radius: 100%;
+	border: 1px solid #e7e7eb;
+}
+#vipMain .vipManage .vipInfoArea .main{
+	display:none;
+	color: red;
+	padding-right: 3px;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm button{
+	background-color: #2196F3;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm .createVip{
+	display:none;
+	background-color:#2196F3;
+}
+#vipMain .vipManage .vipInfoArea .vipInfoForm .layui-form-item:first-child button{
+	vertical-align: bottom;
+}
+#vipMain .vipManage .vipInfoForm .layui-form-radio>i:hover, #vipMain .vipManage .vipInfoForm .layui-form-radioed>i{
+	color: #2196F3;
+}
+#vipMain .vipManage .vipInfoArea .vipTableArea tr{
+	background-color: white;
+}
+#vipMain .vipManage .vipInfoArea .vipTableArea thead tr{
+	background-color: #2196F3;
+	color:white;
+}

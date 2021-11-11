@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- allow-return-values 默认值为FALSE,表示返回值将被忽略 -->
+<suite name="Report">
+	<test name="Report">
+		<classes>
+			<class name="com.bx.erp.test.JenkinsUtilTest" />
+			<class name="com.bx.erp.test.task.dailyReport.DailyReportSIT1" /> <!-- 运行需要15min左右 -->
+			<class name="com.bx.erp.test.JenkinsUtilTest" />
+			<class name="com.bx.erp.test.task.dailyReport.DailyReportSIT2" /> <!-- 运行需要一个半小时左右 -->
+			<class name="com.bx.erp.test.JenkinsUtilTest" />
+			<class name="com.bx.erp.test.task.dailyReport.DailyReportSIT3" /> <!-- 运行需要15min左右 -->
+			<class name="com.bx.erp.test.JenkinsUtilTest" />
+			<class name="com.bx.erp.test.task.dailyReport.DailyReportSIT4" /> <!-- 运行需要13min左右 -->
+			<class name="com.bx.erp.test.JenkinsUtilTest" />
+			<class name="com.bx.erp.test.task.dailyReport.DailyReportSIT5" /> <!-- 运行需要4min左右 -->
+			<class name="com.bx.erp.test.JenkinsUtilTest" />
+			<class name="com.bx.erp.test.task.MonthlyReportSIT1" />
+		</classes>
+	</test>	
+</suite>

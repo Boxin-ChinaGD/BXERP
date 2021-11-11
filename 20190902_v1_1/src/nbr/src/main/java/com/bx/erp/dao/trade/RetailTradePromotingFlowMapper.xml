@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.trade.RetailTradePromotingFlowMapper">
+	<resultMap type="com.bx.erp.model.trade.RetailTradePromotingFlow" id="RetailTradePromotingFlowMap">
+		<id column="F_ID" property="ID" />
+		<result column="F_RetailTradePromotingID" property="retailTradePromotingID" />
+		<result column="F_PromotionID" property="promotionID" />
+		<result column="F_ProcessFlow" property="processFlow" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+	</resultMap>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="RetailTradePromotingFlowMap" >
+		{CALL SP_RetailTradePromotingFlow_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{retailTradePromotingID, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},		
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}	
+		)}
+	</select>
+	
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="RetailTradePromotingFlowMap" >
+		{CALL SP_RetailTradePromotingFlow_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{retailTradePromotingID, mode=IN},
+		#{promotionID, mode=IN},
+		#{processFlow, mode=IN}
+		)}
+	</select>
+</mapper>

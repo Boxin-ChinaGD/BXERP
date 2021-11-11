@@ -1,0 +1,46 @@
+--	SELECT '++++++++++++++++++Test_SP_VIP_RetrieveNByMobileOrCardCode.sql+++++++++++++++++++++++';
+--	
+--	SELECT '-----------------CASE1: 输入正确的手机号码查询Vip------------------' AS 'CASE1';
+--	SET @iErrorCode = 0;
+--	SET @sErrorMsg = '';
+--	SET @sPhone = '17352645590';
+--	SET @sCardCode = '';
+--	
+--	
+--	CALL SP_VIP_RetrieveNByMobileOrCardCode(@iErrorCode, @sErrorMsg, @sPhone, @sCardCode);
+--	SELECT @iErrorCode,@sErrorMsg;
+--	SELECT IF(@iErrorCode = 0, '测试成功', '测试失败') AS 'Case1 Testing Result';
+--	
+--	SELECT '-----------------CASE2: 输入正确的CardCode查询Vip------------------' AS 'CASE2';
+--	SET @iErrorCode = 0;
+--	SET @sErrorMsg = '';
+--	SET @sPhone = '';
+--	SET @sCardCode = '415430877106';
+--	
+--	
+--	CALL SP_VIP_RetrieveNByMobileOrCardCode(@iErrorCode, @sErrorMsg, @sPhone, @sCardCode);
+--	SELECT @iErrorCode,@sErrorMsg;
+--	SELECT IF(@iErrorCode = 0, '测试成功', '测试失败') AS 'Case2 Testing Result';
+--	
+--	
+--	SELECT '-----------------CASE3: 输入正确的手机号码查询VIP,但是数据缺失------------------' AS 'CASE3';
+--	SET @iErrorCode = 0;
+--	SET @sErrorMsg = '';
+--	SET @sPhone = '13545678110';
+--	SET @sCardCode = '';
+--	
+--	
+--	CALL SP_VIP_RetrieveNByMobileOrCardCode(@iErrorCode, @sErrorMsg, @sPhone, @sCardCode);
+--	SELECT @iErrorCode,@sErrorMsg;
+--	SELECT IF(@iErrorCode = 2, '测试成功', '测试失败') AS 'Case3 Testing Result';
+--	
+--	SELECT '-----------------CASE4: 手机号码和CardCode都输入,根据手机号码进行查询------------------' AS 'CASE3';
+--	SET @iErrorCode = 0;
+--	SET @sErrorMsg = '';
+--	SET @sPhone = '17352645590';
+--	SET @sCardCode = 'xxxxxxxxxxxxx';
+--	
+--	
+--	CALL SP_VIP_RetrieveNByMobileOrCardCode(@iErrorCode, @sErrorMsg, @sPhone, @sCardCode);
+--	SELECT @iErrorCode,@sErrorMsg;
+--	SELECT IF(@iErrorCode = 0, '测试成功', '测试失败') AS 'Case3 Testing Result';

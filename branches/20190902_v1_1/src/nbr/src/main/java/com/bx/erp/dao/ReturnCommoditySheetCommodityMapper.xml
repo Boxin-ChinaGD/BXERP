@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.ReturnCommoditySheetCommodityMapper">
+	<resultMap id="ReturnCommoditySheetCommodityMap" type="com.bx.erp.model.ReturnCommoditySheetCommodity">
+		<result property="ID" column="F_ID" />
+		<result property="returnCommoditySheetID" column="F_ReturnCommoditySheetID" />
+		<result property="commodityID" column="F_CommodityID" />
+		<result property="commodityName" column="F_CommodityName" />
+		<result property="barcodeID" column="F_BarcodeID" />
+		<result property="NO" column="F_NO" />
+		<result property="specification" column="F_Specification" />
+		<result property="purchasingPrice" column="F_PurchasingPrice" />
+	</resultMap>
+	
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetCommodityMap">
+		{CALL SP_returnCommoditySheetCommodity_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{returnCommoditySheetID, mode=IN},
+		#{commodityID, mode=IN},
+		#{barcodeID, mode=IN},
+		#{NO, mode=IN},
+		#{specification, mode=IN},
+		#{purchasingPrice, mode=IN}
+		)}
+	</select>
+	
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetCommodityMap">
+		{CALL SP_ReturnCommoditySheetCommodity_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{returnCommoditySheetID, mode=IN},
+		#{commodityID, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetCommodityMap">
+		{CALL SP_ReturnCommoditySheetCommodity_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{returnCommoditySheetID, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	
+</mapper>

@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/numberkeyboard"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:background="@color/blue2"
+        android:paddingTop="4dp"
+        android:paddingLeft="4dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/t7"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="7"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/t8"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="8"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/t9"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="9"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/num_sure"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="确定"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/t4"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="4"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/t5"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="5"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/t6"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="6"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/num_change_symbol"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="符号"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/t1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="1"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/t2"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="2"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/t3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="3"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <ImageView
+            android:id="@+id/num_space"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:src="@drawable/num_space"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/t0"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="0"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/num_point"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="."
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <LinearLayout
+            android:id="@+id/num_delete"
+            android:layout_width="10dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="@drawable/keyboard_click_bg"
+            android:gravity="center"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp">
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="22dp"
+                android:src="@drawable/delete" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/num_change_en"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="EN"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+    </GridLayout>
+
+    <include
+        layout="@layout/english_keyboard"
+        android:id="@+id/englishkeyboard"/>
+
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/symbolkeyboard"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:columnCount="6"
+        android:rowCount="4"
+        android:background="@color/blue2"
+        android:paddingTop="4dp"
+        android:paddingLeft="4dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/symbol_1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text=","
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/symbol_2"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="."
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/symbol_3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="\?"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/symbol_4"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="\!"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/symbol_5"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="\:"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <LinearLayout
+            android:id="@+id/symbol_delete"
+            android:layout_width="10dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="@drawable/keyboard_click_bg"
+            android:gravity="center"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp">
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="22dp"
+                android:src="@drawable/delete" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/symbol_6"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="/"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_7"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="\@"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_8"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="..."
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_9"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="&quot;"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_10"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text=";"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_change_num"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="123"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_11"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="'"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_12"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="~"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_13"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="+"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_14"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="-"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_15"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="="
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <ImageView
+            android:id="@+id/symbol_space"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:src="@drawable/num_space"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/symbol_16"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="#"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_17"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="$"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_18"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="%"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_19"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="&#38;"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:id="@+id/symbol_20"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="*"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/symbol_change_en"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="@drawable/keyboard_click_bg"
+            android:textColor="@drawable/keyboard_textcolor"
+            android:text="EN"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp" />
+    </GridLayout>
+
+</LinearLayout>

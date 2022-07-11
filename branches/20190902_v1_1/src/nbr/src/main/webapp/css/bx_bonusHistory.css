@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+       url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+       url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+       url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+       url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+body{
+	font-family: "SourceHanSansCN-Regular";
+}
+
+#bonusHistoryMain{
+	margin: 0 20px;
+	min-width: 700px;
+}
+#bonusHistoryMain .bonusHistory{
+	padding: 10px 30px 0 30px;
+}
+/* 根据关键字搜索积分历史区域 */
+#bonusHistoryMain .bonusHistory .queryByKeywordArea{
+	position: relative;
+}
+#bonusHistoryMain .bonusHistory .queryByKeywordArea input{
+	width: 360px;
+	text-overflow: ellipsis;
+	padding-right: 60px;
+}
+#bonusHistoryMain .bonusHistory .queryByKeywordArea i{
+	font-size: 18px;
+	color: #353535;
+	position: absolute;
+	top: 10px;
+	left: 330px;
+	cursor: pointer;
+}
+/* 积分历史表格区域 */
+#bonusHistoryMain .bonusHistory thead tr{
+	background-color: #2196F3;
+	color: #fff;
+}
+#bonusHistoryMain .bonusHistory .layui-laypage-em{
+	background-color: #2196F3;
+}
+#bonusHistoryMain .bonusHistory .layui-laypage-limits{
+	display: none;
+}

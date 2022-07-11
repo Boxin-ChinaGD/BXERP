@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="300" prefWidth="300.0"
+          xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="wpos.allController.LoadingDialogViewController">
+    <children>
+        <ImageView fx:id="image" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../image/loading.png"/>
+            </image>
+        </ImageView>
+        <Label alignment="CENTER" prefWidth="100.0" text="加载中" textFill="#263238">
+            <font>
+                <Font size="32.0"/>
+            </font>
+        </Label>
+    </children>
+</FlowPane>

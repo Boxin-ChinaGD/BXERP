@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane prefHeight="800.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="TOP_LEFT">
+         <top>
+            <Label text="基础资料下载信息：" BorderPane.alignment="TOP_LEFT">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="24.0" left="24.0" top="24.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <center>
+            <ScrollPane prefHeight="600.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="24.0" left="24.0" right="24.0" />
+               </BorderPane.margin>
+               <content>
+                  <Pane prefHeight="600.0" prefWidth="910.0">
+                     <children>
+                        <Label prefHeight="600.0" fx:id="tvDownloadDetail" prefWidth="909.0" text="这里显示基础资料下载的详情" textFill="#2196f3">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </center>
+   <left>
+      <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="blueButton" fx:id="tvDownload" onMouseClicked="#tvDownload" mnemonicParsing="false" prefHeight="88.0" prefWidth="272.0" stylesheets="@../css/buttonBg.css" text="下载基础资料" textFill="WHITE">
+               <FlowPane.margin>
+                  <Insets left="24.0" right="24.0" />
+               </FlowPane.margin>
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button id="blackButton" fx:id="tvLogout" onMouseClicked="#tvLogout" mnemonicParsing="false" prefHeight="88.0" prefWidth="272.0" stylesheets="@../css/buttonBg.css" text="退出" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="24.0" top="500.0" />
+               </FlowPane.margin>
+            </Button>
+         </children>
+      </FlowPane>
+   </left>
+</BorderPane>

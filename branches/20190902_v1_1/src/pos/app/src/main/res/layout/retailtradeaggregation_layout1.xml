@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--营业额-->
+    <LinearLayout
+        android:id="@+id/showAmount_linear"
+        android:layout_width="270dp"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="24dp"
+            android:textSize="26sp"
+            android:text="营业额"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/showAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:text="13967.42"/>
+
+    </LinearLayout>
+    <!--交易单数-->
+    <LinearLayout
+        android:id="@+id/showTradeNo_linear"
+        android:layout_toRightOf="@id/showAmount_linear"
+        android:layout_width="270dp"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="#00BCDA">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="24dp"
+            android:textSize="26sp"
+            android:text="交易单数"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/showTradeNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:text="9876"/>
+
+    </LinearLayout>
+    <!--准备金-->
+    <LinearLayout
+        android:id="@+id/showReserveAmount_linear"
+        android:layout_toRightOf="@id/showTradeNo_linear"
+        android:layout_width="270dp"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="#009688">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="24dp"
+            android:textSize="26sp"
+            android:text="准备金"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/showReserveAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:text="826.00"/>
+
+    </LinearLayout>
+    <!--现金收入-->
+    <LinearLayout
+        android:id="@+id/showCashAmount_linear"
+        android:layout_below="@id/showAmount_linear"
+        android:layout_width="270dp"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="24dp"
+            android:textSize="26sp"
+            android:text="现金收入"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/showCashAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:text="5478.00"/>
+
+    </LinearLayout>
+    <!--微信收入-->
+    <LinearLayout
+        android:id="@+id/showWechatAmount_linear"
+        android:layout_below="@id/showCashAmount_linear"
+        android:layout_width="270dp"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="24dp"
+            android:textSize="26sp"
+            android:text="微信收入"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/showWechatAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:text="8489.43"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/text_bgcolor_gray2">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="49dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/out"/>
+
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="交接时间:"
+            android:textSize="22sp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/text_color_black"
+            android:layout_toRightOf="@id/back"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/showWorkTimeEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textview1"
+            android:layout_alignTop="@id/textview1"
+            android:textSize="22sp"
+            android:text="2020/02/24 10:15:09"
+            android:textColor="@color/text_color_black"/>
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_below="@id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="操作员:"
+            android:textSize="22sp"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/back"
+            android:textColor="@color/text_color_black"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/operator"
+            android:layout_toRightOf="@id/textview2"
+            android:layout_alignTop="@id/textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新裤子"
+            android:textColor="@color/text_color_black"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/change_shifts"
+            android:layout_width="200dp"
+            android:layout_height="66dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/button_bg_blue2"
+            android:gravity="center"
+            android:textSize="26sp"
+            android:textColor="#FFFFFF"
+            android:text="交班"/>
+
+        <TextView
+            android:id="@+id/change_shifts_record"
+            android:layout_width="200dp"
+            android:layout_height="66dp"
+            android:layout_toLeftOf="@id/change_shifts"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/button_bg_black"
+            android:gravity="center"
+            android:textSize="26sp"
+            android:textColor="#FFFFFF"
+            android:text="交班记录"/>
+
+        <LinearLayout
+            android:id="@+id/print_shift_schedule_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/change_shifts_record"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/shift_schedule_number"
+                android:layout_alignParentBottom="true"
+                android:textSize="22sp"
+                android:text="交班表打印数量"
+                android:layout_marginRight="6dp"
+                android:textColor="@color/text_color_black"/>
+            <Spinner
+                android:id="@+id/shift_schedule_number"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/textview3"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/spinner_bg"
+                android:textSize="22sp"
+                android:padding="10dp"
+                android:overlapAnchor="false"
+                android:textColor="@color/text_color_black"/>
+            <TextView
+                android:id="@+id/textview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:textSize="22sp"
+                android:text="张"
+                android:textColor="@color/text_color_black"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="1080" prefWidth="1920.0" style="-fx-background-color: #FFFFFF;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+>
+    <center>
+        <GridPane hgap="24.0" style="-fx-background-color: #FFFFFF;" vgap="24.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2196f3;">
+                    <top>
+                        <Label prefHeight="100.0" prefWidth="450.0" text="营业额" textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font size="40.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </top>
+                    <bottom>
+                        <Label fx:id="showAmount" prefHeight="100.0" prefWidth="426.0" text="2020.68" textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="56.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </bottom>
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
+                </BorderPane>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2196f3;"
+                            GridPane.rowIndex="1">
+                    <bottom>
+                        <Label fx:id="showCashAmount" prefHeight="100.0" prefWidth="480.0" text="11.10" textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="56.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </bottom>
+                    <top>
+                        <Label prefHeight="100.0" prefWidth="450.0" text="现金收入" textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font size="40.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </top>
+                </BorderPane>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2196f3;"
+                            GridPane.rowIndex="2">
+                    <bottom>
+                        <Label fx:id="showWechatAmount" prefHeight="100.0" prefWidth="480.0" text="2009.58"
+                               textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="56.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </bottom>
+                    <top>
+                        <Label prefHeight="100.0" prefWidth="450.0" text="微信收入"
+                               textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font size="40.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </top>
+                </BorderPane>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00BCDA;"
+                            GridPane.columnIndex="1">
+                    <bottom>
+                        <Label fx:id="showTradeNo" prefHeight="100.0" prefWidth="480.0" text="857" textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="56.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </bottom>
+                    <top>
+                        <Label prefHeight="100.0" prefWidth="450.0" text="交易单数" textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font size="40.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </top>
+                </BorderPane>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #009688;"
+                            GridPane.columnIndex="2">
+                    <bottom>
+                        <Label fx:id="showReserveAmount" prefHeight="100.0" prefWidth="480.0" text="3717.00"
+                               textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="56.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </bottom>
+                    <top>
+                        <Label prefHeight="100.0" prefWidth="450.0" text="准备金" textFill="WHITE"
+                               BorderPane.alignment="CENTER">
+                            <font>
+                                <Font size="40.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="24.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </top>
+                </BorderPane>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="24.0" left="24.0" right="24.0" top="24.0"/>
+            </BorderPane.margin>
+        </GridPane>
+    </center>
+    <bottom>
+        <BorderPane prefHeight="136.0" prefWidth="200.0" style="-fx-background-color: #ECEFF1;"
+                    BorderPane.alignment="CENTER">
+            <left>
+                <FlowPane prefHeight="200.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ImageView fx:id="back" id="back" onMouseClicked="#backTo" fitHeight="52.24" fitWidth="59.0"
+                                   pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/out.png"/>
+                            </image>
+                            <FlowPane.margin>
+                                <Insets left="50.0" top="18.0"/>
+                            </FlowPane.margin>
+                        </ImageView>
+                        <FlowPane prefHeight="82.0" prefWidth="510.0">
+                            <FlowPane.margin>
+                                <Insets left="73.0" top="24.0"/>
+                            </FlowPane.margin>
+                            <children>
+                                <Label prefHeight="39.0" prefWidth="162.0" text="交接时间：">
+                                    <font>
+                                        <Font size="32.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="showWorkTimeEnd" text="2020/06/08 11:26:58">
+                                    <font>
+                                        <Font size="32.0"/>
+                                    </font>
+                                </Label>
+                                <Label prefHeight="39.0" prefWidth="162.0" text="操作员：">
+                                    <font>
+                                        <Font size="32.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="operator" prefHeight="39.0" prefWidth="162.0" text="小泽又沐风">
+                                    <font>
+                                        <Font size="32.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </FlowPane>
+                    </children>
+                </FlowPane>
+            </left>
+            <center>
+                <FlowPane alignment="BOTTOM_LEFT" columnHalignment="CENTER" prefHeight="50.0"
+                          BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" text="交班表打印数量">
+                            <font>
+                                <Font size="32.0"/>
+                            </font>
+                            <FlowPane.margin>
+                                <Insets bottom="12.0" left="83.0"/>
+                            </FlowPane.margin>
+                        </Label>
+                        <ComboBox fx:id="shift_schedule_number" prefHeight="48.0" prefWidth="134.0" promptText="1">
+                            <FlowPane.margin>
+                                <Insets bottom="24.0" left="24.0"/>
+                            </FlowPane.margin>
+                        </ComboBox>
+                        <Label text="张">
+                            <font>
+                                <Font size="32.0"/>
+                            </font>
+                            <FlowPane.margin>
+                                <Insets bottom="12.0" left="24.0"/>
+                            </FlowPane.margin>
+                        </Label>
+                    </children>
+                </FlowPane>
+            </center>
+            <right>
+                <FlowPane alignment="CENTER" prefHeight="136.0" prefWidth="642.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button id="blackButton" fx:id="change_shifts_record" mnemonicParsing="false" prefHeight="88.0"
+                                prefWidth="292.0"
+                                stylesheets="@../css/buttonBg.css" text="交班记录" textFill="WHITE">
+                            <font>
+                                <Font size="40.0"/>
+                            </font>
+                        </Button>
+                        <Button id="blueButton" fx:id="change_shifts" onMouseClicked="#change_shifts"
+                                mnemonicParsing="false" prefHeight="88.0" prefWidth="292.0"
+                                stylesheets="@../css/buttonBg.css" text="交班" textFill="WHITE">
+                            <font>
+                                <Font size="40.0"/>
+                            </font>
+                            <FlowPane.margin>
+                                <Insets left="24.0"/>
+                            </FlowPane.margin>
+                        </Button>
+                    </children>
+                </FlowPane>
+            </right>
+        </BorderPane>
+    </bottom>
+</BorderPane>

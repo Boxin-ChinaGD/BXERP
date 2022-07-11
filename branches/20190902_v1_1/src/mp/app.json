@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/details/selectShop/selectShop",
+    "pages/details/myCoupon/myCoupon",
+    "pages/details/myCoupon/details/details",
+    "pages/details/vipCardSn/vipCardSn",
+    "pages/details/bonusShop/bonusShop",
+    "pages/details/coupon/coupon",
+    "pages/details/coupon/details/details",
+    "pages/details/userCenter/userCenter",
+    "pages/details/retailtrade/retailtrade",
+    "pages/details/bonusHistory/bonusHistory",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F2F2F2",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 2000000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wxeb490c6f9b154ef9"
+  ]
+}

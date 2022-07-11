@@ -1,0 +1,1 @@
+-- INSERT INTO T_POS (F_POS_SN,F_ShopID,F_Salt,F_Status) VALUES (POS机的SN码, 所属门店ID, 加盐后的POS机密码,状态：0.可用，1.不可用);     添加POS数据模板。

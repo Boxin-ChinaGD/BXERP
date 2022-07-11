@@ -1,0 +1,58 @@
+<!-- <image class='site-img' data-id="{{item.deviceId}}" src="../../images/bxb.png" catchtap='navmap'></image> -->
+<view class="shopBrand">
+  <image src="{{ vipCardBackgroundImg }}"></image>
+</view>
+<view class="vipCard" style="background: {{ vipCardBackground }}">
+  <view class="compangName" bindtap="selectShop">
+    <text>{{companyInfo.brandName}}</text>
+    <text>⇌</text>
+  </view>
+  <view class="vipCard-head">
+    <image src="../../images/index.svg" class="background"></image>
+    <image src="{{ userInfo.avatarUrl }}" class="userImg"></image>
+    <text>{{ vipInfo.name }}</text>
+  </view>
+</view>
+<view class="vipCardSn-area">
+  <text>付款前出示会员码，以获得积分及优惠</text>
+  <canvas canvas-id="vipCardSn"></canvas>
+  <text>{{vipInfo.vipCardSN}}</text>
+</view>
+<view class="vipBonus">
+  <view class="vipCard-foot">
+    <view bindtap="mybonusRN">
+      <text>{{ vipInfo.bonus }}</text>
+      <text>会员积分 ></text>
+    </view>
+    <view bindtap="myCouponRN">
+      <text>{{couponTotal}}</text>
+      <text>优惠券 ＞</text>
+    </view>
+  </view>
+</view>
+<view class="btn-area">
+  <view>
+    <navigator url="../details/bonusShop/bonusShop">
+      <image src="../../images/points.png"></image>
+      <text>积分商城</text> 
+    </navigator>
+    <navigator url="../details/coupon/coupon">
+      <image src="../../images/bill.png"></image>
+      <text>领券中心</text>
+    </navigator>
+    <navigator url="../details/retailtrade/retailtrade">
+      <image src="../../images/coupon_center.png"></image>
+      <text>当月账单</text>
+    </navigator>
+    <navigator url="../details/bonusHistory/bonusHistory">
+      <image src="../../images/points_info.png"></image>
+      <text>积分明细</text>
+    </navigator>
+  </view>
+  <view>
+    <navigator url="../details/userCenter/userCenter">
+      <image src="../../images/info.png"></image>
+      <text>我的资料</text>
+    </navigator>
+  </view>
+</view>

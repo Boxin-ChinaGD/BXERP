@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.purchasing.ProviderMapper">
+	<resultMap type="com.bx.erp.model.purchasing.Provider" id="providerMap">
+		<result column="F_ID" property="ID" />
+		<result column="F_Name" property="name" />
+		<result column="F_DistrictID" property="districtID" />
+		<result column="F_Address" property="address" />
+		<result column="F_ContactName" property="contactName" />
+		<result column="F_Mobile" property="mobile" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+		<result column="F_UpdateDatetime" property="updateDatetime" />
+	</resultMap>
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="providerMap">
+		{CALL SP_Provider_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{name, mode=IN},
+		#{districtID, mode=IN},
+		#{address, mode=IN},
+		#{contactName, mode=IN},
+		#{mobile, mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveNByFields" statementType="CALLABLE" useCache="false" resultMap="providerMap">
+		{CALL SP_Provider_retrieveNByFields(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{queryKeyword, mode=IN},
+		#{iPageIndex,jdbcType=INTEGER,mode=IN},
+		#{iPageSize,jdbcType=INTEGER, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="providerMap">
+		{CALL SP_Provider_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{name, mode=IN},
+		#{districtID, mode=IN},
+		#{address, mode=IN},
+		#{contactName, mode=IN},
+		#{mobile, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="providerMap">
+		{CALL SP_Provider_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{name, mode=IN},
+		#{districtID, mode=IN},
+		#{address, mode=IN},
+		#{contactName, mode=IN},
+		#{mobile, mode=IN}
+		)}
+	</select>
+
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="providerMap">
+		{CALL SP_Provider_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+
+	<select id="retrieve1" statementType="CALLABLE" useCache="false" resultMap="providerMap">
+		{CALL SP_Provider_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+	<select id="checkUniqueField" statementType="CALLABLE" useCache="false" resultMap="providerMap">
+		{CALL SP_Provider_RetrieveN_CheckUniqueField(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{fieldToCheckUnique,mode=IN},
+		#{uniqueField,mode=IN}
+		)}
+	</select>
+</mapper>

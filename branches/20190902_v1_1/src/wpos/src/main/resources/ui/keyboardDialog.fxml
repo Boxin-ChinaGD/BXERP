@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wpos.allController.KeyBoardDialogController">
+    <center>
+        <Pane BorderPane.alignment="CENTER">
+            <children>
+                <!--英文键盘-->
+                <GridPane fx:id="englishkeyboard" managed="false" prefHeight="336.0" prefWidth="648.0" style="-fx-background-color: #E3F2FD;" vgap="8.0" visible="false">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bq" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="q" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bw" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="w">
+                                    <font>
+                                        <Font size="25.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#be" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="e">
+                                    <font>
+                                        <Font size="28.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#br" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="r">
+                                    <font>
+                                        <Font size="30.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bt" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="t">
+                                    <font>
+                                        <Font size="28.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#by" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="y">
+                                    <font>
+                                        <Font size="28.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bu" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="u">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bi" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="i">
+                                    <font>
+                                        <Font size="28.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bo" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="o">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bp" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="p">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </FlowPane>
+                        <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                            <children>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#ba" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="a" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="28.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bs" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="s">
+                                    <font>
+                                        <Font size="28.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bd" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="d">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bf" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="f">
+                                    <font>
+                                        <Font size="28.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bg" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="g">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bh" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="h">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bj" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="j">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bk" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="k">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bl" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="l">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                            </children>
+                        </FlowPane>
+                        <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                            <children>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="88.0" minWidth="88.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="88.0" stylesheets="@../css/all_fragment.css">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/capitalization.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bz" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="z" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bx" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="x">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bc" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="c">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bv" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="v">
+                                    <font>
+                                        <Font size="28.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bb" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="b">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bn" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="n">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bm" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="m">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" fx:id="en_delete" maxHeight="64.0" maxWidth="88.0" minWidth="88.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="88.0" stylesheets="@../css/all_fragment.css">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets />
+                                    </FlowPane.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/delete.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </FlowPane>
+                        <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                            <children>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="88.0" minHeight="64.0" minWidth="88.0" mnemonicParsing="false" onMouseClicked="#en_num" prefHeight="64.0" prefWidth="88.0" stylesheets="@../css/all_fragment.css" text="123" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="88.0" minHeight="64.0" minWidth="88.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="88.0" stylesheets="@../css/all_fragment.css" text="EN">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="176.0" minWidth="176.0" mnemonicParsing="false" onMouseClicked="#en_space" prefHeight="64.0" prefWidth="176.0" stylesheets="@../css/all_fragment.css">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="12.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/num_space.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#bpoint" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text=".">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="88.0" minWidth="88.0" mnemonicParsing="false" onMouseClicked="#en_symbol" prefHeight="64.0" prefWidth="88.0" stylesheets="@../css/all_fragment.css" text="符号">
+                                    <font>
+                                        <Font size="25.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="88.0" minWidth="88.0" mnemonicParsing="false" onMouseClicked="#en_sure" prefHeight="64.0" prefWidth="88.0" stylesheets="@../css/all_fragment.css" text="确定">
+                                    <font>
+                                        <Font size="25.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets />
+                                    </FlowPane.margin>
+                                </Button>
+                            </children>
+                        </FlowPane>
+                    </children>
+                    <padding>
+                        <Insets bottom="8.0" top="8.0" />
+                    </padding>
+                </GridPane>
+                <!--数字键盘-->
+                <GridPane fx:id="numberkeyboard" alignment="CENTER" hgap="8.0" managed="false" maxHeight="296.0" maxWidth="424.0" minHeight="296.0" minWidth="424.0" prefHeight="296.0" prefWidth="424.0" style="-fx-background-color: #E3F2FD;" vgap="8.0" visible="false">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                    </padding>
+                    <children>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b7" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="7" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b8" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="8" textAlignment="CENTER" GridPane.columnIndex="1">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b9" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="9" textAlignment="CENTER" GridPane.columnIndex="2">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#num_sure" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="确定" textAlignment="CENTER" GridPane.columnIndex="3">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b4" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="4" textAlignment="CENTER" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b5" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="5" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b6" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="6" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#num_symbol" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="符号" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b1" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="1" textAlignment="CENTER" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b2" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="2" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b3" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="3" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#num_en" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="EN" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#num_point" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="." textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                        <Button id="keyboard_key" maxHeight="64.0" maxWidth="96.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#num_space" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="12.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/num_space.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button id="keyboard_key" maxHeight="64.0" maxWidth="96.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#num_delete" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/delete.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="96.0" minHeight="64.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#b0" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="0" textAlignment="CENTER" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </GridPane>
+                <!--符号键盘-->
+                <GridPane fx:id="symbolkeyboard" managed="true" prefHeight="336.0" prefWidth="432.0" style="-fx-background-color: #E3F2FD;" vgap="8.0" visible="true">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <FlowPane alignment="CENTER" columnHalignment="CENTER" prefWrapLength="0.0">
+                            <children>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s1" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="," textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s2" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="." textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s3" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="?" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s4" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="!" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s5" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text=":" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="96.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#symbol_delete" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/delete.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </FlowPane>
+                        <FlowPane alignment="CENTER" columnHalignment="CENTER" prefWrapLength="0.0" GridPane.rowIndex="1">
+                            <children>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s6" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="/" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s7" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="\@" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s8" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="..." textAlignment="CENTER">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s9" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="&quot;" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s10" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text=";" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="96.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#symbol_num" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="123">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </FlowPane>
+                        <FlowPane alignment="CENTER" columnHalignment="CENTER" prefWrapLength="0.0" GridPane.rowIndex="2">
+                            <children>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s11" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="'" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s12" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="~" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s13" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="+" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s14" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="-" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s15" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="=" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="96.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#symbol_space" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/num_space.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </FlowPane>
+                        <FlowPane alignment="CENTER" columnHalignment="CENTER" prefWrapLength="0.0" GridPane.rowIndex="3">
+                            <children>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s16" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="#" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s17" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="\$" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s18" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="\%" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s19" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="&amp;" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" alignment="CENTER" maxHeight="64.0" maxWidth="56.0" minHeight="64.0" minWidth="56.0" mnemonicParsing="false" onMouseClicked="#s20" prefHeight="64.0" prefWidth="56.0" stylesheets="@../css/all_fragment.css" text="*" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets right="8.0" />
+                                    </FlowPane.margin>
+                                </Button>
+                                <Button id="keyboard_key" maxHeight="64.0" maxWidth="96.0" minWidth="96.0" mnemonicParsing="false" onMouseClicked="#symbol_en" prefHeight="64.0" prefWidth="96.0" stylesheets="@../css/all_fragment.css" text="EN">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </FlowPane>
+                    </children>
+                </GridPane>
+            </children>
+        </Pane>
+    </center>
+</BorderPane>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.VipConsumeHistoryMapper">
+	<resultMap id="VIP_ConsumeHistoryMap" type="com.bx.erp.model.VipConsumeHistory">
+		<result property="tradeID" column="F_TradeID" />
+		<result property="datetime" column="F_Datetime" />
+	</resultMap>
+
+</mapper>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.warehousing.InventoryCommodityMapper">
+	<resultMap id="InventoryCommodityMap" type="com.bx.erp.model.warehousing.InventoryCommodity">
+		<result property="ID" column="F_ID" />
+		<result property="inventorySheetID" column="F_InventorySheetID" />
+		<result property="commodityID" column="F_CommodityID" />
+		<result property="commodityName" column="F_CommodityName" />
+		<result property="specification" column="F_Specification" />
+		<result property="barcodeID" column="F_BarcodeID" />
+		<result property="packageUnitID" column="F_PackageUnitID" />
+		<result property="noReal" column="F_NOReal" />
+		<result property="noSystem" column="F_NOSystem" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="updateDatetime" column="F_UpdateDatetime" />
+	</resultMap>
+
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="InventoryCommodityMap">
+		{call SP_Inventory_UpdateCommodity(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{noReal, mode=IN}
+		)}
+	</select>
+
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="InventoryCommodityMap">
+		{CALL SP_InventoryCommodity_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{inventorySheetID, mode=IN},
+		#{commodityID, mode=IN},
+		#{noReal, mode=IN},
+		#{barcodeID, mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="InventoryCommodityMap">
+		{call SP_InventoryCommodity_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{inventorySheetID, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="InventoryCommodityMap">
+		{call SP_InventoryCommodity_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{inventorySheetID, mode=IN},
+		#{commodityID, mode=IN}
+		)}
+	</select>
+	
+	<select id="updateNoReal" statementType="CALLABLE" useCache="false" resultMap="InventoryCommodityMap">
+		{call SP_InventoryCommodity_UpdateNoReal(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{noReal, mode=IN},
+		#{noSystem, mode=IN}
+		)}
+	</select>
+	
+	<select id="checkInventorySheetID" statementType="CALLABLE" useCache="false" resultMap="InventoryCommodityMap">
+		{CALL SPD_InventoryCommodity_CheckInventorySheetID(
+			#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+			#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkCommodity" statementType="CALLABLE" useCache="false" resultMap="InventoryCommodityMap">
+		{CALL SPD_InventoryCommodtiy_CheckCommodity(
+			#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+			#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkNOReal" statementType="CALLABLE" useCache="false" resultMap="InventoryCommodityMap">
+		{CALL SPD_InventoryCommodtiy_CheckNOReal(
+			#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+			#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+</mapper>

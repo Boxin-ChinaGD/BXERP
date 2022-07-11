@@ -1,0 +1,41 @@
+-- 默认积分规则不能删除
+--	SELECT '++++++++++++++++++ Test_SP_BonusRule_Delete.sql ++++++++++++++++++++';
+--	
+--	SELECT '-------------------- Case1:正常删除 -------------------------' AS 'Case1';
+--	
+--	INSERT INTO t_bonusrule (F_VipCardID, F_AmountUnit, F_IncreaseBonus, F_MaxIncreaseBonus, F_InitIncreaseBonus)
+--	VALUES (1, 1, 1, 1, 1);
+--	SET @iID = last_insert_id();
+--	-- 
+--	SET @iErrorCode = 0;
+--	SET @sErrorMsg = '';
+--	SET @bForceDelete = 0;
+--	
+--	CALL SP_BonusRule_Delete(@iErrorCode, @sErrorMsg, @iID, @bForceDelete);
+--	-- 
+--	SELECT @sErrorMsg;
+--	SELECT 1 FROM t_bonusrule WHERE F_ID = @iID;
+--	SELECT IF(found_rows() = 0 AND @iErrorCode = 0, '测试成功', '测试失败') AS 'Case1 Testing Result';
+--	
+--	SELECT '-------------------- Case2:有会员积分大于，不能删除 -------------------------' AS 'Case2';
+--	-- 创建有积分的会员
+--	INSERT INTO t_vip (F_SN, F_Status, F_Mobile, F_Sex, F_Logo, F_ICID, F_Name, F_Email, F_ConsumeTimes, F_ConsumeAmount, F_District, F_Category, F_Birthday, F_Bonus, F_LastConsumeDatetime, F_Remark, F_CreateDatetime, F_UpdateDatetime)
+--	VALUES ('VIP0000f06', 0, '1735f2645590', 1, '1234f561h23', '3208f031998070h16034','Test', 'Testhh@qq.com', 2, 66, '广h州', 1, now(), 6, now(), 'Tehst', now(), now());
+--	SET @iVipID = last_insert_id();
+--	
+--	INSERT INTO t_bonusrule (F_VipCardID, F_AmountUnit, F_IncreaseBonus, F_MaxIncreaseBonus, F_InitIncreaseBonus)
+--	VALUES (1, 1, 1, 1, 1);
+--	SET @iID = last_insert_id();
+--	-- 
+--	SET @iErrorCode = 0;
+--	SET @sErrorMsg = '';
+--	SET @bForceDelete = 0;
+--	
+--	CALL SP_BonusRule_Delete(@iErrorCode, @sErrorMsg, @iID, @bForceDelete);
+--	-- 
+--	SELECT @sErrorMsg;
+--	SELECT 1 FROM t_barcodes WHERE F_ID = @iID;
+--	SELECT IF(found_rows() = 1 AND @iErrorCode = 7 AND @sErrorMsg = '该积分规则正被使用，不能删除', '测试成功', '测试失败') AS 'Case2 Testing Result';
+--	-- 
+--	DELETE FROM t_vip WHERE F_ID = @iVipID;
+--	DELETE FROM t_bonusrule WHERE F_ID = @iID;

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_line_num"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="序号"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/tv_code"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:text="条形码"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:text="商品名称/规格/属性"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/tv_count"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="单位"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/tv_unit"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="数量"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/tv_original_price"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:text="单价（元）"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/tv_sales_price"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:text="折扣（金额）"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/tv_subtotal_price"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:text="折后单价（元）"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/tv_delivery_way"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:text="金额（元）"
+        android:textColor="#ffffff" />
+
+    <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:background="#ff0000" />-->
+
+    <TextView
+        android:id="@+id/remark"
+        style="@style/CommodityInfo"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="备注"
+        android:textColor="#ffffff" />
+</LinearLayout>

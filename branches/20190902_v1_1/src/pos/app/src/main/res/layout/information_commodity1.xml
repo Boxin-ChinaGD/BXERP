@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="@color/text_bgcolor_gray2">
+
+
+    <LinearLayout
+        android:id="@+id/search_linear"
+        android:layout_width="580dp"
+        android:layout_height="66dp"
+        android:orientation="horizontal"
+        android:background="@drawable/textview_rounded_background"
+        android:layout_alignTop="@+id/line"
+        android:layout_alignLeft="@+id/show_client_name"
+        android:layout_alignStart="@+id/show_client_name">
+        <EditText
+            android:id="@+id/scan_barcode_text"
+            android:layout_width="510dp"
+            android:layout_height="66dp"
+            android:background="@null"
+            android:hint=" 扫描条形码（Ctrl+Q）"
+            android:textSize="22sp"/>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/scan_barcode_search"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="34dp"-->
+                <!--android:layout_height="44dp"-->
+                <!--android:src="@drawable/search1"-->
+                <!--android:layout_marginRight="12dp"/>    -->
+        <!--</LinearLayout>-->
+        <ImageView
+            android:id="@+id/scan_barcode_search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/search2"
+            android:padding="16dp"
+            android:background="@color/text_bgcolor_darkgray"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/show_client_phone"
+        android:layout_width="392dp"
+        android:layout_height="66dp"
+        android:background="@drawable/textview_rounded_background"
+        android:layout_below="@id/search_linear"
+        android:layout_toRightOf="@id/show_client_name"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:digits="@string/rule_text_barcode"
+        android:hint=" 会员号（手机号）"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/search_vip"
+        android:layout_width="163dp"
+        android:layout_height="66dp"
+        android:background="@drawable/button_bg_blue"
+        android:layout_below="@id/search_linear"
+        android:layout_toRightOf="@id/show_client_phone"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:text="搜索"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:id="@+id/vipMobile"
+        android:layout_width="269dp"
+        android:layout_height="66dp"
+        android:layout_below="@id/search_linear"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="12dp"
+        android:text="会员手机号："
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/vipBonus"
+        android:layout_width="123dp"
+        android:layout_height="66dp"
+        android:layout_below="@id/search_linear"
+        android:layout_toRightOf="@id/vipMobile"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:gravity="center_vertical"
+        android:text="积分："
+        android:visibility="gone"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_toRightOf="@id/vipBonus"
+        android:id="@+id/return_search_vip"
+        android:layout_width="163dp"
+        android:layout_height="66dp"
+        android:background="@drawable/button_bg_blue"
+        android:layout_below="@id/search_linear"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:text="重置"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:visibility="gone"
+        android:textColor="@color/blue"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="1dp"
+        android:layout_height="144dp"
+        android:layout_toRightOf="@id/search_linear"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@color/text_color_black"
+        android:layout_marginTop="12dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/commodity_quantity"
+        android:layout_alignTop="@id/search_linear"
+        android:layout_alignLeft="@id/list"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="-20dp"
+        android:orientation="horizontal"
+        android:layout_marginRight="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:text="上一单收银信息"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="right"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="支付方式:"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="right"/>
+        <TextView
+            android:id="@+id/last_paymenttype"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="暂无"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="left"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="应收金额:￥"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="right"/>
+        <TextView
+            android:id="@+id/last_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="0.00"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="left"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="实收金额:￥"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="right"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="0.00"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="left"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="找零:￥"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="right"/>
+        <TextView
+            android:id="@+id/last_changemoney"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="0.00"
+            android:textColor="@color/text_color_black"
+            android:textSize="12sp"
+            android:gravity="left"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/list"
+        android:layout_width="170dp"
+        android:layout_height="66dp"
+        android:layout_toRightOf="@id/line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_bg_blue2"
+        android:text="挂单"
+        android:textSize="26sp"
+        android:textColor="#ffffff"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/balance_tv"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_toRightOf="@id/list"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/button_bg_red"
+        android:text="结账"
+        android:textSize="26sp"
+        android:textColor="#ffffff"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/commodity_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="商品数量：0"
+        android:layout_above="@id/list"
+        android:layout_alignLeft="@id/list"
+        android:textColor="@color/text_color_smallblack"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="总计金额"
+        android:layout_above="@id/balance_tv"
+        android:layout_alignLeft="@id/balance_tv"
+        android:textColor="@color/red"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="￥"
+        android:layout_above="@id/balance_tv"
+        android:layout_toLeftOf="@id/total_money"
+        android:textColor="@color/red"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/total_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="60.00"
+        android:layout_above="@id/balance_tv"
+        android:layout_alignRight="@id/balance_tv"
+        android:textColor="@color/red"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>

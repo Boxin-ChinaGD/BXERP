@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="792" prefWidth="880" style="-fx-background-color: #ECEFF1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wpos.allController.ReserveDialogViewController">
+   <top>
+      <Label alignment="TOP_LEFT" text="准备金" textFill="#263238" BorderPane.alignment="TOP_LEFT">
+         <font>
+            <Font name="System Bold" size="56.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets left="24.0" top="24.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <FlowPane alignment="CENTER" prefHeight="88.0" prefWidth="832.0" style="-fx-border-color: #9E9E9E; -fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="24.0" right="24.0" top="24.0" />
+               </BorderPane.margin>
+               <children>
+                  <TextField fx:id="inputNum" prefHeight="69.0" prefWidth="830.0" promptText="输入准备金" style="-fx-background-color: #FFFFFF;">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                     <padding>
+                        <Insets left="16.0" right="16.0" />
+                     </padding>
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </FlowPane>
+         </top>
+         <center>
+            <GridPane hgap="8.0" style="-fx-background-color: #ECEFF1;" vgap="8.0" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <padding>
+                  <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+               </padding>
+               <children>
+                  <Button id="keyboard_key" onMouseClicked="#key7" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="7">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key8" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="8" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key9" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="9" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key100" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="100￥" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="46.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key4" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="4" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key5" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key6" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key50" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="50￥" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key1" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key2" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key3" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="3" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key20" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="20￥" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key0" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="0" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key_point" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="." GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key_delete" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="keyboard_key" onMouseClicked="#key10" mnemonicParsing="false" prefHeight="104.0" prefWidth="202.0" stylesheets="@../css/all_fragment.css" text="10￥" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+         </center>
+         <bottom>
+            <Button onMouseClicked="#sure_click" id="blueButton" mnemonicParsing="false" prefHeight="88.0" prefWidth="302.0" stylesheets="@../css/buttonBg.css" text="确定" textFill="WHITE" BorderPane.alignment="CENTER_RIGHT">
+               <BorderPane.margin>
+                  <Insets bottom="24.0" right="24.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Button>
+         </bottom>
+      </BorderPane>
+   </center>
+</BorderPane>

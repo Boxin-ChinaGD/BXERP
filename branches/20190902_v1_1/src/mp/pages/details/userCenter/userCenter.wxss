@@ -1,0 +1,88 @@
+/* pages/details/userCenter/userCenter.wxss */
+page{
+  background:rgba(248,248,248,1);
+}
+
+button::after{
+  border: none;
+}
+
+.page-body{
+  width: 100%;
+}
+
+.userInfo{
+  font-size: 34rpx;
+}
+
+.userInfo .userInfo-item{
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+  margin-top: 10rpx;
+  padding: 0 30rpx 0 32rpx;
+  background-color: #fff;
+  position: relative;
+}
+
+.userInfo .userInfo-item:first-child{
+  height: 160rpx;
+}
+
+.userInfo .userInfo-item image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: thistle;
+  position: absolute;
+  right: 62rpx;
+}
+
+.userInfo .userInfo-item text{
+  color: #7F7F7F;
+  position: absolute;
+  right: 62rpx;
+}
+
+.userInfo .userInfo-item input{
+  color: #7F7F7F;
+  text-align: right;
+  position: absolute;
+  right: 62rpx;
+}
+
+.userInfo .userInfo-item picker text{
+  top: 40rpx;
+}
+
+.userInfo .userInfo-item picker view{
+  top: 49rpx;
+}
+
+.userInfo .userInfo-item view{
+  height: 20rpx;
+  width: 20rpx;
+  border-top: 4rpx solid #999;
+  border-right: 4rpx solid #999;
+  transform: rotate(45deg);
+  text-align: center;
+  position: absolute;
+  right: 32rpx;
+  margin-top: 4rpx;
+}
+
+.userInfo button{
+  width: 368rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background-color: #07C160;
+  margin-top: 40rpx;
+}
+
+.userInfo .vipName-tips{
+  display: block;
+  font-size: 28rpx;
+  color: red;
+  text-align: center;
+}

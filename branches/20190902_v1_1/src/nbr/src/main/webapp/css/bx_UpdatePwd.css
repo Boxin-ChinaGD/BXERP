@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+       url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+       url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+       url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+       url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+body{
+	font-family: "SourceHanSansCN-Regular";
+	background-color: #1E9FFF;
+}
+
+#firstLoginToUpadtePwdMain{
+	width: auto;
+	height: -webkit-fill-available;
+	overflow: auto;
+}
+.background{
+	width: 520px;
+	background-color: white;
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-left: -260px;
+	margin-bottom: 20px;
+	z-index: 99;
+	border-radius: 20px;
+	padding: 20px 0;
+}
+.title{
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 22px;
+}
+.layui-input{
+	width: 80%;
+}
+.layui-form-label{
+	width: 90px;
+}
+.layui-btn{
+	margin-left: 110px;
+	width: 300px;
+}
+i{
+	color: red;
+}

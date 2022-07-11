@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.layui-form{
+	display: flex;
+    align-items: center;
+
+}
+.layui-form .QRwidth{
+	width: 260px;
+	padding-right: 50px;
+}
+.layui-form button{
+	display: block;
+	color: #fff;
+	margin-left: 8px;
+	background-color: #2196F3;
+	border: 1px solid #eee;
+	
+}
+
+.showQRcode{
+	margin-top:20px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.showQRcode .theQRcode{
+	margin-left:-6%;
+			
+}
+.downloadQRcode{
+	margin-left: 8px;
+	background-color: #2196F3;
+	font-size:14px;
+	color: white;
+	text-align: center;
+	line-height: 36px;
+	border:1px solid #eee;
+	width:100px;
+	height:36px;	
+}

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.VipMapper">
+	<resultMap id="Vip_Map" type="com.bx.erp.model.Vip">
+		<result property="ID" column="F_ID" />
+		<result property="sn" column="F_SN" />
+		<result property="cardID" column="F_CardID" />
+		<result property="mobile" column="F_Mobile" />
+		<result property="localPosSN" column="F_LocalPosSN" />
+		<result property="sex" column="F_Sex" />
+		<result property="logo" column="F_Logo" />
+		<result property="iCID" column="F_ICID" />
+		<result property="name" column="F_Name" />
+		<result property="email" column="F_Email" />
+		<result property="consumeTimes" column="F_ConsumeTimes" />
+		<result property="consumeAmount" column="F_ConsumeAmount" />
+		<result property="district" column="F_District" />
+		<result property="category" column="F_Category" />
+		<result property="birthday" jdbcType="DATE" column="F_Birthday" />
+		<result property="bonus" column="F_Bonus" />
+		<result property="lastConsumeDatetime" column="F_LastConsumeDatetime" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+		<result column="F_UpdateDatetime" property="updateDatetime" />
+		<result property="remark" column="F_Remark" />
+	</resultMap>
+
+	<resultMap id="RetailTrade_Map" type="com.bx.erp.model.RetailTrade">
+		<result property="ID" column="F_ID" />
+		<result property="vipID" column="F_VipID" />
+		<result property="sn" column="F_SN" />
+		<result property="pos_SN" column="F_POS_SN" />
+		<result property="localSN" column="F_LocalSN" />
+		<result property="pos_ID" column="F_POS_ID" />
+		<result property="logo" column="F_Logo" />
+		<result property="saleDatetime" column="F_SaleDatetime" />
+		<result property="staffID" column="F_StaffID" />
+		<result property="paymentType" column="F_PaymentType" />
+		<result property="paymentAccount" column="F_PaymentAccount" />
+		<result property="status" column="F_Status" />
+		<result property="remark" column="F_Remark" />
+		<result property="sourceID" column="F_SourceID" />
+		<result property="syncDatetime" column="F_SyncDatetime" />
+		<result property="amount" column="F_Amount" />
+		<result property="amountCash" column="F_AmountCash" />
+		<result property="amountAlipay" column="F_AmountAlipay" />
+		<result property="amountWeChat" column="F_AmountWeChat" />
+		<result property="amount1" column="F_Amount1" />
+		<result property="amount2" column="F_Amount2" />
+		<result property="amount3" column="F_Amount3" />
+		<result property="amount4" column="F_Amount4" />
+		<result property="amount5" column="F_Amount5" />
+		<result property="smallSheetID" column="F_SmallSheetID" />
+		<result property="aliPayOrderSN" column="F_AliPayOrderSN" />
+		<result property="wxOrderSN" column="F_WxOrderSN" />
+		<result property="wxTradeNO" column="F_WxTradeNO" />
+		<result property="wxRefundNO" column="F_WxRefundNO" />
+		<result property="wxRefundDesc" column="F_WxRefundDesc" />
+		<result property="wxRefundSubMchID" column="F_WxRefundSubMchID" />
+
+	</resultMap>
+
+	<resultMap id="RetailTradeCommodity_Map" type="com.bx.erp.model.RetailTradeCommodity">
+		<result property="ID" column="F_ID" />
+		<result property="tradeID" column="F_TradeID" />
+		<result property="commodityID" column="F_CommodityID" />
+		<result property="barcodeID" column="F_BarcodeID" />
+		<result property="NO" column="F_NO" />
+		<result property="priceOriginal" column="F_PriceOriginal" />
+		<result property="discount" column="F_Discount" />
+		<result property="giftCommodityID" column="F_GiftCommodityID" />
+		<result property="NOCanReturn" column="F_NOCanReturn" />
+		<result property="priceReturn" column="F_PriceReturn" />
+		<result property="priceSpecialOffer" column="F_PriceSpecialOffer" />
+		<result property="priceVIPOriginal" column="F_PriceVIPOriginal" />
+	</resultMap>
+	
+<!-- 	<resultMap type="com.bx.erp.model.wx.card.WxVip" id="WxVip_Map"> -->
+<!-- 		<id column="F_ID" property="ID" /> -->
+<!-- 		<result column="F_VipID" property="vipID" /> -->
+<!-- 		<result column="F_Nickname" property="nickName" /> -->
+<!-- 		<result column="F_Bonus" property="bonus" /> -->
+<!-- 		<result column="F_Balance" property="balance" /> -->
+<!-- 		<result column="F_Sex" property="sex" /> -->
+<!-- 		<result column="F_UserInfo" property="user_info" /> -->
+<!-- 		<result column="F_CustomFieldList" property="custom_field_list" /> -->
+<!-- 		<result column="F_Name" property="name" /> -->
+<!-- 		<result column="F_Value" property="value" /> -->
+<!-- 		<result column="F_UserCardStatus" property="user_card_status" /> -->
+<!-- 		<result column="F_LastUsedDateTime" property="lastUsedDateTime" /> -->
+<!-- 		<result column="F_PublicAccountOpenID" property="publicAccountOpenID" /> -->
+<!-- 		<result column="F_MiniProgramOpenID" property="miniProgramOpenID" /> -->
+<!-- 		<result column="F_UnionID" property="unionID" /> -->
+<!-- 	</resultMap> -->
+	
+<!-- 	<resultMap type="com.bx.erp.model.wx.card.WxVipCardDetail" id="WxVipCardDetail_Map"> -->
+<!-- 		<id column="F_ID" property="ID" /> -->
+<!-- 		<result column="F_WxVipCardID" property="wxVipCardID" /> -->
+<!-- 		<result column="F_Code" property="code" /> -->
+<!-- 		<result column="F_CardID" property="card_id"/> -->
+<!-- 		<result	column="F_BackgroundPicUrl" property="background_pic_url"/> -->
+<!-- 		<result	column="F_OldUserCardCode" property="oldUserCardCode"/> -->
+<!-- 		<result	column="F_IsGiveByFriend" property="isGiveByFriend"/> -->
+<!-- 		<result	column="F_FriendUserName" property="friendUserName"/> -->
+<!-- 		<result	column="F_OuterStr" property="outerStr"/> -->
+<!-- 		<result	column="F_IsRestoreMemberCard" property="isRestoreMemberCard"/> -->
+<!-- 		<result	column="F_UnionId" property="unionId"/> -->
+<!-- 		<result	column="F_MsgType" property="msgType"/> -->
+<!-- 		<result	column="F_Event" property="event"/> -->
+<!-- 		<result	column="F_ToUserName" property="toUserName"/> -->
+<!-- 	</resultMap> -->
+
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_VIP_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{sn, mode=IN},
+		#{cardID, mode=IN},
+		#{mobile, mode=IN},
+		#{localPosSN, mode=IN},
+		#{sex, mode=IN},
+		#{logo, mode=IN},
+		#{iCID, mode=IN},
+		#{name, mode=IN},
+		#{email, mode=IN},
+		#{consumeTimes, mode=IN},
+		#{consumeAmount, mode=IN},
+		#{district, mode=IN},
+		#{category, mode=IN},
+		#{birthday, mode=IN},
+		#{lastConsumeDatetime, mode=IN},
+		#{createDatetime, mode=IN},
+		#{bonus, mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveNByMobileOrVipCardSN" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_VIP_RetrieveNByMobileOrVipCardSN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{vipCardSN, mode=IN},
+		#{mobile, mode=IN},
+		#{iPageIndex,jdbcType=INTEGER,mode=IN},
+		#{iPageSize,jdbcType=INTEGER, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_VIP_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{district, mode=IN},
+		#{category, mode=IN},
+		#{mobile, mode=IN},
+		#{iCID, mode=IN},
+		#{email,mode=IN},
+		#{iPageIndex,jdbcType=INTEGER,mode=IN},
+		#{iPageSize,jdbcType=INTEGER, mode=IN},
+		#{iTotalRecord,jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="retrieve1" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_VIP_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_VIP_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{district, mode=IN},
+		#{category, mode=IN},
+		#{birthday, mode=IN}
+		)}
+	</select>
+
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_VIP_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveNVipConsumeHistory" statementType="CALLABLE" useCache="false" resultMap="RetailTrade_Map, RetailTradeCommodity_Map">
+		{CALL SP_VipConsumeHistory_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,jdbcType=INTEGER,mode=IN},
+		#{startRetailTreadeIDInSQLite,jdbcType=INTEGER,mode=IN},
+		#{bQuerySmallerThanStartID,jdbcType=INTEGER,mode=IN},
+		#{iPageIndex,jdbcType=INTEGER,mode=IN},
+		#{iPageSize,jdbcType=INTEGER, mode=IN},
+		#{iTotalRecord,jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkUniqueField" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_Vip_RetrieveN_CheckUniqueField(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, jdbcType=INTEGER,mode=IN},
+		#{fieldToCheckUnique, jdbcType=INTEGER,mode=IN},
+		#{queryKeyword,jdbcType=VARCHAR,mode=IN}
+		)}
+	</select>
+
+	<select id="checkStatus" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SPD_Vip_CheckStatus(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkPoint" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SPD_Vip_CheckPoint(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkName" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SPD_Vip_CheckName(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="updateBonus" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_Vip_UpdateBonus(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID ,mode=IN},
+		#{staffID, jdbcType=INTEGER, mode=IN},
+		#{amount, jdbcType=INTEGER, mode=IN},
+		#{bonus, jdbcType=INTEGER, mode=IN},
+		#{remarkForBonusHistory, jdbcType=VARCHAR, mode=IN},
+		#{manuallyAdded, jdbcType=INTEGER, mode=IN},
+		#{isIncreaseBonus, jdbcType=INTEGER, mode=IN}
+		)}
+	</select>
+
+	<select id="resetBonus" statementType="CALLABLE" useCache="false" resultMap="Vip_Map">
+		{CALL SP_Vip_ResetBonus(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+<!-- 	<select id="retrieveNByMobileOrCardCode" statementType="CALLABLE" useCache="false" resultMap="Vip_Map, WxVip_Map, WxVipCardDetail_Map"> -->
+<!-- 		{CALL SP_VIP_RetrieveNByMobileOrCardCode( -->
+<!-- 		#{iErrorCode, jdbcType=INTEGER, mode=OUT}, -->
+<!-- 		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}, -->
+<!-- 		#{mobile, mode=IN}, -->
+<!-- 		#{cardCode, mode=IN} -->
+<!-- 		)} -->
+<!-- 	</select> -->
+	
+	
+</mapper>

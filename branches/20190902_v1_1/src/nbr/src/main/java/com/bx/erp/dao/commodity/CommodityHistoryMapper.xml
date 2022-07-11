@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.commodity.CommodityHistoryMapper">
+	<resultMap type="com.bx.erp.model.commodity.CommodityHistory" id="commodityHistoryMap">
+		<result column="F_ID" property="ID" />
+		<result column="F_CommodityID" property="commodityID" />
+		<result column="F_FieldName" property="fieldName" />
+		<result column="F_OldValue" property="oldValue" />
+		<result column="F_NewValue" property="newValue" />
+		<result column="F_StaffID" property="staffID" />
+		<result column="F_BySystem" property="bySystem" />
+		<result column="F_ShopID" property="shopID" />
+		<result column="F_ShopName" property="shopName" />
+		<result column="F_Datetime" property="datetime" />
+	</resultMap>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="commodityHistoryMap">
+		{CALL SP_CommodityHistory_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{queryKeyword, mode=IN},
+		#{commodityID,mode=IN},
+		#{fieldName,mode=IN},
+		#{staffID,mode=IN},
+		#{shopID,mode=IN},
+		#{dtStart,mode=IN},
+		#{dtEnd,mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord,jdbcType=INTEGER,mode=OUT}
+		)}
+	</select>
+
+
+</mapper>

@@ -1,0 +1,44 @@
+package com.bx.erp.test.syncSIT.commodity;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.bx.erp.model.SyncCacheType.EnumSyncCacheType;
+import com.bx.erp.test.syncSIT.BaseSyncSITTestThread2;
+
+public class CommoditySyncThread2 extends BaseSyncSITTestThread2 {
+	protected final String SyncActionRetrieveNExURL = "/commoditySync/retrieveNEx.bx";
+
+	@Override
+	protected String getSyncActionRetrieveNExURL() {
+		return SyncActionRetrieveNExURL;
+	}
+
+	@Override
+	protected EnumSyncCacheType getSyncCacheType() {
+		return EnumSyncCacheType.ESCT_CommoditySyncInfo;
+	}
+
+	@Override
+	protected AtomicInteger getNumberSynchronized() {
+		return aiNumberSynchronized;
+	}
+
+	@Override
+	protected String getSyncActionFeedbackExURL(String objIDs, String errorCode) {
+		String SyncActionFeedbackExURL = "/commoditySync/feedbackEx.bx?sID=" + objIDs + "&errorCode=" + errorCode;
+		return SyncActionFeedbackExURL;
+	}
+
+	// 记录已经同步成功的POS的数目
+	public static AtomicInteger aiNumberSynchronized = new AtomicInteger();
+	
+	public CommoditySyncThread2(MockMvc mvc, HttpSession session) {
+		super(mvc, session);
+		// TODO 自动生成的构造函数存根
+	}
+
+}

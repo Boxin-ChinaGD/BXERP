@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.commodity.CommoditySyncCacheMapper">
+	<resultMap id="CommoditySyncCache_Map" type="com.bx.erp.model.commodity.CommoditySyncCache">
+		<result property="ID" column="F_ID" />
+		<result property="syncData_ID" column="F_SyncData_ID" />
+		<result property="syncSequence" column="F_SyncSequence" />
+		<result property="syncType" column="F_SyncType" />
+		<result property="createDatetime" column="F_CreateDatetime"/>
+	</resultMap>
+	
+	<resultMap id="CommoditySyncCacheDispatcher_Map1" type="com.bx.erp.model.commodity.CommoditySyncCacheDispatcher">
+		<result property="ID" column="F_ID" />
+		<result property="syncCacheID" column="F_SyncCacheID" />
+		<result property="pos_ID" column="F_POS_ID" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+	</resultMap>
+
+	<select id="createEx" statementType="CALLABLE" useCache="false" resultMap="CommoditySyncCache_Map,CommoditySyncCacheDispatcher_Map1">
+		{CALL SP_CommoditySyncCache_POSUpload(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{syncData_ID, mode=IN},
+		#{syncSequence, mode=IN},
+		#{syncType, mode=IN},
+		#{posID, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="CommoditySyncCache_Map">
+		{CALL SP_CommoditySyncCache_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="CommoditySyncCache_Map">
+		{CALL SP_CommoditySyncCache_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{syncData_ID, mode=IN}
+		)}
+	</select>
+	
+	<select id="deleteAll" statementType="CALLABLE" useCache="false" resultMap="CommoditySyncCache_Map">
+		{CALL SP_CommoditySyncCache_DeleteAll(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+		
+</mapper>

@@ -1,0 +1,221 @@
+import org.tmatesoft.svn.core.wc.*
+
+//获取svn版本号，用于生成apk文件时使用
+
+apply plugin: 'com.android.application'
+apply from: '../signing.gradle'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+apply from: './coverage.gradle'
+
+//def getSvnRevision() {
+//    ISVNOptions options = SVNWCUtil.createDefaultOptions(true);
+//    SVNClientManager clientManager = SVNClientManager.newInstance(options);
+//    SVNStatusClient statusClient = clientManager.getStatusClient();
+//    SVNStatus status = statusClient.doStatus(projectDir, false);
+//    SVNRevision revision = status.getCommittedRevision();
+//    return revision.getNumber();
+//}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+    }
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion '28.0.3'
+    flavorDimensions "default" // productFlavors 如果加上渠道, 则需要设置这个
+    defaultConfig {
+        applicationId rootProject.ext.packageName //上传到商米市场时，不同的测试场需要不同的包名
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true // 超过65535个方法分多个dex包
+
+        testInstrumentationRunner 'de.lemona.android.testng.TestNGRunner'
+
+        buildConfigField "String", "env", "\"" + rootProject.ext.env + "\""
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //    ndk {
+        //      //选择要添加的对应cpu类型的.so库。
+        //      abiFilters 'armeabi', 'x86'
+        //    }
+    }
+    compileOptions {
+        sourceCompatibility org.gradle.api.JavaVersion.VERSION_1_7
+        targetCompatibility org.gradle.api.JavaVersion.VERSION_1_7
+    }
+    signingConfigs {
+        release { // TODO 需要在sign.properties修改,签名文件放在keystore文件夹里面.
+			//此处如果有设置签名信息，jenkins运行release任务会优先使用此处的签名配置，而不会使用sign.properties里的签名配置
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // 必须是proguard-android-optimize.txt才能让配置中的删除Log生效
+            buildConfigField "String", "DEBUG_DOMAIN_NAME", "\"\""
+            buildConfigField "String", "RELEASE_DOMAIN_NAME", RELEASE_DOMAIN_NAME
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+//                    outputFileName = "bxb_v${defaultConfig.versionName}_${getSvnRevision()}.apk"
+//                    outputFileName = "bxb_sit_0.0.${getSvnRevision()}.apk"
+                    // 由于在构建APK时需要获取到该文件名进行复制到指定文件夹，在复制后会进行重命名，所以这里的命名就写死。
+                    outputFileName = rootProject.ext.outputFileName
+                }
+            }
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "DEBUG_DOMAIN_NAME", DEBUG_DOMAIN_NAME
+            //  TODO 这两个值在gradle.properties修改
+            buildConfigField "String", "RELEASE_DOMAIN_NAME", RELEASE_DOMAIN_NAME
+            //  TODO 这两个值在gradle.properties修改
+            debuggable true
+        }
+    }
+//    flavorDimensions "default"
+    productFlavors {
+        dev {
+            // dev渠道
+            applicationIdSuffix ".dev" // FIXME 包名添加后缀,注意manifest文件的activity等最好需要填写为完整路径而不是相对路径
+//      versionName getDevVersionName() //修改 versionName 开发中,设置版本名称后面加上git提交数
+//      versionCode gitVersionCode() //获取 git 的 commit 次数
+        }
+        publish {} // 正式渠道
+    }
+    // 把 第三方库(如chuck) 的 support 包版本指定为 supportVersion
+    project.configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support' && !details.requested.name.contains('multidex')) {
+                details.useVersion "$supportVersion"
+            }
+        }
+    }
+
+    greendao {
+        schemaVersion 2
+        daoPackage 'com.bx.erp.model'
+        targetGenDir 'src/main/java'
+//    generateTests
+//    targetGenDirTest  'src/androidTest/java'
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+ext {
+
+}
+
+dependencies {
+//    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs')
+//必须将selenium-server-standalone-2.49.0.jar内的GOOGLE GSON文件夹删除！
+
+//    compile files('libs/core-3.1.0.jar')
+//    compile files('libs/java-client-3.3.0.jar')
+//    compile files('libs/android-logging-log4j-1.0.3.jar')
+//    compile files('libs/log4j-1.2.17.jar')
+//    compile files('libs/selenium-server-standalone-2.49.0.jar')
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation("com.android.support.test:runner:1.0.1", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation "com.android.support:multidex:$multidexVersion"
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+    // butterknife
+    implementation "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    // dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    // okhttp
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+    // http chuck 拦截
+    debugImplementation "com.readystatesoftware.chuck:library:$chuckVersion"
+    releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuckVersion"
+    //    preproductionImplementation "com.readystatesoftware.chuck:library-no-op:$chuckVersion"
+    // gson
+    implementation("com.google.code.gson:gson:$gsonVersion")
+    // glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation "jp.wasabeef:glide-transformations:$glideTransformationsVersion"
+    // eventbus
+    implementation "org.greenrobot:eventbus:$eventBusVersion"
+    // stetho
+    debugImplementation "com.facebook.stetho:stetho:$stethoVersion"
+    debugImplementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+    //disklrucache
+    //  implementation "com.jakewharton:disklrucache:$diskLruCacheVersion"
+    implementation "com.github.SilenceDut:TaskScheduler:$taskVersion"
+    implementation "org.greenrobot:greendao:$greendaoVersion"
+    implementation "org.greenrobot:greendao-generator:$greendaoVersion"
+//    compile 'org.testng:testng:6.8.21'
+    implementation 'com.sunmi:sunmiui:latest.release'
+//    compile files('libs/promotionModel.jar')
+    //   compile files('libs/ErrorCode.jar')
+//    compile files('libs/StringUitl.jar')
+    implementation 'com.github.gittjy:LoadingDialog:1.0.2'
+
+    implementation 'com.google.android.gms:play-services-appindexing:8.4.0'
+    implementation files('libs/java-client-3.3.0.jar')
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion", {
+        exclude group: 'com.google.code.gson'
+        exclude group: 'com.squareup.okhttp3'
+    })
+    // 微信支付api依赖
+    implementation "com.github.wxpay:WXPay-SDK-Java:0.0.3"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    implementation 'com.sunmi:DS_Lib:1.0.11'
+    implementation 'com.alibaba:fastjson:1.1.67.android'
+
+    implementation 'com.mj:dynamicpermission:1.0.0'
+
+    // poi ：读取Excel数据
+    implementation 'com.fasterxml:aalto-xml:1.1.0'
+    implementation "org.apache.poi:poi:3.17"
+    implementation "org.apache.poi:poi-ooxml:3.17"
+
+    implementation 'org.apache.mina:mina-core:2.1.3'
+
+    // TODO 在浏览器查看sqlite数据库https://www.jianshu.com/p/4c9461eb0e27
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
+}
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}

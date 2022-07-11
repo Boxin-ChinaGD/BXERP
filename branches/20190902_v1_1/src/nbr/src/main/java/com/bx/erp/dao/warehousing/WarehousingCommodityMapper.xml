@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.warehousing.WarehousingCommodityMapper">
+	<resultMap id="WarehousingCommodityMap" type="com.bx.erp.model.warehousing.WarehousingCommodity">
+		<result property="ID" column="F_ID" />
+		<result property="warehousingID" column="F_WarehousingID" />
+		<result property="commodityID" column="F_CommodityID" />
+		<result property="NO" column="F_NO" />
+		<result property="packageUnitID" column="F_PackageUnitID" />
+		<result property="commodityName" column="F_CommodityName" />
+		<result property="barcodeID" column="F_BarcodeID" />
+		<result property="price" column="F_Price" />
+		<result property="amount" column="F_Amount" />
+		<result property="productionDatetime" column="F_ProductionDatetime" />
+		<result property="shelfLife" column="F_ShelfLife" />
+		<result property="expireDatetime" column="F_ExpireDatetime" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="updateDatetime" column="F_UpdateDatetime" />
+		<result property="noSalable" column="F_NOSalable" />
+	</resultMap>
+
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="WarehousingCommodityMap">
+		{CALL SP_WarehousingCommodity_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{warehousingID, mode=IN},
+		#{commodityID, mode=IN},
+		#{NO, mode=IN},
+		#{barcodeID, mode=IN},
+		#{price, mode=IN},
+		#{amount, mode=IN},
+		#{shelfLife, mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="WarehousingCommodityMap">
+		{CALL SP_WarehousingCommodity_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{warehousingID, mode=IN},
+		#{iPageIndex,mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="WarehousingCommodityMap">
+		{CALL SP_WarehousingCommodity_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{warehousingID, mode=IN},
+		#{commodityID, mode=IN},
+		#{price, mode=IN},
+		#{NO, mode=IN},
+		#{amount, mode=IN}
+		)}
+	</select>
+	
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="WarehousingCommodityMap">
+		{CALL SP_WarehousingCommodity_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{warehousingID, mode=IN},
+		#{commodityID, mode=IN}
+		)}
+	</select>
+
+</mapper>

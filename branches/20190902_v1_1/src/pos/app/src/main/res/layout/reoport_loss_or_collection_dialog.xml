@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+    <!--width:0.57 height:0.2-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/remove_commodity"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_black"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:text="移除商品"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="12dp"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_blue2"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:text="添加到收藏夹"
+            android:layout_marginRight="8dp" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_green"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:text="以当前数量报损"
+            android:layout_marginRight="12dp" />
+        
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:visibility="invisible">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前商品库存:"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:textSize="26sp"
+            android:textColor="@color/text_color_smallblack"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:textSize="26sp"
+            android:textColor="@color/text_color_smallblack"
+            android:text="0"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="26sp"
+            android:textColor="@color/text_color_smallblack"
+            android:text=" 件"/>
+
+    </LinearLayout>
+    
+</LinearLayout>

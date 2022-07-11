@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.commodity.CommodityMapper">
+	<resultMap type="com.bx.erp.model.commodity.Commodity" id="commodityMap">
+		<id column="F_ID" property="ID" />
+		<result column="F_Status" property="status" />
+		<result column="F_Name" property="name" />
+		<result column="F_ShortName" property="shortName" />
+		<result column="F_Specification" property="specification" />
+		<result column="F_PackageUnitID" property="packageUnitID" />
+		<result column="F_PurchasingUnit" property="purchasingUnit" />
+		<result column="F_BrandID" property="brandID" />
+		<result column="F_CategoryID" property="categoryID" />
+		<result column="F_MnemonicCode" property="mnemonicCode" />
+		<result column="F_PricingType" property="pricingType" />
+		<!-- <result column="F_PricePurchase" property="pricePurchase" /> -->
+<!-- 		<result column="F_LatestPricePurchase" property="latestPricePurchase" /> -->
+<!-- 		<result column="F_PriceRetail" property="priceRetail" /> -->
+		<result column="F_PriceVIP" property="priceVIP" />
+		<result column="F_PriceWholesale" property="priceWholesale" />
+		<result column="F_CanChangePrice" property="canChangePrice" />
+		<result column="F_RuleOfPoint" property="ruleOfPoint" />
+		<result column="F_Picture" property="picture" />
+		<result column="F_ShelfLife" property="shelfLife" />
+		<result column="F_ReturnDays" property="returnDays" />
+		<result column="F_CreateDate" property="createDate" />
+		<result column="F_PurchaseFlag" property="purchaseFlag" />
+		<result column="F_RefCommodityID" property="refCommodityID" />
+		<result column="F_RefCommodityMultiple" property="refCommodityMultiple" />
+		<result column="F_Tag" property="tag" />
+<!-- 		做sp返回值用：commodityMapper.retrieveInventory,查询库存 -->
+		<result column="F_NO" property="NO" />
+		<result column="F_Type" property="type" />
+<!-- 		<result column="F_NOStart" property="nOStart" /> -->
+<!-- 		<result column="F_PurchasingPriceStart" property="purchasingPriceStart" /> -->
+		<result column="F_StartValueRemark" property="startValueRemark" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+		<result column="F_UpdateDatetime" property="updateDatetime" />
+		<result column="F_PropertyValue1" property="propertyValue1" />
+		<result column="F_PropertyValue2" property="propertyValue2" />
+		<result column="F_PropertyValue3" property="propertyValue3" />
+		<result column="F_PropertyValue4" property="propertyValue4" />
+<!-- 		<result column="F_CurrentWarehousingID" property="currentWarehousingID" /> -->
+		<result column="brandName" property="brandName" />
+		<result column="categoryName" property="categoryName" />
+	</resultMap>
+
+	<resultMap type="com.bx.erp.model.Barcodes" id="BarcodesMap">
+		<id column="F_ID" property="ID" />
+		<result column="F_CommodityID" property="commodityID" />
+		<result column="F_Barcode" property="barcode" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+		<result column="F_UpdateDatetime" property="updateDatetime" />
+	</resultMap>
+
+	<resultMap type="com.bx.erp.model.BarcodesSyncCache" id="BarcodesSyncCacheMap">
+		<id column="F_ID" property="ID" />
+		<result column="F_SyncData_ID" property="syncData_ID" />
+		<result column="F_SyncType" property="syncType" />
+		<result column="F_SyncSequence" property="syncSequence" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+	</resultMap>
+
+	<resultMap id="WarehousingMap" type="com.bx.erp.model.warehousing.Warehousing">
+		<id property="ID" column="F_ID" />
+		<result property="status" column="F_Status" />
+		<result property="providerID" column="F_ProviderID" />
+		<result property="warehouseID" column="F_WarehouseID" />
+		<result property="staffID" column="F_StaffID" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="purchasingOrderID" column="F_PurchasingOrderID" />
+		<result property="updateDatetime" column="F_UpdateDatetime" />
+		<result property="approverID" column="F_ApproverID" />
+		<result property="sn" column="F_SN" />
+	</resultMap>
+
+	<resultMap id="WarehousingCommodityMap," type="com.bx.erp.model.warehousing.WarehousingCommodity">
+		<result property="ID" column="F_ID" />
+		<result property="warehousingID" column="F_WarehousingID" />
+		<result property="commodityID" column="F_CommodityID" />
+		<result property="NO" column="F_NO" />
+		<result property="packageUnitID" column="F_PackageUnitID" />
+		<result property="commodityName" column="F_CommodityName" />
+		<result property="barcodeID" column="F_BarcodeID" />
+		<result property="price" column="F_Price" />
+		<result property="amount" column="F_Amount" />
+		<result property="productionDatetime" column="F_ProductionDatetime" />
+		<result property="shelfLife" column="F_ShelfLife" />
+		<result property="expireDatetime" column="F_ExpireDatetime" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="updateDatetime" column="F_UpdateDatetime" />
+		<result property="noSalable" column="F_NOSalable" />
+	</resultMap>
+	
+	<resultMap type="com.bx.erp.model.commodity.SubCommodity" id="subCommodityMap_C">
+		<result column="F_ID" property="ID" />
+		<result column="F_CommodityID" property="commodityID" />
+		<result column="F_SubCommodityID" property="subCommodityID" />
+		<result column="F_SubCommodityNO" property="subCommodityNO" />
+		<result column="F_Price" property="price" />
+		<result column="F_CreateDatetime" property="createDatetime" />
+		<result column="F_UpdateDatetime" property="updateDatetime" />
+	</resultMap>
+	
+	<resultMap id="unSalableCommMessageMap" type="com.bx.erp.model.message.Message">
+		<id property="ID" column="F_ID" />
+		<result property="categoryID" column="F_CategoryID" />
+		<result property="isRead" column="F_IsRead" />
+		<result property="parameter" column="F_Parameter" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="senderID" column="F_SenderID" />
+		<result property="receiverID" column="F_ReceiverID" />
+		<result property="updateDatetime" column="F_UpdateDatetime"/>
+		<result property="companyID"  column="F_CompanyID"/>
+		<result property="status"  column="F_Status"/>
+	</resultMap>
+
+	<select id="createSimpleEx" statementType="CALLABLE" useCache="false" resultMap="commodityMap, BarcodesMap, BarcodesSyncCacheMap, WarehousingMap, WarehousingCommodityMap, commodityMap">
+		{call SP_Commodity_CreateSimple(
+		#{iErrorCode, jdbcType=INTEGER,mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{status,mode=IN},
+		#{name,mode=IN},
+		#{shortName,mode=IN},
+		#{specification,mode=IN},
+		#{packageUnitID,mode=IN},
+		#{purchasingUnit,mode=IN},
+		#{brandID,mode=IN},
+		#{categoryID,mode=IN},
+		#{mnemonicCode,mode=IN},
+		#{pricingType,mode=IN},
+<!-- 		#{latestPricePurchase,mode=IN}, -->
+<!-- 		#{priceRetail,mode=IN}, -->
+		#{priceVIP,mode=IN},
+		#{priceWholesale,mode=IN},
+		#{canChangePrice,mode=IN},
+		#{ruleOfPoint,mode=IN},
+		#{picture,mode=IN},
+		#{shelfLife,mode=IN},
+		#{returnDays,mode=IN},
+		#{purchaseFlag,mode=IN},
+		#{tag,mode=IN},
+		#{nOStart,mode=IN},
+		#{purchasingPriceStart,mode=IN},
+		#{startValueRemark,mode=IN},
+		#{operatorStaffID,mode=IN},
+		#{barcodes,mode=IN}, <!-- barcode -->
+		#{propertyValue1,mode=IN},
+		#{propertyValue2,mode=IN},
+		#{propertyValue3,mode=IN},
+		#{propertyValue4,mode=IN},
+		#{syncSequence,mode=IN}
+		)}
+	</select>
+	
+	<select id="createMultiPackagingEx" statementType="CALLABLE" useCache="false" resultMap="commodityMap, BarcodesMap, BarcodesSyncCacheMap">
+		{call SP_Commodity_CreateMultiPackaging(
+			#{iErrorCode, jdbcType=INTEGER,mode=OUT},
+			#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+			#{status,mode=IN},
+			#{name,mode=IN},
+			#{shortName,mode=IN},
+			#{specification,mode=IN},
+			#{packageUnitID,mode=IN},
+			#{purchasingUnit,mode=IN},
+			#{brandID,mode=IN},
+			#{categoryID,mode=IN},
+			#{mnemonicCode,mode=IN},
+			#{pricingType,mode=IN},
+<!-- 			#{latestPricePurchase,mode=IN}, -->
+<!-- 			#{priceRetail,mode=IN}, -->
+			#{priceVIP,mode=IN},
+			#{priceWholesale,mode=IN},
+			#{canChangePrice,mode=IN},
+			#{ruleOfPoint,mode=IN},
+			#{shelfLife,mode=IN},
+			#{returnDays,mode=IN},
+			#{purchaseFlag,mode=IN},
+			#{refCommodityID,mode=IN},
+			#{refCommodityMultiple,mode=IN},
+			#{tag,mode=IN},
+			#{operatorStaffID,mode=IN}, <!-- operatorStaffID -->
+			#{barcodes,mode=IN}, <!-- barcode -->
+			#{propertyValue1,mode=IN},
+			#{propertyValue2,mode=IN},
+			#{propertyValue3,mode=IN},
+			#{propertyValue4,mode=IN},
+			#{syncSequence,mode=IN} <!-- syncSequence -->
+			)}
+	</select>
+	
+	<select id="createCombinationEx" statementType="CALLABLE" useCache="false" resultMap="commodityMap, BarcodesMap, BarcodesSyncCacheMap">
+		{call SP_Commodity_CreateCombination(
+		#{iErrorCode, jdbcType=INTEGER,mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{status,mode=IN},
+		#{name,mode=IN},
+		#{shortName,mode=IN},
+		#{specification,mode=IN},
+		#{packageUnitID,mode=IN},
+		#{purchasingUnit,mode=IN},
+		#{brandID,mode=IN},
+		#{categoryID,mode=IN},
+		#{mnemonicCode,mode=IN},
+		#{pricingType,mode=IN},
+<!-- 		#{latestPricePurchase,mode=IN}, -->
+<!-- 		#{priceRetail,mode=IN}, -->
+		#{priceVIP,mode=IN},
+		#{priceWholesale,mode=IN},
+		#{canChangePrice,mode=IN},
+		#{picture,mode=IN},
+		#{returnDays,mode=IN},
+		#{tag,mode=IN},
+		#{operatorStaffID,mode=IN}, <!-- operatorStaffID -->
+		#{barcodes,mode=IN}, <!-- barcode -->
+		#{propertyValue1,mode=IN},
+		#{propertyValue2,mode=IN},
+		#{propertyValue3,mode=IN},
+		#{propertyValue4,mode=IN},
+		#{syncSequence,mode=IN} <!-- syncSequence -->
+		)}
+	</select>
+	
+	<select id="createServiceEx" statementType="CALLABLE" useCache="false" resultMap="commodityMap, BarcodesMap, BarcodesSyncCacheMap">
+		{call SP_Commodity_CreateService(
+			#{iErrorCode, jdbcType=INTEGER,mode=OUT},
+			#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+			#{status,mode=IN},
+			#{name,mode=IN},
+			#{shortName,mode=IN},
+			#{specification,mode=IN},
+			#{packageUnitID,mode=IN},
+			#{purchasingUnit,mode=IN},
+			#{brandID,mode=IN},
+			#{categoryID,mode=IN},
+			#{mnemonicCode,mode=IN},
+			#{pricingType,mode=IN},
+<!-- 			#{latestPricePurchase,mode=IN}, -->
+<!-- 			#{priceRetail,mode=IN}, -->
+			#{priceVIP,mode=IN},
+			#{priceWholesale,mode=IN},
+			#{canChangePrice,mode=IN},
+			#{ruleOfPoint,mode=IN},
+			#{picture,mode=IN},
+			#{shelfLife,mode=IN},
+			#{returnDays,mode=IN},
+			#{purchaseFlag,mode=IN},
+			#{tag,mode=IN},
+			#{operatorStaffID,mode=IN}, <!-- operatorStaffID -->
+			#{barcodes,mode=IN}, <!-- barcode -->
+			#{propertyValue1,mode=IN},
+			#{propertyValue2,mode=IN},
+			#{propertyValue3,mode=IN},
+			#{propertyValue4,mode=IN},
+			#{syncSequence,mode=IN} <!-- syncSequence -->
+			)}
+	</select>
+
+	<select id="retrieveNByFields" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_RetrieveNByFields(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{type,mode=IN},
+		#{barcodes,mode=IN},
+		#{iPageIndex,jdbcType=INTEGER,mode=IN},
+		#{iPageSize,jdbcType=INTEGER, mode=IN},
+		#{iTotalRecord,
+		jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="deleteSimple" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_DeleteSimple(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{operatorStaffID, mode=IN}
+		)}
+	</select>
+
+	<select id="deleteCombination" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_DeleteCombination(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN},
+		#{operatorStaffID,mode=IN}
+		)}
+	</select>
+
+	<select id="deleteMultiPackaging" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_DeleteMultiPackaging(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN},
+		#{operatorStaffID,mode=IN}
+		)}
+	</select>
+
+	<select id="deleteService" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_DeleteService(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN},
+		#{operatorStaffID,mode=IN}
+		)}
+	</select>
+
+	<select id="retrieve1Ex" statementType="CALLABLE" useCache="false" resultMap="commodityMap,subCommodityMap_C">
+		{CALL SP_Commodity_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN},
+		#{includeDeleted,mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveInventory" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_RetrieveInventory(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN},
+		#{shopID,mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_RetrieveN(
+		#{iErrorCode,jdbcType=INTEGER,mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{status, mode=IN},
+		#{NO, mode=IN},
+		#{categoryID,mode=IN},
+		#{brandID, mode=IN},
+		#{type, mode=IN},
+		#{date1, mode=IN},
+		#{date2, mode=IN},
+		#{queryKeyword, mode=IN},
+		#{iPageIndex, jdbcType=INTEGER, mode=IN},
+		#{iPageSize, jdbcType=INTEGER, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER,
+		mode=OUT}
+		)}
+	</select>
+
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{call SP_Commodity_Update(
+		#{iErrorCode, jdbcType=INTEGER,mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{name, mode=IN},
+		#{shortName,mode=IN},
+		#{specification,mode=IN},
+		#{packageUnitID, mode=IN},
+		#{brandID,mode=IN},
+		#{categoryID, mode=IN},
+		#{mnemonicCode, mode=IN},
+		#{pricingType, mode=IN},
+		#{priceVIP,mode=IN},
+		#{priceWholesale, mode=IN},
+		#{canChangePrice,mode=IN},
+		#{ruleOfPoint, mode=IN},
+		#{picture,mode=IN},
+		#{shelfLife,mode=IN},
+		#{returnDays,mode=IN},
+		#{purchaseFlag,mode=IN},
+		<!-- #{refCommodityID,mode=IN}, -->
+		#{refCommodityMultiple, mode=IN},
+		#{tag, mode=IN},
+		<!-- #{type,mode=IN}, -->
+		#{operatorStaffID,mode=IN},
+		#{startValueRemark,mode=IN},
+		#{propertyValue1,mode=IN},
+		#{propertyValue2,mode=IN},
+		#{propertyValue3,mode=IN},
+		#{propertyValue4,mode=IN},
+		#{shopID,mode=IN}
+		)}
+	</select>
+
+	<select id="updatePrice" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_UpdatePrice(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{operatorStaffID,mode=IN},
+		#{priceRetail,mode=IN},
+		<!-- #{pricePurchase,mode=IN}, -->
+		#{latestPricePurchase,mode=IN},
+		#{shopID,mode=IN}
+		)}
+	</select>
+
+	<select id="retrieveNMultiPackageCommodity" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_RetrieveNMultiPackageCommodity(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN},
+		#{iPageIndex,jdbcType=INTEGER,mode=IN},
+		#{iPageSize,jdbcType=INTEGER,mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkDependency" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_CheckDependency(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN}
+		)}
+	</select>
+
+	<select id="checkUniqueField" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_RetrieveN_CheckUniqueField(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN},
+		#{fieldToCheckUnique,mode=IN},
+		#{uniqueField,mode=IN}
+		)}
+	</select>
+
+	<select id="updatePurchasingUnit" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SP_Commodity_UpdatePurchasingUnit(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID,mode=IN},
+		#{purchasingUnit,mode=IN}
+		)}
+	</select>
+
+	<select id="checkProvider" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckProvider(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkSubCommodity" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckSubCommodity(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkPurchasingOrder" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckPurchasingOrder(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkBrandID" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckBrandID(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkCategoryID" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckCategoryID(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkInventory" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckInventory(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkReturnCommoditySheet" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckReturnCommoditySheet(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkStatus" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckStatus(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkType" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckType(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+
+	<select id="checkWarehousing" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckWarehousing(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkNO" statementType="CALLABLE" useCache="false" resultMap="commodityMap">
+		{CALL SPD_Commodity_CheckNO(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	
+	<select id="retrieveNUnsalableCommodityEx" statementType="CALLABLE" useCache="false" resultMap="commodityMap, unSalableCommMessageMap">
+		{CALL SP_UnsalableCommodity_RetrieveN(
+		#{iErrorCode,jdbcType=INTEGER,mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{date1, mode=IN},
+		#{date2, mode=IN},
+		#{messageIsRead, mode=IN},
+		#{messageParameter, mode=IN},
+		#{messageCategoryID, mode=IN},
+		#{companyID, mode=IN},
+		#{messageSenderID, mode=IN},
+		#{messageReceiverID, mode=IN}
+		)}
+	</select>
+</mapper>

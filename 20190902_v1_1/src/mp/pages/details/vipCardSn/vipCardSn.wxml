@@ -1,9 +1,0 @@
-<!--pages/details/vipCardSn/vipCardSn.wxml-->
-<view class="container">
-  <view class="page-body">
-    <view class="vipCardSn-area">
-      <text>付款前出示会员码，以获得积分及优惠</text>
-      <canvas canvas-id="largeVipCardSn"></canvas>
-    </view>
-  </view>
-</view>

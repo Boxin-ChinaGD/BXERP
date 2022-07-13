@@ -146,8 +146,14 @@ public class StaffLoginHttpEvent extends BaseHttpEvent {
             s.setSalt(md5);
             //...
             if (s.getRoleID() != Constants.preSale_Role_ID) {
-                BaseModel bm = staffPresenter.createObjectSync(BaseSQLiteBO.INVALID_CASE_ID, s);
-                log.info("登录后更新的staff：" + bm);
+                // hibernate表如果有这个staff数据，又执行create会报错，所以应该先判断是否已经有这个staff数据了
+                BaseModel bmR1 = staffPresenter.retrieve1ObjectSync(BaseSQLiteBO.INVALID_CASE_ID, s);
+                if(bmR1 == null) {
+                    BaseModel bm = staffPresenter.createObjectSync(BaseSQLiteBO.INVALID_CASE_ID, s);
+                    log.info("登录后更新的staff：" + bm);
+                } else {
+                    staffPresenter.updateObjectSync(BaseSQLiteBO.INVALID_CASE_ID, s);
+                }
             }
             if (lastErrorCode == ErrorInfo.EnumErrorCode.EC_NoError) {
                 Constants.setCurrentStaff(s);

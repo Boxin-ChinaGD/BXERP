@@ -8,7 +8,7 @@ import wpos.model.PurchasingOrder;
 
 import java.util.List;
 
-// 测试代码使用到本类，但功能代码没有使用
+
 @Component("purchasingOrderSQLiteBO")
 public class PurchasingOrderSQLiteBO extends BaseSQLiteBO {
     public PurchasingOrderSQLiteBO(BaseSQLiteEvent sEvent, BaseHttpEvent hEvent) {

@@ -15,13 +15,13 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class ImgUtil {
+
     /**
-     * 以时间戳命名将bitmap写入文件
-     *
-//     * @param bitmap
+     * 浠ユ椂闂存埑鍛藉悕灏哹itmap鍐欏叆鏂囦欢
+     * @param imageUri
      */
 //    public static void writeFileByBitmap2(Bitmap bitmap) {
-//        String path = Environment.getExternalStorageDirectory().getAbsolutePath();//手机设置的存储位置
+//        String path = Environment.getExternalStorageDirectory().getAbsolutePath();//锟街伙拷锟斤拷锟矫的存储位锟斤拷
 //        File file = new File(path);
 //        File imageFile = new File(file, System.currentTimeMillis() + ".png");
 //

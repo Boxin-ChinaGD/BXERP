@@ -292,6 +292,12 @@
 			<version>3.141.59</version>
 			<scope>test</scope>
 		</dependency>
+<!-- 		jenkins build war包缺少 commons-pool -->
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.5.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>

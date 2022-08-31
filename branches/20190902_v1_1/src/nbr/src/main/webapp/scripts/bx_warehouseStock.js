@@ -101,7 +101,7 @@ layui.use(['element', 'layer', 'form', 'table', 'laydate'], function () {
 					}
 				},
 				{
-					field: 'latestPricePurchase', title: '最近采购价', width: 118, align: 'center', event: "detail",
+					field: 'latestPricePurchase', title: '最近进货价', width: 118, align: 'center', event: "detail",
 					templet: function (data) {
 						if (data.commodity.listSlave2[0].latestPricePurchase == -1) {
 							return '';
@@ -121,6 +121,12 @@ layui.use(['element', 'layer', 'form', 'table', 'laydate'], function () {
 					field: 'priceVIP', title: '会员价', width: 80, align: 'center', event: "detail",
 					templet: function (data) {
 						return data.commodity.priceVIP.toFixed(2);
+					}
+				},
+				{
+					field: 'NO', title: '库存', width: 80, align: 'center', event: "detail",
+					templet: function (data) {
+						return data.commodity.listSlave2[0].NO;
 					}
 				}
 			]
@@ -225,7 +231,7 @@ layui.use(['element', 'layer', 'form', 'table', 'laydate'], function () {
 			"priceVIP": commodity.priceVIP.toFixed(2),
 			"providerName": providerName,
 			"priceWholesale": commodity.priceWholesale.toFixed(2),
-			"NO": commodity.NO,
+//			"NO": commodity.listSlave2[0].NO,
 			"shelfLife": commodity.shelfLife,
 		});
 		$("#otherBarcodesList").html("");
@@ -240,10 +246,10 @@ layui.use(['element', 'layer', 'form', 'table', 'laydate'], function () {
 		//获取多单位
 		$("#packageUnits div:first").html("<h5>多包装基本单位&nbsp;&nbsp; <span>" + commodity.packageUnitName + "</span></h5>");
 		$("#packageUnits .multiPackageThead").html('<th style="min-width: 48px;">类别</th><th>' + commodity.packageUnitName + '</th>');
-		$("#packageUnits .multiPackagePriceRetail").html('<td>零售价</td><td>' + commodity.priceRetail.toFixed(2) + '</td>');
+		$("#packageUnits .multiPackagePriceRetail").html('<td>零售价</td><td>' + commodity.listSlave2[0].priceRetail.toFixed(2) + '</td>');
 		$("#packageUnits .multiPackagePriceVIP").html('<td>会员价</td><td>' + commodity.priceVIP.toFixed(2) + '</td>');
 		$("#packageUnits .multiPackagePriceWholesale").html('<td>批发价</td><td>' + commodity.priceWholesale.toFixed(2) + '</td>');
-		$("#packageUnits .multiPackageNO").html('<td>商品库存</td><td>' + commodity.NO + '</td>');
+		$("#packageUnits .multiPackageNO").html('<td>商品库存</td><td>' + commodity.listSlave2[0].NO + '</td>');
 		$("#packageUnits .multiPackageBarcode").html('<td>条形码</td><td>' + commodity.barcodes + '</td>');
 		$("#packageUnits .multiPackageCommName").html('<td>商品名称</td><td>' + commodity.name + '</td>');
 		for (var i = 0; i < listMultiPackageCommodity.length; i++) {
@@ -251,10 +257,10 @@ layui.use(['element', 'layer', 'form', 'table', 'laydate'], function () {
 			$("#packageUnits div:first").append("<h5><span style='color: #888888;'>副单位" + (i + 1) + " </span> "
 				+ d.packageUnitName + " <span> = &nbsp;" + d.refCommodityMultiple + " " + commodity.packageUnitName + "</span></h5>");
 			$("#packageUnits .multiPackageThead").append('<th>' + d.packageUnitName + '</th>');
-			$("#packageUnits .multiPackagePriceRetail").append('<td>' + d.priceRetail.toFixed(2) + '</td>');
+			$("#packageUnits .multiPackagePriceRetail").append('<td>' + d.listSlave2[0].priceRetail.toFixed(2) + '</td>');
 			$("#packageUnits .multiPackagePriceVIP").append('<td>' + d.priceVIP.toFixed(2) + '</td>');
 			$("#packageUnits .multiPackagePriceWholesale").append('<td>' + d.priceWholesale.toFixed(2) + '</td>');
-			$("#packageUnits .multiPackageNO").append('<td>' + d.NO + '</td>');
+			$("#packageUnits .multiPackageNO").append('<td>' + d.listSlave2[0].NO + '</td>');
 			$("#packageUnits .multiPackageBarcode").append('<td>' + d.barcodes + '</td>');
 			$("#packageUnits .multiPackageCommName").append('<td>' + d.name + '</td>');
 		}

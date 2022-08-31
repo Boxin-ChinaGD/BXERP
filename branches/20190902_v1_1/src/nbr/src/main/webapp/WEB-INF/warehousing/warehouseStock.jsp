@@ -238,15 +238,16 @@
 							</div>
 						</div>
 					</div>
-					<div class="layui-form-item">
-						<div class="layui-inline">
-							<label class="layui-form-label">商品库存</label>
-							<div class="layui-input-inline">
-								<input type="text" name="${CommodityField.FIELD_NAME_NO}" readonly="readonly"
-									autocomplete="off" class="layui-input">
-							</div>
-						</div>
-					</div>
+<!-- 					商品table添加添加了库存列 -->
+<!-- 					<div class="layui-form-item"> -->
+<!-- 						<div class="layui-inline"> -->
+<!-- 							<label class="layui-form-label">商品库存</label> -->
+<!-- 							<div class="layui-input-inline"> -->
+<%-- 								<input type="text" name="${CommodityField.FIELD_NAME_NO}" readonly="readonly" --%>
+<!-- 									autocomplete="off" class="layui-input"> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 				</form>
 			</div>
 		</div>

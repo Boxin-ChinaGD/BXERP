@@ -640,35 +640,11 @@ layui.use(['form', 'element', 'layer', 'table', 'laypage'], function () {
 			);
 			$(".newCategoryParent").focus();
 			$(".newCategoryParent").blur(function () {
-				var categoryParentName = $(this).val();
-				var checkEmptyOrAllSpacesResult = check_EmptyOrAllSpaces(categoryParentName);
-				if (checkEmptyOrAllSpacesResult == true) {
-					var checkStringResult = check_NumEnChinese(categoryParentName);
-					if (checkStringResult == true) {
-						console.log("通过了数据检查");
-						var otherCategoryParent = $(this).parent().siblings();
-						var keyClass = ".categoryParent";
-						var checkRepeatResult = check_Repeat(categoryParentName, otherCategoryParent, keyClass);
-						console.log("checkRepeatResult=" + checkRepeatResult);
-						if (checkRepeatResult != false) {
-							var obj = "categoryParent";
-							var succText = "新增商品大类成功";
-							var failText = "新增商品大类失败";
-							var requestDataOfCreate = { "name": categoryParentName };
-							createObject(categoryParentCreate_url, method_post, requestDataOfCreate, obj, succText, failText, $(this));
-						} else {
-							$(this).focus();
-							layer.msg("该商品大类已存在，请重新修改");
-						}
-					} else {
-						$("#categoryParent p input.newCategoryParent").focus().parent().click();
-						layer.msg(checkStringResult);
-					}
-				} else {
-					$(this).parent().remove();
-					layer.msg(checkEmptyOrAllSpacesResult);
-					index.parent().addClass("categoryParentSelect");
-					index.show().siblings(".update, .delete").show();
+				doCreateCategoryParentName($(this));
+			})
+			$(".newCategoryParent").bind('keypress', function(event) {
+				if (event.keyCode == "13") {
+					doCreateCategoryParentName($(this));
 				}
 			})
 		} else if (index.hasClass("update")) {
@@ -681,29 +657,13 @@ layui.use(['form', 'element', 'layer', 'table', 'laypage'], function () {
 			var categoryParentNameBeforeUpdate = index.siblings("input.categoryParent").val();		//获取修改前的商品大类名称
 			index.siblings("input.categoryParent").removeAttr("readOnly").focus();
 			index.siblings("input.categoryParent").blur(function () {
-				var categoryParentName = $(this).val();
-				var checkStringResult = check_NumEnChinese(categoryParentName);
-				if (checkStringResult == true) {
-					console.log("通过了数据检查");
-					var otherCategoryParent = $(this).parent().siblings();
-					var keyClass = ".categoryParent";
-					var checkRepeatResult = check_Repeat(categoryParentName, otherCategoryParent, keyClass);
-					console.log("checkRepeatResult=" + checkRepeatResult);
-					if (checkRepeatResult != false) {
-						var obj = "categoryParent";
-						var succText = "修改商品大类成功";
-						var failText = "修改商品大类失败";
-						var requestDataOfUpdate = { "ID": categoryParentID, "name": categoryParentName };
-						updateObject(categoryParentUpdate_url, method_post, requestDataOfUpdate, obj, succText, failText, $(this), categoryParentNameBeforeUpdate);
-					} else {
-						$(this).val(categoryParentNameBeforeUpdate).attr("readOnly", "readOnly").unbind("blur");
-						layer.msg("该商品分类已存在，请重新修改");
-					}
-				} else {
-					layer.msg(checkStringResult);
-					$(this).val(categoryParentNameBeforeUpdate).attr("readOnly", "readOnly").unbind("blur");
-				}
+				doUpdateCategoryParentName(categoryParentID, categoryParentNameBeforeUpdate, $(this));
 			});
+			index.siblings("input.categoryParent").bind('keypress', function(event) {
+				if (event.keyCode == "13") {
+					doUpdateCategoryParentName(categoryParentID, categoryParentNameBeforeUpdate, $(this));
+				}
+			})
 		} else if (index.hasClass("delete")) {
 			var categoryParentID = index.siblings("input.categoryParentID").val();
 			if (categoryParentID == 1) {
@@ -718,6 +678,65 @@ layui.use(['form', 'element', 'layer', 'table', 'laypage'], function () {
 			deleteObject(categoryParentDelete_url, method_get, requestDataOfDelete, hintText, succText, failText, obj, objToRemove);
 		}
 	}
+	
+	function doCreateCategoryParentName(_this) {
+		var categoryParentName = $(_this).val();
+		var checkEmptyOrAllSpacesResult = check_EmptyOrAllSpaces(categoryParentName);
+		if (checkEmptyOrAllSpacesResult == true) {
+			var checkStringResult = check_NumEnChinese(categoryParentName);
+			if (checkStringResult == true) {
+				console.log("通过了数据检查");
+				var otherCategoryParent = $(_this).parent().siblings();
+				var keyClass = ".categoryParent";
+				var checkRepeatResult = check_Repeat(categoryParentName, otherCategoryParent, keyClass);
+				console.log("checkRepeatResult=" + checkRepeatResult);
+				if (checkRepeatResult != false) {
+					var obj = "categoryParent";
+					var succText = "新增商品大类成功";
+					var failText = "新增商品大类失败";
+					var requestDataOfCreate = { "name": categoryParentName };
+					createObject(categoryParentCreate_url, method_post, requestDataOfCreate, obj, succText, failText, $(_this));
+				} else {
+					$(_this).focus();
+					layer.msg("该商品大类已存在，请重新修改");
+				}
+			} else {
+				$("#categoryParent p input.newCategoryParent").focus().parent().click();
+				layer.msg(checkStringResult);
+			}
+		} else {
+			$(_this).parent().remove();
+			layer.msg(checkEmptyOrAllSpacesResult);
+			index.parent().addClass("categoryParentSelect");
+			index.show().siblings(".update, .delete").show();
+		}
+	}
+	
+	function doUpdateCategoryParentName(categoryParentID, categoryParentNameBeforeUpdate, _this) {
+		var categoryParentName = $(_this).val();
+		var checkStringResult = check_NumEnChinese(categoryParentName);
+		if (checkStringResult == true) {
+			console.log("通过了数据检查");
+			var otherCategoryParent = $(_this).parent().siblings();
+			var keyClass = ".categoryParent";
+			var checkRepeatResult = check_Repeat(categoryParentName, otherCategoryParent, keyClass);
+			console.log("checkRepeatResult=" + checkRepeatResult);
+			if (checkRepeatResult != false) {
+				var obj = "categoryParent";
+				var succText = "修改商品大类成功";
+				var failText = "修改商品大类失败";
+				var requestDataOfUpdate = { "ID": categoryParentID, "name": categoryParentName };
+				updateObject(categoryParentUpdate_url, method_post, requestDataOfUpdate, obj, succText, failText, $(_this), categoryParentNameBeforeUpdate);
+			} else {
+				$(_this).val(categoryParentNameBeforeUpdate).attr("readOnly", "readOnly").unbind("blur");
+				layer.msg("该商品分类已存在，请重新修改");
+			}
+		} else {
+			layer.msg(checkStringResult);
+			$(_this).val(categoryParentNameBeforeUpdate).attr("readOnly", "readOnly").unbind("blur");
+		}
+	}
+	
 	//选择商品大类并查询其下所有的商品小类
 	window.categoryParentShowManage = function (index) {
 		var index = $(index);
@@ -793,35 +812,11 @@ layui.use(['form', 'element', 'layer', 'table', 'laypage'], function () {
 			);
 			$(".newCategory").focus();
 			$(".newCategory").blur(function () {
-				var categoryName = $(this).val();
-				var checkEmptyOrAllSpacesResult = check_EmptyOrAllSpaces(categoryName);
-				if (checkEmptyOrAllSpacesResult == true) {
-					var checkStringResult = check_NumEnChinese(categoryName);
-					if (checkStringResult == true) {
-						var repeatText = "已有商品小类拥有此名称";
-						var requestData = { "uniqueField": categoryName, "fieldToCheckUnique": 1 };
-						var checkUniqueFieldResult = toCheckUniqueField(categoryRNToCheckUniqueField_url, requestData, repeatText);
-						console.log("checkUniqueFieldResult=" + checkUniqueFieldResult);
-						if (checkUniqueFieldResult == true) {
-							var obj = "category";
-							var succText = "新增商品小类成功";
-							var failText = "新增商品小类失败";
-							var categoryParentID = $(".categoryParentSelect .categoryParentID").val() == 0 ? 1 : $(".categoryParentSelect .categoryParentID").val();
-							var requestDataOfCreate = { "name": categoryName, "parentID": categoryParentID, "returnObject": 1 };
-							createObject(categoryCreate_url, method_post, requestDataOfCreate, obj, succText, failText, $(this));
-						} else {
-							$(this).focus();
-						}
-					} else {
-						$(this).focus();
-						layer.msg(checkStringResult);
-					}
-				} else {
-					$(this).parent().remove();
-					layer.msg(checkEmptyOrAllSpacesResult);
-					if ($("#category>.rowSpace").length <= 0) {
-						categoryDateIsNull();
-					}
+				doCreateCategory($(this));
+			})
+			$(".newCategory").bind('keypress', function(event) {
+				if (event.keyCode == "13") {
+					doCreateCategory($(this));
 				}
 			})
 		} else if (index.hasClass("update")) {
@@ -834,30 +829,13 @@ layui.use(['form', 'element', 'layer', 'table', 'laypage'], function () {
 			var categoryNameBeforeUpdate = index.siblings("input.category").val();		//获取修改前商品小类的名称
 			index.siblings("input.category").removeAttr("readOnly").focus();
 			index.siblings("input.category").blur(function () {
-				var categoryName = $(this).val();
-				var checkStringResult = check_NumEnChinese(categoryName);
-				if (checkStringResult == true) {
-					console.log("通过了数据检查");
-					var repeatText = "已有商品小类拥有此名称";
-					var categoryID = index.siblings("input.ID").val();
-					var requestData = { "uniqueField": categoryName, "ID": categoryID, "fieldToCheckUnique": 1 };
-					var checkUniqueFieldResult = toCheckUniqueField(categoryRNToCheckUniqueField_url, requestData, repeatText);
-					console.log("checkUniqueFieldResult=" + checkUniqueFieldResult);
-					if (checkUniqueFieldResult == true) {
-						var obj = "category";
-						var succText = "修改商品小类成功";
-						var failText = "修改商品小类失败";
-						var categoryParentID = index.siblings("input.parentID").val();
-						var requestDataOfUpdate = { "ID": categoryID, "name": categoryName, "parentID": categoryParentID };
-						updateObject(categoryUpdate_url, method_post, requestDataOfUpdate, obj, succText, failText, $(this), categoryNameBeforeUpdate);
-					} else {
-						$(this).val(categoryNameBeforeUpdate).attr("readOnly", "readOnly").unbind("blur");
-					}
-				} else {
-					layer.msg(checkStringResult);
-					$(this).val(categoryNameBeforeUpdate).attr("readOnly", "readOnly").unbind("blur");
-				}
+				doUpdateCategory(index, categoryID, categoryNameBeforeUpdate, $(this));
 			});
+			index.siblings("input.category").bind('keypress', function(event) {
+				if (event.keyCode == "13") {
+					doUpdateCategory(index, categoryID, categoryNameBeforeUpdate, $(this));
+				}
+			})
 		} else if (index.hasClass("delete")) {
 			var categoryID = index.siblings("input.ID").val();
 			if (categoryID == 1) {
@@ -872,6 +850,66 @@ layui.use(['form', 'element', 'layer', 'table', 'laypage'], function () {
 			deleteObject(categoryDelete_url, method_get, requestDataOfDelete, hintText, succText, failText, obj, objToRemove);
 		}
 	}
+	
+	function doCreateCategory(_this) {
+		var categoryName = $(_this).val();
+		var checkEmptyOrAllSpacesResult = check_EmptyOrAllSpaces(categoryName);
+		if (checkEmptyOrAllSpacesResult == true) {
+			var checkStringResult = check_NumEnChinese(categoryName);
+			if (checkStringResult == true) {
+				var repeatText = "已有商品小类拥有此名称";
+				var requestData = { "uniqueField": categoryName, "fieldToCheckUnique": 1 };
+				var checkUniqueFieldResult = toCheckUniqueField(categoryRNToCheckUniqueField_url, requestData, repeatText);
+				console.log("checkUniqueFieldResult=" + checkUniqueFieldResult);
+				if (checkUniqueFieldResult == true) {
+					var obj = "category";
+					var succText = "新增商品小类成功";
+					var failText = "新增商品小类失败";
+					var categoryParentID = $(".categoryParentSelect .categoryParentID").val() == 0 ? 1 : $(".categoryParentSelect .categoryParentID").val();
+					var requestDataOfCreate = { "name": categoryName, "parentID": categoryParentID, "returnObject": 1 };
+					createObject(categoryCreate_url, method_post, requestDataOfCreate, obj, succText, failText, $(_this));
+				} else {
+					$(_this).focus();
+				}
+			} else {
+				$(_this).focus();
+				layer.msg(checkStringResult);
+			}
+		} else {
+			$(_this).parent().remove();
+			layer.msg(checkEmptyOrAllSpacesResult);
+			if ($("#category>.rowSpace").length <= 0) {
+				categoryDateIsNull();
+			}
+		}
+	}
+	
+	function doUpdateCategory(index, categoryID, categoryNameBeforeUpdate, _this){
+		var categoryName = $(_this).val();
+		var checkStringResult = check_NumEnChinese(categoryName);
+		if (checkStringResult == true) {
+			console.log("通过了数据检查");
+			var repeatText = "已有商品小类拥有此名称";
+			var categoryID = index.siblings("input.ID").val();
+			var requestData = { "uniqueField": categoryName, "ID": categoryID, "fieldToCheckUnique": 1 };
+			var checkUniqueFieldResult = toCheckUniqueField(categoryRNToCheckUniqueField_url, requestData, repeatText);
+			console.log("checkUniqueFieldResult=" + checkUniqueFieldResult);
+			if (checkUniqueFieldResult == true) {
+				var obj = "category";
+				var succText = "修改商品小类成功";
+				var failText = "修改商品小类失败";
+				var categoryParentID = index.siblings("input.parentID").val();
+				var requestDataOfUpdate = { "ID": categoryID, "name": categoryName, "parentID": categoryParentID };
+				updateObject(categoryUpdate_url, method_post, requestDataOfUpdate, obj, succText, failText, $(_this), categoryNameBeforeUpdate);
+			} else {
+				$(_this).val(categoryNameBeforeUpdate).attr("readOnly", "readOnly").unbind("blur");
+			}
+		} else {
+			layer.msg(checkStringResult);
+			$(_this).val(categoryNameBeforeUpdate).attr("readOnly", "readOnly").unbind("blur");
+		}
+	}
+	
 	//商品单位的新增
 	$("#unitButton input").click(function () {
 		if ($(this).val() == "新建") {

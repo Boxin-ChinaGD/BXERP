@@ -52,7 +52,7 @@ BEGIN
 		SELECT F_Specification, F_Name, F_PackageUnitID, F_CategoryID INTO specification, name, packageUnitID, categoryID FROM t_commodity WHERE F_ID = iID;
 		IF EXISTS (SELECT 1 FROM t_commodity WHERE F_Name = sName AND F_ID <> iID AND (F_Status = 0 OR F_Status = 1)) THEN 
 	    	SET iErrorCode := 1;
-	    	SET sErrorMsg := '不能修改数据库存在的名称';
+	    	SET sErrorMsg := '该商品名称已存在';
 	    ELSEIF NOT EXISTS (SELECT 1 FROM t_brand WHERE F_ID = iBrandID) THEN
 	    	SET iErrorCode := 7;
 			SET sErrorMsg := '不能用不存在的BrandID修改商品';

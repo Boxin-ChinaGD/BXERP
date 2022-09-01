@@ -466,7 +466,7 @@ SELECT 1 FROM t_commodity
 	
 SELECT @sErrorMsg;
 SELECT @iErrorCode;	
-SELECT IF(@iErrorCode = 1 AND @sErrorMsg = '不能修改数据库存在的名称', '测试成功', '测试失败') AS 'CASE4 Testing Result';
+SELECT IF(@iErrorCode = 1 AND @sErrorMsg = '该商品名称已存在', '测试成功', '测试失败') AS 'CASE4 Testing Result';
 DELETE FROM t_commodity WHERE F_ID = @insertId1;
 DELETE FROM t_commodity WHERE F_ID = @insertId2;
 

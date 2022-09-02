@@ -140,8 +140,8 @@
 									<div class="layui-form-item">
 										<div class="layui-input-block" id="providerMessageButton"
 											style="margin-left: 95px; display: none;">
-											<button lay-submit lay-filter="providerCreate"
-												class="commodityButton">确定</button>
+											<button lay-submit lay-filter="providerCreate" type="button"
+												class="commodityButton confirmCreateProvider">确定</button>
 											<input type="button" value="取消" class="commodityUnButton" />
 										</div>
 									</div>

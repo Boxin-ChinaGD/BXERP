@@ -252,7 +252,7 @@
 				<!-- 属性设置 -->
 				<div class="layui-col-md3 commodityProeprty">
 					<div class="title" style="margin-bottom: 20px;">
-						<span>属性设置</span>&nbsp;<span class="buleSpace"></span>
+						<span>自定义属性字段设置</span>&nbsp;<span class="buleSpace"></span>
 					</div>
 					<div id="proeprty" class="layui-form">
 						<div class="layui-form-item">

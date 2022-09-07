@@ -91,7 +91,7 @@
 		<div id="middlePart">
 			<div class="topArea layui-form abc">
 				<input type="text" name="${CommodityField.FIELD_NAME_queryKeyword}" class="layui-input"
-					onkeyup="instantSearch(this)" lay-verify="checkKeywordHaveCommodityName"
+					onkeyup="instantSearch(this, event)" lay-verify="checkKeywordHaveCommodityName"
 					placeholder="请输入商品名称、简称、条形码或助记码搜索商品" title="请输入商品名称、简称、条形码或助记码搜索商品" maxlength="64" />
 				<i class="layui-icon layui-icon-search" lay-submit lay-filter="commoditySearch"></i>
 			</div>

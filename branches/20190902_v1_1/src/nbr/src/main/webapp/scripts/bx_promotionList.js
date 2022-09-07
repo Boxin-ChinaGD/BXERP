@@ -189,9 +189,11 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer'], function () {
 			'</tr>'
 		);
 	}
-	//即时搜索促销活动名称和及时搜索商品名称
-	window.instantSearch = function (index) {
-		$(index).next().click();
+	//回车搜索事件
+	window.instantSearch = function (index, event) {
+		if(event.keyCode == "13") {
+			$(index).next().click();
+		}
 	}
 	//头部导航选项
 	$(".topNav .layui-form-label span").click(function () {
@@ -203,7 +205,7 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer'], function () {
 	})
 	// 根据活动状态搜索
 	function statusSearch (thisStatus, thisText) {
-		if (thisText != "所有" && thisText != "已删除") {
+		if (thisText != "所有" && thisText != "已终止") {
 			promotion_reloadTable.status = 0;
 			promotion_reloadTable.subStatusOfStatus = thisStatus;
 		} else {
@@ -259,7 +261,7 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer'], function () {
 		cols: [[
 			{ field: 'sn', title: '单号', width: 140, event: 'detail', align: 'center' },
 			{ field: 'name', title: '活动名称', width: 140, templet: "#promotionName", event: 'detail', align: 'center' },
-			{ field: 'staffName', title: '操作人员', width: 80, event: 'detail', align: 'center' },
+			{ field: 'staffName', title: '创建人', width: 80, event: 'detail', align: 'center' },
 			{
 				field: 'status', title: '状态', width: 70, event: 'detail', align: 'center',
 				templet: function (data) {		//由于渲染每行数据时需要时间，故时间的判断会有10毫秒左右的误差，目前先暂时忽略
@@ -278,7 +280,7 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer'], function () {
 							promotionStatus = "已结束";
 						}
 					} else if (promotionStatus == 1) {
-						promotionStatus = "已删除";
+						promotionStatus = "已终止";
 					}
 					return promotionStatus;
 				}
@@ -347,7 +349,7 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer'], function () {
 	//根据活动状态判断终止按钮
 	function setStopPromotionButtonByStatus (promotionObject) {
 		var promotionStatus = $(promotionObject).children().eq(3).find("div").text();		//获取活动的状态
-		if (promotionStatus == "已结束" || promotionStatus == "已删除") {		//当状态=已结束or已删除时，终止按钮不可用
+		if (promotionStatus == "已结束" || promotionStatus == "已终止") {		//当状态=已结束or已终止时，终止按钮不可用
 			$(".toStopPromotion").addClass("disabledButton").attr("disabled", "disabled").removeClass("btnChoosed");
 		} else {
 			$(".toStopPromotion").removeClass("disabledButton").removeAttr("disabled").addClass("btnChoosed");
@@ -1097,6 +1099,29 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer'], function () {
 		}
 		layer.close(indexLoading);
 		return false;
-	})
+	});
+	
+	//检查优惠门槛
+	window.excecutionThresholdCheck = function (index) {
+		$(index).unbind("blur");
+//		var excecutionThresholdBefore = $(index).val();
+//		console.log("excecutionThresholdBefore:" + excecutionThresholdBefore);
+		$(index).blur(function () {
+			var excecutionThreshold = $(this).val();
+			console.log("excecutionThreshold:" + excecutionThreshold);
+//			if (excecutionThreshold == excecutionThresholdBefore) {		//未发生修改
+//				return;
+//			}
+			if (/^$|^[0-9]+(\.[0-9]{1,2})?$/.test(excecutionThreshold)) {
+				if(excecutionThreshold < 0.01 || excecutionThreshold > 10000) {
+					layer.msg('优惠门槛只能在0.01-10000之间');
+				}
+			} else {
+//				$(this).val(excecutionThresholdBefore);
+				layer.msg('优惠门槛只允许正数，小数点后最多只能带两位小数');
+//				layer.close(indexLoading);
+			}
+		})
+	}
 });
 

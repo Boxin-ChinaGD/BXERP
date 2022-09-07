@@ -32,7 +32,7 @@
 						<li>未开始<input type="hidden" value="10" /></li>
 						<li>进行中<input type="hidden" value="11" /></li>
 						<li>已结束<input type="hidden" value="12" /></li>
-						<li>已删除<input type="hidden" value="1" /></li>
+						<li>已终止<input type="hidden" value="1" /></li>
 					</ul>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 			<div class="layui-form search">
 				<input type="text" value="CX" name="${PromotionField.FIELD_NAME_queryKeyword}" class="layui-input"
 					placeholder="请输入活动名称或单号(大于等于10位)搜索促销活动" title="请输入活动名称或单号(大于等于10位)搜索促销活动"
-					onkeyup="instantSearch(this)" maxlength="32" />
+					onkeyup="instantSearch(this, event)" maxlength="32" />
 				<i class="layui-icon layui-icon-search promotionSearch" style="font-size: 20px;" lay-submit
 					lay-filter="promotionSearch"></i>
 			</div>
@@ -66,7 +66,7 @@
 				<input type="hidden" name="${PromotionField.FIELD_NAME_ID}" class="promotionID" />
 				<div class="layui-form-item">
 					<div class="layui-inline">
-						<label class="layui-form-label">创建者</label>
+						<label class="layui-form-label">创建人</label>
 						<div class="layui-input-inline">
 							<input type="text" class="layui-input" name="${PromotionField.FIELD_NAME_staff}"
 								readOnly="readOnly" />
@@ -106,7 +106,7 @@
 						<label class="layui-form-label"><strong class="requiredField">*</strong>优惠门槛</label>
 						<div class="layui-input-inline">
 							<span>满</span>
-							<input type="text" class="layui-input" autocomplete="off"
+							<input type="text" class="layui-input" autocomplete="off" onfocus="excecutionThresholdCheck(this)"
 								name="${PromotionField.FIELD_NAME_excecutionThreshold}" readOnly="readOnly"
 								lay-verify="required|pNumberPar" onchange="check_ifDataChange(this,this.value);" />
 							<span>元</span>

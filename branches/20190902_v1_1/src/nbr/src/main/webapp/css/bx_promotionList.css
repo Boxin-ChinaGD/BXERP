@@ -454,3 +454,6 @@ body{
 .rightRegion .layui-table-page .layui-laypage .layui-laypage-limits{
 	display: none;
 }
+.layui-table-grid-down {
+	display: none;
+}

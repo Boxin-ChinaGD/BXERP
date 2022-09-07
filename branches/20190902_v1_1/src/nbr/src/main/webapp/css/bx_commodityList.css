@@ -581,3 +581,7 @@ body{
 	color: red;
 	margin-right: 3px;
 }
+
+.layui-table-grid-down {
+	display: none;
+}

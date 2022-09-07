@@ -4,6 +4,9 @@ import com.jfoenix.controls.JFXAlert;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ReserveDialogViewController {
 
     @FXML
@@ -14,6 +17,16 @@ public class ReserveDialogViewController {
 
     private String add_number = "";
     private boolean lastClickIsRMB = false;
+
+    private static Pattern pDecimals = Pattern.compile("^([0-9][0-9]*)+(\\.[0-9]{1,2})?$");// 最多带2位小数的数字
+
+    public static boolean checkReserve(String reserve) {
+        if (reserve == null) {
+            return false;
+        }
+        Matcher m = pDecimals.matcher(String.valueOf(reserve));
+        return m.matches();
+    }
 
     public void setAlert(JFXAlert alert) {
         this.alert = alert;
@@ -108,15 +121,18 @@ public class ReserveDialogViewController {
 
     @FXML   //准备金页面的确定按钮
     private void sure_click() {
+        add_number = inputNum.getText();
         listener.onClick(add_number);
     }
 
     //点击键盘人民币时
     private void ClickRMB(String RMB) {
+        add_number = inputNum.getText();
         if (add_number.equals("")) {
             setNumber(RMB);
         } else {
             add_number = "";
+            inputNum.setText(add_number);
             setNumber(RMB);
         }
         lastClickIsRMB = true;
@@ -134,6 +150,7 @@ public class ReserveDialogViewController {
     }
 
     private void setNumber(String s) {
+        add_number = inputNum.getText();
         //限制：第一位为0的时候，后面只能输入小数点
         if (!"0".equals(add_number)) {
             //限制只能输两位小数

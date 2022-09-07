@@ -811,9 +811,11 @@ public class MainController implements radioButtonSelectLinstener, PlatFormHandl
         ReserveDialogViewController reserveDialogViewController = loader.getController();
         reserveDialogViewController.setAlert(alert);
         reserveDialogViewController.setListener(s -> {
-            boolean DecimalPointOnErrorPosition = s.indexOf(".") == s.length() - 2
-                    || s.indexOf(".") == s.length() - 1;
-            if (s.contains(".") && DecimalPointOnErrorPosition) {
+//            boolean DecimalPointOnErrorPosition = s.indexOf(".") == s.length() - 2
+//                    || s.indexOf(".") == s.length() - 1;
+            boolean checkInputReserve = ReserveDialogViewController.checkReserve(s);
+//            if (s.contains(".") && DecimalPointOnErrorPosition) {
+            if (!checkInputReserve) {
                 ToastUtil.toast("请输入整数或者保留小数点后两位的小数");
             } else if ("".equals(s)) {
                 ToastUtil.toast("准备金不允许为空");

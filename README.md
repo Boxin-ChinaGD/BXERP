@@ -14,5 +14,5 @@
 > + **BXERP所能满足的用户需求、子系统结构及模块详细介绍**位于： [博昕团队官网](http://www.bxit.vip)
 > + 技术博客位于：[博客园-BXERP](https://www.cnblogs.com/BXERP//categories)
 > + 业务博客位于：[知乎-博昕团队李金景主页](https://www.zhihu.com/people/kim_ProSalesBox)
-> + 收银系统定制开发业务联系：18520501044（微信同号）
+> + 收银系统定制开发业务联系：Kim@bxit.vip，18520501044（微信同号）
 

@@ -46,6 +46,7 @@ import com.bx.erp.model.warehousing.Warehousing.EnumStatusWarehousing;
 import com.bx.erp.model.warehousing.WarehousingCommodity;
 import com.bx.erp.test.BaseActionTest;
 import com.bx.erp.test.BaseCommodityTest;
+import com.bx.erp.test.BaseRetailTradeTest;
 import com.bx.erp.test.BaseStaffTest;
 import com.bx.erp.test.BaseTestNGSpringContextTest;
 import com.bx.erp.test.BaseWarehousingTest;
@@ -1779,7 +1780,7 @@ public class WarehousingActionTest extends BaseActionTest {
 				.andDo(print()) //
 				.andReturn();
 		Shared.checkJSONErrorCode(mr);
-		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test);
+		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test, BaseRetailTradeTest.defaultShopID);
 	}
 
 	@Test
@@ -1813,7 +1814,7 @@ public class WarehousingActionTest extends BaseActionTest {
 				.andDo(print()) //
 				.andReturn();
 		Shared.checkJSONErrorCode(mr);
-		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test);
+		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test, BaseRetailTradeTest.defaultShopID);
 	}
 
 	@Test
@@ -1926,7 +1927,7 @@ public class WarehousingActionTest extends BaseActionTest {
 		String msg = "审核单号为：" + ws.getSn() + "的入库单成功 ！";
 		Shared.checkJSONErrorCode(mr);
 		Shared.checkJSONMsg(mr, msg, "返回的msg与预期的不一致");
-		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test);
+		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test, BaseRetailTradeTest.defaultShopID);
 	}
 
 	@Test
@@ -2491,7 +2492,7 @@ public class WarehousingActionTest extends BaseActionTest {
 //		如果老板的openid不为null，又发送不成功，则错误码为partSuccess
 //		Shared.checkJSONErrorCode(mr, EnumErrorCode.EC_PartSuccess); 
 		Shared.checkJSONErrorCode(mr);
-		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test);
+		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test, BaseRetailTradeTest.defaultShopID);
 		// // 发送微信消息
 		// JSONObject object =
 		// JSONObject.fromObject(mr.getResponse().getContentAsString());
@@ -2544,7 +2545,7 @@ public class WarehousingActionTest extends BaseActionTest {
 //		如果老板的openid不为null，又发送不成功，则错误码为partSuccess
 //		Shared.checkJSONErrorCode(mr, EnumErrorCode.EC_PartSuccess);
 		Shared.checkJSONErrorCode(mr);
-		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test);
+		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test, BaseRetailTradeTest.defaultShopID);
 		// 发送微信消息
 		// JSONObject object =
 		// JSONObject.fromObject(mr.getResponse().getContentAsString());

@@ -1051,13 +1051,15 @@ public class CheckListController implements PlatFormHandlerMessage {
                     if (!(dTotalOriginalPrice == 0.000000d || dShouldPay == 0.000000d)) { // 判断单个商品是否为零,是否需要折扣，总计等计算。
                         viewController.checkListOriginalPrice.setText(GeneralUtil.formatToShow(dTotalOriginalPrice));
                         viewController.checkListReceivable.setText(GeneralUtil.formatToShow(retailTradeSelected.getAmount()));//现在目前先放入零售单金额
-                        viewController.checkListNetReceipts.setText(GeneralUtil.formatToShow(retailTradeSelected.getAmount()));//现在目前先放入零售单金额
+                        viewController.checkListNetReceipts.setText(GeneralUtil.formatToShow(retailTradeSelected.getAmountPaidIn()));
                         viewController.checkListDiscount.setText(GeneralUtil.div(GeneralUtil.mul(dShouldPay, 100.000000d), dTotalOriginalPrice, 2) + "%");
+                        viewController.checkListChange.setText(GeneralUtil.formatToShow(retailTradeSelected.getAmountChange()));
                     } else {
                         viewController.checkListOriginalPrice.setText("0.00");
                         viewController.checkListReceivable.setText("0.00");
                         viewController.checkListNetReceipts.setText("0.00");
                         viewController.checkListDiscount.setText("0.00%");
+                        viewController.checkListChange.setText("0.00");
                     }
                     viewController.returnAmount.setText("￥0.00");
 

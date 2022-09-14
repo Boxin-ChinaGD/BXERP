@@ -376,7 +376,7 @@ public abstract class BaseBO {
 			} else {
 				lastErrorCode = EnumErrorCode.EC_OtherError;
 				lastErrorMessage = e.getMessage();
-				logger.debug("e.getCause()=" + e.getCause().getMessage() + "\t((SQLNonTransientConnectionException) e.getCause()).getSQLState()=" + ((SQLNonTransientConnectionException) e.getCause()).getSQLState());
+				logger.debug("e.getCause()=" + e.getCause().getMessage());
 				return null;
 			}
 		}

@@ -818,6 +818,8 @@ CREATE TABLE T_RetailTrade		                   -- 零售单
 	F_SourceID INT DEFAULT -1,		   			   -- 源开单ID
 	F_SyncDatetime DATETIME NOT NULL,        	  	   -- 同步时间
 	F_Amount Decimal(20,6) NOT NULL,               -- 零售单总金额
+	F_AmountPaidIn Decimal(20,6) NOT NULL,         -- 零售单实收金额
+	F_AmountChange Decimal(20,6) NOT NULL,         -- 零售单找零金额
 	F_AmountCash Decimal(20,6) NULL, 			   -- 现金支付数目
 	F_AmountAlipay Decimal(20,6) NULL,			   -- 支付宝支付数目
 	F_AmountWeChat Decimal(20,6) NULL,			   -- 微信支付数目

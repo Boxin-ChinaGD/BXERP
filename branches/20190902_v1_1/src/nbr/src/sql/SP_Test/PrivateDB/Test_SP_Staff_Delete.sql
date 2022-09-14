@@ -39,7 +39,7 @@ INSERT INTO t_staff (F_Name, F_Phone, F_ICID, F_WeChat, F_Salt, F_PasswordExpire
 VALUES ('aax', '12345678971', '123456789123456f', '123456f', 'asdefggsdjfasgfyf', now(), 1, 1, 1, 0, now(), now());
 SET @iID = LAST_INSERT_ID();
 -- 
-INSERT INTO t_staffrole (F_StaffID, F_RoleID) VALUES (@iID, 6);
+INSERT INTO t_staffrole (F_StaffID, F_RoleID) VALUES (@iID, 3);
 -- 
 SET @iErrorCode = 0;
 SET @sErrorMsg = '';
@@ -51,7 +51,7 @@ INSERT INTO t_staff (F_Name, F_Phone, F_ICID, F_WeChat, F_Salt, F_PasswordExpire
 VALUES ('aax', '12345678971', '123456789123456f', '123456f', 'asdefggsdjfasgfyf', now(), 1, 1, 1, 0, now(), now());
 SET @iID = LAST_INSERT_ID();
 -- 
-INSERT INTO t_staffrole (F_StaffID, F_RoleID) VALUES (@iID, 6);
+INSERT INTO t_staffrole (F_StaffID, F_RoleID) VALUES (@iID, 3);
 -- 
 INSERT INTO t_warehouse (F_Name, F_Address, F_Status, F_StaffID)
 VALUES ('≤÷ø‚995', '÷≤ŒÔ‘∞1', 0, @iID);

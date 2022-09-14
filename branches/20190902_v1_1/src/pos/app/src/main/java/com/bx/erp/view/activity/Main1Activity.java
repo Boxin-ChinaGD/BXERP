@@ -217,6 +217,8 @@ public class Main1Activity extends BaseFragment1 implements View.OnTouchListener
     TextView cash_paying_prefix;
     @BindView(R.id.last_amount)
     TextView lastRetailTradeAmount;
+    @BindView(R.id.last_PaidInAmount)
+    TextView lastRetailTradePaidInAmount;
     @BindView(R.id.last_paymenttype)
     TextView lastRetailTradePaymentType;
     @BindView(R.id.last_changemoney)
@@ -1827,6 +1829,8 @@ public class Main1Activity extends BaseFragment1 implements View.OnTouchListener
                 } else {
                     BaseActivity.lastRetailTradePaymentType = pay_combination;
                 }
+                //设置上一单支付金额
+                BaseActivity.lastRetailTradePaidInAmount = GeneralUtil.sum(totalCashAmount, totalWechatAmount);
                 //设置上一单找零金额
                 BaseActivity.lastRetailTradeChangeMoney = sub(totalCashAmount + totalWechatAmount, BaseActivity.retailTrade.getAmount());
 //                BaseActivity.lastRetailTradeChangeMoney = sub(GeneralUtil.round(getPayingMoney().getText().toString(), 6), GeneralUtil.round(unpaidBalance.getText().toString(), 6));
@@ -1836,6 +1840,8 @@ public class Main1Activity extends BaseFragment1 implements View.OnTouchListener
 //                BaseActivity.retailTrade.setAmountCash(totalCashAmount);
                 BaseActivity.retailTrade.setAmountWeChat(totalWechatAmount);
                 BaseActivity.retailTrade.setAmountCash(sub(totalCashAmount, BaseActivity.lastRetailTradeChangeMoney));
+                BaseActivity.retailTrade.setAmountPaidIn(GeneralUtil.sum(totalCashAmount, totalWechatAmount));
+                BaseActivity.retailTrade.setAmountChange(sub(totalCashAmount + totalWechatAmount, BaseActivity.retailTrade.getAmount()));
                 log.info("===lastRetailTradeAmount:" + BaseActivity.lastRetailTradeAmount + "===AmountCash:" + BaseActivity.retailTrade.getAmountCash());
                 // 是否使用了优惠券
                 if (couponCode != null) {
@@ -2260,6 +2266,7 @@ public class Main1Activity extends BaseFragment1 implements View.OnTouchListener
             lastRetailTradeAmount.setText(GeneralUtil.formatToShow(BaseActivity.lastRetailTradeAmount));
             lastRetailTradeChangeMoney.setText(GeneralUtil.formatToShow(BaseActivity.lastRetailTradeChangeMoney));
             lastRetailTradePaymentType.setText(BaseActivity.lastRetailTradePaymentType);
+            lastRetailTradePaidInAmount.setText(GeneralUtil.formatToShow(BaseActivity.lastRetailTradePaidInAmount));
         } else {
             // 从其它Activity退回来时，或许需要重新计算结算金额（包含优惠）。
             System.out.println("没支付就终止了交易");

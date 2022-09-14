@@ -316,7 +316,7 @@ SELECT '-----------------Case19_2: 老板查询博昕售前(在职和离职)-----------------
 SET @iErrorCode = 0;
 SET @sErrorMsg = '';
 SET @iPageIndex = 1;
-SET @iRoleID = 6;
+SET @iRoleID = 3;
 SET @iStatus = -1;
 SET @iOperator = 1;
 SET @iPageSize = 10;
@@ -348,7 +348,7 @@ SELECT '-----------------Case20_2: 查询在职的博昕售前------------------' AS 'Cas
 SET @iErrorCode = 0;
 SET @sErrorMsg = '';
 SET @iPageIndex = 1;
-SET @iRoleID = 6;
+SET @iRoleID = 3;
 SET @iStatus = 0;
 SET @iOperator = 1;
 SET @iPageSize = 10;
@@ -386,7 +386,7 @@ UPDATE t_staff SET F_Status = 1 WHERE F_ID = 1;
 SET @iErrorCode = 0;
 SET @sErrorMsg = '';
 SET @iPageIndex = 1;
-SET @iRoleID = 6;
+SET @iRoleID = 3;
 SET @iStatus = 1;
 SET @iOperator = 1;
 SET @iPageSize = 10;

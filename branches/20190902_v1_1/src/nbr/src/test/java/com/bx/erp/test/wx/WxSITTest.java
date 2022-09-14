@@ -34,6 +34,7 @@ import com.bx.erp.model.warehousing.WarehousingCommodity;
 import com.bx.erp.model.wx.BaseWxModel;
 import com.bx.erp.test.BaseActionTest;
 import com.bx.erp.test.BaseCommodityTest;
+import com.bx.erp.test.BaseRetailTradeTest;
 import com.bx.erp.test.Shared;
 import com.bx.erp.test.checkPoint.WarehousingCP;
 import com.bx.erp.util.DataSourceContextHolder;
@@ -278,7 +279,7 @@ public class WxSITTest extends BaseActionTest {
 				.andReturn();
 
 		Shared.checkJSONErrorCode(mr);
-		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test);
+		WarehousingCP.verifyApprove(mr, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test, BaseRetailTradeTest.defaultShopID);
 
 		// openid更新为无效的
 		Staff s1 = new Staff();

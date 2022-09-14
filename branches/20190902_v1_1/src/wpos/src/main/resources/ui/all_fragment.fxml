@@ -417,7 +417,7 @@
                                                                         <Font size="16.0"/>
                                                                     </font>
                                                                 </Label>
-                                                                <Label prefWidth="86.0"
+                                                                <Label fx:id="last_amountPaidIn"  prefWidth="86.0"
                                                                        style="-fx-background-color: #ECEFF1;"
                                                                        text="0.00">
                                                                     <font>
@@ -1587,6 +1587,22 @@
                                                                 <TextField alignment="TOP_RIGHT" editable="false"
                                                                            style="-fx-background-color: #ECEFF1;"
                                                                            text="折扣:" GridPane.rowIndex="3">
+                                                                    <font>
+                                                                        <Font size="30.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextField alignment="TOP_RIGHT" editable="false"
+                                                                           style="-fx-background-color: #ECEFF1;"
+                                                                           text="找零:" GridPane.rowIndex="4">
+                                                                    <font>
+                                                                        <Font size="30.0"/>
+                                                                    </font>
+                                                                </TextField>
+                                                                <TextField fx:id="checkListChange"
+                                                                           alignment="TOP_LEFT" editable="false"
+                                                                           style="-fx-background-color: #ECEFF1;"
+                                                                           text="000.00" GridPane.columnIndex="1"
+                                                                           GridPane.rowIndex="4">
                                                                     <font>
                                                                         <Font size="30.0"/>
                                                                     </font>

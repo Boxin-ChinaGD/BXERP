@@ -27,6 +27,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import com.bx.erp.action.BaseAction;
+import com.bx.erp.action.BaseAction.EnumSession;
 import com.bx.erp.action.bo.BaseBO;
 import com.bx.erp.action.bo.commodity.CommodityBO;
 import com.bx.erp.action.bo.commodity.CommodityHistoryBO;
@@ -56,6 +57,7 @@ import com.bx.erp.model.ErrorInfo;
 import com.bx.erp.model.RetailTrade;
 import com.bx.erp.model.RetailTradeCommodity;
 import com.bx.erp.model.RetailTradeCoupon;
+import com.bx.erp.model.Staff;
 import com.bx.erp.model.BaseModel.EnumBoolean;
 import com.bx.erp.model.CacheType.EnumCacheType;
 import com.bx.erp.util.DataSourceContextHolder;
@@ -77,6 +79,8 @@ public class BaseRetailTradeTest extends BaseMapperTest {
 	private static final String commPrices = "commPrices";
 	private static final String amounts = "amounts";
 	private static final String barcodeIDs = "barcodeIDs";
+	public static final String KEY_shopID = "shopID";
+	public static final int defaultShopID = 2;
 
 	@BeforeClass
 	public void setup() {
@@ -620,6 +624,15 @@ public class BaseRetailTradeTest extends BaseMapperTest {
 		PurchasingOrder purchasingOrderApproved = BasePurchasingOrderTest.purchasingOrderApproverViaMapper(purchasingOrderCreated);
 		return purchasingOrderApproved;
 	}
+	
+	protected static Staff getStaffFromSession(HttpSession session) {
+		Staff staff = (Staff) session.getAttribute(EnumSession.SESSION_Staff.getName());
+		assert staff != null;
+//		logger.info("当前使用的staff=" + staff);
+
+		return staff;
+	}
+	
 	/**
 	 * 可以传入商品的参数进行创建零售单操作
 	 */
@@ -630,7 +643,8 @@ public class BaseRetailTradeTest extends BaseMapperTest {
 		WarehousingBO warehousingBO = (WarehousingBO) mapBO.get(WarehousingBO.class.getSimpleName());
 
 		RetailTrade retailTrade = DataInput.getRetailTrade();
-		retailTrade.setStaffID(EnumTypeRole.ETR_Boss.getIndex());
+		Staff staffSession = getStaffFromSession(session);
+		retailTrade.setStaffID(staffSession.getID());
 		retailTrade.setReturnObject(EnumBoolean.EB_Yes.getIndex());
 		if (sourceID > 0) { // 判断是否创建退货单
 			retailTrade.setSourceID(sourceID);
@@ -690,7 +704,7 @@ public class BaseRetailTradeTest extends BaseMapperTest {
 	}
 
 	// TODO PurchasingOrder ??
-	public static PurchasingOrder createAndApprovePurchasingOrderViaAction(MockMvc mvc, HttpSession session, Map<String, BaseBO> mapBO, String purchasingOrderCommNO, String priceSuggestion, String commodityIdString, String barcodeIdString)
+	public static PurchasingOrder createAndApprovePurchasingOrderViaAction(MockMvc mvc, HttpSession session, Map<String, BaseBO> mapBO, String purchasingOrderCommNO, String priceSuggestion, String commodityIdString, String barcodeIdString, int shopID)
 			throws Exception, UnsupportedEncodingException {
 		PurchasingOrderBO purchasingOrderBO = (PurchasingOrderBO) mapBO.get(PurchasingOrderBO.class.getSimpleName());
 		ProviderCommodityBO providerCommodityBO = (ProviderCommodityBO) mapBO.get(ProviderCommodityBO.class.getSimpleName());
@@ -706,6 +720,7 @@ public class BaseRetailTradeTest extends BaseMapperTest {
 						.param(KEY_COMMPURCHASINGUNIT, "桶") //
 						.param(KEY_PROVIDERID, "1") //
 						.param(KEY_BARCODEIDS, barcodeIdString) //
+						.param(KEY_shopID, String.valueOf(shopID)) //
 						.session((MockHttpSession) session)//
 		) //
 				.andExpect(status().isOk()).andDo(print()).andReturn(); //
@@ -740,7 +755,7 @@ public class BaseRetailTradeTest extends BaseMapperTest {
 
 	// TODO Warehousing??
 	public static void createAndApproveWarehousingViaAction(MockMvc mvc, HttpSession session, Map<String, BaseBO> mapBO, int[] warehousingCommNO, double[] warehousingCommPrice, Commodity[] commodityCreated, Barcodes[] barcodeCreated,
-			PurchasingOrder purchasingOrderForApprove) throws Exception, UnsupportedEncodingException, ParseException {
+			PurchasingOrder purchasingOrderForApprove, int shopID) throws Exception, UnsupportedEncodingException, ParseException {
 		WarehousingBO warehousingBO = (WarehousingBO) mapBO.get(WarehousingBO.class.getSimpleName());
 		PurchasingOrderBO purchasingOrderBO = (PurchasingOrderBO) mapBO.get(PurchasingOrderBO.class.getSimpleName());
 		CommodityHistoryBO commodityHistoryBO = (CommodityHistoryBO) mapBO.get(CommodityHistoryBO.class.getSimpleName());
@@ -781,6 +796,7 @@ public class BaseRetailTradeTest extends BaseMapperTest {
 						.param(commPrices, warehousingCommPriceStr) //
 						.param(amounts, warehousingCommAmountsStr) //
 						.param(barcodeIDs, barcodeCreatedStr) //
+						.param(KEY_shopID, String.valueOf(shopID)) //
 						.contentType(MediaType.APPLICATION_JSON) //
 						.session((MockHttpSession) result.getRequest().getSession()) //
 		) //
@@ -824,7 +840,7 @@ public class BaseRetailTradeTest extends BaseMapperTest {
 		// 如果老板的openid不为null，又发送微信公众号不成功，则错误码为partSuccess
 //		Shared.checkJSONErrorCode(mr3, EnumErrorCode.EC_PartSuccess);
 		 Shared.checkJSONErrorCode(mr3);
-		WarehousingCP.verifyApprove(mr3, warehousingForApprove, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test);
+		WarehousingCP.verifyApprove(mr3, warehousingForApprove, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test, shopID);
 	}
 
 	public static RetailTradeCommodity createRetailtradeCommodityViaMapper(RetailTrade rt, Commodity commodity, Barcodes barcodes) {

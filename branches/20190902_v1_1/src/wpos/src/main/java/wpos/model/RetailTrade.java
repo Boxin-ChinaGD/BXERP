@@ -213,6 +213,12 @@ public class RetailTrade extends BaseModel {
     @Column(name = "F_Amount")
     protected double amount;
 
+    @Column(name = "F_AmountPaidIn")
+    protected double amountPaidIn;
+
+    @Column(name = "F_AmountChange")
+    protected double amountChange;
+
     @Column(name = "F_AmountCash")
     protected double amountCash;
 
@@ -444,6 +450,8 @@ public class RetailTrade extends BaseModel {
                 ", syncDatetime=" + syncDatetime +
                 ", syncType='" + syncType + '\'' +
                 ", amount=" + amount +
+                ", amountPaidIn=" + amountPaidIn +
+                ", amountChange=" + amountChange +
                 ", amountCash=" + amountCash +
                 ", amountAlipay=" + amountAlipay +
                 ", amountWeChat=" + amountWeChat +
@@ -633,6 +641,22 @@ public class RetailTrade extends BaseModel {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public double getAmountPaidIn() {
+        return amountPaidIn;
+    }
+
+    public void setAmountPaidIn(double amountPaidIn) {
+        this.amountPaidIn = amountPaidIn;
+    }
+
+    public double getAmountChange() {
+        return amountChange;
+    }
+
+    public void setAmountChange(double amountChange) {
+        this.amountChange = amountChange;
     }
 
     public double getAmountCash() {
@@ -831,6 +855,8 @@ public class RetailTrade extends BaseModel {
             remark = jo.getString(field.getFIELD_NAME_remark());
             sourceID = Integer.valueOf(jo.getString(field.getFIELD_NAME_sourceID()));
             amount = Double.parseDouble(jo.getString(field.getFIELD_NAME_amount()));
+            amountPaidIn = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountPaidIn()));
+            amountChange = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountChange()));
             amountCash = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountCash()));
             amountAlipay = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountAlipay()));
             amountWeChat = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountWeChat()));
@@ -1043,6 +1069,8 @@ public class RetailTrade extends BaseModel {
         obj.setCouponAmount(couponAmount);
         obj.setConsumerOpenID(consumerOpenID);
         obj.setAmount(this.getAmount());
+        obj.setAmountPaidIn(this.getAmountPaidIn());
+        obj.setAmountChange(this.getAmountChange());
         obj.setAmount1(this.getAmount1());
         obj.setAmount2(this.getAmount2());
         obj.setAmount3(this.getAmount3());
@@ -1096,6 +1124,8 @@ public class RetailTrade extends BaseModel {
 //                && DatetimeUtil.compareDate(rt.getSyncDatetime(), this.getSyncDatetime()) && printComparator(getFIELD_NAME_syncDatetime()) //
 //                && (ignoreSyncTypeInComparision == true ? true : (rt.getSyncType().equals(this.getSyncType()) && printComparator(getFIELD_NAME_syncType())))
                 && Math.abs(GeneralUtil.sub(rt.getAmount(), this.getAmount())) < TOLERANCE && printComparator(field.getFIELD_NAME_amount()) //
+                && Math.abs(GeneralUtil.sub(rt.getAmountPaidIn(), this.getAmountPaidIn())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountPaidIn()) //
+                && Math.abs(GeneralUtil.sub(rt.getAmountChange(), this.getAmountChange())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountChange()) //
                 && Math.abs(GeneralUtil.sub(rt.getAmountWeChat(), this.getAmountWeChat())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountWeChat())//
                 && Math.abs(GeneralUtil.sub(rt.getAmountCash(), this.getAmountCash())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountCash())//
                 && Math.abs(GeneralUtil.sub(rt.getAmountAlipay(), this.getAmountAlipay())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountAlipay())//

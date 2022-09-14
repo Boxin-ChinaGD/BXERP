@@ -86,6 +86,18 @@ public class RetailTradeField extends BaseModelField {
 		return "amount";
 	}
 
+	protected String FIELD_NAME_amountPaidIn;
+
+	public String getFIELD_NAME_amountPaidIn() {
+		return "amountPaidIn";
+	}
+	
+	protected String FIELD_NAME_amountChange;
+
+	public String getFIELD_NAME_amountChange() {
+		return "amountChange";
+	}
+
 	protected String FIELD_NAME_wxTradeNO;
 
 	public String getFIELD_NAME_wxTradeNO() {

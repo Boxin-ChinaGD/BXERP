@@ -205,6 +205,14 @@ public class RetailTrade extends BaseModel {
     @Property(nameInDb = "F_Amount")
     protected double amount;
 
+    @NotNull
+    @Property(nameInDb = "F_AmountPaidIn")
+    protected double amountPaidIn;
+
+    @NotNull
+    @Property(nameInDb = "F_AmountChange")
+    protected double amountChange;
+
     @Property(nameInDb = "F_AmountCash")
     protected double amountCash;
 
@@ -390,10 +398,10 @@ public class RetailTrade extends BaseModel {
     public RetailTrade() {
     }
 
-    @Generated(hash = 1410775248)
+    @Generated(hash = 2062057936)
     public RetailTrade(Long ID, long vipID, String sn, int localSN, int pos_ID, @NotNull String logo, @NotNull Date saleDatetime, int staffID, int paymentType, @NotNull String paymentAccount, int status, @NotNull String remark, int sourceID, Date syncDatetime,
-            String syncType, double amount, double amountCash, double amountAlipay, double amountWeChat, double amount1, double amount2, double amount3, double amount4, double amount5, int smallSheetID, String aliPayOrderSN, String wxOrderSN, String wxTradeNO,
-            String wxRefundNO, String wxRefundDesc, String wxRefundSubMchID, double couponAmount, String consumerOpenID, int SlaveCreated, int shopID) {
+            String syncType, double amount, double amountPaidIn, double amountChange, double amountCash, double amountAlipay, double amountWeChat, double amount1, double amount2, double amount3, double amount4, double amount5, int smallSheetID,
+            String aliPayOrderSN, String wxOrderSN, String wxTradeNO, String wxRefundNO, String wxRefundDesc, String wxRefundSubMchID, double couponAmount, String consumerOpenID, int SlaveCreated, int shopID) {
         this.ID = ID;
         this.vipID = vipID;
         this.sn = sn;
@@ -410,6 +418,8 @@ public class RetailTrade extends BaseModel {
         this.syncDatetime = syncDatetime;
         this.syncType = syncType;
         this.amount = amount;
+        this.amountPaidIn = amountPaidIn;
+        this.amountChange = amountChange;
         this.amountCash = amountCash;
         this.amountAlipay = amountAlipay;
         this.amountWeChat = amountWeChat;
@@ -453,6 +463,8 @@ public class RetailTrade extends BaseModel {
                 ", syncType='" + syncType + '\'' +
                 ", amountCash=" + amountCash +
                 ", amount=" + amount +
+                ", amount=PaidIn" + amountPaidIn +
+                ", amountChange=" + amountChange +
                 ", amountAlipay=" + amountAlipay +
                 ", amountWeChat=" + amountWeChat +
                 ", amount1=" + amount1 +
@@ -609,6 +621,22 @@ public class RetailTrade extends BaseModel {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public double getAmountPaidIn() {
+        return amountPaidIn;
+    }
+
+    public void setAmountPaidIn(double amountPaidIn) {
+        this.amountPaidIn = amountPaidIn;
+    }
+
+    public double getAmountChange() {
+        return amountChange;
+    }
+
+    public void setAmountChange(double amountChange) {
+        this.amountChange = amountChange;
     }
 
     public double getAmountCash() {
@@ -820,6 +848,8 @@ public class RetailTrade extends BaseModel {
             remark = jo.getString(field.getFIELD_NAME_remark());
             sourceID = Integer.valueOf(jo.getString(field.getFIELD_NAME_sourceID()));
             amount = Double.parseDouble(jo.getString(field.getFIELD_NAME_amount()));
+            amountPaidIn = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountPaidIn()));
+            amountChange = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountChange()));
             amountCash = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountCash()));
             amountAlipay = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountAlipay()));
             amountWeChat = Double.parseDouble(jo.getString(field.getFIELD_NAME_amountWeChat()));
@@ -1033,6 +1063,8 @@ public class RetailTrade extends BaseModel {
             obj.setDatetimeEnd((Date) datetimeEnd.clone());
         }
         obj.setAmount(this.getAmount());
+        obj.setAmountPaidIn(this.getAmountPaidIn());
+        obj.setAmountChange(this.getAmountChange());
         obj.setAmount1(this.getAmount1());
         obj.setAmount2(this.getAmount2());
         obj.setAmount3(this.getAmount3());
@@ -1088,6 +1120,8 @@ public class RetailTrade extends BaseModel {
 //                && DatetimeUtil.compareDate(rt.getSyncDatetime(), this.getSyncDatetime()) && printComparator(getFIELD_NAME_syncDatetime()) //
 //                && (ignoreSyncTypeInComparision == true ? true : (rt.getSyncType().equals(this.getSyncType()) && printComparator(getFIELD_NAME_syncType())))
                 && Math.abs(GeneralUtil.sub(rt.getAmount(), this.getAmount())) < TOLERANCE && printComparator(field.getFIELD_NAME_amount()) //
+                && Math.abs(GeneralUtil.sub(rt.getAmountPaidIn(), this.getAmount())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountPaidIn()) //
+                && Math.abs(GeneralUtil.sub(rt.getAmountChange(), this.getAmountChange())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountChange()) //
                 && Math.abs(GeneralUtil.sub(rt.getAmountWeChat(), this.getAmountWeChat())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountWeChat())//
                 && Math.abs(GeneralUtil.sub(rt.getAmountCash(), this.getAmountCash())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountCash())//
                 && Math.abs(GeneralUtil.sub(rt.getAmountAlipay(), this.getAmountAlipay())) < TOLERANCE && printComparator(field.getFIELD_NAME_amountAlipay())//

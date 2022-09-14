@@ -19,6 +19,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = -1;
 SET @fAmount = 285;
+SET @fAmountPaidIn = 285;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -39,7 +41,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 SELECT IF(found_rows() = 1 AND @iErrorCode = 1 AND @sErrorMsg = '该零售单已经存在', '测试成功', '测试失败') AS 'Case1 Testing Result';
 
@@ -66,6 +68,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = -1;
 SET @fAmount = 100;
+SET @fAmountPaidIn = 100;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -86,7 +90,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 
 SELECT @sErrorMsg;
@@ -100,6 +104,8 @@ SELECT 1 FROM t_RetailTrade
 	AND F_Remark = '...............'
 	AND F_SourceID = -1
 	AND F_Amount = 100
+	AND F_AmountPaidIn = 100
+	AND F_AmountChange = 0
 	AND F_AmountCash = 0
 	AND F_AmountAlipay = 0
 	AND F_AmountWeChat = 0
@@ -141,6 +147,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = 999;
 SET @fAmount = 285;
+SET @fAmountPaidIn = 285;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -161,7 +169,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 
 SELECT @sErrorMsg;
@@ -175,6 +183,8 @@ SELECT 1 FROM t_RetailTrade
 	AND F_Remark = @sRemark
 	AND F_SourceID = @iSourceID
 	AND F_Amount = @fAmount
+	AND F_AmountPaidIn = @fAmountPaidIn
+	AND F_AmountChange = @fAmountChange
 	AND F_AmountCash = @fAmountCash
 	AND F_AmountAlipay = @fAmountAlipay
 	AND F_AmountWeChat = @fAmountWeChat
@@ -217,6 +227,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = @RetailTradeID_A;
 SET @fAmount = 50;
+SET @fAmountPaidIn = 50;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -237,7 +249,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 SELECT @iErrorCode;
 	
@@ -251,6 +263,8 @@ SELECT 1 FROM t_RetailTrade
 	AND F_Remark = @sRemark
 	AND F_SourceID = @iSourceID
 	AND F_Amount = @fAmount
+	AND F_AmountPaidIn = @fAmountPaidIn
+	AND F_AmountChange = @fAmountChange
 	AND F_AmountCash = @fAmountCash
 	AND F_AmountAlipay = @fAmountAlipay
 	AND F_AmountWeChat = @fAmountWeChat
@@ -297,6 +311,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = @retailTradeID_B;
 SET @fAmount = 50;
+SET @fAmountPaidIn = 50;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -318,7 +334,7 @@ SET @sConsumerOpenID = NULL;
 SET @iVipID = 1;
 SET @shopID = 2;
 -- 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 SELECT IF(@sErrorMsg = '不能对退货类型的零售单进行退货' AND @iErrorCode = 7, '测试成功', '测试失败') AS 'Case5 Testing Result';
 -- 
@@ -404,6 +420,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = @RetailTradeID_A;
 SET @fAmount = 50;
+SET @fAmountPaidIn = 50;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -424,7 +442,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 -- 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 SELECT IF(@iErrorCode = 7 AND @sErrorMsg = '一张零售单，最多只能进行一次退货操作', '测试成功', '测试失败') AS 'Case6 Testing Result';
 --	SET @retailTradeID_C = last_insert_id();
@@ -455,6 +473,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = -1;
 SET @fAmount = 15;
+SET @fAmountPaidIn = 15;
+SET @fAmountChange = 0;
 SET @fAmountCash = 5;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 10;
@@ -475,7 +495,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 
 SELECT @sErrorMsg;
@@ -489,6 +509,8 @@ SELECT 1 FROM t_RetailTrade
 	AND F_Remark = @sRemark
 	AND F_SourceID = @iSourceID
 	AND F_Amount = @fAmount
+	AND F_AmountPaidIn = @fAmountPaidIn
+	AND F_AmountChange = @fAmountChange
 	AND F_AmountCash = @fAmountCash
 	AND F_AmountAlipay = @fAmountAlipay
 	AND F_AmountWeChat = @fAmountWeChat
@@ -534,6 +556,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = @RetailTradeID_A;
 SET @fAmount = 50;
+SET @fAmountPaidIn = 50;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -554,7 +578,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 	
 SELECT IF(@iErrorCode = 7 AND @sErrorMsg = '交易时间超过一年的订单禁止退款', '测试成功', '测试失败') AS 'Case8 Testing Result';
@@ -584,6 +608,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = @RetailTradeID;
 SET @fAmount = 100;
+SET @fAmountPaidIn = 100;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 60;
 SET @fAmountWeChat = 40;
@@ -604,7 +630,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 	
 SELECT @iErrorCode;
@@ -633,6 +659,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = @RetailTradeID;
 SET @fAmount = 100;
+SET @fAmountPaidIn = 100;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 40;
 SET @fAmountWeChat = 60;
@@ -653,7 +681,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 	
 SELECT @iErrorCode;
@@ -683,6 +711,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = 100000000;
 SET @fAmount = 50;
+SET @fAmountPaidIn = 50;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -703,7 +733,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 SELECT @iErrorCode;
 SET @last_id = 0;
@@ -734,6 +764,8 @@ SET @iStatus = 2;
 SET @sRemark = '...............';
 SET @iSourceID = -1;
 SET @fAmount = 100;
+SET @fAmountPaidIn = 100;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -754,7 +786,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 
 SET @iRetailTradeID = 0; 
@@ -764,7 +796,7 @@ SET @sSN = 'LS2018010101010100011235_1';
 SET @iLocalSN = 2222334;
 SELECT @sErrorMsg;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iRetailTradeID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iRetailTradeID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 
 SET @iReturnRetailTradeID = 0;
@@ -799,6 +831,8 @@ SET @iStatus = 2;
 SET @sRemark = '...............';
 SET @iSourceID = -1;
 SET @fAmount = 100;
+SET @fAmountPaidIn = 100;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -818,7 +852,7 @@ SET @sSN = 'LS2018010101010100011235';
 SET @iVipID = 9999999;
 SET @shopID = 2;
 -- 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iRetailTradeID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iRetailTradeID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 -- 
 SELECT IF(@iErrorCode = 2, '测试成功', '测试失败') AS 'Case13 Testing Result';
@@ -837,6 +871,8 @@ SET @iStatus = 2;
 SET @sRemark = '...............';
 SET @iSourceID = -1;
 SET @fAmount = 100;
+SET @fAmountPaidIn = 100;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -856,7 +892,7 @@ SET @sSN = 'LS2018010101010100011235';
 SET @iVipID = 1;
 SET @shopID = 2;
 -- 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iRetailTradeID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iRetailTradeID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 -- 
 SELECT IF(@iErrorCode = 2, '测试成功', '测试失败') AS 'Case14 Testing Result';
@@ -876,6 +912,8 @@ SET @iStatus = 2;
 SET @sRemark = '...............';
 SET @iSourceID = -1;
 SET @fAmount = 100;
+SET @fAmountPaidIn = 100;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -895,7 +933,7 @@ SET @sSN = 'LS2018010101010100011235';
 SET @iVipID = 1;
 SET @shopID = 2;
 -- 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iRetailTradeID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iRetailTradeID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 -- 
 SELECT IF(@iErrorCode = 2, '测试成功', '测试失败') AS 'Case16 Testing Result';
@@ -939,6 +977,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = @RetailTradeID;
 SET @fAmount = 100;
+SET @fAmountPaidIn = 100;
+SET @fAmountChange = 0;
 SET @fAmountCash = 0;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 0;
@@ -959,7 +999,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 SET @iReturnRetailTradeID = 0;
 SELECT F_ID INTO @iReturnRetailTradeID FROM t_retailtrade WHERE F_LocalSN = @iLocalSN AND F_POS_ID = @iPOS_ID;
@@ -1010,6 +1050,8 @@ SET @iStatus = 1;
 SET @sRemark = '...............';
 SET @iSourceID = @RetailTradeID_A;
 SET @fAmount = 60;
+SET @fAmountPaidIn = 60;
+SET @fAmountChange = 0;
 SET @fAmountCash = 30;
 SET @fAmountAlipay = 0;
 SET @fAmountWeChat = 30;
@@ -1030,7 +1072,7 @@ SET @dCouponAmount = 0.1;
 SET @sConsumerOpenID = NULL;
 SET @shopID = 2;
 
-CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountCash, @fAmountAlipay, @fAmountWeChat
+CALL SP_RetailTrade_UploadTrade(@iErrorCode, @sErrorMsg, @iVipID, @iLocalSN, @iPOS_ID, @sLogo, @dtSaleDatetime, @iStaffID, @iPaymentType, @iPaymentAccount, @iStatus, @sRemark, @iSourceID, @fAmount, @fAmountPaidIn, @fAmountChange, @fAmountCash, @fAmountAlipay, @fAmountWeChat
 	, @fAmount1, @fAmount2, @fAmount3, @fAmount4, @fAmount5, @iSmallSheetID, @sAliPayOrderSN, @sWxOrderSN, @sWxTradeNO, @sWxRefundNO, @sWxRefundDesc, @sWxRefundSubMchID, @sSN, @dCouponAmount, @sConsumerOpenID, @shopID);
 SELECT @iErrorCode;
 	

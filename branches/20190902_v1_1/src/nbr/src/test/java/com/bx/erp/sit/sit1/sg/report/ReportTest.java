@@ -354,7 +354,7 @@ public class ReportTest extends BaseActionTest {
 				.andReturn();
 		// 检查点
 		Shared.checkJSONErrorCode(mr5, EnumErrorCode.EC_PartSuccess);
-		WarehousingCP.verifyApprove(mr5, warehousing53, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr5, warehousing53, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 
 		// 创建pos机
 		Pos pos = BaseTestNGSpringContextTest.DataInput.getPOS();

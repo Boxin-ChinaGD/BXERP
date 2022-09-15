@@ -1574,6 +1574,7 @@ public class CheckListController implements PlatFormHandlerMessage {
                                 returnCommodityHttpEvent.setStatus(BaseEvent.EnumEventStatus.EES_SQLite_ToDo);
                                 if (createReturnRetailTrade(sbMsg)) { // 创建退货单
                                     returnCommodityHttpEvent.setStatus(BaseEvent.EnumEventStatus.EES_SQLite_Done);
+                                    viewController.printSmallSheet(retailTradeAfterConfirmReturn);
                                 }
                             }
                         } catch (Exception e) {

@@ -25,6 +25,7 @@ import com.bx.erp.model.warehousing.WarehousingCommodity;
 import com.bx.erp.test.BaseActionTest;
 import com.bx.erp.test.BaseCommodityTest;
 import com.bx.erp.test.BaseCompanyTest;
+import com.bx.erp.test.BaseRetailTradeTest;
 import com.bx.erp.test.Shared;
 import com.bx.erp.test.checkPoint.CommodityCP;
 import com.bx.erp.test.checkPoint.CompanyCP;
@@ -918,7 +919,7 @@ public class CommodityHistoryTest extends BaseActionTest {
 				.andReturn();
 
 		Shared.checkJSONErrorCode(mr2);
-		WarehousingCP.verifyApprove(mr2, warehousing48, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbNameOfNewCompany);
+		WarehousingCP.verifyApprove(mr2, warehousing48, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbNameOfNewCompany, BaseRetailTradeTest.defaultShopID);
 		//
 		// 查看商品48的库存修改记录
 		MvcResult mr3 = mvc.perform(//
@@ -1145,7 +1146,7 @@ public class CommodityHistoryTest extends BaseActionTest {
 				.andReturn();
 		// 检查点
 		Shared.checkJSONErrorCode(mr5);
-		WarehousingCP.verifyApprove(mr5, warehousing51, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbNameOfNewCompany);
+		WarehousingCP.verifyApprove(mr5, warehousing51, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbNameOfNewCompany, BaseRetailTradeTest.defaultShopID);
 		//
 		// 查看商品历史
 		MvcResult mr6 = mvc.perform(//
@@ -1287,7 +1288,7 @@ public class CommodityHistoryTest extends BaseActionTest {
 				.andReturn();
 		// 检查点
 		Shared.checkJSONErrorCode(mr5);
-		WarehousingCP.verifyApprove(mr5, warehousing52, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbNameOfNewCompany);
+		WarehousingCP.verifyApprove(mr5, warehousing52, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbNameOfNewCompany, BaseRetailTradeTest.defaultShopID);
 
 		// 新建退货单使商品52退货
 		ReturnCommoditySheet rcs52 = new ReturnCommoditySheet();

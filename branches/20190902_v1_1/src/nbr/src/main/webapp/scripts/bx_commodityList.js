@@ -210,9 +210,11 @@ layui.use(['element', 'form', 'table', 'upload'], function () {
 			reloadTable(table, commRN_tableID, method_post, commRN_url, curr_reloadTable, pageData_reloadTable);
 		}
 	}
-	//即时搜索事件
-	window.instantSearch = function (index) {
-		$(index).next().click();
+	//回车搜索事件
+	window.instantSearch = function (index, event) {
+		if(event.keyCode == "13") {
+			$(index).next().click();
+		}
 	}
 	//初始化搜索商品传参（页面层）
 	function initQueryCondition () {

@@ -96,6 +96,8 @@ public class CheckList_Fragment1 extends BaseFragment1 implements View.OnTouchLi
     TextView checkListReceivable;
     @BindView(R.id.net_receipts)
     TextView checkListNetReceipts;
+    @BindView(R.id.id_amountchange)
+    TextView checkListAmountChange;
     @BindView(R.id.discount)
     TextView checkListDiscount;
     @BindView(R.id.payment_method)
@@ -1072,7 +1074,8 @@ public class CheckList_Fragment1 extends BaseFragment1 implements View.OnTouchLi
                     if (!(dTotalOriginalPrice == 0.000000d || dShouldPay == 0.000000d)) { // 判断单个商品是否为零,是否需要折扣，总计等计算。
                         checkListOriginalPrice.setText(GeneralUtil.formatToShow(dTotalOriginalPrice));
                         checkListReceivable.setText(GeneralUtil.formatToShow(retailTradeSelected.getAmount()));//现在目前先放入零售单金额
-                        checkListNetReceipts.setText(GeneralUtil.formatToShow(retailTradeSelected.getAmount()));//现在目前先放入零售单金额
+                        checkListNetReceipts.setText(GeneralUtil.formatToShow(retailTradeSelected.getAmountPaidIn()));
+                        checkListAmountChange.setText(GeneralUtil.formatToShow(retailTradeSelected.getAmountChange()));
                         checkListDiscount.setText(GeneralUtil.div(GeneralUtil.mul(dShouldPay, 100.000000d), dTotalOriginalPrice, 2) + "%");
                     } else {
                         checkListOriginalPrice.setText("0.00");

@@ -46,6 +46,7 @@ import com.bx.erp.test.BaseActionTest;
 import com.bx.erp.test.BaseBarcodesTest;
 import com.bx.erp.test.BaseCommodityTest;
 import com.bx.erp.test.BaseCompanyTest;
+import com.bx.erp.test.BaseRetailTradeTest;
 import com.bx.erp.test.Shared;
 import com.bx.erp.test.checkPoint.PurchasingOrderCP;
 import com.bx.erp.test.checkPoint.WarehousingCP;
@@ -894,7 +895,7 @@ public class WarehousingTest extends BaseActionTest {
 
 		Shared.checkJSONErrorCode(mr5);
 		// 检查点
-		WarehousingCP.verifyApprove(mr5, warehousingCreate2, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr5, warehousingCreate2, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 	}
 
 	protected Staff getStaffFromSession(HttpSession session) {
@@ -972,7 +973,7 @@ public class WarehousingTest extends BaseActionTest {
 		Warehousing warehousing = new Warehousing();
 		Warehousing warehousing1 = (Warehousing) warehousing.parse1(JsonPath.read(o, "$.object").toString());
 		// 审核入库单的检查点
-		WarehousingCP.verifyApprove(mr, w, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr, w, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 		return warehousing1;
 	}
 

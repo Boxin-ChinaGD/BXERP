@@ -60,6 +60,7 @@ import com.bx.erp.model.ErrorInfo.EnumErrorCode;
 import com.bx.erp.model.Pos;
 import com.bx.erp.model.RealTimeSalesStatisticsToday;
 import com.bx.erp.model.commodity.Commodity;
+import com.bx.erp.model.commodity.CommodityShopInfo;
 import com.bx.erp.model.commodity.PackageUnit;
 import com.bx.erp.model.commodity.SubCommodity;
 import com.bx.erp.model.config.ConfigCacheSize;
@@ -5055,13 +5056,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		String barcodeIdString = barcodeCreated.getID() + ",";
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, String.valueOf(purchasingOrderCommNO), String.valueOf(priceSuggestion), commodityIdString,
-				barcodeIdString);
+				barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice };
 		Commodity[] commodityArr = { commodityCreated };
 		Barcodes[] barcodesArr = { barcodeCreated };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 创建零售单
 		int[] retailTradeCommodityNoArr = { retailTradeCommodity1NO };
 		double[] retailTradeCommodityPriceArr = { retailTradeCommodity1Price };
@@ -5172,13 +5173,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 				categoryBO, iOldNO, lspuCreated, lspuUpdated, lspuDeleted, mutipleCommList, Shared.DBName_Test, null);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, String.valueOf(purchasingOrderCommNO), String.valueOf(priceSuggestion), commodityIdString,
-				barcodeIdString);
+				barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice };
 		Commodity[] commodityArr = { commodityCreated };
 		Barcodes[] barcodesArr = { barcodeCreated };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -5306,13 +5307,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes barcodeCombination = BaseCommodityTest.retrieveNBarcodesViaAction(commodity1Combination, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO2, priceSuggestion + "," + priceSuggestion2,
-				commodityIdString, barcodeIdString);
+				commodityIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcodeCreated2 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 创建零售单
 		int[] retailTradeCommodityNoArr = { retailTradeCommodity1NO };
 		double[] retailTradeCommodityPriceArr = { retailTradeCommodity1Price };
@@ -5551,13 +5552,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO2, priceSuggestion + "," + priceSuggestion2,
-				commIdString, barcodeIdString);
+				commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcode2 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -5770,13 +5771,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO2, priceSuggestion + "," + priceSuggestion2,
-				commIdString, barcodeIdString);
+				commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcode2 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -5996,13 +5997,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO2, priceSuggestion + "," + priceSuggestion2,
-				commIdString, barcodeIdString);
+				commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcode2 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -6232,13 +6233,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO2, priceSuggestion + "," + priceSuggestion2,
-				commIdString, barcodeIdString);
+				commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcode2 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -6468,13 +6469,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO2, priceSuggestion + "," + priceSuggestion2,
-				commIdString, barcodeIdString);
+				commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcode2 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -6706,13 +6707,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO2, priceSuggestion + "," + priceSuggestion2,
-				commIdString, barcodeIdString);
+				commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcode2 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -6943,13 +6944,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO2, priceSuggestion + "," + priceSuggestion2,
-				commIdString, barcodeIdString);
+				commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcode2 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -7194,13 +7195,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO3 + "," + purchasingOrderCommNO2,
-				priceSuggestion + "," + priceSuggestion2 + "," + priceSuggestion3, commIdString, barcodeIdString);
+				priceSuggestion + "," + priceSuggestion2 + "," + priceSuggestion3, commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2, commodityCreated3 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcodeCreated2, barcodeCreated3 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -7441,13 +7442,13 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO3 + "," + purchasingOrderCommNO2,
-				priceSuggestion + "," + priceSuggestion2 + "," + priceSuggestion3, commIdString, barcodeIdString);
+				priceSuggestion + "," + priceSuggestion2 + "," + priceSuggestion3, commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2, commodityCreated3 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcodeCreated2, barcodeCreated3 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -7687,7 +7688,7 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO3 + "," + purchasingOrderCommNO2,
-				priceSuggestion + "," + priceSuggestion2 + "," + priceSuggestion3, commIdString, barcodeIdString);
+				priceSuggestion + "," + priceSuggestion2 + "," + priceSuggestion3, commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建入库单
 		MvcResult result = mvc.perform( //
 				post("/warehousing/retrieveNCommEx.bx") //
@@ -7712,6 +7713,7 @@ public class RetailTradeActionTest extends BaseActionTest {
 						.param(commPrices, "11.1,11.1,11.1") //
 						.param(amounts, "44.4,44.4,44.4") //
 						.param(barcodeIDs, barcodeIdString) //
+						.param(BaseRetailTradeTest.KEY_shopID, String.valueOf(BaseRetailTradeTest.defaultShopID)) //
 						.contentType(MediaType.APPLICATION_JSON) //
 						.session((MockHttpSession) result.getRequest().getSession()) //
 		) //
@@ -7735,7 +7737,7 @@ public class RetailTradeActionTest extends BaseActionTest {
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2, commodityCreated3 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcodeCreated2, barcodeCreated3 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);
@@ -7977,23 +7979,39 @@ public class RetailTradeActionTest extends BaseActionTest {
 		Barcodes serviceBarcodeCreated = BaseCommodityTest.retrieveNBarcodesViaAction(serviceCommCreated, mvc, sessionBoss);
 		// 创建并审核采购订单
 		PurchasingOrder purchasingOrderForApprove = BaseRetailTradeTest.createAndApprovePurchasingOrderViaAction(mvc, sessionBoss, mapBO, purchasingOrderCommNO + "," + purchasingOrderCommNO3 + "," + purchasingOrderCommNO2,
-				priceSuggestion + "," + priceSuggestion2 + "," + priceSuggestion3, commIdString, barcodeIdString);
+				priceSuggestion + "," + priceSuggestion2 + "," + priceSuggestion3, commIdString, barcodeIdString, BaseRetailTradeTest.defaultShopID);
 		// 创建并审核入库单2
 		int[] warehousingCommNOArr2 = { warehousingCommNO2, warehousingCommNO2, warehousingCommNO2 };
 		double[] warehousingCommPriceArr2 = { warehousingCommPrice2, warehousingCommPrice2, warehousingCommPrice2 };
 		Commodity[] commodityArr2 = { commodityCreated, commodityCreated2, commodityCreated3 };
 		Barcodes[] barcodesArr2 = { barcodeCreated, barcodeCreated2, barcodeCreated3 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr2, warehousingCommPriceArr2, commodityArr2, barcodesArr2, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr2, warehousingCommPriceArr2, commodityArr2, barcodesArr2, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 让检查点通过
-		commodityCreated.setNO(warehousingCommNO2);
-		commodityCreated2.setNO(warehousingCommNO2);
-		commodityCreated3.setNO(warehousingCommNO2);
+		for(Object object : commodityCreated.getListSlave2()) {
+			CommodityShopInfo commShopInfo = (CommodityShopInfo) object;
+			if(commShopInfo.getShopID() == BaseRetailTradeTest.defaultShopID) {
+				commShopInfo.setNO(warehousingCommNO2);
+			}
+		}
+		for(Object object : commodityCreated2.getListSlave2()) {
+			CommodityShopInfo commShopInfo = (CommodityShopInfo) object;
+			if(commShopInfo.getShopID() == BaseRetailTradeTest.defaultShopID) {
+				commShopInfo.setNO(warehousingCommNO2);
+			}
+		}
+		for(Object object : commodityCreated3.getListSlave2()) {
+			CommodityShopInfo commShopInfo = (CommodityShopInfo) object;
+			if(commShopInfo.getShopID() == BaseRetailTradeTest.defaultShopID) {
+				commShopInfo.setNO(warehousingCommNO2);
+			}
+		}
+		
 		// 创建并审核入库单
 		int[] warehousingCommNOArr = { warehousingCommNO, warehousingComm2NO, warehousingComm2NO };
 		double[] warehousingCommPriceArr = { warehousingCommPrice, warehousingComm2Price, warehousingComm2Price };
 		Commodity[] commodityArr = { commodityCreated, commodityCreated2, commodityCreated3 };
 		Barcodes[] barcodesArr = { barcodeCreated, barcodeCreated2, barcodeCreated3 };
-		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove);
+		BaseRetailTradeTest.createAndApproveWarehousingViaAction(mvc, sessionBoss, mapBO, warehousingCommNOArr, warehousingCommPriceArr, commodityArr, barcodesArr, purchasingOrderForApprove, BaseRetailTradeTest.defaultShopID);
 		// 检查多包装商品
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
 		List<Commodity> listMultiPackageCommodity = (List<Commodity>) commodityBO.retrieveNObject(BaseBO.SYSTEM, BaseBO.CASE_RetrieveNMultiPackageCommodity, commodityCreated);

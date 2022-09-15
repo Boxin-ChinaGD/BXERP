@@ -117,6 +117,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static String lastRetailTradePaymentType;//上一单的支付方式
     public static double lastRetailTradeChangeMoney;//上一单的找零金额
     public static double lastRetailTradeAmount;//上一单的总金额，用于结算完成时在首页展示
+    public static double lastRetailTradePaidInAmount;//上一单实收金额
     public static final String pay_wetchat = "微信支付 ";
     public static final String pay_aliPay = "支付宝支付 ";
     public static final String pay_cash = "现金支付 ";

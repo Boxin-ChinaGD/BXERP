@@ -22,7 +22,7 @@ SELECT '-------------------- Case2: 添加t_pos中已有的SN码 ----------------------
 SET @iErrorCode = 0;
 SET @sErrorMsg = '';
 SET @SPOS_SN = 'SN23346348';
-SET @iShopID = 1;
+SET @iShopID = 2;
 SET @sSaft = 'B1AFC07474C37C5AEC4199ED28E09705';
 SET @iStatus = 0 ;
 SET @iReturnSalt = 1;

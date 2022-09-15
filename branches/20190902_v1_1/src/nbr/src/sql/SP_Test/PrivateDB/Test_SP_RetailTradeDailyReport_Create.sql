@@ -515,9 +515,10 @@ DELETE FROM t_commodity WHERE F_ID = @iCommodityID;
 
 
 SELECT '-------------------- Case5：当天没有任何零售记录进行创建日报表 -------------------------' AS 'Case4';
-SET @dSaleDatetime = '2099-07-08';
+SET @dSaleDatetime = '2022-09-05';
 SET @iShopID = 2;
 SET @sErrorMsg = '';
+SET @iErrorCode = 0;
 SET @deleteOldData = 0;
 CALL SP_RetailTradeDailyReport_Create(@iErrorCode, @sErrorMsg, @iShopID, @dSaleDatetime, @deleteOldData);
 

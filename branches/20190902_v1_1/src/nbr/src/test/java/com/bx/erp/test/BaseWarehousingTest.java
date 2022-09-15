@@ -625,6 +625,6 @@ public class BaseWarehousingTest extends BaseMapperTest {
 		PurchasingOrderBO purchasingOrderBO = (PurchasingOrderBO) mapBO.get(PurchasingOrderBO.class.getSimpleName());
 		CommodityHistoryBO commodityHistoryBO = (CommodityHistoryBO) mapBO.get(CommodityHistoryBO.class.getSimpleName());
 		MessageBO messageBO = (MessageBO) mapBO.get(MessageBO.class.getSimpleName());
-		WarehousingCP.verifyApprove(mr, warehousing, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr, warehousing, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 	}
 }

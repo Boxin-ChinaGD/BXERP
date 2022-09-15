@@ -1810,7 +1810,7 @@ public class CommoditySyncActionTest extends BaseActionTest {
 		)//
 				.andExpect(status().isOk()).andDo(print()).andReturn(); //
 		// 结果验证 ： 检查错误码
-		Shared.checkJSONErrorCode(mr);
+		Shared.checkJSONErrorCode(mr, EnumErrorCode.EC_NoPermission);
 		String json = mr.getResponse().getContentAsString();
 		JSONObject o = JSONObject.fromObject(json);
 		String msg = JsonPath.read(o, "$." + BaseAction.KEY_HTMLTable_Parameter_msg);
@@ -2943,7 +2943,7 @@ public class CommoditySyncActionTest extends BaseActionTest {
 		)//
 				.andExpect(status().isOk()).andDo(print()).andReturn(); //
 		// 结果验证 ： 检查错误码
-		Shared.checkJSONErrorCode(mr);
+		Shared.checkJSONErrorCode(mr, EnumErrorCode.EC_NoPermission);
 		String json = mr.getResponse().getContentAsString();
 		JSONObject o = JSONObject.fromObject(json);
 		String msg = JsonPath.read(o, "$." + BaseAction.KEY_HTMLTable_Parameter_msg);

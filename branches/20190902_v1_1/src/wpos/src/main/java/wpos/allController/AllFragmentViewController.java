@@ -86,6 +86,8 @@ public class AllFragmentViewController extends BaseController {
     public Label last_paymenttype;
     @FXML   //上一单找零
     public Label last_changemoney;
+    @FXML   //上一单支付金额
+    public Label last_amountPaidIn;
     @FXML   //销售列表
     public ListView<Commodity> rvCommodity;
     @FXML
@@ -326,6 +328,9 @@ public class AllFragmentViewController extends BaseController {
 
     @FXML
     protected TextField checkListDiscount;
+
+    @FXML
+    protected TextField checkListChange;
 
     @FXML
     protected TextField checkListPaymentMethod;
@@ -1355,6 +1360,18 @@ public class AllFragmentViewController extends BaseController {
                 listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method1.getIndex()).getFrameId() == 1);
         AidlUtil.getInstance().printText(listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getContent() + GeneralUtil.formatToShow(retailTrade.getAmountCash()),
                 (int) listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getSize(),
+                listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getBold() == 1,
+                listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getGravity(),
+                listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getFrameId() == 1);
+        // 打印支付金额
+        AidlUtil.getInstance().printText("支付金额：￥" + GeneralUtil.formatToShow(retailTrade.getAmountPaidIn()),
+                (int)listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getSize(),
+                listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getBold() == 1,
+                listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getGravity(),
+                listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getFrameId() == 1);
+        // 打印找零金额
+        AidlUtil.getInstance().printText("找零：￥" + GeneralUtil.formatToShow(retailTrade.getAmountChange()),
+                (int)listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getSize(),
                 listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getBold() == 1,
                 listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getGravity(),
                 listSmallSheetText.get(SmallSheetText.EnumSmallSheetTextIndex.Payment_Method3.getIndex()).getFrameId() == 1);

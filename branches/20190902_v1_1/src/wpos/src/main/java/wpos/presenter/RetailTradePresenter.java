@@ -45,6 +45,8 @@ public class RetailTradePresenter extends BasePresenter {
             "F_SourceID," +
             "F_SyncDatetime, " +
             "F_Amount, " +
+            "F_AmountPaidIn, " +
+            "F_AmountChange, " +
             "F_AmountCash, " +
             "F_AmountAlipay, " +
             "F_AmountWeChat, " +

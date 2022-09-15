@@ -47,6 +47,7 @@ import com.bx.erp.model.warehousing.Warehousing;
 import com.bx.erp.test.BaseActionTest;
 import com.bx.erp.test.BaseCommodityTest;
 import com.bx.erp.test.BaseCompanyTest;
+import com.bx.erp.test.BaseRetailTradeTest;
 import com.bx.erp.test.Shared;
 import com.bx.erp.test.checkPoint.CommodityCP;
 import com.bx.erp.test.checkPoint.CompanyCP;
@@ -700,7 +701,7 @@ public class PurchasingOrderListTest extends BaseActionTest {
 
 		Shared.checkJSONErrorCode(mr3);
 		// 审核入库单的检查点
-		WarehousingCP.verifyApprove(mr3, warehousing1, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr3, warehousing1, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 		// 查看刚才入库的采购订单
 		MvcResult mr4 = mvc.perform(//
 				post("/purchasingOrder/retrieveNEx.bx")//
@@ -1391,7 +1392,7 @@ public class PurchasingOrderListTest extends BaseActionTest {
 
 		Shared.checkJSONErrorCode(mr1);
 		// 审核入库单的检查点
-		WarehousingCP.verifyApprove(mr1, warehousing1, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr1, warehousing1, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 		// 查看采购订单6
 		MvcResult mr2 = mvc.perform(//
 				post("/purchasingOrder/retrieveNEx.bx")//
@@ -1463,7 +1464,7 @@ public class PurchasingOrderListTest extends BaseActionTest {
 
 		Shared.checkJSONErrorCode(mr1);
 		// 审核入库单的检查点
-		WarehousingCP.verifyApprove(mr1, warehousing1, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr1, warehousing1, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 		// 结果验证
 	}
 

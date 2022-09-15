@@ -140,8 +140,8 @@
 									<div class="layui-form-item">
 										<div class="layui-input-block" id="providerMessageButton"
 											style="margin-left: 95px; display: none;">
-											<button lay-submit lay-filter="providerCreate"
-												class="commodityButton">确定</button>
+											<button lay-submit lay-filter="providerCreate" type="button"
+												class="commodityButton confirmCreateProvider">确定</button>
 											<input type="button" value="取消" class="commodityUnButton" />
 										</div>
 									</div>
@@ -252,7 +252,7 @@
 				<!-- 属性设置 -->
 				<div class="layui-col-md3 commodityProeprty">
 					<div class="title" style="margin-bottom: 20px;">
-						<span>属性设置</span>&nbsp;<span class="buleSpace"></span>
+						<span>自定义属性字段设置</span>&nbsp;<span class="buleSpace"></span>
 					</div>
 					<div id="proeprty" class="layui-form">
 						<div class="layui-form-item">

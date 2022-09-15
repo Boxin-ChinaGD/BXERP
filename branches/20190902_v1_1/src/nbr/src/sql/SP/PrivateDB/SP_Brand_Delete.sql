@@ -17,7 +17,7 @@ BEGIN
 	
 		IF EXISTS (SELECT 1 FROM t_commodity WHERE F_BrandID = iID ) THEN
 			SET iErrorCode := 7;
-			SET sErrorMsg := '品牌表中已有商品的品牌';
+			SET sErrorMsg := '该品牌已被商品使用，无法删除';
 		ELSE		
 			DELETE FROM t_brand WHERE F_ID = iID;
 			DELETE FROM t_brandsynccachedispatcher WHERE F_SyncCacheID IN (SELECT F_ID FROM t_brandsynccache WHERE F_SyncData_ID = iID);

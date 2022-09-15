@@ -48,6 +48,7 @@ import com.bx.erp.model.ReturnCommoditySheet.EnumStatusReturnCommoditySheet;
 import com.bx.erp.test.BaseActionTest;
 import com.bx.erp.test.BaseCommodityTest;
 import com.bx.erp.test.BaseCompanyTest;
+import com.bx.erp.test.BaseRetailTradeTest;
 import com.bx.erp.test.BaseReturnCommoditySheetTest;
 import com.bx.erp.test.Shared;
 import com.bx.erp.test.checkPoint.CommodityCP;
@@ -641,7 +642,7 @@ public class ReturnCommoditySheetTest extends BaseActionTest {
 		Warehousing warehousing = new Warehousing();
 		Warehousing warehousing1 = (Warehousing) warehousing.parse1(JsonPath.read(o, "$.object").toString());
 		// 审核入库单的检查点
-		WarehousingCP.verifyApprove(mr, w, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr, w, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 		return warehousing1;
 	}
 

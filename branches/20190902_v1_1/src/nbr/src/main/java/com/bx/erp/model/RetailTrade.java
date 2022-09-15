@@ -101,6 +101,10 @@ public class RetailTrade extends BaseModel {
 
 	/** 零售单应收款，可能经过了促销优惠的计算 */
 	protected double amount;
+	
+	protected double amountPaidIn;
+	
+	protected double amountChange;
 
 	protected double amountCash;
 
@@ -432,6 +436,24 @@ public class RetailTrade extends BaseModel {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+	
+	public double getAmountPaidIn() {
+		return amountPaidIn;
+	}
+
+	public void setAmountPaidIn(double amountPaidIn) {
+		this.amountPaidIn = amountPaidIn;
+	}
+
+	public double getAmountChange() {
+		return amountChange;
+	}
+
+	public void setAmountChange(double amountChange) {
+		this.amountChange = amountChange;
+	}
+
+
 
 	protected String staffName;
 
@@ -481,6 +503,8 @@ public class RetailTrade extends BaseModel {
 		obj.setRemark(remark);
 		obj.setSourceID(sourceID);
 		obj.setAmount(amount);
+		obj.setAmountPaidIn(amountPaidIn);
+		obj.setAmountChange(amountChange);
 		obj.setAmount1(amount1);
 		obj.setAmount2(amount2);
 		obj.setAmount3(amount3);
@@ -642,6 +666,8 @@ public class RetailTrade extends BaseModel {
 		params.put(field.getFIELD_NAME_remark(), rt.getRemark() == null ? "" : rt.getRemark());
 		params.put(field.getFIELD_NAME_sourceID(), rt.getSourceID());
 		params.put(field.getFIELD_NAME_amount(), rt.getAmount());
+		params.put(field.getFIELD_NAME_amountPaidIn(), rt.getAmountPaidIn());
+		params.put(field.getFIELD_NAME_amountChange(), rt.getAmountChange());
 		params.put(field.getFIELD_NAME_amountCash(), rt.getAmountCash());
 		params.put(field.getFIELD_NAME_amountAlipay(), rt.getAmountAlipay());
 		params.put(field.getFIELD_NAME_amountWeChat(), rt.getAmountWeChat());
@@ -818,6 +844,8 @@ public class RetailTrade extends BaseModel {
 			// syncDatetime = DatetimeUtil.toDate(jo.getString("syncDatetime"));
 			// }
 			amount = Double.valueOf(jo.getString(field.getFIELD_NAME_amount()));
+			amountPaidIn = Double.valueOf(jo.getString(field.getFIELD_NAME_amountPaidIn()));
+			amountChange = Double.valueOf(jo.getString(field.getFIELD_NAME_amountChange()));
 			amountCash = Double.valueOf(jo.getString(field.getFIELD_NAME_amountCash()));
 			amountAlipay = Double.valueOf(jo.getString(field.getFIELD_NAME_amountAlipay()));
 			amountWeChat = Double.valueOf(jo.getString(field.getFIELD_NAME_amountWeChat()));

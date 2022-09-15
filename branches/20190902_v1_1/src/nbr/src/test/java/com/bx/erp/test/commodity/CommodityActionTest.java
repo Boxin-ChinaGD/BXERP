@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
@@ -470,7 +472,36 @@ public class CommodityActionTest extends BaseActionTest {
 				.andDo(print())//
 				.andReturn();
 		Shared.checkJSONErrorCode(mrl);
-
+	}
+	
+	@Test
+	public void threadPool() throws InterruptedException {
+		ExecutorService service = Executors.newCachedThreadPool();
+		while(true) {
+			service.submit(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println("--------------- case1:不根据商品状态和商品类型进行查询 ---------------");
+					System.out.println("Thread.currentThread().getName():" + Thread.currentThread().getName());
+					MvcResult mrl;
+					try {
+						mrl = mvc.perform(//
+								post("/commodity/retrieveNEx.bx?" + Commodity.field.getFIELD_NAME_status() + "=-1&" + Commodity.field.getFIELD_NAME_type() + "=-1")//
+										.session((MockHttpSession) sessionBoss)//
+										.contentType(MediaType.APPLICATION_JSON)//
+						)//
+								.andExpect(status().isOk())//
+								.andDo(print())//
+								.andReturn();
+						Shared.checkJSONErrorCode(mrl);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
+			Thread.sleep(125);
+		}
 	}
 
 	@Test

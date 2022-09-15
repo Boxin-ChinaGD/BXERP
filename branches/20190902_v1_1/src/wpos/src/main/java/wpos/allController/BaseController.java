@@ -46,6 +46,7 @@ public class BaseController {
     public static String lastRetailTradePaymentType;//上一单的支付方式
     public static double lastRetailTradeChangeMoney;//上一单的找零金额
     public static double lastRetailTradeAmount;//上一单的总金额，用于结算完成时在首页展示
+    public static double lastRetailTradePaidInAmount;//上一单实收金额
 
     /*
      * 纯现金支付的零售，进行全部商品退货，允许存在一分钱的误差：

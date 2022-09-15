@@ -345,7 +345,7 @@ public class WarehouseStockTest extends BaseActionTest {
 
 		Shared.checkJSONErrorCode(mr3);
 		// 检查是否数量有相应的修改
-		WarehousingCP.verifyApprove(mr3, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr3, ws, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 	}
 
 	@Test(dependsOnMethods = "retriveNCommodity4")
@@ -1017,7 +1017,7 @@ public class WarehouseStockTest extends BaseActionTest {
 		Warehousing warehousing = new Warehousing();
 		Warehousing warehousing1 = (Warehousing) warehousing.parse1(JsonPath.read(o, "$.object").toString());
 		// 审核入库单的检查点
-		WarehousingCP.verifyApprove(mr, w, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr, w, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 		return warehousing1;
 	}
 

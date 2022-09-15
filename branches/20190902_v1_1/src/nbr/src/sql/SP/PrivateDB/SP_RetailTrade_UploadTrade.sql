@@ -14,6 +14,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_RetailTrade_UploadTrade` (
 	IN sRemark VARCHAR(20),
 	IN iSourceID INT,
 	IN fAmount Decimal(20,6),
+	IN fAmountPaidIn Decimal(20,6),
+	IN fAmountChange Decimal(20,6),
 	IN fAmountCash Decimal(20,6), 
 	IN fAmountAlipay Decimal(20,6), 
 	IN fAmountWeChat Decimal(20,6), 
@@ -55,7 +57,7 @@ BEGIN
 		SET sErrorMsg := '';
 		-- 由于零售单在上传的过程中可能断网，所以如果创建重复的零售单，就直接返回该零售单回去。
 		IF EXISTS(SELECT 1 FROM t_retailtrade WHERE F_LocalSN = sLocalSN AND F_POS_ID = iPOS_ID AND F_SaleDatetime = dtSaleDatetime) THEN
-				SELECT F_ID, F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark,F_SourceID, F_SyncDatetime, F_Amount
+				SELECT F_ID, F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark,F_SourceID, F_SyncDatetime, F_Amount, F_AmountPaidIn, F_AmountChange
 						, F_AmountCash, F_AmountAlipay, F_AmountWeChat, F_Amount1, F_Amount2, F_Amount3, F_Amount4, F_Amount5, F_SmallSheetID, F_AliPayOrderSN, F_WxOrderSN, F_WxTradeNO,
 						F_WxRefundNO, F_WxRefundDesc, F_WxRefundSubMchID, F_CouponAmount, F_ConsumerOpenID
 		   		FROM t_retailtrade WHERE F_LocalSN = sLocalSN AND F_POS_ID = iPOS_ID AND F_SaleDatetime = dtSaleDatetime;
@@ -83,14 +85,14 @@ BEGIN
 			ELSE 
 				IF iSourceID = -1 THEN
 	 				-- SELECT Func_GenerateSN('LS', sSN) INTO sSN;
-					INSERT INTO t_retailtrade (F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark, F_SourceID, F_SyncDatetime, F_Amount
+					INSERT INTO t_retailtrade (F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark, F_SourceID, F_SyncDatetime, F_Amount, F_AmountPaidIn, F_AmountChange
 								, F_AmountCash, F_AmountAlipay, F_AmountWeChat, F_Amount1, F_Amount2, F_Amount3, F_Amount4, F_Amount5, F_SmallSheetID, F_AliPayOrderSN, F_WxOrderSN, F_WxTradeNO, F_WxRefundNO
 								, F_WxRefundDesc, F_WxRefundSubMchID, F_CouponAmount, F_ConsumerOpenID, F_ShopID)
-					VALUES (iVipID, sSN, sLocalSN, iPOS_ID, sLogo, dtSaleDatetime, iStaffID, iPaymentType, iPaymentAccount, iStatus, sRemark, iSourceID, now(), fAmount
+					VALUES (iVipID, sSN, sLocalSN, iPOS_ID, sLogo, dtSaleDatetime, iStaffID, iPaymentType, iPaymentAccount, iStatus, sRemark, iSourceID, now(), fAmount, fAmountPaidIn, fAmountChange
 								, fAmountCash, fAmountAlipay, fAmountWeChat, fAmount1, fAmount2, fAmount3, fAmount4, fAmount5, iSmallSheetID, sAliPayOrderSN, sWxOrderSN, sWxTradeNO, sWxRefundNO, sWxRefundDesc, sWxRefundSubMchID,
 								dCouponAmount, sConsumerOpenID, iShop_ID);
 	
-					SELECT F_ID, F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark,F_SourceID, F_SyncDatetime, F_Amount
+					SELECT F_ID, F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark,F_SourceID, F_SyncDatetime, F_Amount, F_AmountPaidIn, F_AmountChange
 								, F_AmountCash, F_AmountAlipay, F_AmountWeChat, F_Amount1, F_Amount2, F_Amount3, F_Amount4, F_Amount5, F_SmallSheetID, F_AliPayOrderSN, F_WxOrderSN, F_WxTradeNO,
 								F_WxRefundNO, F_WxRefundDesc, F_WxRefundSubMchID, F_CouponAmount, F_ConsumerOpenID, F_ShopID
 				   	FROM t_retailtrade WHERE F_ID = LAST_INSERT_ID();
@@ -101,7 +103,6 @@ BEGIN
 							F_ConsumeAmount = F_ConsumeAmount + fAmount,
 							F_LastConsumeDatetime = now()
 						WHERE F_ID = iVipID;
-						
 						CALL SP_Vip_UpdateBonus(iErrorCode, sErrorMsg, iVipID/*iVipID*/, 0/*iStaffID*/, fAmount * 100/*iAmount*/, 0/*iBonus*/, ''/*sRemark*/, 0/*iManuallyAdded*/, 1/*iIsIncreaseBonus*/);
 				   	END IF;
 				ELSE -- 处理退货单
@@ -143,14 +144,14 @@ BEGIN
 						   	-- SELECT COUNT(1) INTO @count FROM t_retailtrade WHERE F_SourceID = iSourceID;
 						  	SELECT CONCAT(sSN, '_', @count + 1) INTO sSN;
 						
-							INSERT INTO t_retailtrade (F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark, F_SourceID, F_SyncDatetime, F_Amount
+							INSERT INTO t_retailtrade (F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark, F_SourceID, F_SyncDatetime, F_Amount, F_AmountPaidIn, F_AmountChange
 										, F_AmountCash, F_AmountAlipay, F_AmountWeChat, F_Amount1, F_Amount2, F_Amount3, F_Amount4, F_Amount5, F_SmallSheetID, F_AliPayOrderSN, F_WxOrderSN, F_WxTradeNO, F_WxRefundNO
 								   		, F_WxRefundDesc, F_WxRefundSubMchID, F_CouponAmount, F_ConsumerOpenID, F_ShopID)
-							VALUES (iVipID, sSN, sLocalSN, iPOS_ID, sLogo, dtSaleDatetime, iStaffID, iPaymentType, iPaymentAccount, iStatus, sRemark, iSourceID, now(), fAmount
+							VALUES (iVipID, sSN, sLocalSN, iPOS_ID, sLogo, dtSaleDatetime, iStaffID, iPaymentType, iPaymentAccount, iStatus, sRemark, iSourceID, now(), fAmount, fAmountPaidIn, fAmountChange
 									, fAmountCash, fAmountAlipay, fAmountWeChat, fAmount1, fAmount2, fAmount3, fAmount4, fAmount5, iSmallSheetID, sAliPayOrderSN, sWxOrderSN, sWxTradeNO, sWxRefundNO, sWxRefundDesc, sWxRefundSubMchID,
 									dCouponAmount, sConsumerOpenID, iShop_ID);
 							
-							SELECT F_ID, F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark,F_SourceID, F_SyncDatetime, F_Amount
+							SELECT F_ID, F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, F_PaymentAccount, F_Status, F_Remark,F_SourceID, F_SyncDatetime, F_Amount, F_AmountPaidIn, F_Amount
 									, F_AmountCash, F_AmountAlipay, F_AmountWeChat, F_Amount1, F_Amount2, F_Amount3, F_Amount4, F_Amount5, F_SmallSheetID, F_AliPayOrderSN, F_WxOrderSN, F_WxTradeNO, F_WxRefundNO
 								   	, F_WxRefundDesc, F_WxRefundSubMchID, F_CouponAmount, F_ConsumerOpenID, F_ShopID
 					   		FROM t_retailtrade WHERE F_ID = LAST_INSERT_ID();

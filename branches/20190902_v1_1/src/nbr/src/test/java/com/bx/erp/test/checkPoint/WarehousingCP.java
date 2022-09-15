@@ -24,6 +24,7 @@ import com.bx.erp.model.ErrorInfo.EnumErrorCode;
 import com.bx.erp.model.Staff;
 import com.bx.erp.model.commodity.Commodity;
 import com.bx.erp.model.commodity.CommodityHistory;
+import com.bx.erp.model.commodity.CommodityShopInfo;
 import com.bx.erp.model.message.Message;
 import com.bx.erp.model.purchasing.PurchasingOrder;
 import com.bx.erp.model.purchasing.PurchasingOrder.EnumStatusPurchasingOrder;
@@ -127,7 +128,7 @@ public class WarehousingCP {
 	// 8、检查数据库T_PurchasingOrder，查看入库单A关联的采购单状态是否正确修改。
 	@SuppressWarnings("unchecked")
 	public static boolean verifyApprove(MvcResult mr, BaseModel bmApproveObject, WarehousingBO warehousingBO, PurchasingOrderBO purchasingOrderBO, List<Commodity> commList, CommodityHistoryBO commodityHistoryBO, MessageBO messageBO,
-			String dbName) throws Exception {
+			String dbName, int shopID) throws Exception {
 		// 3、检查数据库T_Warehousing，入库单A的F_Status是否为1(已审核)，如果审核前有修改操作，还需要检查入库单A是否正确修改。
 		JSONObject object = JSONObject.fromObject(mr.getResponse().getContentAsString());
 		Warehousing warehousingReturnObject = (Warehousing) new Warehousing().parse1(object.get(BaseAction.KEY_Object).toString());
@@ -189,20 +190,20 @@ public class WarehousingCP {
 
 			// 2、入库单A的入库商品相关商品的缓存是否正确计算。
 			// 5、检查数据库T_Commodity，入库单A的入库商品相关商品F_NO是否正确计算。(步骤2和5一样)
-			verifyCommodityNO(whCommReqList, commList, commodityHistoryBO, dbName);
+			verifyCommodityNO(whCommReqList, commList, commodityHistoryBO, dbName, shopID);
 		}
 		// 审核前没有修改操作
 		else if (whApproveObject.getIsModified() == NotModify) {
 			// 5、检查数据库T_Commodity，入库单A的入库商品相关商品F_NO是否正确计算。
 			// 获取DB中入库单A的主表和从表，
 			List<WarehousingCommodity> whcDBList = (List<WarehousingCommodity>) whDB.getListSlave1();
-			verifyCommodityNO(whcDBList, commList, commodityHistoryBO, dbName);
+			verifyCommodityNO(whcDBList, commList, commodityHistoryBO, dbName, shopID);
 		}
 		return true;
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void verifyCommodityNO(List<WarehousingCommodity> whCommApproveList, List<Commodity> commList, CommodityHistoryBO commodityHistoryBO, String dbName) {
+	private static void verifyCommodityNO(List<WarehousingCommodity> whCommApproveList, List<Commodity> commList, CommodityHistoryBO commodityHistoryBO, String dbName, int shopID) {
 		ErrorInfo ecOut = new ErrorInfo();
 		for (int i = 0; i < whCommApproveList.size(); i++) {
 			WarehousingCommodity whc = whCommApproveList.get(i);
@@ -211,7 +212,21 @@ public class WarehousingCP {
 			if (ecOut.getErrorCode() != EnumErrorCode.EC_NoError) {
 				Assert.assertTrue(false, "从缓存读取商品失败，错误码=" + ecOut.getErrorCode() + "，错误信息=" + ecOut.getErrorMessage());
 			}
-			Assert.assertTrue(commodityCache.getNO() == (comm.getNO() + whc.getNO()), "入库单A的入库商品相关商品F_NO没有正确计算。商品ID为" + comm.getID() + "不正确。" + commodityCache.getNO() + "!=" + comm.getNO() + "+" + whc.getNO());
+			List<CommodityShopInfo> commodityShopInfoCacheList = (List<CommodityShopInfo>) commodityCache.getListSlave2();
+			CommodityShopInfo commodityShopInfoCache = null;
+			for(CommodityShopInfo commodityShopInfo : commodityShopInfoCacheList) {
+				if(commodityShopInfo.getShopID() == shopID) {
+					commodityShopInfoCache = commodityShopInfo;
+				}
+			}
+			List<CommodityShopInfo> commodityShopInfoList = (List<CommodityShopInfo>) comm.getListSlave2();
+			CommodityShopInfo commShopInfo = null;
+			for(CommodityShopInfo commodityShopInfo : commodityShopInfoList) {
+				if(commodityShopInfo.getShopID() == shopID) {
+					commShopInfo = commodityShopInfo;
+				}
+			}
+			Assert.assertTrue(commodityShopInfoCache.getNO() == (commShopInfo.getNO() + whc.getNO()), "入库单A的入库商品相关商品F_NO没有正确计算。商品ID为" + comm.getID() + "不正确。" + commodityShopInfoCache.getNO() + "!=" + commShopInfo.getNO() + "+" + whc.getNO());
 			// 6、检查数据库T_CommodityHistory，是否创建了入库单A的入库商品相关的库存变化历史记录。
 			DataSourceContextHolder.setDbName(dbName);
 			CommodityHistory commodityHistory = new CommodityHistory();
@@ -224,9 +239,12 @@ public class WarehousingCP {
 			// 判断商品历史表F_CommodityID为i的商品历史的F_OldValue和F_NewValue
 			boolean createCommodityHistory = false;
 			for (CommodityHistory ch : commHistoryList) {
-				if (Integer.parseInt(ch.getOldValue()) == comm.getNO() && Integer.parseInt(ch.getNewValue()) == commodityCache.getNO()) {
-					createCommodityHistory = true;
-					break;
+				// oldValue可能为空
+				if(!ch.getOldValue().equals("")) {
+					if (Integer.parseInt(ch.getOldValue()) == commShopInfo.getNO() && Integer.parseInt(ch.getNewValue()) == commodityShopInfoCache.getNO()) {
+						createCommodityHistory = true;
+						break;
+					}
 				}
 			}
 			Assert.assertTrue(createCommodityHistory, "入库单A的入库商品相关的库存变化历史记录没有创建，或创建有误！");

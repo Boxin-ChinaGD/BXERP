@@ -3458,6 +3458,8 @@ public class CommodityMapperTest extends BaseMapperTest {
 		//
 		CommodityShopInfo commodityShopInfo = BaseCommodityTest.DataInput.getCommodityShopInfo();
 		commodityShopInfo.setCommodityID(updatePrice.getID());
+		// 不根据门店查询，查询所有门店
+		commodityShopInfo.setShopID(0);
 		Map<String, Object> paramsCommShopInfoRN = commodityShopInfo.getRetrieveNParam(BaseBO.INVALID_CASE_ID, commodityShopInfo);
 		//
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);
@@ -3533,6 +3535,8 @@ public class CommodityMapperTest extends BaseMapperTest {
 		//
 		CommodityShopInfo commodityShopInfo = BaseCommodityTest.DataInput.getCommodityShopInfo();
 		commodityShopInfo.setCommodityID(updatePrice.getID());
+		// 不根据门店查询，查询所有门店
+		commodityShopInfo.setShopID(0);
 		Map<String, Object> paramsCommShopInfoRN = commodityShopInfo.getRetrieveNParam(BaseBO.INVALID_CASE_ID, commodityShopInfo);
 		//
 		DataSourceContextHolder.setDbName(Shared.DBName_Test);

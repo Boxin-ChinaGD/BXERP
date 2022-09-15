@@ -371,7 +371,7 @@
                 android:text="原价总金额:"
                 android:textSize="22sp"
                 android:textColor="@color/text_color_black"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"/>
             <TextView
                 android:id="@+id/original_price"
@@ -382,7 +382,7 @@
                 android:textSize="22sp"
                 android:textColor="@color/text_color_black"
                 android:textStyle="bold"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"/>
             <TextView
                 android:id="@+id/textview3"
@@ -393,7 +393,7 @@
                 android:text="应收:"
                 android:textSize="22sp"
                 android:textColor="@color/text_color_black"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"/>
             <TextView
                 android:id="@+id/receivable"
@@ -405,7 +405,7 @@
                 android:textSize="22sp"
                 android:textColor="@color/text_color_black"
                 android:textStyle="bold"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"/>
             <TextView
                 android:id="@+id/textview5"
@@ -416,7 +416,7 @@
                 android:text="实收:"
                 android:textSize="22sp"
                 android:textColor="@color/text_color_black"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"/>
             <TextView
                 android:id="@+id/net_receipts"
@@ -428,8 +428,31 @@
                 android:textSize="22sp"
                 android:textColor="@color/text_color_black"
                 android:textStyle="bold"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"/>
+            <!--<TextView-->
+                <!--android:id="@+id/textview51"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/textview3"-->
+                <!--android:layout_alignRight="@id/textview3"-->
+                <!--android:text="找零:"-->
+                <!--android:textSize="22sp"-->
+                <!--android:textColor="@color/text_color_black"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginLeft="12dp"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/id_amountchange"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_toRightOf="@id/textview5"-->
+                <!--android:layout_below="@id/receivable"-->
+                <!--android:text="000.00"-->
+                <!--android:textSize="22sp"-->
+                <!--android:textColor="@color/text_color_black"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginLeft="12dp"/>-->
             <TextView
                 android:id="@+id/textview7"
                 android:layout_width="wrap_content"
@@ -439,7 +462,7 @@
                 android:text="折扣:"
                 android:textSize="22sp"
                 android:textColor="@color/text_color_black"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"/>
             <TextView
                 android:id="@+id/discount"
@@ -451,7 +474,31 @@
                 android:textSize="22sp"
                 android:textColor="@color/text_color_black"
                 android:textStyle="bold"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="12dp"/>
+
+            <TextView
+                android:id="@+id/textview8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textview7"
+                android:layout_alignRight="@id/textview7"
+                android:text="找零:"
+                android:textSize="22sp"
+                android:textColor="@color/text_color_black"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="12dp"/>
+            <TextView
+                android:id="@+id/id_amountchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textview8"
+                android:layout_below="@id/discount"
+                android:text="000.00"
+                android:textSize="22sp"
+                android:textColor="@color/text_color_black"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"/>
 
             <LinearLayout

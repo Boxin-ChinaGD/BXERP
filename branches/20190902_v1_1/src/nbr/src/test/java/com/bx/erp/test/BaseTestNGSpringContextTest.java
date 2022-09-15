@@ -569,6 +569,9 @@ public class BaseTestNGSpringContextTest extends AbstractTestNGSpringContextTest
 					noVariation += simpleCommodityFromMap.getSaleNO();
 				}
 				simpleCommodity.setSaleNO(noVariation);
+				// 查询商品门店信息
+				List<BaseModel> listCommodityShopInfo = BaseCommodityTest.getListCommodityShopInfoByCommID(simpleCommodity);
+				simpleCommodity.setListSlave2(listCommodityShopInfo);
 				mapCommodity.put(simpleCommodity.getID(), simpleCommodity);
 			} else if (commodity.getType() == EnumCommodityType.ECT_Combination.getIndex()) {
 				List<BaseModel> subCommList = (List<BaseModel>) bmList.get(1);
@@ -582,6 +585,9 @@ public class BaseTestNGSpringContextTest extends AbstractTestNGSpringContextTest
 						noVariation += simpleCommodityFromMap.getSaleNO();
 					}
 					simpleCommodity.setSaleNO(noVariation);
+					// 查询商品门店信息
+					List<BaseModel> listCommodityShopInfo = BaseCommodityTest.getListCommodityShopInfoByCommID(simpleCommodity);
+					simpleCommodity.setListSlave2(listCommodityShopInfo);
 					mapCommodity.put(simpleCommodity.getID(), simpleCommodity);
 				}
 			} else if (commodity.getType() == EnumCommodityType.ECT_Normal.getIndex()) {

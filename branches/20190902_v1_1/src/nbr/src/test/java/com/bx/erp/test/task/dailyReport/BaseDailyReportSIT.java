@@ -541,7 +541,7 @@ public class BaseDailyReportSIT extends BaseActionTest {
 				.andReturn();
 
 		Shared.checkJSONErrorCode(mr);
-		WarehousingCP.verifyApprove(mr, warehousing, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test);
+		WarehousingCP.verifyApprove(mr, warehousing, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, Shared.DBName_Test, BaseRetailTradeTest.defaultShopID);
 	}
 
 	/** @param retailTradeIn

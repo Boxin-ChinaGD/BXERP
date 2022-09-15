@@ -398,7 +398,7 @@ public class NBRHomeTest extends BaseActionTest {
 		Warehousing warehousing = new Warehousing();
 		Warehousing warehousing1 = (Warehousing) warehousing.parse1(JsonPath.read(o, "$.object").toString());
 		// 审核入库单的检查点
-		WarehousingCP.verifyApprove(mr, w, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName);
+		WarehousingCP.verifyApprove(mr, w, warehousingBO, purchasingOrderBO, commList, commodityHistoryBO, messageBO, dbName, BaseRetailTradeTest.defaultShopID);
 		return warehousing1;
 	}
 

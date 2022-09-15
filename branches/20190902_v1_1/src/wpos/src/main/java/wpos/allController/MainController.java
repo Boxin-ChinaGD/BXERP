@@ -811,9 +811,11 @@ public class MainController implements radioButtonSelectLinstener, PlatFormHandl
         ReserveDialogViewController reserveDialogViewController = loader.getController();
         reserveDialogViewController.setAlert(alert);
         reserveDialogViewController.setListener(s -> {
-            boolean DecimalPointOnErrorPosition = s.indexOf(".") == s.length() - 2
-                    || s.indexOf(".") == s.length() - 1;
-            if (s.contains(".") && DecimalPointOnErrorPosition) {
+//            boolean DecimalPointOnErrorPosition = s.indexOf(".") == s.length() - 2
+//                    || s.indexOf(".") == s.length() - 1;
+            boolean checkInputReserve = ReserveDialogViewController.checkReserve(s);
+//            if (s.contains(".") && DecimalPointOnErrorPosition) {
+            if (!checkInputReserve) {
                 ToastUtil.toast("请输入整数或者保留小数点后两位的小数");
             } else if ("".equals(s)) {
                 ToastUtil.toast("准备金不允许为空");
@@ -983,6 +985,7 @@ public class MainController implements radioButtonSelectLinstener, PlatFormHandl
 
         // 上一单信息
         viewController.last_amount.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradeAmount));
+        viewController.last_amountPaidIn.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradePaidInAmount));
         viewController.last_changemoney.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradeChangeMoney));
         viewController.last_paymenttype.setText(BaseController.lastRetailTradePaymentType);
     }
@@ -1012,6 +1015,7 @@ public class MainController implements radioButtonSelectLinstener, PlatFormHandl
 
             // 上一单信息
             viewController.last_amount.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradeAmount));
+            viewController.last_amountPaidIn.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradePaidInAmount));
             viewController.last_changemoney.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradeChangeMoney));
             viewController.last_paymenttype.setText(BaseController.lastRetailTradePaymentType);
         } else {
@@ -2085,6 +2089,8 @@ public class MainController implements radioButtonSelectLinstener, PlatFormHandl
                 } else {
                     BaseController.lastRetailTradePaymentType = viewController.pay_combination;
                 }
+                //设置上一单支付金额
+                BaseController.lastRetailTradePaidInAmount = GeneralUtil.sum(totalCashAmount, totalWechatAmount);
                 //设置上一单找零金额
                 BaseController.lastRetailTradeChangeMoney = sub(totalCashAmount + totalWechatAmount, BaseController.retailTrade.getAmount());
                 //设置上一单总金额
@@ -2092,6 +2098,8 @@ public class MainController implements radioButtonSelectLinstener, PlatFormHandl
                 // 现金支付，存在支付金额大于零售单总金额的情况，这个时候需要减去找零金额，当不需要找零时，BaseActivity.lastRetailTradeChangeMoney应该为0
                 BaseController.retailTrade.setAmountWeChat(totalWechatAmount);
                 BaseController.retailTrade.setAmountCash(sub(totalCashAmount, BaseController.lastRetailTradeChangeMoney));
+                BaseController.retailTrade.setAmountPaidIn(GeneralUtil.sum(totalCashAmount, totalWechatAmount));
+                BaseController.retailTrade.setAmountChange(sub(totalCashAmount + totalWechatAmount, BaseController.retailTrade.getAmount()));
                 log.info("===lastRetailTradeAmount:" + BaseController.lastRetailTradeAmount + "===AmountCash:" + BaseController.retailTrade.getAmountCash());
                 // 是否使用了优惠券
                 if (couponCode != null) {
@@ -2388,6 +2396,7 @@ public class MainController implements radioButtonSelectLinstener, PlatFormHandl
             viewController.total_money.setText("0.00");
         }
         viewController.last_amount.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradeAmount));
+        viewController.last_amountPaidIn.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradePaidInAmount));
         viewController.last_changemoney.setText(GeneralUtil.formatToShow(BaseController.lastRetailTradeChangeMoney));
         viewController.last_paymenttype.setText(BaseController.lastRetailTradePaymentType);
     }

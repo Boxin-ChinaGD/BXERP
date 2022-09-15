@@ -130,13 +130,16 @@ public class RetailTradeCP extends BaseTestNGSpringContextTest {
 			double expectedIncreaseBonus = bmOfDB.getAmount() * 100 / bonusRuleR1DB.getAmountUnit() * bonusRuleR1DB.getIncreaseBonus();
 			expectedIncreaseBonus = expectedIncreaseBonus > bonusRuleR1DB.getMaxIncreaseBonus() ? bonusRuleR1DB.getMaxIncreaseBonus() : expectedIncreaseBonus;
 			expectedIncreaseBonus = Math.round(expectedIncreaseBonus); // 积分bonus是int类型，所以需要四舍五入
-			// 消费记录是否创建
-			BonusConsumeHistory bonusConsumeHistoryToRN = new BonusConsumeHistory();
-			bonusConsumeHistoryToRN.setVipID(bmOfDB.getVipID());
-			List<BaseModel> bonusConsumeHistoryRetrieveN = BaseBonusConsumeHistoryTest.retrieveNViaMapper(bonusConsumeHistoryToRN, dbName, EnumErrorCode.EC_NoError);
-			Assert.assertTrue(bonusConsumeHistoryRetrieveN != null && bonusConsumeHistoryRetrieveN.size() > 0, "会员的消费记录没有创建");
-			BonusConsumeHistory bonusConsumeHistoryCreated = (BonusConsumeHistory) bonusConsumeHistoryRetrieveN.get(0);
-			Assert.assertTrue(Math.abs(GeneralUtil.sub(expectedIncreaseBonus, bonusConsumeHistoryCreated.getAddedBonus())) < RetailTrade.TOLERANCE, "增加的积分不对, expectedIncreaseBonus:" + expectedIncreaseBonus + ",addedBonus:" + bonusConsumeHistoryCreated.getAddedBonus());
+			// sp判断零售金额大于0时，才需要增加积分、插入积分历史
+			if(bmOfDB.getAmount() > 0) {
+				// 消费记录是否创建
+				BonusConsumeHistory bonusConsumeHistoryToRN = new BonusConsumeHistory();
+				bonusConsumeHistoryToRN.setVipID(bmOfDB.getVipID());
+				List<BaseModel> bonusConsumeHistoryRetrieveN = BaseBonusConsumeHistoryTest.retrieveNViaMapper(bonusConsumeHistoryToRN, dbName, EnumErrorCode.EC_NoError);
+				Assert.assertTrue(bonusConsumeHistoryRetrieveN != null && bonusConsumeHistoryRetrieveN.size() > 0, "会员的消费记录没有创建");
+				BonusConsumeHistory bonusConsumeHistoryCreated = (BonusConsumeHistory) bonusConsumeHistoryRetrieveN.get(0);
+				Assert.assertTrue(Math.abs(GeneralUtil.sub(expectedIncreaseBonus, bonusConsumeHistoryCreated.getAddedBonus())) < RetailTrade.TOLERANCE, "增加的积分不对, expectedIncreaseBonus:" + expectedIncreaseBonus + ",addedBonus:" + bonusConsumeHistoryCreated.getAddedBonus());
+			}
 			// 积分变动   TODO 是否需要传入创建零售单前会员的对象，得到修改前的积分。所有创建零售单的地方都要传这个对象，影响较大
 			Vip vipGet = BaseVipTest.DataInput.getVip();
 			vipGet.setID(bmOfDB.getVipID());
@@ -234,7 +237,11 @@ public class RetailTradeCP extends BaseTestNGSpringContextTest {
 			Commodity commodity = simpleCommodityList.get(commID);
 			iNOVariation = commodity.getSaleNO(); // 得到此单品的操作数量
 			List<CommodityShopInfo> commodityShopInfos = (List<CommodityShopInfo>) commodity.getListSlave2();
-			oldNOInWarehouse = commodityShopInfos.get(0).getNO();
+			for(CommodityShopInfo commodityShopInfo : commodityShopInfos) {
+				if(commodityShopInfo.getShopID() == retailTrade.getShopID()) {
+					oldNOInWarehouse = commodityShopInfo.getNO();
+				}
+			}
 //			List<List<BaseModel>> commList = getCommodityInfo(commID, commodityBO, dbName, true);
 			List<BaseModel> commodityShopInfoList = BaseCommodityTest.getListCommodityShopInfoByCommID(commodity, dbName, retailTrade.getShopID());
 			CommodityShopInfo commodityShopInfo = (CommodityShopInfo) commodityShopInfoList.get(0);

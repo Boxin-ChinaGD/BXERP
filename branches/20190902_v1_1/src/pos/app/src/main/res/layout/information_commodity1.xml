@@ -187,6 +187,7 @@
             android:textSize="12sp"
             android:gravity="right"/>
         <TextView
+            android:id="@+id/last_PaidInAmount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"

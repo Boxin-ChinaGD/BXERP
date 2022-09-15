@@ -28,6 +28,8 @@ public interface RetailTradeMapper extends JpaRepository<RetailTrade, Integer> {
             "F_SourceID INT DEFAULT -1," +
             "F_SyncDatetime DATETIME NOT NULL," +
             "F_Amount Decimal(20,6) NOT NULL," +
+            "F_AmountPaidIn Decimal(20,6) NOT NULL," +
+            "F_AmountChange Decimal(20,6) NOT NULL," +
             "F_AmountCash Decimal(20,6) NULL," +
             "F_AmountAlipay Decimal(20,6) NULL," +
             "F_AmountWeChat Decimal(20,6) NULL," +
@@ -59,13 +61,13 @@ public interface RetailTradeMapper extends JpaRepository<RetailTrade, Integer> {
     @Transactional
     @Modifying
     @Query(value = "insert into T_RetailTrade (F_ID, F_VipID, F_SN, F_LocalSN, F_POS_ID, F_Logo, F_SaleDatetime, F_StaffID, F_PaymentType, " +
-            "F_PaymentAccount, F_Status, F_Remark, F_SourceID, F_SyncDatetime, F_Amount, F_AmountCash, F_AmountAlipay, " +
+            "F_PaymentAccount, F_Status, F_Remark, F_SourceID, F_SyncDatetime, F_Amount, F_AmountPaidIn, F_AmountChange, F_AmountCash, F_AmountAlipay, " +
             "F_AmountWeChat, F_Amount1, F_Amount2, F_Amount3, F_Amount4, F_Amount5, F_SmallSheetID, F_AliPayOrderSN, F_WxOrderSN, " +
             "F_WxTradeNO, F_WxRefundNO, F_WxRefundDesc, F_WxRefundSubMchID, F_CouponAmount, F_ConsumerOpenID, F_shopID) values" +
             "(:#{#retailTrade.ID}, :#{#retailTrade.vipID}, :#{#retailTrade.sn}, :#{#retailTrade.localSN}, :#{#retailTrade.pos_ID}, " +
             ":#{#retailTrade.logo}, :#{#retailTrade.saleDatetime}, :#{#retailTrade.staffID}, :#{#retailTrade.paymentType}, " +
             ":#{#retailTrade.paymentAccount}, :#{#retailTrade.status}, :#{#retailTrade.remark}, :#{#retailTrade.sourceID}, " +
-            ":#{#retailTrade.syncDatetime}, :#{#retailTrade.amount}, :#{#retailTrade.amountCash}, :#{#retailTrade.amountAlipay}, " +
+            ":#{#retailTrade.syncDatetime}, :#{#retailTrade.amount}, :#{#retailTrade.amountPaidIn}, :#{#retailTrade.amountChange}, :#{#retailTrade.amountCash}, :#{#retailTrade.amountAlipay}, " +
             ":#{#retailTrade.amountWeChat}, :#{#retailTrade.amount1}, :#{#retailTrade.amount2}, :#{#retailTrade.amount3}, " +
             ":#{#retailTrade.amount4}, :#{#retailTrade.amount5}, :#{#retailTrade.smallSheetID}, :#{#retailTrade.aliPayOrderSN}, " +
             ":#{#retailTrade.wxOrderSN}, :#{#retailTrade.wxTradeNO}, :#{#retailTrade.wxRefundNO}, :#{#retailTrade.wxRefundDesc}, " +

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>已使用</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="32" cy="32" r="32"></circle>
+    </defs>
+    <g id="组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="组件/优惠券/状态版本2">
+            <g id="编组-3">
+                <g id="编组-2" transform="translate(6.000000, 20.000000)">
+                    <text id="已过期" font-family="PingFangSC-Semibold, PingFang SC" font-size="12" font-weight="500" line-spacing="20" fill="#BDBDBD">
+                        <tspan x="8.5" y="13">已过期</tspan>
+                    </text>
+                    <g id="编组" transform="translate(10.000000, 19.000000)" stroke="#BDBDBD">
+                        <circle id="椭圆形" cx="17" cy="1" r="1.5"></circle>
+                        <line x1="34" y1="1" x2="23" y2="1" id="路径-2"></line>
+                        <line x1="11" y1="1" x2="0" y2="1" id="路径-2备份"></line>
+                    </g>
+                </g>
+                <g id="椭圆形备份">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <circle stroke="#BDBDBD" cx="32" cy="32" r="31.5"></circle>
+                    <path d="M32.5,60 C47.6878306,60 60,47.6878306 60,32.5 C60,17.3121694 47.6878306,5 32.5,5 C17.3121694,5 5,17.3121694 5,32.5" stroke="#BDBDBD" stroke-dasharray="3,3" mask="url(#mask-2)" transform="translate(32.500000, 32.500000) rotate(45.000000) translate(-32.500000, -32.500000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

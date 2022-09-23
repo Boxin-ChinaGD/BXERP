@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.ReturnCommoditySheetMapper">
+	<resultMap id="ReturnCommoditySheetMap" type="com.bx.erp.model.ReturnCommoditySheet">
+		<result property="ID" column="F_ID" />
+		<result property="staffID" column="F_StaffID" />
+		<result property="providerID" column="F_ProviderID" />
+		<result property="status" column="F_Status" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="updateDatetime" column="F_UpdateDatetime" />
+		<result property="commodityIDs" column="commodityIDs" />
+		<result property="sn" column="F_SN" />
+		<result property="shopID" column="F_ShopID" />
+	</resultMap>
+	
+	<resultMap id="ReturnCommoditySheetCommodityMapA" type="com.bx.erp.model.ReturnCommoditySheetCommodity">
+		<result property="ID" column="F_ID" />
+		<result property="returnCommoditySheetID" column="F_ReturnCommoditySheetID" />
+		<result property="commodityID" column="F_CommodityID" />
+		<result property="commodityName" column="F_CommodityName" />
+		<result property="barcodeID" column="F_BarcodeID" />
+		<result property="NO" column="F_NO" />
+		<result property="specification" column="F_Specification" />
+		<result property="purchasingPrice" column="F_PurchasingPrice" />
+	</resultMap>
+	
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SP_ReturnCommoditySheet_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{staffID, mode=IN},
+		#{providerID, mode=IN},
+		#{shopID, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieve1Ex" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap, ReturnCommoditySheetCommodityMapA">
+		{CALL SP_ReturnCommoditySheet_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+	
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SP_ReturnCommoditySheet_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{shopID, mode=IN},
+		#{queryKeyword, mode=IN},
+		#{staffID, mode=IN},
+		#{status, mode=IN},
+		#{providerID, mode=IN},
+		#{date1, mode=IN},
+		#{date2, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SP_ReturnCommoditySheet_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{providerID, mode=IN}
+		)}
+	</select>
+	
+	<select id="approve" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SP_ReturnCommoditySheet_Approve(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+	
+	<select id="CheckProviderID" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SPD_ReturnCommoditySheet_CheckProviderID(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="CheckStaffID" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SPD_ReturnCommoditySheet_CheckStaffID(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="CheckStatus" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SPD_ReturnCommoditySheet_CheckStatus(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="CheckBarcodeID" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SPD_ReturnCommoditySheetCommodity_CheckBarcodeID(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="CheckCommodity" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SPD_ReturnCommoditySheetCommodity_CheckCommodity(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="CheckReturnCommoditySheetID" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SPD_ReturnCommoditySheetCommodity_CheckReturnCommoditySheetID(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="CheckReturnCommoditySheetCommodity" statementType="CALLABLE" useCache="false" resultMap="ReturnCommoditySheetMap">
+		{CALL SPD_ReturnCommoditySheet_CheckReturnCommoditySheetCommodity(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+</mapper>

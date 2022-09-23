@@ -1,0 +1,10 @@
+package com.bx.erp.http.request;
+
+import com.bx.erp.http.HttpRequestUnit;
+
+public class RetrieveNCouponCodeC extends HttpRequestUnit {
+    @Override
+    public EnumRequestType getEnumRequestType() {
+        return HttpRequestUnit.EnumRequestType.ERT_CouponCode_RetrieveNC;
+    }
+}

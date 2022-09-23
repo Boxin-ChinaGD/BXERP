@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<!--<log4j:configuration>-->
+	<!-- 输出DEBUG日志到文件 -->
+	<appender name="log4jLogDebug" class="org.apache.log4j.DailyRollingFileAppender">
+		<!-- 输出的文件位置 -->
+		<param name="file" value="D:/WPOS_Log/DEBUG.log" />
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="append" value="true" />
+		<!-- 设置文件大小 -->
+		<!-- <param name="MaxFileSize" value="1MB" /> -->
+		<!-- 设置文件备份个数，当log文件的大小超过上面文件设置的大小时，就会进行备份。当设置的文件备份个数用完后，它会自动覆盖原有的log -->
+		<!-- <param name="MaxBackupIndex" value="10" /> -->
+		<!-- 设置输出文件项目和格式 -->
+		<layout class="org.apache.log4j.PatternLayout"> 
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %t %5p %c{1}:%L:%m%n" />
+		</layout>
+		<!-- 过滤日志级别输出到对应文件 如果不需要过滤，则将所有级别的日志输出到一个文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="DEBUG" />
+			<param name="levelMax" value="DEBUG" />
+		</filter>
+	</appender>
+	
+	<appender name="log4jLogDebugAsync" class="org.apache.log4j.AsyncAppender">
+<!--		<param name="BufferSize" value="0" />-->
+		<appender-ref ref="log4jLogDebug" />
+	</appender>
+
+	<!-- 输出INFO日志到文件 -->
+	<appender name="log4jLogInfo" class="org.apache.log4j.DailyRollingFileAppender">
+		<!-- 输出的文件位置 -->
+		<param name="file" value="D:/WPOS_Log/INFO.log" />
+<!-- 		<param name="DatePattern" value="_yyyy_MM_dd.log" /> -->
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="append" value="true" />
+		<!-- 设置文件大小 -->
+		<!-- <param name="MaxFileSize" value="1MB" /> -->
+		<!-- 设置文件备份个数，当log文件的大小超过上面文件设置的大小时，就会进行备份。当设置的文件备份个数用完后，它会自动覆盖原有的log -->
+		<!-- <param name="MaxBackupIndex" value="10" /> -->
+		<!-- 设置输出文件项目和格式 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %t %5p %c{1}:%L:%m%n" />
+		</layout>
+		<!-- 过滤日志级别输出到对应文件 如果不需要过滤，则将所有级别的日志输出到一个文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="INFO" />
+			<param name="levelMax" value="INFO" />
+		</filter>
+	</appender>
+
+	<appender name="log4jLogInfoAsync" class="org.apache.log4j.AsyncAppender">
+<!--		<param name="BufferSize" value="0" />-->
+		<appender-ref ref="log4jLogInfo" />
+	</appender>
+	
+	<!-- 输出ERROR日志到文件 -->
+	<appender name="log4jLogError" class="org.apache.log4j.DailyRollingFileAppender">
+		<!-- 输出的文件位置 -->
+		<param name="file" value="D:/WPOS_Log/ERROR.log" />
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="append" value="true" />
+		<!-- 设置文件大小 -->
+		<!-- <param name="MaxFileSize" value="1MB" /> -->
+		<!-- 设置文件备份个数，当log文件的大小超过上面文件设置的大小时，就会进行备份。当设置的文件备份个数用完后，它会自动覆盖原有的log -->
+		<!-- <param name="MaxBackupIndex" value="10" /> -->
+		<!-- 设置输出文件项目和格式 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %t %5p %c{1}:%L:%m%n" />
+		</layout>
+		<!-- 过滤日志级别输出到对应文件 如果不需要过滤，则将所有级别的日志输出到一个文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="ERROR" />
+			<param name="levelMax" value="ERROR" />
+		</filter>
+	</appender>
+
+	<appender name="log4jLogErrorAsync" class="org.apache.log4j.AsyncAppender">
+<!--		<param name="BufferSize" value="0" />-->
+		<appender-ref ref="log4jLogError" />
+	</appender>
+
+	<!-- 输出到控制台 -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %t %5p %c{1}:%L:%m%n" />
+		</layout>
+	</appender>
+
+
+<!--	&lt;!&ndash; 发邮件（只有ERROR时才会发送！） &ndash;&gt;-->
+<!--	<appender name="MAIL" class="org.apache.log4j.net.SMTPAppender">-->
+<!--		<param name="threshold" value="ERROR" />-->
+<!--		&lt;!&ndash; 日志的错误级别 <param name="threshold" value="fatal"/> &ndash;&gt;-->
+<!--		&lt;!&ndash; 缓存文件大小，日志达到数值时发送Email &ndash;&gt;-->
+<!--&lt;!&ndash; 		<param name="BufferSize" value="0" />单位K &ndash;&gt;-->
+<!--		<param name="From" value="guarder_nbr_dev@bxit.vip" />-->
+<!--		<param name="SMTPHost" value="smtp.bxit.vip" />-->
+<!--		<param name="Subject" value="SSL_NBR_ERROR_MESSAGE" />-->
+<!--		<param name="To" value="zrl@bxit.vip" />-->
+<!--		<param name="SMTPPort" value="465" />-->
+<!--		<param name="SMTPUsername" value="guarder_nbr_dev@bxit.vip" />-->
+<!--		<param name="SMTPPassword" value="ABC123ABC" />-->
+<!--		<param name="SMTPProtocol" value="smtps" />-->
+<!--		<param name="SMTPDebug" value="true" />-->
+<!--		<layout class="org.apache.log4j.PatternLayout">-->
+<!--			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %t %5p %c{1}:%L:%m%n" />-->
+<!--		</layout>-->
+<!--	</appender>-->
+
+<!--	<appender name="SendEmailAsync" class="org.apache.log4j.AsyncAppender">-->
+<!--		<param name="BufferSize" value="0" />-->
+<!--		<appender-ref ref="MAIL" />-->
+<!--	</appender>-->
+
+	<!--通过<category></category>的定义可以将各个包中的类日志输出到不同的日志文件中 -->
+	<category name="wpos">
+		<priority value="DEBUG" />
+		<appender-ref ref="console" />
+<!--		<appender-ref ref="log4jLogInfo" />-->
+<!--		<appender-ref ref="log4jLogDebug" />-->
+<!--		<appender-ref ref="log4jLogError" />-->
+		<appender-ref ref="log4jLogDebugAsync" />
+		<appender-ref ref="log4jLogInfoAsync" />
+		<appender-ref ref="log4jLogErrorAsync" />
+<!--		<appender-ref ref="SendEmailAsync" />-->
+	</category>
+
+	<root>
+		<priority value="DEBUG" />
+	</root>
+
+</log4j:configuration>

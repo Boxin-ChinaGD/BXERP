@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.RolePermissionMapper">
+	<resultMap type="com.bx.erp.model.RolePermission" id="Role_PermissionMap">
+		<result column="F_RoleID" property="roleID" />
+		<result column="F_PermissionID" property="permissionID" />
+	</resultMap>
+
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="Role_PermissionMap">
+		{CALL SP_RolePermission_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{roleID, mode=IN}
+		)}
+	</select>
+</mapper>

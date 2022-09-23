@@ -1,0 +1,459 @@
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+       url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+       url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+       url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+       url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+body{
+	font-family: "SourceHanSansCN-Regular";
+}
+
+.disabledButton{
+	background: #fff!important;
+	color: #000!important;
+}
+/* ��ʾ����ʽ */
+.layui-layer-dialog a.layui-layer-btn0{
+	background-color: #2196F3;	
+	border-color:#2196F3;
+}
+#promotionMain{
+	margin: 0 20px;
+	min-width: 1390px;
+}
+.requiredField{
+ color: red;
+ margin-right: 3px;
+}
+/* ͷ���������� */
+.topNav_head{
+	border-top: 6px solid #ECEFF1;
+	border-left: 6px solid #ECEFF1;
+	border-bottom: 6px solid #ECEFF1;
+	width: 101%;
+	margin-left: -10px;
+}
+.topNav .layui-form-item{
+	margin-bottom: 0;
+}
+.topNav .layui-form-label{
+
+	width: auto;
+}
+.topNav .layui-form-label span{
+	cursor: pointer;
+	border: 1px solid #eee;
+	padding: 3px;
+}
+.topNav .layui-form-label span b{
+	font-weight: normal;
+}
+.topNav .layui-form-label + ul{
+	display: none;
+	position: absolute;
+	top: 30px;
+	padding: 10px 0;
+	border: 1px solid #cccccc;
+	max-height: 235px;
+	overflow: auto;
+	background-color: #ffffff;
+    z-index: 10086;
+}
+.topNav .layui-form-label + ul::-webkit-scrollbar {
+	width: 6px;
+	height: 1px;
+}
+
+.topNav .layui-form-label + ul::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 5px #fff;
+	background: #C1C1C1;
+}
+
+.topNav .layui-form-label + ul::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 5px #fff;
+	background: #fff;
+}
+.topNav .layui-form-label + ul>li{
+	padding: 0 10px;
+	width: max-content;
+	line-height: 26px;
+	cursor: pointer;
+}
+
+.topNav .layui-form-label + ul>li:hover{
+	background-color: rgb(244, 245, 247);
+}
+#left-Area{
+	float: left;
+	padding: 0 35px;
+	
+}
+/* �������� */
+#left-Area .search {
+	padding: 10px 0px;
+}
+#left-Area .search .layui-input {
+	position: absolute;
+	margin-top: -55px;
+	margin-left: 200px;
+    height: 30px;
+    width: 200px;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
+#left-Area .search i{
+	position: absolute;
+	margin-top: -52px;
+	margin-left: 410px;
+}
+#left-Area .search .promotionSearch{
+	cursor: pointer;
+}
+/* ���� */
+#promotionList + div .layui-table thead tr{
+	background-color: #2196F3;	
+	color: white;
+}
+#promotionList + div .layui-table-body tbody .trChoosed{
+	background-color: #E3F2FD;
+}
+#promotionList + div .layui-table-body tbody tr:hover{
+	background-color: #E3F2FD;
+}
+#promotionList + div .layui-table-page .layui-laypage-curr .layui-laypage-em{
+	background-color: #2196F3;
+}
+#left-Area .layui-form .layui-table-page .layui-laypage-limits{
+	display: none;
+}
+#left-Area .layui-table-view{
+	border: none;
+	margin-left: -45px;
+	margin-top: -20px;
+	border-left: 6px solid #ECEFF1;
+	border-right: 6px solid #ECEFF1;
+	border-bottom: 6px solid #ECEFF1;
+	padding: 8px;
+}
+.trChoosed{
+	background-color: #E3F2FD;
+}
+#toChooseComm thead tr {
+    background-color: #2196F3;
+    color: #fff;
+}
+#chooseShopWindow thead tr {
+    background-color: #2196F3;
+    color: #fff;
+}
+/* �ұ������� */
+#right-Area{
+	float: left;
+	width: 490px;
+}
+#right-Area .fixedButtonArea{
+	overflow: hidden;
+}
+#right-Area .fixedButtonArea button{
+	border: 1px solid #eee;
+    float: left;
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+    margin: 0px 10px;
+	margin-top: 10px;
+}
+#right-Area .fixedButtonArea button:hover{
+	background-color: #2196F3 !important;
+    color: #fff;
+}
+
+.toStopPromotion{
+	color: #fff !important;
+    background-color: #F44336 !important;
+}
+.promotionList{
+	border-left: 6px solid #ECEFF1;	
+}
+#right-Area .promotionInfo > h3{
+	font-size: 14px;
+	line-height: 30px;
+}
+#right-Area .promotionInfo .layui-form-item{
+	margin-bottom: 6px;
+}
+#right-Area .promotionInfo .layui-inline .layui-form-label{
+	color: #888;
+	padding: 4px 15px;
+}
+#right-Area .promotionInfo .layui-inline .layui-input-inline{
+	width: auto;
+	line-height: 28px;
+}
+#right-Area .promotionInfo .layui-inline .layui-form-mid{
+	line-height: 28px;
+	padding: 0!important;
+}
+#right-Area .promotionInfo .layui-input{
+	display: inline-block;
+	width: 120px;
+	height: 27px;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	color: black;
+}
+#right-Area .promotionInfo p{
+	font-size: 14px;
+}
+#right-Area .promotionInfo p ~ .layui-form-item .layui-input{
+	width: 60px;
+	text-align: center;
+	padding: 0;
+}
+#right-Area .promotionInfo input[type=radio]{
+	width: 20px;
+	cursor: pointer;
+}
+#right-Area .promotionInfo .promotionScope{
+	cursor: pointer;
+}
+/* #datetimeStart, #datetimeEnd{ */
+/* 	color: black; */
+/* } */
+/* ���ڵ����� */
+ .layui-laydate table tr .layui-this {		
+    background-color:  #2196F3!important;
+    color: #fff!important;
+}
+.layui-laydate ul .layui-this{
+	background-color: #1A4A9F!important;
+	color: #fff!important;
+}
+/* ָ����Ʒ�б�  */
+.designatedCommodityList > div .layui-form-label{
+    margin: -21px -13px;
+    width: 120px;
+    color: #888;
+}
+.designatedCommodityTable{
+    width: 400px;
+    margin: 3px 39px;
+}
+.designatedShopTable{
+    width: 400px;
+    margin: 3px 39px;
+}
+#commodityList{
+	width: 400px;
+} 
+#shopList{
+	width: 400px;
+} 
+#commodityList thead{
+	display: table;
+	width: 100%;
+}
+#shopList thead{
+	display: table;
+	width: 100%;
+}
+#commodityList thead tr{
+	background-color: #2196F3;	
+	color: white;
+	height: 30px;
+}
+#shopList thead tr{
+	background-color: #2196F3;	
+	color: white;
+	height: 30px;
+}
+#commodityList thead tr th{
+	text-align: center;
+}
+#shopList thead tr th{
+	text-align: center;
+}
+#commodityList tbody{
+	display: block;
+	max-height: 230px;
+	overflow-y: auto;
+}
+#shopList tbody{
+	display: block;
+	max-height: 230px;
+	overflow-y: auto;
+}
+#commodityList tbody::-webkit-scrollbar {
+	width: 6px;
+	height: 1px;
+}
+#shopList tbody::-webkit-scrollbar {
+	width: 6px;
+	height: 1px;
+}
+
+#commodityList tbody::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 5px #fff;
+	background: #C1C1C1;
+}
+#shopList tbody::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 5px #fff;
+	background: #C1C1C1;
+}
+
+
+#commodityList tbody::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 5px #fff;
+	background: #fff;
+}
+#shopList tbody::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 5px #fff;
+	background: #fff;
+}
+#commodityList tbody tr{
+	display: table;
+	width: 100%;
+}
+#shopList tbody tr{
+	display: table;
+	width: 100%;
+}
+#commodityList tbody tr td{
+	text-align: center;
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#shopList tbody tr td{
+	text-align: center;
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#commodityList thead tr th:nth-child(1), #commodityList tbody tr td:nth-child(1){
+	width: 30px;
+}
+#shopList thead tr th:nth-child(1), #shopList tbody tr td:nth-child(1){
+	width: 60px;
+}
+#commodityList thead tr th:nth-child(2){
+	width: 90px;
+}
+/* #shopList thead tr th:nth-child(2){ */
+/* 	width: 90px; */
+/* } */
+#commodityList tbody tr td:nth-child(2){
+	text-align: left;
+	width: 84px;
+	position: relative;
+}
+#shopList tbody tr td:nth-child(2){
+	text-align: left;
+	width: 84px;
+	position: relative;
+	padding-left:137px;
+}
+#commodityList thead tr th:nth-child(3), #commodityList tbody tr td:nth-child(3){
+	width: 150px;
+}
+/* #shopList thead tr th:nth-child(3), #shopList tbody tr td:nth-child(3){ */
+/* 	width: 150px; */
+/* } */
+#commodityList thead tr th:nth-child(4), #commodityList tbody tr td:nth-child(4){
+	width: 50px;
+}
+/* #shopList thead tr th:nth-child(4), #shopList tbody tr td:nth-child(4){ */
+/* 	width: 50px; */
+/* } */
+#commodityList tbody tr td .designatedCommBarcode{
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+	text-overflow: ellipsis;
+	text-align: center;
+	border: none;
+	background-color: transparent;
+}
+#commodityList tbody .addGeneralComm{
+	color: #2196F3;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	right: 0px;
+	margin-top: -8px;
+}
+#shopList tbody .addGeneralShop{
+	color: #2196F3;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	right: 0px;
+	margin-top: -8px;
+}
+#commodityList tbody .deleteGeneralComm{
+	display: none;
+    color: red;
+    cursor: pointer;
+}
+#shopList tbody .deleteGeneralShop{
+	display: none;
+    color: red;
+    cursor: pointer;
+}
+#commodityList tbody tr:hover{
+	background-color: #E3F2FD !important; 
+}
+#shopList tbody tr:hover{
+	background-color: #E3F2FD !important; 
+}
+#commodityList tbody tr:hover .deleteGeneralComm{
+	display: block;
+}
+#shopList tbody tr:hover .deleteGeneralShop{
+	display: block;
+}
+#commodityList tbody tr:hover span{
+	display: none;
+}
+#shopList tbody tr:hover span{
+	display: none;
+}
+#popupShopList + div {
+    border: none;
+}
+#popupShopList + div .layui-laypage .layui-laypage-curr .layui-laypage-em {
+    background-color: #2196F3;
+}
+/* #commodityList tbody::-webkit-scrollbar {������������ʽ */
+	/* display: none;
+} */
+.designatedCommodityTable .layui-border-box .layui-table-page{
+	display: none;
+}
+.designatedShopTable .layui-border-box .layui-table-page{
+	display: none;
+}
+.promotionManage {
+	border: none;
+    float: left;
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+    margin: 0px 40px;
+}
+.promotionManage{
+	background-color: #2196F3;
+    color: rgb(255, 255, 255);
+}
+/* ������ */
+.layui-layer-page .layui-layer-title{
+	display: none;
+}
+.rightRegion .layui-table-page .layui-laypage .layui-laypage-limits{
+	display: none;
+}
+.layui-table-grid-down {
+	display: none;
+}

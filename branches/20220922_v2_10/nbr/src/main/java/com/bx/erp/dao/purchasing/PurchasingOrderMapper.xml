@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.purchasing.PurchasingOrderMapper">
+	<resultMap id="PurchasingOrderMap" type="com.bx.erp.model.purchasing.PurchasingOrder">
+		<result property="ID" column="F_ID" />
+		<result property="status" column="F_Status" />
+		<result property="staffID" column="F_StaffID" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="approveDatetime" column="F_ApproveDatetime" />
+		<result property="endDatetime" column="F_EndDatetime" />
+		<result property="providerID" column="F_ProviderID" />
+		<result property="shopID" column="F_ShopID" />
+		<result property="providerName" column="F_ProviderName" />
+		<result property="updateDatetime" column="F_UpdateDatetime" />
+		<result property="remark" column="F_Remark" />
+		<result property="approverID" column="F_ApproverID" />
+		<result property="messageID" column="messageID"/>
+		<result property="sn" column="F_SN" />
+	</resultMap>
+	
+	<resultMap id="PurchasingOrderCommodityMap" type="com.bx.erp.model.purchasing.PurchasingOrderCommodity">
+		<id property="ID" column="F_ID" />
+		<result property="purchasingOrderID" column="F_PurchasingOrderID" />
+		<result property="commodityID" column="F_CommodityID" />
+		<result property="commodityNO" column="F_CommodityNO" />
+		<result property="commodityName" column="F_CommodityName" />
+		<result property="barcodeID" column="F_BarcodeID" />
+		<result property="packageUnitID" column="F_PackageUnitID" />
+		<result property="priceSuggestion" column="F_PriceSuggestion" />
+		<result property="createDatetime" column="F_CreateDatetime" />
+		<result property="updateDatetime" column="F_UpdateDatetime" />
+		<result property="barcode" column="barcode" />
+		<result property="packageUnitName" column="packageUnitName" />
+		<result property="warehousingNO" column="warehousingNO"/>
+	</resultMap>
+	
+	<select id="create" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{call SP_PurchasingOrder_Create(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{shopID, mode=IN},
+		#{staffID, mode=IN},
+		#{providerID, mode=IN},
+		#{remark, mode=IN}
+		)}
+	</select>
+	<select id="approve" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{call SP_PurchasingOrder_Approve(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{approverID, mode=IN}
+		)}
+	</select>
+	<select id="retrieveNByFields" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{CALL SP_PurchasingOrder_RetrieveNByFields(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{queryKeyword, mode=IN},
+		#{staffID, mode=IN},
+		#{date1, mode=IN},
+		#{date2,mode=IN},
+		#{iPageIndex,jdbcType=INTEGER,mode=IN},
+		#{iPageSize,jdbcType=INTEGER, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	<select id="retrieve1Ex" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap, PurchasingOrderCommodityMap">
+		{call SP_PurchasingOrder_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{call SP_PurchasingOrder_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{shopID, mode=IN},
+		#{status, mode=IN},
+<!-- 		#{ID, mode=IN}, -->
+		#{queryKeyword, mode=IN},
+		#{staffID, mode=IN},
+		#{date1, mode=IN},
+		#{date2,mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	<select id="update" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{call SP_PurchasingOrder_Update(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN},
+		#{providerID, mode=IN},
+		#{remark, mode=IN}
+		)}
+	</select>
+	<select id="delete" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{call SP_PurchasingOrder_Delete(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}
+		)}
+	</select>
+
+	<select id="updateStatus" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{CALL SP_PurchasingOrder_UpdateStatus(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{status, mode=IN},
+		#{ID, mode=IN}
+		)}
+	</select>
+
+	<select id="checkStaffID" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{CALL SPD_PurchasingOrder_CheckStaffID(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkStatus" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{CALL SPD_PurchasingOrder_CheckStatus(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkBarcodesID" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{CALL SPD_PurchasingOrderCommodity_CheckBarcodesID(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkCommodity" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{CALL SPD_PurchasingOrderCommodity_CheckCommodity(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkPackageUnitID" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{CALL SPD_PurchasingOrderCommodity_CheckPackageUnitID(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+	
+	<select id="checkPurchasingOrderCommodity" statementType="CALLABLE" useCache="false" resultMap="PurchasingOrderMap">
+		{CALL SPD_PurchasingOrder_CheckPurchasingOrderCommodity(
+		#{iErrorCode,jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT}
+		)}
+	</select>
+</mapper>

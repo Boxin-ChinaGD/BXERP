@@ -1,0 +1,30 @@
+/* pages/details/vipCardSn/vipCardSn.wxss */
+page{
+  background:rgba(248,248,248,1);
+}
+
+button::after{
+  border: none;
+}
+
+.page-body{
+  width: 100%;
+}
+
+.vipCardSn-area{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vipCardSn-area text{
+  font-size: 30rpx;
+  color: #7F7F7F;
+  margin-top: 52rpx;
+}
+
+.vipCardSn-area canvas{
+  width: 734rpx;
+  height: 222rpx;
+  margin: 32rpx 8rpx 52rpx;
+}

@@ -1,0 +1,16 @@
+/*
+登录按钮的默认、悬停、点击样式
+*/
+#loginButton{
+   -fx-background-color:#2196F3;
+   -fx-border-color: #2196F3;
+}
+#loginButton:hover{
+    -fx-background-color:#64B5F6;
+    -fx-border-color: #64B5F6;
+}
+#loginButton:pressed{
+    -fx-background-color: #1976D2;
+     -fx-border-color: #1976D2;
+}
+

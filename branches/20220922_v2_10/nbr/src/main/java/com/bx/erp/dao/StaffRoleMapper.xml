@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bx.erp.dao.StaffRoleMapper">
+	<resultMap id="staffRoleMap" type="com.bx.erp.model.StaffRole">
+		<id property="ID" column="F_ID" />
+		<result property="staffID" column="F_StaffID" />
+		<result property="roleID" column="F_RoleID" />
+		<result property="name" column="staffName" />
+		<result property="phone" column="staffPhone" />
+		<result property="IDInPOS" column="staffIDInPOS" />
+		<result property="POS_SN" column="staffPOSSN" />
+		<result property="weChat" column="staffWeChat" />
+		<result property="openid" column="staffOpenID" />
+		<result property="unionid" column="staffUnionid" />
+		<result property="ICID" column="staffICID" />
+		<result property="pwdEncrypted" column="staffpwdEncrypted" />
+		<result property="salt" column="staffSalt" />
+		<result property="passwordExpireDate" column="staffPasswordExpireDate" />
+		<result property="isFirstTimeLogin" column="staffIsFirstTimeLogin" />
+		<result property="q1" column="staffQ1" />
+		<result property="q2" column="staffQ2" />
+		<result property="q3" column="staffQ3" />
+		<result property="a1" column="staffA1" />
+		<result property="a2" column="staffA2" />
+		<result property="a3" column="staffA3" />
+		<result property="shopID" column="staffShopID" />
+		<result property="departmentID" column="staffDepartmentID" />
+		<result property="status" column="staffStatus" />
+		<result property="createDatetime" column="staffCreateDatetime" />
+		<result property="updateDatetime" column="staffUpdateDatetime" />
+		<result column="roleID" property="roleID" />
+		<result column="roleName" property="roleName" />
+	</resultMap>
+
+	<select id="retrieveN" statementType="CALLABLE" useCache="false" resultMap="staffRoleMap">
+		{CALL SP_StaffRole_RetrieveN(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{roleID, mode=IN},
+		#{status, mode=IN},
+		#{operator, mode=IN},
+		#{iPageIndex, mode=IN},
+		#{iPageSize, mode=IN},
+		#{iTotalRecord, jdbcType=INTEGER, mode=OUT}
+		)}
+	</select>
+	
+	<select id="retrieve1" statementType="CALLABLE" useCache="false" resultMap="staffRoleMap">
+		{CALL SP_StaffRole_Retrieve1(
+		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
+		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
+		#{ID, mode=IN}, 
+	    #{staffID, mode=IN}
+		)}
+	</select>
+
+</mapper>

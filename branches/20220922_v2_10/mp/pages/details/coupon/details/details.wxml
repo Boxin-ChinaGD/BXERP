@@ -1,0 +1,42 @@
+<!--pages/details/coupon/details/details.wxml-->
+<view class="container">
+  <view class="page-body">
+    <view class="couponDetails">
+      <view class="head">
+        <text class="title">{{couponDetails.title}}</text>
+        <text class="amount" wx:if="{{couponDetails.type == 0}}">￥<text>{{couponDetails.reduceAmount}}</text></text>
+        <text class="amount" wx:elif="{{couponDetails.type == 1}}"><text>{{couponDetails.discount * 10}}</text>折</text>
+        <text class="usingThreshold" wx:if="{{couponDetails.leastAmount == 0}}">无门槛券</text>
+        <text class="usingThreshold" wx:elif="{{couponDetails.leastAmount > 0}}">满{{couponDetails.leastAmount}}可用</text>
+      </view>
+      <view class="middle">
+        <view class="couponCodeArea" wx:if="{{showCouponCode}}">
+          <text>付款时展示该券码给收银员，即可享用优惠</text>
+          <canvas canvas-id="couponCode"></canvas>
+          <text class="couponCode">{{couponCode}}</text>
+        </view>
+        <button bindtap="bonusExchangeCoupon" wx:if="{{!showCouponCode && couponDetails.bonus > 0}}">{{couponDetails.bonus}}积分兑换并使用优惠券</button>
+        <button bindtap="getCoupon" wx:elif="{{!showCouponCode && couponDetails.bonus == 0}}">领取并使用优惠券</button>
+      </view>
+      <view class="foot">
+        <view>
+          <text>使用日期</text>
+          <text>{{couponDetails.beginDateTime}}至{{couponDetails.endDateTime}}</text>
+        </view>
+        <view>
+          <text>适用门店</text>
+          <text>全部门店</text>
+        </view>
+        <view>
+          <text>适用商品</text>
+          <text wx:if="{{couponDetails.scope == 0}}">全部商品可用</text>
+          <text wx:elif="{{couponDetails.scope == 1}}">部分商品可用</text>
+        </view>
+        <view>
+          <text>使用须知</text>
+          <text>{{couponDetails.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

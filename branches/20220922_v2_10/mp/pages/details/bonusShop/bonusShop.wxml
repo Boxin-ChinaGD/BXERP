@@ -1,0 +1,35 @@
+<!--pages/details/bonusShop/bonusShop.wxml-->
+<view class="container">
+  <view class="page-body">
+    <view class="head" style="background: {{ vipCardBackground }}">
+      <image src="../../../images/bonusShop.svg" class="background"></image>
+      <text>可用积分</text>
+      <view>{{vipInfo.bonus}}</view>
+    </view>
+    <view class="none" hidden='{{showThis}}'>
+      <text>暂无商品</text>
+    </view>
+    <view class="main">
+      <block wx:for="{{couponList}}" wx:key="*this">
+        <view class="couponInfo" bindtap="couponDetails" data-info="{{item}}">
+          <view class="couponInfo-amount">
+            <view wx:if="{{item.type == 0}}">￥<text>{{item.reduceAmount}}</text></view>
+            <view wx:elif="{{item.type == 1}}"><text>{{item.discount * 10}}</text>折</view>
+            <text wx:if="{{item.leastAmount == 0}}">无门槛券</text>
+            <text wx:elif="{{item.leastAmount > 0}}">满{{item.leastAmount}}可用</text>
+          </view>
+          <view class="couponInfo-introduction">
+            <text>{{item.title}}</text>
+            <text>{{item.beginDateTime}}</text>
+            <text>至</text>
+            <text>{{item.endDateTime}}</text>
+          </view>
+          <view class="collectCoupon">
+            <view data-info="{{item}}">消耗积分：{{item.bonus}}</view>
+            <button class="exchangeCoupon" catchtap="getCoupon" data-info="{{item}}">立即兑换></button>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

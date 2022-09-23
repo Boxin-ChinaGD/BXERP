@@ -1,0 +1,587 @@
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../font/SourceHanSansCN-Regular.woff2") format("woff2"),
+       url("../font/SourceHanSansCN-Regular.woff") format("woff"),
+       url("../font/SourceHanSansCN-Regular.ttf") format("truetype"),
+       url("../font/SourceHanSansCN-Regular.eot") format("embedded-opentype"),
+       url("../font/SourceHanSansCN-Regular.svg") format("svg");
+}
+body{
+	font-family: "SourceHanSansCN-Regular";
+}
+
+/* 共用的样式 */
+.layui-table-page .layui-laypage-limits{
+	display: none;
+}
+.disabledButton{
+	background: #fff!important;
+	color: #000!important;
+}
+#leftSide .layui-nav-tree::-webkit-scrollbar, #middlePart::-webkit-scrollbar, #rightSide .commodityInfo::-webkit-scrollbar{
+	width: 6px;
+}
+#leftSide .layui-nav-tree::-webkit-scrollbar-thumb, #middlePart::-webkit-scrollbar-thumb, #rightSide .commodityInfo::-webkit-scrollbar-thumb{
+	-webkit-box-shadow: inset 0 0 6px #fff;
+	background: #C1C1C1;
+}
+#leftSide .layui-nav-tree::-webkit-scrollbar-track, #middlePart::-webkit-scrollbar-track, #rightSide .commodityInfo::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 5px #fff;
+	background: #fff;
+}
+#leftSide .categoryTitle{
+	font-size:16px;
+	font-weight: bold;
+}
+#leftSide .subclass{
+	display: flex;
+	justify-content: center;
+}
+/* 涓讳綋鍐呭 */
+#commodityMain{
+	margin: 0 20px;
+	overflow: auto;
+	min-width: 660px;
+}
+/* 澶撮儴瀵艰埅閮ㄥ垎 */
+.navHead{
+	border-top: 6px solid #ECEFF1;
+	border-left: 6px solid #ECEFF1;
+	border-bottom: 6px solid #ECEFF1;
+	margin-bottom: 0;
+	height: 48px;
+
+}
+.topNav .layui-form-item{
+	margin-bottom: 0;
+}
+.topNav .layui-form-label{
+	margin-top: 5px;
+	width: auto;
+}
+.topNav .layui-form-label span{
+	border: 1px solid #eee;
+	padding: 3px;
+	cursor: pointer;
+}
+.topNav .layui-form-label span b{
+	font-weight: normal;
+}
+.topNav .layui-form-label + ul{
+	display: none;
+	position: absolute;
+	top: 30px;
+	padding: 10px 0;
+	border: 1px solid #cccccc;
+	max-height: 300px;
+	overflow: auto;
+	background-color: #ffffff;
+    z-index: 10086;
+}
+.topNav .layui-form-label + ul>li{
+	padding: 0 10px;
+	width: max-content;
+	line-height: 26px;
+	cursor: pointer;
+}
+.topNav .layui-form-label + ul>li:hover{
+	background-color: rgb(244, 245, 247);
+}
+/* 宸﹁竟鍖哄煙 */
+#leftSide{
+	border-right: 6px solid #ECEFF1;
+	border-left: 6px solid #ECEFF1;
+	border-bottom: 6px solid #ECEFF1;
+	float: left;
+	width: 12%;
+}
+#leftSide .topArea{
+	overflow: hidden;
+	margin: 7px 15px 20px 15px;
+}
+#leftSide .topArea h3{
+	display: inline-block;
+	font-size: 14px;
+}
+#leftSide .topArea span{
+	float: right;
+	cursor: pointer;
+}
+#leftSide .topArea span:hover{
+	color: #2196F3;
+}
+#leftSide .layui-nav-tree{
+	width: 80%;
+	padding-bottom: 10px;
+	margin: 0 auto;
+	background-color: #fff;
+	overflow: auto;
+}
+#leftSide .layui-nav-tree li a{
+	color: #000;
+}
+#leftSide .layui-nav-tree .layui-nav-item a:hover{
+	background-color: #2196F3;
+	color: #fff;
+}
+#leftSide .layui-nav-tree .layui-nav-itemed>a{
+	color: #000!important;
+}
+#leftSide .layui-nav-tree .layui-nav-itemed>a:hover{
+	color: #fff!important;
+}
+#leftSide .layui-nav .layui-nav-more{
+	border-color: #ccc transparent transparent;
+}
+#leftSide .layui-nav-itemed>a .layui-nav-more{
+	border-color: transparent transparent #ccc;
+}
+#leftSide .layui-nav-tree .layui-nav-bar{
+	background-color: transparent;
+}
+#leftSide .layui-nav-tree dl{
+	background-color: #fff;
+}
+#leftSide .layui-nav-tree dl dd{
+	background-color: #fff;
+}
+#leftSide .layui-nav-tree .layui-this a{
+	background-color: #2196F3;
+	color: #fff;
+}
+/* 涓棿鍖哄煙 */
+.showAllCommCategory{
+	border: 1px solid #eee;
+	padding: 2px;
+}
+#middlePart{
+	float: left;
+	width: 50%;
+	overflow: auto;
+	padding-left: 8px;
+	padding-bottom: 10px;
+}
+#middlePart .topArea{
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+#middlePart .abc input{
+	position: absolute;
+	display: inline-block;
+	width: 200px;
+	height: 30px;
+	margin-top: -45px;
+	margin-left: 300px;
+	line-height: 30px;
+	text-overflow: ellipsis;
+}
+#middlePart .abc i{
+	position: absolute;
+	display: inline-block;
+	margin-top: -45px;
+	margin-left: 505px !important;
+	font-size: 20px;
+	line-height: 30px;
+	margin-left: 6px;
+	cursor: pointer;
+}
+#middlePart .commodityTableArea{
+	min-width: 640px;
+}
+#middlePart #commodityList + div{
+	border: none;
+	margin: 5px 0 15px;
+}
+#middlePart #commodityList + div .layui-table thead tr{
+	background-color: #2196F3;
+	color: #fff;
+}
+#middlePart #commodityList + div .layui-table tbody tr:hover{
+	background-color: #E3F2FD;
+}
+#middlePart #commodityList + div .layui-table tbody .trChoosed{
+	background-color: #E3F2FD;
+}
+#middlePart #commodityList + div .layui-laypage .layui-laypage-curr .layui-laypage-em{
+	background-color: #2196F3;
+}
+#middlePart #commodityList + div .layui-laypage a:hover{
+	color: #2196F3;
+}
+#middlePart #commodityList + div .layui-table-page .layui-laypage input:focus{
+	border-color: #2196F3!important;
+}
+#middlePart .multiPackage{
+	position: relative;
+	display: none;
+}
+#middlePart .multiPackage h5{
+	display: inline-block;
+	margin-right: 10px;
+}
+#middlePart .multiPackage button{
+	background-color: #2196F3;
+	position: absolute;
+	top: 0;
+	left: 200px;
+}
+#middlePart .multiPackage .layui-form-item{
+	margin-bottom: 0;
+}
+#middlePart .multiPackage .layui-form-item>i{
+	display: none;
+	color: red;
+	cursor: pointer;
+}
+#middlePart .multiPackage .layui-form-item:hover>i{
+	display: inline-block;
+}
+#middlePart .multiPackage .layui-form-label{
+	padding: 5px 0;
+	text-align: left;
+	width: 60px;
+	color: #888;
+}
+#middlePart .multiPackage .layui-form-select{
+	display: inline-block;
+	width: 80px;
+}
+#middlePart .multiPackage .layui-form-select input{
+	border: none;
+	height: 30px;
+}
+#middlePart .multiPackage .layui-form-select dl{
+	top: 30px;
+	min-height: fit-content;
+}
+#middlePart .multiPackage .layui-form-select dl dd.layui-this{
+	background-color: #2196F3;
+}
+#middlePart .multiPackage .layui-input-inline{
+	width: auto;
+}
+#middlePart .multiPackage .layui-input-inline .layui-input{
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+	border: 1px solid transparent;
+}
+#middlePart .multiPackage .layui-input-inline .layui-input:hover{
+	border: 1px solid #2196F3!important;
+}
+#middlePart .multiPackage .layui-form-select input:focus{
+	border: 1px solid #2196F3!important;
+}
+#middlePart .multiPackage .layui-form-mid{
+	margin-right: 10px;
+	padding: 5px 0 !important;
+}
+#middlePart .multiPackage .layui-table{
+	min-width: 640px;
+	margin: 0;
+}
+#middlePart .multiPackage .layui-table th, #middlePart .multiPackage .layui-table td, #middlePart .multiPackage .layui-table td input{
+	text-align: center;
+}
+#middlePart .multiPackage .layui-table td input{
+	height: 30px;
+	padding-left: 0;
+	border: 1px solid transparent;
+	background-color: transparent;
+}
+#middlePart .multiPackage .layui-table td input:hover{
+	border: 1px solid #2196F3!important;
+}
+#middlePart .multiPackage .layui-table td input:focus{
+	border: 1px solid #2196F3!important;
+}
+#middlePart .combinedSubCommodity{
+	display: none;
+}
+#middlePart .combinedSubCommodity .layui-table{
+	text-align: center;
+	min-width: 640px;
+	margin: 0;
+}
+#middlePart .combinedSubCommodity .layui-table th{
+	text-align: center;
+}
+#middlePart .combinedSubCommodity .layui-table tr input{
+	width: 60px;
+	text-align: center;
+	border: 1px solid #D2D2D2;
+}
+#middlePart .combinedSubCommodity .layui-table tr input:hover{
+	border: 1px solid #2196F3;
+}
+#middlePart .combinedSubCommodity .layui-table tr input:focus{
+	border: 1px solid #2196F3;
+}
+#middlePart .combinedSubCommodity .layui-table tr:hover span{
+	display: none;
+}
+#middlePart .combinedSubCommodity .layui-table tr td{
+	word-break: break-all
+}
+#middlePart .combinedSubCommodity .layui-table tr td:nth-child(2){
+	position: relative;
+	padding-right: 28px;
+}
+#middlePart .combinedSubCommodity .deleteSubComm{
+	cursor: pointer;
+	color: red;
+	display: none;
+}
+#middlePart .combinedSubCommodity .layui-table tr:hover .deleteSubComm{
+	display: block;
+}
+#middlePart .combinedSubCommodity .addSubComm{
+	position: absolute;
+	top: 50%;
+	right: 5px;
+	cursor: pointer;
+	color: #2196F3;
+	float: right;
+	margin-right: 5px;
+	margin-top: -8px;
+}
+#middlePart .layui-layer-title{
+	display: none;
+}
+#middlePart thead tr {
+    background-color: #2196F3;
+    color: #fff;
+}
+/* 鍙宠竟鍖哄煙 */
+#rightSide{
+	float: left;
+	width: 35%;
+}
+#rightSide .topArea{
+	overflow: hidden;
+	margin-left: 20px;
+}
+#rightSide .topArea button{
+	float: left;
+	background-color: #ffffff;
+	color: #000000;
+	margin: 0 10px;
+	margin-top: 8px;
+	border: 1px solid #eee;
+}
+#rightSide .unabled{
+	color: #fff;
+	background-color:#808080 !important; 
+}
+#rightSide .topArea button:hover{
+	background-color: #2196F3;
+	color: #ffffff;
+}
+#rightSide .topArea .btnChoosed{
+	background-color: #2196F3;
+	color: #ffffff;
+}
+#rightSide .commodityInfo{
+	margin-left: 20px;
+	overflow: auto;
+	padding-bottom: 10px;
+}
+#rightSide .commodityInfo .generalCommodityInfo, #rightSide .commodityInfo .combinedCommodityInfo, #rightSide .commodityInfo .serviceCommodityInfo{
+	display: none;
+	min-width: 280px;
+}
+#rightSide .commodityInfo .generalCommodityManage, #rightSide .commodityInfo .combinedCommodityManage, #rightSide .commodityInfo .serviceCommodityManage{
+	display: none;
+}
+#rightSide .commodityInfo .commodityPicture{
+	overflow: hidden;
+	min-width: 280px;
+	margin-left: 20px;
+	position: relative;
+}
+
+#rightSide .commodityInfo .commodityPicture .layui-upload-list{
+	width: 120px;
+	height: 120px;
+}
+#rightSide .commodityInfo .commodityPicture .layui-upload-list p{
+	margin-top:25px;
+	position: absolute;
+	z-index: -1;
+}
+#rightSide .commodityInfo .commodityPicture .layui-upload-list img{
+	width: 100%;
+	height: 100%;
+}
+#rightSide .commodityInfo .commodityPicture .layui-btn{
+	position: absolute;
+	top: 100px;
+	left: 130px;
+	background-color:  #2196F3;
+}
+#rightSide .commodityInfo .commodityPicture .layui-btn:nth-child(2){
+	top: 60px;
+}
+#rightSide .commodityInfo h3{
+	font-size: 14px;
+	margin-left: 18px;
+    line-height: 36px;
+}
+#rightSide .commodityInfo p{
+	font-size: 14px;
+	text-indent: 18px;
+	color: #888888;
+}
+#rightSide .commodityInfo .layui-form-item{
+	margin-bottom: 0;
+}
+#rightSide .commodityInfo .layui-form-item .layui-inline{
+	margin-right: 0px;
+}
+#rightSide .commodityInfo .layui-form-label{
+	width: 120px;
+	padding: 0;
+	color: #888888;
+}
+#rightSide .commodityInfo .layui-input-inline{
+	width: 100px;
+}
+#rightSide .commodityInfo .layui-input-inline input{
+	border: 1px solid transparent;
+	height: 20px;
+	padding-left: 5px;
+	margin-left: 5px;
+}
+#rightSide .commodityInfo .layui-input-inline .layui-input:hover{
+	border-color: #2196F3!important;
+}
+#rightSide .commodityInfo .layui-input-inline input:focus{
+	border: 1px solid #2196F3!important;
+}
+#rightSide .commodityInfo .layui-input-inline .textInput:hover{
+	border: 1px solid #2196F3!important;
+}
+#rightSide .commodityInfo .layui-form-select dl{
+	top: 25px;
+	left: 5px;
+	min-height:150px;
+	overflow: auto;
+}
+#rightSide .commodityInfo .layui-form-select dl dd.layui-this{
+	background-color: #2196F3;
+}
+#rightSide .commodityInfo .toAddBarcode{
+	position: absolute;
+	top: 0;
+	left: 128px;
+	width: max-content;
+	font-size: 12px;
+	color: #888888;
+	cursor: pointer;
+	z-index: 99;
+	line-height: 20px;
+}
+#rightSide .commodityInfo .toDeleteBarcode{
+	position: absolute;
+	top: 2px;
+	left: 110px;
+	color: red;
+	cursor: pointer;
+	z-index: 99;
+}
+#rightSide .commodityInfo .toAddBarcode:hover{
+	color: #2196F3;
+}
+#rightSide .commodityInfo .otherBarcode>i{
+	display: none;
+	color: red;
+	cursor: pointer;
+}
+#rightSide .commodityInfo .otherBarcode:hover>i{
+	display: inline-block;
+}
+#rightSide .commodityInfo .toChoosedMultiUnit{
+	position: absolute;
+	top: 0;
+	left: 110px;
+	width: max-content;
+	z-index: 99;
+}
+
+#rightSide .commodityInfo .toChoosedMultiUnit input{
+	vertical-align: middle;
+	cursor: pointer;
+}
+#rightSide .commodityInfo .toChoosedMultiUnit span{
+	vertical-align: middle;
+	font-size: 12px;
+	color: #888888;
+}
+#rightSide .commodityInfo .toAddProvider{
+	position: absolute;
+	top: 0;
+	left: 128px;
+	width: max-content;
+	font-size: 12px;
+	color: #888888;
+	cursor: pointer;
+	z-index: 99;
+	line-height: 20px;
+}
+#rightSide .commodityInfo .toDeleteProvider{
+	position: absolute;
+	top: 2px;
+	left: 110px;
+	color: red;
+	cursor: pointer;
+	z-index: 99;
+}
+#rightSide .commodityInfo .toAddProvider:hover{
+	color: #2196F3;
+}
+#rightSide .commodityInfo .otherProvider>i{
+	display: none;
+	color: red;
+	cursor: pointer;
+}
+#rightSide .commodityInfo .otherProvider:hover>i{
+	display: inline-block;
+}
+#rightSide .commodityInfo .preliminaryTable td{
+	text-align: center;
+}
+#rightSide .commodityInfo .preliminaryTable td input{
+	border: none;
+	text-align: center;
+	padding: 0;
+	height: 30px;
+}
+#rightSide .commodityInfo .preliminaryTable td input:hover{
+	border: 1px solid #2196F3!important;
+}
+#rightSide .refCommodityList{
+	display: none;
+	position: absolute;
+	z-index: 10086;
+}
+#rightSide .refCommodityList .layui-table-page{
+	background-color: #ffffff;
+    border-bottom-width: 1px;
+}
+#rightSide .refCommodityList .layui-table-page .layui-laypage-curr .layui-laypage-em{
+	background-color: #2196F3;
+}
+#rightSide .refCommodityList .layui-table-page a:hover{
+	color: #2196F3;
+}
+#rightSide .refCommodityList .layui-table-page .layui-laypage input:focus{
+	border-color: #2196F3!important;
+}
+.requiredField{
+	color: red;
+	margin-right: 3px;
+}
+
+.layui-table-grid-down {
+	display: none;
+}

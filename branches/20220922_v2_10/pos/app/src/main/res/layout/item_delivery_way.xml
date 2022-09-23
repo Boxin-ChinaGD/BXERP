@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rg_delivery_way"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+  <RadioButton
+      android:id="@+id/rb_locale"
+      android:text="现场取货"
+      android:textSize="24dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <RadioButton
+      android:id="@+id/rb_warehouse"
+      android:text="仓库配送"
+      android:textSize="24dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+</RadioGroup>

@@ -42,7 +42,7 @@
     </navigator>
     <navigator url="../details/retailtrade/retailtrade">
       <image src="../../images/coupon_center.png"></image>
-      <text>当月账单</text>
+      <text>购物明细</text>
     </navigator>
     <navigator url="../details/bonusHistory/bonusHistory">
       <image src="../../images/points_info.png"></image>

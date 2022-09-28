@@ -4,35 +4,35 @@ delimiter $$
 
 SELECT 'Test PrivateDB Functions'$$
 SELECT 'FUNC_TEST 1'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CheckCommodityDependency.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CheckCommodityDependency.sql
 SELECT 'FUNC_TEST 2'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CheckPosDependency.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CheckPosDependency.sql
 SELECT 'FUNC_TEST 3'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CheckPromotionDependency.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CheckPromotionDependency.sql
 SELECT 'FUNC_TEST 4'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CheckProviderDependency.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CheckProviderDependency.sql
 SELECT 'FUNC_TEST 5'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CheckPurchasingOrderDependency.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CheckPurchasingOrderDependency.sql
 SELECT 'FUNC_TEST 6'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CheckStaffDependency.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CheckStaffDependency.sql
 SELECT 'FUNC_TEST 7'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CheckVipDependency.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CheckVipDependency.sql
 SELECT 'FUNC_TEST 8'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CheckWarehouseDependency.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CheckWarehouseDependency.sql
 SELECT 'FUNC_TEST 9'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CreateCommodityHistory.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CreateCommodityHistory.sql
 SELECT 'FUNC_TEST 10'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_CreateRetailTradeCommoditySource.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_CreateRetailTradeCommoditySource.sql
 SELECT 'FUNC_TEST 11'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_DeleteRetailTradeCommoditySource.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_DeleteRetailTradeCommoditySource.sql
 SELECT 'FUNC_TEST 12'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_DeleteWarehousingForReturnCommoditySheet.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_DeleteWarehousingForReturnCommoditySheet.sql
 SELECT 'FUNC_TEST 13'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_GenerateCouponSN.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_GenerateCouponSN.sql
 SELECT 'FUNC_TEST 14'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_GenerateSN.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_GenerateSN.sql
 SELECT 'FUNC_TEST 15'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/Function_Test/Test_Func_ValidateStateChange.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/Function_Test/Test_Func_ValidateStateChange.sql
 
 
 -- 检查私有DB nbr的Test_Function数目有无变更

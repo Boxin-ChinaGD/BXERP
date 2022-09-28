@@ -6,17 +6,17 @@ select 'staticdb Running SPD Test...';
 delimiter $$ 
 
 SELECT 'Static_SP_TEST 1'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckBarcode.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckBarcode.sql
 SELECT 'Static_SP_TEST 2'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckName.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckName.sql
 SELECT 'Static_SP_TEST 3'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckPriceRetail.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckPriceRetail.sql
 SELECT 'Static_SP_TEST 4'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckShelfLife.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckShelfLife.sql
 SELECT 'Static_SP_TEST 5'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckSpecification.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckSpecification.sql
 SELECT 'Static_SP_TEST 6'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckType.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/SP_Test/Doctor/StaticDB/Test_SPD_RefCommodityHub_CheckType.sql
 
 
 -- 检查公有DB staticdb的Test_SPD数目有无变更

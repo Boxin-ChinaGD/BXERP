@@ -6,7 +6,7 @@ select 'staticdb Running SP Test...';
 delimiter $$ 
 
 SELECT 'StaticDB_SP_TEST 1'$$
-source D:/BXERP/branches/20190902_v1_1/src/nbr/src/sql/SP_Test/StaticDB/Test_SP_RefCommodityHub_RetrieveN.sql
+source D:/BXERP/branches/20220922_v2_10/nbr/src/sql/SP_Test/StaticDB/Test_SP_RefCommodityHub_RetrieveN.sql
 
 -- 检查公有DB staticdb的Test_SP数目有无变更
 SET @var = (SELECT COUNT(1) FROM information_schema.routines  WHERE routine_schema = 'staticdb' AND ROUTINE_NAME LIKE 'SP\_%')$$

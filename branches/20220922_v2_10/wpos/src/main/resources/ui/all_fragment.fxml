@@ -96,7 +96,7 @@
                                 </Button>
                                 <Button id="itemButton" mnemonicParsing="false" onMouseClicked="#logoutItem_click"
                                         prefHeight="73.0" prefWidth="235.0" stylesheets="@../css/all_fragment.css"
-                                        text="退出" textFill="WHITE" GridPane.rowIndex="7">
+                                        text="交班" textFill="WHITE" GridPane.rowIndex="7">
                                     <font>
                                         <Font size="32.0"/>
                                     </font>
@@ -1121,7 +1121,7 @@
                                                 <!--库存页面输入框-->
                                                 <TextField fx:id="rci_condition_input" layoutX="1.0" layoutY="1.0"
                                                            onMouseClicked="#rci_condition_input_click" prefHeight="86.0"
-                                                           prefWidth="632.0" promptText="输入商品条形码查询库存信息"
+                                                           prefWidth="632.0" promptText="输入商品条形码或商品名称查询库存信息"
                                                            style="-fx-background-color: #FFFFFF;">
                                                     <font>
                                                         <Font size="32.0"/>

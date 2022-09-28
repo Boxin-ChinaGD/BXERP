@@ -149,8 +149,18 @@ public class CommodityPresenter extends BasePresenter {
             case BaseSQLiteBO.CASE_Commodity_RetrieveNByConditions:
                 try {
                     lastErrorCode = ErrorInfo.EnumErrorCode.EC_NoError;
+//                    return dao.getCommodityDao().queryRaw(bm.getSql(), bm.getConditions());
+                    List<Commodity> commList =  dao.getCommodityDao().queryRaw(bm.getSql(), bm.getConditions());
 
-                    return dao.getCommodityDao().queryRaw(bm.getSql(), bm.getConditions());
+                    if(commList != null && commList.size() > 0) {
+                        for(Commodity commodity : commList) {
+                            String[] condition = {commodity.getID() + "", Constants.shopID + ""};
+                            String sqlShopInfo = "where F_CommodityID = ? and F_ShopID = ?";
+                            List<CommodityShopInfo> commodityShopInfos = dao.getCommodityShopInfoDao().queryRaw(sqlShopInfo, condition);
+                            commodity.setListSlave2(commodityShopInfos);
+                        }
+                    }
+                    return commList;
                 } catch (Exception e) {
                     log.info("执行retrieveNSync的CASE_Commodity_RetrieveNByConditions分支时失败，错误信息为" + e.getMessage());
                     e.printStackTrace();

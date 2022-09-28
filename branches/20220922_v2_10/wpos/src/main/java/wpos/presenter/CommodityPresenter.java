@@ -194,7 +194,17 @@ public class CommodityPresenter extends BasePresenter {
                     lastErrorCode = ErrorInfo.EnumErrorCode.EC_NoError;
                     String sql = String.format(bm.getSql(), bm.getConditions());
                     Query query = entityManager.createNativeQuery(QUERY_Commodity_TABLE + sql, Commodity.class);
-                    return query.getResultList();
+                    List<Commodity> commList =  query.getResultList();
+
+                    if(commList != null && commList.size() > 0) {
+                        for(Commodity commodity : commList) {
+                            String[] condition = {commodity.getID() + "", Constants.shopID + ""};
+                            String sqlShopInfo = String.format("where F_CommodityID = '%s' and F_ShopID = '%s'", condition);
+                            Query queryShopInfo = entityManager.createNativeQuery(Query_CommodityShopInfo_TABLE + sqlShopInfo, CommodityShopInfo.class);
+                            commodity.setListSlave2(queryShopInfo.getResultList());
+                        }
+                    }
+                    return commList;
                 } catch (Exception e) {
                     log.error("执行retrieveNSync的CASE_Commodity_RetrieveNByConditions分支时失败，错误信息为" + e.getMessage());
                     e.printStackTrace();

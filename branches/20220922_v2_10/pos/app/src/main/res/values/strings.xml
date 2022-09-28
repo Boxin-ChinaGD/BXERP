@@ -18,7 +18,7 @@
     <string name="check_list">查单</string>
     <string name="order_list">取单</string>
     <string name="report_loss">报损</string>
-    <string name="exit">退出</string>
+    <string name="exit">交班</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

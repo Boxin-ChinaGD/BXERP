@@ -6,9 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
-import wpos.utils.EventBus;
+import wpos.utils.*;
 import wpos.model.Message;
-import wpos.utils.PlatForm;
 import wpos.adapter.RetrieveCommodityInventoryListCellAdapter;
 import wpos.allEnum.ThreadMode;
 import wpos.bo.*;
@@ -22,8 +21,6 @@ import wpos.presenter.BarcodesPresenter;
 import wpos.presenter.CommodityCategoryPresenter;
 import wpos.presenter.CommodityPresenter;
 import wpos.presenter.PackageUnitPresenter;
-import wpos.utils.StringUtils;
-import wpos.utils.ToastUtil;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -83,6 +80,7 @@ public class RetrieveCommodityInventoryViewController implements PlatFormHandler
 
     private RetrieveCommodityInventoryListCellAdapter adapter = null;
     private RetrieveCommodityInventoryListCellAdapter adapterQueryByBarcode = null;
+    private RetrieveCommodityInventoryListCellAdapter adapterQueryByCommName = null;
     private List<Commodity> commodityList = new ArrayList<Commodity>();//当点击全部同步按钮的时候需要进行初始化
     /**
      * 库存页面按条形码查询，有一品多码的情况，所以需要去重
@@ -367,102 +365,141 @@ public class RetrieveCommodityInventoryViewController implements PlatFormHandler
         viewController.commodityInfoListView.scrollTo(0);
         searchBarcodes = viewController.rci_condition_input.getText();
         if (searchBarcodes.trim().length() > BaseController.FUZZY_QUERY_LENGTH) {
-            Commodity comm = new Commodity();
-            comm.setBarcode(searchBarcodes);
-            comm.setPageIndex(String.valueOf(pageIndex));
-            comm.setPageSize(String.valueOf(pageSize));
             if(pageIndex == 1) {
                 commodityList.clear();
                 viewController.commodityInfoListView.setItems(null);
             }
-//            if (true) {
-//            if (!commodityHttpBO.retrieveNAsyncC(BaseHttpBO.CASE_Commodity_RetrieveInventory, comm)) {
-//                if (false) { // 判断条形码搜索不能输入中文
-////                if (commoditySQLiteEvent.getLastErrorCode() == ErrorInfo.EnumErrorCode.EC_WrongFormatForInputField) { // 判断条形码搜索不能输入中文
-//                    ToastUtil.toast(commoditySQLiteEvent.getLastErrorMessage(), ToastUtil.LENGTH_SHORT);
-//                    // 判断完后需要重置错误码和错误信息
-//                    commoditySQLiteEvent.setLastErrorCode(ErrorInfo.EnumErrorCode.EC_NoError);
-//                    commoditySQLiteEvent.setLastErrorMessage("");
-//                }
-//                else {
-                    // 断网情况下，根据条形码从本地模糊搜索商品
-                    if(adapter != null) {
-                        adapter.setOnLoadMoreListener(null);
-                        adapter = null;
-                    }
-                    viewController.commodityInfoListView.setCellFactory(null);
-                    // 根据搜索条形码模糊查询到条形码ID
-                    Barcodes barcodes = new Barcodes();
-                    barcodes.setSql("where F_Barcode LIKE %s");
-                    barcodes.setConditions(new String[]{"'%" + searchBarcodes + "%'"});
-                    barcodes.setSubUseCaseID(BaseModel.EnumSubUseCaseID.ESUC_Ignore);
-                    List<Barcodes> barcodesListAll = (List<Barcodes>) barcodesPresenter.retrieveNObjectSync(CASE_Barcodes_RetrieveNByConditions, barcodes);
-                    //
-                    barcodes.setSql("where F_Barcode LIKE '%s' limit %s, %s");
-                    barcodes.setConditions(new String[]{"%" + searchBarcodes + "%", String.valueOf(loadingMoreTimes), String.valueOf(PAGE_SIZE_UI)});
-                    barcodes.setSubUseCaseID(BaseModel.EnumSubUseCaseID.ESUC_Ignore);
-                    List<Barcodes> barcodesList = (List<Barcodes>) barcodesPresenter.retrieveNObjectSync(CASE_Barcodes_RetrieveNByConditions, barcodes);
-                    // 根据条形码ID搜索相关的商品
-                    for (Barcodes b : barcodesList) {
-                        Commodity commodity = new Commodity();
-                        commodity.setID(b.getCommodityID());
-                        Commodity retrieveCommodityByID = (Commodity) commodityPresenter.retrieve1ObjectSync(BaseSQLiteBO.INVALID_CASE_ID, commodity);
-                        if (retrieveCommodityByID == null) { // 如果查不到相应的商品，就跳过此次循环
-                            continue;
-                        }
-                        if(!commodityIdSet.contains(retrieveCommodityByID.getID())) {
-                            Commodity c = enrichCommodityToShowOnUI(retrieveCommodityByID);
-                            commodityList.add(c);
-                            commodityIdSet.add(retrieveCommodityByID.getID());
-                        }
-                    }
-                    RetrieveCommodityInventoryListCellAdapter.lastIndex = PAGE_SIZE_UI;
-                    loadingMoreTimes = 0;
-                    //
-                    viewController.commodityInfoListView.setItems(null);
-                    viewController.commodityInfoListView.setItems(FXCollections.observableList(commodityList));
-                    viewController.commodityInfoListView.setCellFactory(e -> {
-                        adapterQueryByBarcode = new RetrieveCommodityInventoryListCellAdapter();
-                        adapterQueryByBarcode.setOnLoadMoreListener(() -> {
-                            System.out.println("现已加载的数据量：" + commodityList.size() + "总数据量是：" + barcodesListAll.size());
-                            if (loadingMoreTimes < (barcodesListAll.size() % PAGE_SIZE_UI == 0 ? barcodesListAll.size() / PAGE_SIZE_UI : barcodesListAll.size() / PAGE_SIZE_UI + 1) ) {
-//                            if (commodityList.size() < barcodesListAll.size()) {
-                                loadingMoreTimes++;
-                                System.out.println("执行了该执行的" + barcodesListAll.size());
-                                loadMoreByBarcodesCondition();
-                            } else {
-                                adapterQueryByBarcode.setLoadCompleted();
-                                Platform.runLater(()-> {
-                                    ToastUtil.toast("没有更多的商品");
-                                });
-                            }
-                        });
-                        return adapterQueryByBarcode;
-                    });
-//                }
-                //
-
-                Message message = new Message();
-                if (commodityList.size() == 0) {
-                    message.what = 3;
-                } else {
-                    message.what = 2;
+            if(adapter != null) {
+                adapter.setOnLoadMoreListener(null);
+                adapter = null;
+            }
+            viewController.commodityInfoListView.setCellFactory(null);
+            // 根据搜索条形码模糊查询到条形码ID
+            Barcodes barcodes = new Barcodes();
+            barcodes.setSql("where F_Barcode LIKE %s");
+            barcodes.setConditions(new String[]{"'%" + searchBarcodes + "%'"});
+            barcodes.setSubUseCaseID(BaseModel.EnumSubUseCaseID.ESUC_Ignore);
+            List<Barcodes> barcodesListAll = (List<Barcodes>) barcodesPresenter.retrieveNObjectSync(CASE_Barcodes_RetrieveNByConditions, barcodes);
+            //
+            barcodes.setSql("where F_Barcode LIKE '%s' limit %s, %s");
+            barcodes.setConditions(new String[]{"%" + searchBarcodes + "%", String.valueOf(loadingMoreTimes), String.valueOf(PAGE_SIZE_UI)});
+            barcodes.setSubUseCaseID(BaseModel.EnumSubUseCaseID.ESUC_Ignore);
+            List<Barcodes> barcodesList = (List<Barcodes>) barcodesPresenter.retrieveNObjectSync(CASE_Barcodes_RetrieveNByConditions, barcodes);
+            // 根据条形码ID搜索相关的商品
+            for (Barcodes b : barcodesList) {
+                Commodity commodity = new Commodity();
+                commodity.setID(b.getCommodityID());
+                Commodity retrieveCommodityByID = (Commodity) commodityPresenter.retrieve1ObjectSync(BaseSQLiteBO.INVALID_CASE_ID, commodity);
+                if (retrieveCommodityByID == null) { // 如果查不到相应的商品，就跳过此次循环
+                    continue;
                 }
-                PlatForm.get().sendMessage(message);
-//            }
-//            else {
-//                Platform.runLater(()->{
-//                    viewController.showLoadingDialog();
-//                });
-//            }
-        } else if (searchBarcodes.trim().length() > 0) {
-            viewController.query_fail_view.setVisible(true);
-            viewController.query_fail_view.setManaged(true);
-            viewController.tv_failtips.setText("由于输入的条形码不够完整，无法查询到库存信息...");
-            viewController.commodityInfoListView.setVisible(false);
-            viewController.commodityInfoListView.setManaged(false);
+                if (!commodityIdSet.contains(retrieveCommodityByID.getID())) {
+                    Commodity c = enrichCommodityToShowOnUI(retrieveCommodityByID);
+                    commodityList.add(c);
+                    commodityIdSet.add(retrieveCommodityByID.getID());
+                }
+            }
+
+            RetrieveCommodityInventoryListCellAdapter.lastIndex = PAGE_SIZE_UI;
+            loadingMoreTimes = 0;
+            //
+            viewController.commodityInfoListView.setItems(null);
+            viewController.commodityInfoListView.setItems(FXCollections.observableList(commodityList));
+            viewController.commodityInfoListView.setCellFactory(e -> {
+                adapterQueryByBarcode = new RetrieveCommodityInventoryListCellAdapter();
+                adapterQueryByBarcode.setOnLoadMoreListener(() -> {
+                    System.out.println("现已加载的数据量：" + commodityList.size() + "总数据量是：" + barcodesListAll.size());
+                    if (loadingMoreTimes < (barcodesListAll.size() % PAGE_SIZE_UI == 0 ? barcodesListAll.size() / PAGE_SIZE_UI : barcodesListAll.size() / PAGE_SIZE_UI + 1) ) {
+//                            if (commodityList.size() < barcodesListAll.size()) {
+                        loadingMoreTimes++;
+                        System.out.println("执行了该执行的" + barcodesListAll.size());
+                        loadMoreByBarcodesCondition();
+                    } else {
+                        adapterQueryByBarcode.setLoadCompleted();
+                        Platform.runLater(()-> {
+                            ToastUtil.toast("没有更多的商品");
+                        });
+                    }
+                });
+                return adapterQueryByBarcode;
+            });
+        //
+
+        Message message = new Message();
+        if (commodityList.size() == 0) {
+            message.what = 3;
         } else {
-            ToastUtil.toast("请输入商品条形码...", ToastUtil.LENGTH_SHORT);
+            message.what = 2;
+        }
+        PlatForm.get().sendMessage(message);
+        } else if (searchBarcodes.trim().length() > 0) {
+            if(!FieldFormat.checkCommodityName(searchBarcodes)) {
+                ToastUtil.toast("商品名称格式错误，只允许以()（）-—_、中英数值、空格形式出现");
+                return;
+            }
+            if(pageIndex == 1) {
+                commodityList.clear();
+                viewController.commodityInfoListView.setItems(null);
+            }
+            if(adapter != null) {
+                adapter.setOnLoadMoreListener(null);
+                adapter = null;
+            }
+            viewController.commodityInfoListView.setCellFactory(null);
+            // 根据商品名称模糊查询
+            Commodity commodityRnCondition = new Commodity();
+            commodityRnCondition.setSql("where F_Name LIKE %s or F_ID in (select F_CommodityID from T_Barcodes where F_Barcode like %s)");
+            commodityRnCondition.setConditions(new String[]{"'%" + searchBarcodes + "%'", "'%" + searchBarcodes + "%'"});
+            commodityRnCondition.setSubUseCaseID(BaseModel.EnumSubUseCaseID.ESUC_Ignore);
+            List<Commodity> commodityListAll = (List<Commodity>) commodityPresenter.retrieveNObjectSync(BaseSQLiteBO.CASE_Commodity_RetrieveNByConditions, commodityRnCondition);
+            //
+            commodityRnCondition.setSql("where F_Name LIKE '%s' or F_ID in (select F_CommodityID from T_Barcodes where F_Barcode like '%s') limit %s, %s");
+            commodityRnCondition.setConditions(new String[]{"%" + searchBarcodes + "%", "%" + searchBarcodes + "%", String.valueOf(loadingMoreTimes), String.valueOf(PAGE_SIZE_UI)});
+            commodityRnCondition.setSubUseCaseID(BaseModel.EnumSubUseCaseID.ESUC_Ignore);
+            List<Commodity> commodityListLimit = (List<Commodity>) commodityPresenter.retrieveNObjectSync(BaseSQLiteBO.CASE_Commodity_RetrieveNByConditions, commodityRnCondition);
+            for (Commodity commodity : commodityListLimit) {
+                if(!commodityIdSet.contains(commodity.getID())) {
+                    Commodity c = enrichCommodityToShowOnUI(commodity);
+                    commodityList.add(c);
+                    commodityIdSet.add(commodity.getID());
+                }
+            }
+            RetrieveCommodityInventoryListCellAdapter.lastIndex = PAGE_SIZE_UI;
+            loadingMoreTimes = 0;
+            //
+            viewController.commodityInfoListView.setItems(null);
+            viewController.commodityInfoListView.setItems(FXCollections.observableList(commodityList));
+            viewController.commodityInfoListView.setCellFactory(e -> {
+                adapterQueryByCommName = new RetrieveCommodityInventoryListCellAdapter();
+                adapterQueryByCommName.setOnLoadMoreListener(() -> {
+                    System.out.println("现已加载的数据量：" + commodityList.size() + "总数据量是：" + commodityListAll.size());
+                    if (loadingMoreTimes < (commodityListAll.size() % PAGE_SIZE_UI == 0 ? commodityListAll.size() / PAGE_SIZE_UI : commodityListAll.size() / PAGE_SIZE_UI + 1) ) {
+//                            if (commodityList.size() < barcodesListAll.size()) {
+                        loadingMoreTimes++;
+                        System.out.println("执行了该执行的" + commodityListAll.size());
+                        loadMoreByCommNameCondition();
+                    } else {
+                        adapterQueryByCommName.setLoadCompleted();
+                        Platform.runLater(()-> {
+                            ToastUtil.toast("没有更多的商品");
+                        });
+                    }
+                });
+                return adapterQueryByCommName;
+            });
+//                }
+            //
+
+            Message message = new Message();
+            if (commodityList.size() == 0) {
+                message.what = 3;
+            } else {
+                message.what = 6;
+            }
+            PlatForm.get().sendMessage(message);
+
+        } else {
+            ToastUtil.toast("请输入商品条形码或商品名称", ToastUtil.LENGTH_SHORT);
         }
     }
 
@@ -588,6 +625,11 @@ public class RetrieveCommodityInventoryViewController implements PlatFormHandler
             adapterQueryByBarcode = null;
             viewController.commodityInfoListView.setItems(null);
         }
+        if(adapterQueryByCommName != null) {
+            adapterQueryByCommName.setOnLoadMoreListener(null);
+            adapterQueryByCommName = null;
+            viewController.commodityInfoListView.setItems(null);
+        }
         final int totalCommodityNumber = (commodityPresenter.retrieveNObjectSync(BaseHttpBO.INVALID_CASE_ID, null)).size();
 
         List<Commodity> allInfoCommList = (List<Commodity>) commodityPresenter.retrieveNAsyncByPage("T_Commodity", 1, PAGE_SIZE_UI);
@@ -675,6 +717,41 @@ public class RetrieveCommodityInventoryViewController implements PlatFormHandler
                 }
                 Message message = new Message();
                 message.what = 2;
+                PlatForm.get().sendMessage(message);
+            }
+        }.start();
+    }
+
+    /**
+     * 库存页面，根据商品模糊查询后的滑动加载
+     */
+    private void loadMoreByCommNameCondition() {
+        showLoadingView();
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Commodity commRnCondition = new Commodity();
+                commRnCondition.setSql("where F_Name LIKE '%s' limit %s, %s");
+                commRnCondition.setConditions(new String[]{"%" + searchBarcodes + "%", String.valueOf(loadingMoreTimes * PAGE_SIZE_UI), String.valueOf(PAGE_SIZE_UI)});
+                commRnCondition.setSubUseCaseID(BaseModel.EnumSubUseCaseID.ESUC_Ignore);
+                List<Commodity> commodityListLimit = (List<Commodity>) commodityPresenter.retrieveNObjectSync(BaseSQLiteBO.CASE_Commodity_RetrieveNByConditions, commRnCondition);
+
+                // 根据条形码ID搜索相关的商品
+                for (Commodity commodity : commodityListLimit) {
+                    if(!commodityIdSet.contains(commodity.getID())) {
+                        Commodity c = enrichCommodityToShowOnUI(commodity);
+                        commodityList.add(c);
+                        commodityIdSet.add(commodity.getID());
+                    }
+                }
+                Message message = new Message();
+                message.what = 6;
                 PlatForm.get().sendMessage(message);
             }
         }.start();
@@ -821,7 +898,7 @@ public class RetrieveCommodityInventoryViewController implements PlatFormHandler
                 viewController.commodityInfoListView.setManaged(false);
                 viewController.query_fail_view.setVisible(true);
                 viewController.query_fail_view.setManaged(true);
-                viewController.tv_failtips.setText("无法找到条形码对应的商品库存...");
+                viewController.tv_failtips.setText("无法找到条形码或商品名称对应的商品库存...");
                 //搜索不到条形码时的逻辑
                 break;
             case 4:
@@ -841,6 +918,23 @@ public class RetrieveCommodityInventoryViewController implements PlatFormHandler
             case 5:
                 searchRci_click(1,PAGE_SIZE_UI);
 //                viewController.rci_condition_input.setText("");
+                break;
+            case 6:
+                dismissLoadingView();
+                viewController.commodityInfoListView.setVisible(true);
+                viewController.commodityInfoListView.setManaged(true);
+                viewController.query_fail_view.setVisible(false);
+                viewController.query_fail_view.setManaged(false);
+                //
+                for (int i = 0; i < commodityList.size(); i++) {
+                    commodityList.get(i).setIndex(i + 1);
+                }
+                //
+                viewController.commodityInfoListView.scrollTo(adapterQueryByCommName.getLastIndex() - PAGE_SIZE_UI);
+                viewController.commodityInfoListView.setItems(null);
+                viewController.commodityInfoListView.setItems(FXCollections.observableList(commodityList));
+                adapterQueryByCommName.setLastIndex(commodityList.size());
+                adapterQueryByCommName.setLoadCompleted();
                 break;
         }
     }

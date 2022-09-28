@@ -1084,4 +1084,11 @@ public class GlobalController {
     }
 
 
+    public DaoSession getDaoSession() {
+        return daoSession;
+    }
+
+    public void setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
+    }
 }

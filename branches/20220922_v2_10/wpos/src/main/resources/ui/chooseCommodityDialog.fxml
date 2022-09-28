@@ -93,7 +93,7 @@
                         <Insets top="24.0" />
                     </FlowPane.margin>
                 </GridPane>
-                <ListView fx:id="rv_alertdialog_commodity" maxHeight="424.0" maxWidth="1064.0" prefHeight="424.0" prefWidth="1064.0" style="-fx-border-color: #FFFFFF;" />
+                <ListView fx:id="rv_alertdialog_commodity" maxHeight="424.0" maxWidth="1064.0" prefHeight="324.0" prefWidth="1064.0" style="-fx-border-color: #FFFFFF;" />
                 <Label maxHeight="1.0" prefHeight="1.0" prefWidth="1063.0" style="-fx-background-color: #E0E0E0;">
                     <font>
                         <Font size="1.0" />

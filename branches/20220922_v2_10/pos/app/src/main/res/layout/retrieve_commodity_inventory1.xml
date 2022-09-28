@@ -141,7 +141,6 @@
                 android:layout_height="32dp"
                 android:layout_weight="8.5"
                 android:hint="输入商品条码查询库存信息"
-                android:digits="@string/rule_text_barcode"
                 android:focusable="auto"
                 android:maxLength="64"
                 android:textSize="22sp"

@@ -437,9 +437,10 @@ public class VipMapperTest extends BaseMapperTest {
 
 	@Test
 	public void updateTest3() throws CloneNotSupportedException, InterruptedException {
+		
 		Shared.printTestMethodStartInfo();
 
-		Shared.caseLog("CASE3:修改会员生日");
+		Shared.caseLog("CAS3:修改会员生日");
 		// 创建会员
 		Vip vip = BaseVipTest.DataInput.getVip();
 		Vip vipCreate = BaseVipTest.createViaMapper(BaseBO.INVALID_CASE_ID, vip, EnumErrorCode.EC_NoError, Shared.DBName_Test);
@@ -447,10 +448,29 @@ public class VipMapperTest extends BaseMapperTest {
 		Vip tmpUpdateVip = new Vip();
 		tmpUpdateVip.setID(vipCreate.getID());
 		tmpUpdateVip.setCategory(vipCreate.getCategory());
-		tmpUpdateVip.setBirthday(new Date());
 		Vip updateVip = updateVIP(tmpUpdateVip, EnumErrorCode.EC_NoError);
 		//
 		BaseVipTest.deleteViaMapper(updateVip);
+	}
+	
+	@Test
+	public void updateTest4() throws CloneNotSupportedException, InterruptedException {
+		Shared.printTestMethodStartInfo();
+
+		Shared.caseLog("CASE4:修改会员备注");
+		// 创建会员
+		Vip vipGet = BaseVipTest.DataInput.getVip();
+		Vip vipGet2 = (Vip) vipGet.clone();
+		Vip vipCreate = BaseVipTest.createViaMapper(BaseBO.INVALID_CASE_ID, vipGet, EnumErrorCode.EC_NoError, Shared.DBName_Test);
+		// 修改会员
+		vipGet2.setID(vipCreate.getID());
+		vipGet2.setCategory(vipCreate.getCategory());
+		vipGet2.setRemark(Shared.generateStringByTime(8));
+		Vip vipUpdate = BaseVipTest.updateViaMapper(BaseBO.INVALID_CASE_ID, vipGet2);
+		Vip vipR1 = BaseVipTest.retrieve1ViaMapper(vipCreate, Shared.DBName_Test);
+		Assert.assertTrue(vipUpdate.getRemark().equals(vipR1.getRemark()), "修改会员备注失败");
+		//
+		BaseVipTest.deleteViaMapper(vipUpdate);
 	}
 
 	@Test

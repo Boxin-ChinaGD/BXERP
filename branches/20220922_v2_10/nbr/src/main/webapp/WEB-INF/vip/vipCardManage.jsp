@@ -21,12 +21,12 @@
 <body>
 	<div id="vipMain">
 		<div class="vipCardManage">
-			<div class="tipArea">
-				<div>
-					<i class="layui-icon layui-icon-tips"></i>
-					会员卡全新上线，欢迎体验
-				</div>
-			</div>
+<!-- 			<div class="tipArea"> -->
+<!-- 				<div> -->
+<!-- 					<i class="layui-icon layui-icon-tips"></i> -->
+<!-- 					会员卡全新上线，欢迎体验 -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="vipCardInfo">
 				<div class="leftArea">
 					<div class="template">
@@ -54,7 +54,7 @@
 								<div class="wordCount">
 									<span>0</span>/9
 								</div>
-								<p class="form_msg">字数上限为2~9个汉字、英文、数字。(建议涵盖会员卡属性、服务)</p>
+								<p class="form_msg">字数范围为2~9个汉字、英文、数字；名称建议涵盖会员卡属性、服务。</p>
 							</div>
 						</div>
 						<div class="companyLogin">
@@ -64,7 +64,7 @@
 							</button>
 						</div>
 						<div class="layui-form-item">
-							<label class="layui-form-label"><strong>*</strong>会员卡颜色</label>
+							<label class="layui-form-label"><strong>*</strong>会员卡背景色</label>
 							<div class="layui-input-block">
 								<div class="cardColor"></div>
 								<div class="selectColor">
@@ -87,7 +87,7 @@
 								<input type="text" name="${VipCardField.FIELD_NAME_clearBonusDay}"
 									class="layui-input clearBonusDay" value="" lay-verify="clearBonusDay"
 									oninput="checkNum(this)" /> <span>天</span>
-								<p class="form_msg">积分清零天数大于0</p>
+								<p class="form_msg">大于0小于3650的整数。</p>
 							</div>
 						</div>
 						<div class="layui-form-item">
@@ -100,23 +100,23 @@
 								<input type="text" name="${BonusRuleField.FIELD_NAME_initIncreaseBonus}"
 									class="layui-input" value="" lay-verify="initIncreaseBonus"
 									oninput="checkNum(this)" />分
-								<p class="form_msg">初始积分需为大于等于0的数字</p>
+								<p class="form_msg">初始积分是大于等于0小于10000的整数。</p>
 							</div>
 						</div>
 						<div class="layui-form-item">
-							<label class="layui-form-label"><strong>*</strong>积分规则</label>
+							<label class="layui-form-label"><strong>*</strong>消费赠送积分</label>
 							<div class="layui-input-block">
 								<span>
 									每消费<input type="text" name="${BonusRuleField.FIELD_NAME_amountUnit}"
 										class="layui-input" value="" lay-verify="amountUnit"
 										oninput="checkNum(this)" />元,
-									<p class="form_msg">金额需大于0，小于2147483647。</p>
+									<p class="form_msg">消费金额是大于0小于10000的整数。</p>
 								</span>
 								<span>
 									赠送<input type="text" name="${BonusRuleField.FIELD_NAME_increaseBonus}"
 										class="layui-input" value="" lay-verify="increaseBonus"
 										oninput="checkNum(this)" />积分
-									<p class="form_msg">积分需大于0，小于2147483647。</p>
+									<p class="form_msg">赠送积分是大于0小于10000的整数。</p>
 								</span>
 							</div>
 						</div>
@@ -126,7 +126,7 @@
 								<input type="text" name="${BonusRuleField.FIELD_NAME_maxIncreaseBonus}"
 									class="layui-input theMaxIncreaseBonus" value="" lay-verify="maxIncreaseBonus"
 									oninput="checkNum(this)" /> <span>分</span>
-								<p class="form_msg">单次可获取的积分上限需大于0，小于2147483648</p>
+								<p class="form_msg">上限是大于0小于10000的整数</p>
 							</div>
 						</div>
 						<div class="layui-form-item theUpdateVipCardBouns">

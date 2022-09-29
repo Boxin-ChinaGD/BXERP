@@ -27,6 +27,7 @@ layui.use(['table', 'form'], function () {
 		cols: [[
 			{ title: "序号", type: "numbers", align: "center" },
 			{ field: "vipName", title: "会员名称", align: "center" },
+			{ field: "vipMobile", title: "手机号码", align: "center" },
 			{ field: "bonus", title: "当前积分", align: "center" },
 			{
 				field: "addedBonus", title: "积分变动", align: "center",

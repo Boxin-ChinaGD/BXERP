@@ -14,13 +14,13 @@
 <link rel="shortcut icon" href="bx.ico">
 <link type="text/css" rel="stylesheet" href="BXUI/css/layui.css" />
 <link type="text/css" rel="stylesheet" href="css/bx_bonusHistory.css" />
-<title>BoXin-积分历史</title>
+<title>BoXin-积分变动</title>
 </head>
 <body>
 	<div id="bonusHistoryMain">
 		<div class="bonusHistory">
 			<form class="layui-form queryByKeywordArea">
-				<input type="text" class="layui-input" name="keyWord" placeholder="请输入手机号码、微信昵称进行搜索" maxlength="32" />
+				<input type="text" class="layui-input" name="keyWord" placeholder="请输入手机号码、会员名称进行筛选" maxlength="32" />
 				<i class="layui-icon layui-icon-search" lay-submit lay-filter="queryByKeyword"></i>
 			</form>
 			<table id="bonusHistoryTable" lay-filter="bonusHistoryTable">

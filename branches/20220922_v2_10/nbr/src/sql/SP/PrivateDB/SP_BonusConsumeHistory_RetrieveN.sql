@@ -35,7 +35,8 @@ BEGIN
 		ELSE
 			SELECT F_ID, F_VipID, F_StaffID, F_Bonus, F_AddedBonus, F_Remark, F_CreateDatetime,
 			(SELECT F_Name FROM t_vip WHERE F_ID = F_VipID) AS F_VipName,
-			(CASE WHEN (SELECT F_Name FROM t_staff WHERE F_ID = F_StaffID) IS NULL THEN 'ϵͳ' ELSE (SELECT F_Name FROM t_staff WHERE F_ID = F_StaffID) END) AS F_StaffName
+			(CASE WHEN (SELECT F_Name FROM t_staff WHERE F_ID = F_StaffID) IS NULL THEN 'ϵͳ' ELSE (SELECT F_Name FROM t_staff WHERE F_ID = F_StaffID) END) AS F_StaffName,
+			(SELECT F_Mobile FROM t_vip WHERE F_ID = F_VipID) AS F_VipMobile
 			FROM t_bonusconsumehistory 
 			WHERE 1=1
 			AND (CASE iVipID WHEN INVALID_ID THEN 1=1 ELSE F_VipID = iVipID END)

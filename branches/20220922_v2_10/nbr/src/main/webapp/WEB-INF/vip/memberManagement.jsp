@@ -21,17 +21,18 @@
 <body>
 	<div id="vipMain">
 	<div class="vipCardManage">
-			<div class="tipArea">
-				<div>
-					<i class="layui-icon layui-icon-tips"></i>
-					会员全新上线，欢迎体验
-				</div>
-			</div>
+<!-- 			<div class="tipArea"> -->
+<!-- 				<div> -->
+<!-- 					<i class="layui-icon layui-icon-tips"></i> -->
+<!-- 					会员全新上线，欢迎体验 -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</div>
 		<div class="vipManage">
 			<form class="layui-form queryByKeywordArea">
-				<input type="text" class="layui-input" onkeyup="instantSearch()" placeholder="可通过会员手机号或卡号搜索会员"
-					title="可通过姓名、手机号、会员卡号搜索会员" maxlength=16 />
+				<span class="vipSearchTip">搜索会员：</span>
+				<input type="text" class="layui-input" onkeyup="instantSearch()" placeholder="手机号、姓名、会员卡号"
+					title="手机号、姓名、会员卡号" maxlength=16 />
 				<i class="layui-icon layui-icon-search vipSearch" lay-submit lay-filter="queryVipByKeyword"></i>
 			</form>
 			<br>
@@ -42,12 +43,13 @@
 							<a class="layui-btn layui-btn-xs detail" lay-event="detail">查看</a>
 						</script>
 					</table>
-					<button type="button" class="layui-btn layui-btn-sm toCreateVip">新建会员</button>
+<!-- 					<button type="button" class="layui-btn layui-btn-sm toCreateVip">新建会员</button> -->
 				</div>
 				<form class="layui-form vipInfoForm" lay-filter="vipInfoForm">
+					<span class="vipInfoCategory">会员基本信息:</span>
 					<input type="hidden" name="ID"  />
 					<div class="layui-form-item">
-						<label class="layui-form-label">会员编号</label>
+						<label class="layui-form-label">会员卡号</label>
 						<div class="layui-input-block">
 							<input type="text" name="${VipField.FIELD_NAME_sn}" class="layui-input" readonly="true" />
 						</div>
@@ -66,13 +68,13 @@
 							<input type="radio" name="${VipField.FIELD_NAME_sex}" value="1" title="男">
 						</div>
 					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">身份证号</label>
-						<div class="layui-input-block">
-							<input type="text" name="${VipField.FIELD_NAME_iCID}" class="layui-input" lay-verify="iCID"
-								readonly="true" maxlength=18 />
-						</div>
-					</div>
+<!-- 					<div class="layui-form-item"> -->
+<!-- 						<label class="layui-form-label">身份证号</label> -->
+<!-- 						<div class="layui-input-block"> -->
+<%-- 							<input type="text" name="${VipField.FIELD_NAME_iCID}" class="layui-input" lay-verify="iCID" --%>
+<!-- 								readonly="true" maxlength=18 /> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					<div class="layui-form-item">
 						<label class="layui-form-label"><strong class="main">*</strong>手机号码</label>
 						<div class="layui-input-block">
@@ -83,23 +85,24 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">生日</label>
 						<div class="layui-input-block">
-							<input type="text" name="${VipField.FIELD_NAME_birthday}" class="layui-input birthday" />
+							<input type="text" name="${VipField.FIELD_NAME_birthday}" class="layui-input birthday" readonly="true" />
 						</div>
 					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">Email</label>
-						<div class="layui-input-block">
-							<input type="text" name="${VipField.FIELD_NAME_email}" lay-verify="email"
-								class="layui-input" readonly="true" />
-						</div>
-					</div>
-					<div class="layui-form-item">
+<!-- 					<div class="layui-form-item"> -->
+<!-- 						<label class="layui-form-label">Email</label> -->
+<!-- 						<div class="layui-input-block"> -->
+<%-- 							<input type="text" name="${VipField.FIELD_NAME_email}" lay-verify="email" --%>
+<!-- 								class="layui-input" readonly="true" /> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					<div class="layui-form-item" style="display:none;">
 						<label class="layui-form-label">区域</label>
 						<div class="layui-input-block">
 							<input type="text" name="${VipField.FIELD_NAME_district}" lay-verify="district"
-								id="district" class="layui-input" />
+								id="district" class="layui-input"/>
 						</div>
 					</div>
+					<span class="vipInfoCategory">消费情况:</span>
 					<div class="layui-form-item">
 						<label class="layui-form-label">总消费次数</label>
 						<div class="layui-input-block">
@@ -129,6 +132,7 @@
 								readonly="true" />
 						</div>
 					</div>
+					<span class="vipInfoCategory">其他:</span>
 					<div class="layui-form-item">
 						<label class="layui-form-label">创建时间</label>
 						<div class="layui-input-block">
@@ -146,7 +150,7 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">备注</label>
 						<div class="layui-input-block">
-							<textarea name="${VipField.FIELD_NAME_remark}" class="layui-textarea" readonly="true"></textarea>
+							<textarea name="${VipField.FIELD_NAME_remark}" class="layui-textarea"></textarea>
 						</div>
 					</div>
 					<div class="layui-form-item">

@@ -174,7 +174,7 @@
 		#{iErrorCode, jdbcType=INTEGER, mode=OUT},
 		#{sErrorMsg, jdbcType=VARCHAR, mode=OUT},
 		#{ID, mode=IN},
-		#{district, mode=IN},
+		#{remark, mode=IN},
 		#{category, mode=IN},
 		#{birthday, mode=IN}
 		)}

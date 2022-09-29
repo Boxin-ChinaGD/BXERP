@@ -672,6 +672,29 @@ public class VipActionTest extends BaseActionTest {
 		BaseVipCardCodeTest.deleteViaMapper(vipCardCodeCreate);
 		BaseVipCardTest.deleteViaMapper(vipCardCreate);
 	}
+	
+	@Test
+	public void testUpdateEx5() throws Exception {
+		Shared.printTestMethodStartInfo();
+
+		Shared.caseLog("case5: 修改备注");
+		Vip vipGet = BaseVipTest.DataInput.getVip();
+		Vip vipGet2 = (Vip) vipGet.clone();
+		Vip vipCreate = BaseVipTest.createViaMapper(BaseBO.INVALID_CASE_ID, vipGet, EnumErrorCode.EC_NoError, Shared.DBName_Test);
+		//
+		// 修改会员
+		vipGet2.setID(vipCreate.getID());
+		vipGet2.setCategory(vipCreate.getCategory());
+		vipGet2.setRemark(Shared.generateStringByTime(8));
+//		Vip vipUpdate = BaseVipTest.updateViaMapper(BaseBO.INVALID_CASE_ID, vipGet2);
+		Vip vipUpdate = BaseVipTest.updateViaAction(vipGet2, sessionBoss, mvc);
+
+		Vip vipR1 = BaseVipTest.retrieve1ViaMapper(vipCreate, Shared.DBName_Test);
+		Assert.assertTrue(vipUpdate.getRemark().equals(vipR1.getRemark()), "修改会员备注失败");
+
+		BaseVipTest.deleteViaMapper(vipCreate);
+	}
+
 
 	@Test
 	public void testUpdateBonusEx1() throws Exception {
@@ -1074,13 +1097,15 @@ public class VipActionTest extends BaseActionTest {
 
 		System.out.println("\n------------------------ 创建一个零售单A ------------------------");
 
-		RetailTrade rt = getRetailTrade();
+//		RetailTrade rt = getRetailTrade();
+		RetailTrade rt = BaseRetailTradeTest.DataInput.getRetailTrade();
 		rt.setVipID(vipCreate.getID());
 		RetailTrade localRetailTrade = BaseRetailTradeTest.createRetailTrade(rt);
 
 		System.out.println("\n------------------------ 创建一个零售单B ------------------------");
 
-		RetailTrade rt2 = getRetailTrade();
+//		RetailTrade rt2 = getRetailTrade();
+		RetailTrade rt2 = BaseRetailTradeTest.DataInput.getRetailTrade();
 		rt2.setVipID(vipCreate.getID());
 		RetailTrade localRetailTrade2 = BaseRetailTradeTest.createRetailTrade(rt2);
 

@@ -746,7 +746,7 @@ public class Vip extends BaseModel {
 			break;
 		default:
 			params.put(field.getFIELD_NAME_ID(), vip.getID());
-			params.put(field.getFIELD_NAME_district(), vip.getDistrict() == null ? "" : vip.getDistrict());
+			params.put(field.getFIELD_NAME_remark(), vip.getRemark() == null ? "" : vip.getRemark());
 			params.put(field.getFIELD_NAME_category(), vip.getCategory());
 			params.put(field.getFIELD_NAME_birthday(), vip.getBirthday());
 			break;

@@ -11,6 +11,7 @@
 		<result column="F_Remark" property="remark" />
 		<result column="F_VipName" property="vipName" />
 		<result column="F_StaffName" property="staffName" />
+		<result column="F_VipMobile" property="vipMobile" />
 		<result column="F_CreateDatetime" property="createDatetime" />
 	</resultMap>
 

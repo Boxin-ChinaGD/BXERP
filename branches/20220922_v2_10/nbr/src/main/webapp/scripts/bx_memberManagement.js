@@ -183,11 +183,11 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer', 'upload'], function()
 			even: true,
 			page: true,
 			cols: [ [
-				{ field: 'name', title: '用户名', align: 'center', width: "150" }, 
-				{ field: 'sn', title: '会员编号', align: 'center', width: "130" },
+				{ field: 'name', title: '会员名称', align: 'center', width: "150" }, 
 				{ field: 'mobile', title: '手机号码', align: 'center', width: "130" },
-				{ field: 'bonus', title: '积分', align: 'center', width: "130" },
-				{ field: 'lastConsumeDatetime', title: '上次使用时间', align: 'center', width: "130" },
+				{ field: 'consumeTimes', title: '消费次数', align: 'center', width: "130" },
+				{ field: 'consumeAmount', title: '消费金额', align: 'center', width: "130" },
+				{ field: 'bonus', title: '当前积分', align: 'center', width: "130" },
 				{ field: 'buttonArea', title: '操作', align: 'center', width: "200", toolbar: '#buttonArea' }
 			] ],
 			text: {
@@ -346,20 +346,21 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer', 'upload'], function()
 		}
 	})
 	//选择生日
-	laydate.render({
-		elem: ".birthday",
-		type: "date",
-		format: "yyyy/MM/dd"
-	})
+//	 不允许修改生日
+//	laydate.render({
+//		elem: ".birthday",
+//		type: "date",
+//		format: "yyyy/MM/dd"
+//	})
 	
 	//修改会员积分
 	$(".revisePointBonus").click(function(){
 		layer.prompt({title: '请输入修改积分值'},function(value, index, elem){
-//			var reg=new RegExp("^[0-9]$");
-//			var val = reg.test(value);
+			var reg=new RegExp("^[0-9]+$");
+			var checkBonus = reg.test(value);
 //			console.log(val);
-			if((value < 0 || value > 10000) || isNaN(value)){
-					layer.msg("修改的积分应该在0到10000之间");
+			if(!checkBonus || (value < 0 || value > 10000) || isNaN(value)){
+					layer.msg("积分值只能是0到10000之间的整数");
 					return 
 			}
 			$.ajax({
@@ -400,7 +401,7 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer', 'upload'], function()
 		var newVipDate = {
 				"ID":vipData.ID,
 				"category": 1,
-				"district":vipData.district
+				"remark":vipData.remark
 			};
 		if(vipData.birthday){
 			newVipDate.birthday = vipData.birthday;

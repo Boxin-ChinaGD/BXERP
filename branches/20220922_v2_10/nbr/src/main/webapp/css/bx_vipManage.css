@@ -125,8 +125,9 @@ input:focus {
 	line-height: 26px;
 }
 .vipCardManage .vipCardInfo .layui-form .form_msg{
-	display: none;
-	color: red;
+/* 	display: none; */
+	color: #9a9a9a;
+    line-height: 26px;
 }
 .vipCardManage .vipCardInfo .layui-form .layui-form-label{
 	width: 150px;
@@ -146,7 +147,7 @@ input:focus {
 }
 .layui-input{
 	height: 28px !important;
-	width: 192px !important;
+	width: 100px !important;
 }
 .vipCardManage .vipCardInfo .layui-form .layui-input-block{
 	margin-left: 120px;
@@ -165,7 +166,7 @@ input:focus {
 	background-color: #2196F3;
 }
 .vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(1) .layui-input{
-	width: 260px;
+	width: 260px !important;;
 	padding-right: 50px;
 }
 .vipCardManage .vipCardInfo .layui-form .layui-form-item:nth-child(3) .layui-input{
@@ -244,10 +245,11 @@ input:focus {
 #vipMain .vipManage .queryByKeywordArea input{
 	width: 360px;
 	text-overflow: ellipsis;
-	padding-right: 60px;
-	margin-left: 25px;
+	padding-right: 20px;
+	margin-left: -346px;
 	margin-top: 18px;
 	margin-bottom: 20px;
+	float:left;
 }
 #vipMain .vipManage .queryByKeywordArea i{
 	font-size: 18px;
@@ -255,9 +257,18 @@ input:focus {
 	position: absolute;
 	top: 5px;
 	left: 200px;
-	margin-left: 25px;
+	margin-left: 100px;
 	margin-top: 18px;
 	cursor: pointer;
+}
+#vipMain .vipManage .queryByKeywordArea .vipSearchTip{
+	width: 360px;
+	text-overflow: ellipsis;
+	padding-right: 60px;
+	margin-left: 25px;
+	margin-top: 21px;
+	margin-bottom: 20px;
+	float:left;
 }
 /* 根据日期范围搜索会员区域 */
 #vipMain .vipManage .queryByDateTimeArea{
@@ -382,4 +393,13 @@ input:focus {
 #vipMain .vipManage .vipInfoArea .vipTableArea thead tr{
 	background-color: #2196F3;
 	color:white;
+}
+
+/* .layui-form .vipInfoForm .vipInfoCategory { */
+/* 	margin-left:100px; */
+/* 	display: block; */
+/* } */
+.vipInfoCategory {
+	margin-left:50px;
+	display: block;
 }

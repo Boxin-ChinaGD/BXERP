@@ -102,13 +102,14 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer', 'upload'], function()
 		var wordLength = word.length;
 		var keyWord = $(index).attr("name");
 		if(keyWord == "title"){
-			$(".wordCount span").text(wordLength);
-			$(".cardBody h3").text(word);
-			if(wordLength > 9 || wordLength < 2){
-				$(index).siblings(".form_msg").show();
-			}else{
-				$(index).siblings(".form_msg").hide();
-			}
+//			不隐藏提示信息
+//			$(".wordCount span").text(wordLength);
+//			$(".cardBody h3").text(word);
+//			if(wordLength > 9 || wordLength < 2){
+//				$(index).siblings(".form_msg").show();
+//			}else{
+//				$(index).siblings(".form_msg").hide();
+//			}
 		}else if(keyWord == "bonusCleared"){
 			$(".instructions .bonusCleared").text(word);
 			if(wordLength > 128 || wordLength <= 0){
@@ -158,12 +159,12 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer', 'upload'], function()
 		}else{
 			if(num > 0 && num < 2147483648){
 				var keyWord = $(index).attr("name");
-				$(index).siblings(".form_msg").hide();
+//				$(index).siblings(".form_msg").hide();
 				$(".instructions ." + keyWord).text(num);
 			}else if(num == 0){
 				var keyWord = $(index).attr("name");
 				if(keyWord == "initIncreaseBonus"){
-					$(index).siblings(".form_msg").hide();
+//					$(index).siblings(".form_msg").hide();
 					$(".instructions ." + keyWord).text(num);
 				}else{
 					$(index).siblings(".form_msg").show();
@@ -266,28 +267,27 @@ layui.use(['element', 'form', 'table', 'laydate', 'layer', 'upload'], function()
 			}
 		},
 		initIncreaseBonus: function(value, item){
-			if(!value){
+			if(value < 1 || value > 10000){
 				isToSend = true;
-				return "初始积分大于等于0";
+				return "初始积分是大于等于0小于10000的整数。";
 			}
 		},
 		amountUnit: function(value, item){
-			if(value<1){
+			if(value<1 || value > 10000){
 				isToSend = true;
-				return "消费金额需大于0";
-				
+				return "消费金额是大于0小于10000的整数。";
 			}
 		},
 		increaseBonus: function(value, item){
-			if(value<1){
+			if(value<1 || value > 10000){
 				isToSend = true;
-				return "赠送积分需大于0";
+				return "赠送积分是大于0小于10000的整数。";
 			}
 		},
 		maxIncreaseBonus: function(value, item){
-			if(value<1){
+			if(value<1 || value > 10000){
 				isToSend = true;
-				return "单次可获取的积分上限需大于0";
+				return "上限是大于0小于10000的整数";
 			}
 		},
 		clearBonusDay: function(value, item){

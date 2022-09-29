@@ -111,9 +111,9 @@
 						<li class="layui-nav-item">
 							<a href="JavaScript:void(0)"> <i class="layui-icon layui-icon-cols"></i> 会员与积分</a>
 							<dl class="layui-nav-child">
-								<dd><a href="JavaScript:void(0)" lay-href="vip/memberManagement.bx">会员管理</a></dd>
-								<dd><a href="JavaScript:void(0)" lay-href="vip/bonusHistory.bx">积分历史</a></dd>
-								<dd><a href="JavaScript:void(0)" lay-href="vip/vipCardManage.bx">会员卡管理</a></dd>
+								<dd><a href="JavaScript:void(0)" lay-href="vip/memberManagement.bx">会员档案</a></dd>
+								<dd><a href="JavaScript:void(0)" lay-href="vip/bonusHistory.bx">积分变动</a></dd>
+								<dd><a href="JavaScript:void(0)" lay-href="vip/vipCardManage.bx">会员卡设置</a></dd>
 							</dl>
 						</li>
 						<li class="layui-nav-item">

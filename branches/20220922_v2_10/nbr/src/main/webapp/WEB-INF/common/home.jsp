@@ -78,9 +78,9 @@
 					<i class="layui-icon layui-icon-note"></i>
 					<span>新建优惠券</span>
 				</li>
-				<li onclick="pageJumping('vip/memberManagement.bx', 'vip/memberManagement.bx', '会员管理')">
+				<li onclick="pageJumping('vip/memberManagement.bx', 'vip/memberManagement.bx', '会员档案')">
 					<i class="layui-icon layui-icon-user"></i>
-					<span>会员管理</span>
+					<span>会员档案</span>
 				</li>
 			</ul>
 		</div>

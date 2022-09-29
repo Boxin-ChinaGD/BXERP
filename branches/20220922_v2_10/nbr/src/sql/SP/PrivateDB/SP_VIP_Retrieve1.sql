@@ -32,7 +32,8 @@ BEGIN
 			F_Category, 
 			F_Birthday, 
 			F_Bonus, 
-			F_LastConsumeDatetime
+			F_LastConsumeDatetime,
+			F_Remark
 		FROM t_vip WHERE F_ID = iID;
 		
 		SET iErrorCode := 0;

@@ -9,15 +9,15 @@ VALUES ('VIP999999','1234256',1,'giggs','1234526@bx.vip',5,99.8,'广州',1,
 SET @iErrorCode = 0;
 SET @sErrorMsg = '';
 SET @iID = LAST_INSERT_ID();
-SET @sDistrict = '广州';
+SET @sRemark = '备注2022年9月27日18:02:27';
 SET @iCategory = 1;
 SET @dBirthday = '2020/02/11';
 
 
-CALL SP_VIP_Update(@iErrorCode, @sErrorMsg, @iID, @sDistrict, @iCategory, @dBirthday);
+CALL SP_VIP_Update(@iErrorCode, @sErrorMsg, @iID, @sRemark, @iCategory, @dBirthday);
 
 SELECT @sErrorMsg;
-SELECT 1 FROM t_VIP WHERE F_ID = @iID AND F_District = @sDistrict AND F_Category = @iCategory AND F_Birthday = @dBirthday;
+SELECT 1 FROM t_VIP WHERE F_ID = @iID AND F_Remark = @sRemark AND F_Category = @iCategory AND F_Birthday = @dBirthday;
 SELECT IF(found_rows() = 1 AND @iErrorCode = 0, '测试成功', '测试失败') AS 'Case1 Testing Result';
 
 DELETE FROM t_vip WHERE F_ID = @iID;
@@ -26,11 +26,11 @@ SELECT '-------------------- Case2:输入一个不存在的Id进行修改 ------------------
 SET @iErrorCode = 0;
 SET @sErrorMsg = '';
 SET @iID = -22;
-SET @sDistrict = "广州";
+SET @sRemark = "广州";
 SET @iCategory = 1;
 SET @dBirthday = '2020/02/11';
 
-CALL SP_VIP_Update(@iErrorCode, @sErrorMsg, @iID, @sDistrict, @iCategory, @dBirthday);
+CALL SP_VIP_Update(@iErrorCode, @sErrorMsg, @iID, @sRemark, @iCategory, @dBirthday);
 SELECT @iErrorCode;
 SELECT @sErrorMsg;
 SELECT IF(@iErrorCode = 0, '测试成功', '测试失败') AS 'Case2 Testing Result';
@@ -43,15 +43,15 @@ VALUES ('VIP999999'/*F_SN*/,'1234256'/*F_ICID*/,1/*F_CardID*/,'giggs'/*F_Name*/,
 SET @iErrorCode = 0;
 SET @sErrorMsg = '';
 SET @iID = LAST_INSERT_ID();
-SET @sDistrict = '广州';
+SET @sRemark = '广州';
 SET @iCategory = 1;
 SET @dBirthday = '2020/02/11';
 
 
-CALL SP_VIP_Update(@iErrorCode, @sErrorMsg, @iID, @sDistrict, @iCategory, @dBirthday);
+CALL SP_VIP_Update(@iErrorCode, @sErrorMsg, @iID, @sRemark, @iCategory, @dBirthday);
 
 SELECT @sErrorMsg;
-SELECT 1 FROM t_VIP WHERE F_ID = @iID AND F_District = @sDistrict AND F_Category = @iCategory AND F_Birthday = @dBirthday;
+SELECT 1 FROM t_VIP WHERE F_ID = @iID AND F_Remark = @sRemark AND F_Category = @iCategory AND F_Birthday = @dBirthday;
 SELECT IF(found_rows() = 1 AND @iErrorCode = 0, '测试成功', '测试失败') AS 'Case3 Testing Result';
 
 DELETE FROM t_vip WHERE F_ID = @iID;

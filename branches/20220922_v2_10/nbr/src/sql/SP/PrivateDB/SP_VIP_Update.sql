@@ -3,7 +3,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_VIP_Update` (
 	OUT iErrorCode INT,
 	OUT sErrorMsg VARCHAR(64),
 	IN iID INT,
-	IN sDistrict VARCHAR(30),
+	IN sRemark VARCHAR(30),
 	IN iCategory INT,
 	IN dtBirthday DATE
 )
@@ -18,7 +18,7 @@ BEGIN
 	START TRANSACTION;
 
 		UPDATE t_vip SET 
-			F_District = sDistrict,
+			F_Remark = sRemark,
 			F_Category = iCategory,
 			F_Birthday = dtBirthday,
 			F_UpdateDatetime = now()
@@ -42,6 +42,7 @@ BEGIN
 			F_Birthday, 
 			F_Bonus, 
 			F_LastConsumeDatetime,
+			F_Remark,
 			F_CreateDatetime,
 			F_UpdateDatetime
 		FROM t_vip WHERE F_ID = iID;

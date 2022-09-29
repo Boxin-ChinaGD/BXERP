@@ -40,7 +40,9 @@ public class BonusConsumeHistory extends BaseModel {
 	protected String vipName;
 
 	protected String staffName;
-
+	
+	protected String mobile;
+	
 	public String getStaffName() {
 		return staffName;
 	}

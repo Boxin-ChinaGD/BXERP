@@ -45,7 +45,8 @@ BEGIN
 				F_Category, 
 				F_Birthday, 
 				F_Bonus, 
-				F_LastConsumeDatetime
+				F_LastConsumeDatetime,
+				F_Remark
 			FROM t_vip WHERE 1 = 1
 			AND (CASE sDistrict WHEN '' THEN 1 = 1 ELSE F_District = sDistrict END)
 			AND (CASE iCategory WHEN INVALID_ID THEN 1 = 1 ELSE F_Category = iCategory END)

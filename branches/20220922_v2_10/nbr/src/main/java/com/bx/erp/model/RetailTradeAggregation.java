@@ -318,15 +318,16 @@ public class RetailTradeAggregation extends BaseModel {
 			return sbError.toString();
 		}
 		//
-		if (printCheckField(field.getFIELD_NAME_amount(), String.format(FIELD_ERROR_Amount, field.getFIELD_NAME_amount()), sbError) && amount < Min_Amount) {
-			return sbError.toString();
-		}
-		if (printCheckField(field.getFIELD_NAME_amount(), String.format(FIELD_ERROR_Amount, field.getFIELD_NAME_cashAmount()), sbError) && cashAmount < Min_Amount) {
-			return sbError.toString();
-		}
-		if (printCheckField(field.getFIELD_NAME_amount(), String.format(FIELD_ERROR_Amount, field.getFIELD_NAME_wechatAmount()), sbError) && wechatAmount < Min_Amount) {
-			return sbError.toString();
-		}
+//		pos只做退货操作后交班，收银金额会小于0
+//		if (printCheckField(field.getFIELD_NAME_amount(), String.format(FIELD_ERROR_Amount, field.getFIELD_NAME_amount()), sbError) && amount < Min_Amount) {
+//			return sbError.toString();
+//		}
+//		if (printCheckField(field.getFIELD_NAME_amount(), String.format(FIELD_ERROR_Amount, field.getFIELD_NAME_cashAmount()), sbError) && cashAmount < Min_Amount) {
+//			return sbError.toString();
+//		}
+//		if (printCheckField(field.getFIELD_NAME_amount(), String.format(FIELD_ERROR_Amount, field.getFIELD_NAME_wechatAmount()), sbError) && wechatAmount < Min_Amount) {
+//			return sbError.toString();
+//		}
 		if (printCheckField(field.getFIELD_NAME_amount(), FIELD_ERROR_amountTotal, sbError) //
 				&& Math.abs(GeneralUtil.sub(amount, GeneralUtil.sumN(cashAmount, alipayAmount, wechatAmount, amount1, amount2, amount3, amount4, amount5))) >= TOLERANCE) {
 			return sbError.toString();

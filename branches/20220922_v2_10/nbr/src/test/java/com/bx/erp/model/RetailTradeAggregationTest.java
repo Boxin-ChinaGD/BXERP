@@ -89,8 +89,9 @@ public class RetailTradeAggregationTest {
 		Assert.assertEquals(error, "");
 		// amout
 		retailTradeAggregation.setAmount(-1);
+		retailTradeAggregation.setWechatAmount(-1);
 		error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);
-		Assert.assertEquals(error, String.format(RetailTradeAggregation.FIELD_ERROR_Amount, RetailTradeAggregation.field.getFIELD_NAME_amount()));
+		Assert.assertEquals(error, "");
 		retailTradeAggregation.setAmount(1000);
 		retailTradeAggregation.setWechatAmount(1000);
 		error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);
@@ -101,8 +102,9 @@ public class RetailTradeAggregationTest {
 		Assert.assertEquals(error, "");
 		// cashAmount
 		retailTradeAggregation.setCashAmount(-1);
+		retailTradeAggregation.setAmount(-1);
 		error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);
-		Assert.assertEquals(error, String.format(RetailTradeAggregation.FIELD_ERROR_Amount, RetailTradeAggregation.field.getFIELD_NAME_cashAmount()));
+		Assert.assertEquals(error, "");
 		retailTradeAggregation.setAmount(1000);
 		retailTradeAggregation.setCashAmount(1000);
 		error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);
@@ -113,8 +115,9 @@ public class RetailTradeAggregationTest {
 		Assert.assertEquals(error, "");
 		// wechatAmout
 		retailTradeAggregation.setWechatAmount(-1);
+		retailTradeAggregation.setAmount(-1);
 		error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);
-		Assert.assertEquals(error, String.format(RetailTradeAggregation.FIELD_ERROR_Amount, RetailTradeAggregation.field.getFIELD_NAME_wechatAmount()));
+		Assert.assertEquals(error, "");
 		retailTradeAggregation.setAmount(1000);
 		retailTradeAggregation.setWechatAmount(1000);
 		error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);

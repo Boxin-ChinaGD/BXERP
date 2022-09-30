@@ -224,8 +224,11 @@ public class RetailTradeAggregationMapperTest extends BaseMapperTest {
 		Shared.caseLog("Case 13: amout小于0");
 		RetailTradeAggregation retailTradeAggregation = DataInput.getRetailTradeAggregation();
 		retailTradeAggregation.setAmount(-1);
+		retailTradeAggregation.setCashAmount(-1);
+		retailTradeAggregation.setWechatAmount(0);
+		retailTradeAggregation.setAlipayAmount(0);
 		String error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);
-		Assert.assertEquals(error, String.format(RetailTradeAggregation.FIELD_ERROR_Amount, RetailTradeAggregation.field.getFIELD_NAME_amount()));
+		Assert.assertEquals(error, "");
 	}
 	
 	@Test
@@ -235,8 +238,11 @@ public class RetailTradeAggregationMapperTest extends BaseMapperTest {
 		Shared.caseLog("Case 14: cashAmout小于0");
 		RetailTradeAggregation retailTradeAggregation = DataInput.getRetailTradeAggregation();
 		retailTradeAggregation.setCashAmount(-1);
+		retailTradeAggregation.setAmount(-1);
+		retailTradeAggregation.setWechatAmount(0);
+		retailTradeAggregation.setAlipayAmount(0);
 		String error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);
-		Assert.assertEquals(error, String.format(RetailTradeAggregation.FIELD_ERROR_Amount, RetailTradeAggregation.field.getFIELD_NAME_cashAmount()));
+		Assert.assertEquals(error, "");
 	}
 	
 	@Test
@@ -246,8 +252,11 @@ public class RetailTradeAggregationMapperTest extends BaseMapperTest {
 		Shared.caseLog("Case 15: wechatAmout小于0");
 		RetailTradeAggregation retailTradeAggregation = DataInput.getRetailTradeAggregation();
 		retailTradeAggregation.setWechatAmount(-1);
+		retailTradeAggregation.setAmount(-1);
+		retailTradeAggregation.setCashAmount(0);
+		retailTradeAggregation.setAlipayAmount(0);
 		String error = retailTradeAggregation.checkCreate(BaseBO.INVALID_CASE_ID);
-		Assert.assertEquals(error, String.format(RetailTradeAggregation.FIELD_ERROR_Amount, RetailTradeAggregation.field.getFIELD_NAME_wechatAmount()));
+		Assert.assertEquals(error, "");
 	}
 	
 	@Test

@@ -60,6 +60,10 @@ public class RetailTradeAggregationActionTest extends BaseActionTest {
 		Shared.caseLog("case1 :唯一键StaffWorkTiome不重复");
 
 		RetailTradeAggregation rAggregation = getRetailTradeAggregationInstance();
+		rAggregation.setAmount(5000);
+		rAggregation.setCashAmount(4000);
+		rAggregation.setWechatAmount(1000);
+		rAggregation.setAlipayAmount(0);
 		MvcResult mr = mvc.perform(post("/retailTradeAggregation/createEx.bx") //
 				.param(RetailTradeAggregation.field.getFIELD_NAME_staffID(), String.valueOf(rAggregation.getStaffID())) //
 				.param(RetailTradeAggregation.field.getFIELD_NAME_posID(), String.valueOf(1)) //
@@ -84,6 +88,10 @@ public class RetailTradeAggregationActionTest extends BaseActionTest {
 		Shared.caseLog("case2 :唯一键StaffWorkTiome重复时");
 		// 首次创建
 		RetailTradeAggregation rAggregation = getRetailTradeAggregationInstance();
+		rAggregation.setAmount(5000);
+		rAggregation.setCashAmount(4000);
+		rAggregation.setWechatAmount(1000);
+		rAggregation.setAlipayAmount(0);
 		MvcResult mr = mvc.perform(post("/retailTradeAggregation/createEx.bx") //
 				.param(RetailTradeAggregation.field.getFIELD_NAME_staffID(), String.valueOf(rAggregation.getStaffID())) //
 				.param(RetailTradeAggregation.field.getFIELD_NAME_posID(), String.valueOf(1)) //
@@ -233,6 +241,10 @@ public class RetailTradeAggregationActionTest extends BaseActionTest {
 		Shared.printTestMethodStartInfo();
 		// 刷新小王子后等一分钟后运行该方法，第二次运行该方法要隔一分钟，这样就保证只返回一个对象
 		RetailTradeAggregation rAggregation = getRetailTradeAggregationInstance();
+		rAggregation.setAmount(5000);
+		rAggregation.setCashAmount(4000);
+		rAggregation.setWechatAmount(1000);
+		rAggregation.setAlipayAmount(0);
 		MvcResult mr = mvc.perform(post("/retailTradeAggregation/createEx.bx") //
 				.param(RetailTradeAggregation.field.getFIELD_NAME_posID(), String.valueOf(1)) //
 				.param(RetailTradeAggregation.field.getFIELD_NAME_workTimeStart(), String.valueOf(rAggregation.getWorkTimeStart())) //
